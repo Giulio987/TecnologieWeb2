@@ -80,7 +80,7 @@ class RegisterController extends Controller
             'role' => $data['role'],
         ]);
 
-        $id_user = DB::user()->lastInsertId();
+       // $id_user = DB::user()->lastInsertId();
 
         return Doctor::create([
             'fiscal_code' => $data['fiscal_code'],
