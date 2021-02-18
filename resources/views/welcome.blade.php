@@ -82,7 +82,7 @@
                             <div class="icon"><i class="bx bx-fingerprint"></i></div>
                             <h4 class="title"><a href="{{ route('register') }}">REGISTRAZIONE</a></h4>
                             <p class="description">Registrati a MyDoctor per inziare subito a usufruire delle sue
-                                fuznionalità</p>
+                                funzionalità</p>
                         </div>
 
                         <div class="icon-box">

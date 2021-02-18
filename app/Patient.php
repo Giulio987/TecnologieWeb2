@@ -32,7 +32,7 @@ class Patient extends Model
     public function user()
     {
         // Patients:Users => 1:1
-        return $this->belongTo('App\Patient', 'id_user');
+        return $this->belongsTo('App\Patient', 'id_user');
 
     }
 }

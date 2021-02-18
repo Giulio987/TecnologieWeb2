@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Patient;
 use Illuminate\Http\Request;
+use Auth;
 
 class PatientController extends Controller
 {
@@ -14,7 +15,9 @@ class PatientController extends Controller
      */
     public function index()
     {
-        //
+        if ( Auth::user()->role != '2') {
+            return redirect('/home');
+        }
     }
 
     /**

@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Visit extends Model
 {
+    protected $fillable = [
+        'id_patient', 'id_doctor', 'date', 'time',
+    ];
+
     public function doctor()
     {
         // Doctors:Visits => 1:N

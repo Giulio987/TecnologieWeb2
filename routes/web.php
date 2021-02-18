@@ -16,29 +16,39 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
 Auth::routes();
 
-// Admin
+
+Route::resource('home', 'HomeController')->middleware('role');
+Route::resource('doctor', 'DoctorController')->middleware('role');
+Route::resource('patient', 'PatientController')->middleware('role');
+Route::resource('prescription', 'PrescriptionController')->middleware('role');
+Route::resource('visit', 'VisitController')->middleware('role');
+
+
+/*// Admin
 Route::group(['middleware' => ['role:1']], function () {
-    Route::resource('/home', 'HomeController');
-    Route::resource('/doctor', 'HomeController');
-    Route::resource('/patient', 'HomeController');
-    Route::resource('/prescription', 'PrescriptionController');
-    Route::resource('/visit', 'VisitController');
+    Route::resource('home', 'HomeController');
+    Route::resource('doctor', 'DoctorController');
+    Route::resource('patient', 'PatientController');
+    Route::resource('prescription', 'PrescriptionController');
+    Route::resource('visit', 'VisitController');
 });
 
 // Dottore
 Route::group(['middleware' => ['role:2']], function () {
-    Route::resource('/home', 'HomeController');
-    Route::resource('/patient', 'HomeController');
-    Route::resource('/prescription', 'PrescriptionController');
-    Route::resource('/visit', 'VisitController');
+    Route::resource('home', 'HomeController');
+    Route::resource('doctor', 'DoctorController');
+    Route::resource('patient', 'PatientController');
+    Route::resource('prescription', 'PrescriptionController');
+    Route::resource('visit', 'VisitController');
 });
 
 // Paziente
 Route::group(['middleware' => ['role:3']], function () {
-    Route::resource('/home', 'HomeController');
-    Route::resource('/prescription', 'PrescriptionController');
-    Route::resource('/visit', 'VisitController');
-});
+    Route::resource('home', 'HomeController');
+    Route::resource('doctor', 'DoctorController');
+    Route::resource('patient', 'PatientController');
+    Route::resource('prescription', 'PrescriptionController');
+    Route::resource('visit', 'VisitController');
+});*/

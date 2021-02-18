@@ -51,16 +51,16 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'surname' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'role' => ['required', 'string', 'max:255'],
-            'fiscal_code' => ['required', 'string', 'max:255'],
-            'gender' => ['required', 'string', 'max:1'],
-            'dob' => ['required', 'date', 'max:255'],
-            'phone_number' => ['required', 'string', 'max:255'],
-            'id_building' => ['required', 'string', 'max:255'],
+            'name'           => ['required', 'string', 'max:255'],
+            'surname'        => ['required', 'string', 'max:255'],
+            'email'          => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password'       => ['required', 'string', 'min:8', 'confirmed'],
+            'role'           => ['required', 'string', 'max:255'],
+            'fiscal_code'    => ['required', 'string', 'max:255'],
+            'gender'         => ['required', 'string', 'max:1'],
+            'dob'            => ['required', 'date', 'max:255'],
+            'phone_number'   => ['required', 'string', 'max:255'],
+            'id_building'    => ['required', 'string', 'max:255'],
         ]);
     }
 
@@ -73,23 +73,23 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $user = User::create([
-            'name' => $data['name'],
-            'surname' => $data['surname'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'role' => $data['role'],
+            'name'          => $data['name'],
+            'surname'       => $data['surname'],
+            'email'         => $data['email'],
+            'password'      => Hash::make($data['password']),
+            'role'          => $data['role'],
+        ]);  
+        $id_user = $user->id;
+
+        $doctor = Doctor::create([
+            'fiscal_code'   => $data['fiscal_code'],
+            'gender'        => $data['gender'],
+            'dob'           => $data['dob'],
+            'phone_number'  => $data['phone_number'],
+            'id_building'   => $data['id_building'],
+            'id_user'       => $id_user,
         ]);
 
-       // $id_user = DB::user()->lastInsertId();
-
-        return Doctor::create([
-            'fiscal_code' => $data['fiscal_code'],
-            'gender' => $data['gender'],
-            'dob' => $data['dob'],
-            'phone_number' => $data['phone_number'],
-            'id_building' => $data['id_building'],
-            'id_user' => $id_user,
-        ]);
-
+        return $user;
     }
 }

@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Visit;
 use Illuminate\Http\Request;
+use Auth;
+use DB;
+use App\Doctor;
+use App\Patient;
 
 class VisitController extends Controller
 {
@@ -14,7 +18,20 @@ class VisitController extends Controller
      */
     public function index()
     {
-        //
+        if( Auth::user()->role == '1'){ // Admin
+			
+        }else if( Auth::user()->role == '2'){ // Dottore
+            $visits = Visit::all();
+            return view('visit.index', compact('visits'));
+        } else {
+			$id = Auth::user()->id;
+			$info = DB::table('patients')->where('id_user', $id)->select('id')->get();
+			foreach ($info as $patient) {
+				$res2 = $patient->id;
+			}
+            $visits = Visit::where('id_patient', $res2)->get();
+            return view('visit.index', compact('visits'));
+        }
     }
 
     /**
@@ -24,7 +41,16 @@ class VisitController extends Controller
      */
     public function create()
     {
-        //
+        if( Auth::user()->role == '1'){ // Admin
+            
+        }
+        else if( Auth::user()->role == '2'){ // Dottore
+            $doctor = Doctor::all();
+            $patient = Patient::all();
+            return view('visit.create', compact('patient', 'doctor'));
+        } else {
+            return view('visit.create');
+        }
     }
 
     /**
@@ -35,7 +61,12 @@ class VisitController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request -> all();
+
+        Visit::create($input);
+
+
+        return redirect('/visit');
     }
 
     /**

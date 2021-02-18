@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Prescription;
 use Illuminate\Http\Request;
-
+use Auth;
+use DB;
+use App\Doctor;
+use App\Patient; 
 class PrescriptionController extends Controller
 {
     /**
@@ -14,12 +17,21 @@ class PrescriptionController extends Controller
      */
     public function index()
     {
-        if ( Auth::user()->role == '1'){
-            return view('admin.prescription.index');
-        } else if( Auth::user()->role == '2'){
-            return view('doctor.prescription.index');
-        } else {
-            return view('patient.prescription.index');
+        if( Auth::user()->role == '1'){ // Admin
+			
+        }else if( Auth::user()->role == '2'){ // Dottore
+            $prescriptions = Prescription::all();
+            return view('prescription.index', compact('prescriptions'));
+        } else if(Auth::user()->role == '3'){
+			$id = Auth::user()->id;
+			$info = DB::table('patients')->where('id_user', $id)->select('id')->get();
+			foreach ($info as $patient) {
+				$res2 = $patient->id;
+			}
+            $prescriptions = Prescription::where('id_patient', $res2)->get();
+            return view('prescription.index', compact('prescriptions'));
+        }else{
+            return redirect('login');
         }
     }
 
@@ -29,8 +41,18 @@ class PrescriptionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    {  
+        if( Auth::user()->role == '1'){ // Admin
+            
+        }
+        else if( Auth::user()->role == '2'){ // Dottore
+            $patient = Patient::where('id_doctor', '=', Auth::user()->id)->get();
+            
+            return view('prescription.create', compact('patient'));
+        } else {
+            return view('prescription.create');
+        }
+
     }
 
     /**
@@ -41,7 +63,12 @@ class PrescriptionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request -> all();
+
+        Prescription::create($input);
+
+
+        return redirect('/prescription');
     }
 
     /**
