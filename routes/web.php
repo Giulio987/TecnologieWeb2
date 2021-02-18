@@ -19,7 +19,7 @@ Route::get('/', function () {
 Auth::routes();
 
 
-Route::resource('home', 'HomeController')->middleware('role');
+Route::get('home', 'HomeController@index')->middleware('role'); 
 Route::resource('doctor', 'DoctorController')->middleware('role');
 Route::resource('patient', 'PatientController')->middleware('role');
 Route::resource('prescription', 'PrescriptionController')->middleware('role');

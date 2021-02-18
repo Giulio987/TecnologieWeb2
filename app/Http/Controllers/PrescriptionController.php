@@ -20,18 +20,23 @@ class PrescriptionController extends Controller
         if( Auth::user()->role == '1'){ // Admin
 			
         }else if( Auth::user()->role == '2'){ // Dottore
-            $prescriptions = Prescription::all();
+            //Dottori visualizzeranno solo le ricette dei propri pazienti
+            $id = Auth::user()->id;
+			$info = DB::table('doctors')->where('id_user', $id)->select('id')->get();
+			foreach ($info as $doctor) {
+				$res = $doctor->id;
+			}
+            $prescriptions = Prescription::where('id_doctor', $res)->get();
             return view('prescription.index', compact('prescriptions'));
-        } else if(Auth::user()->role == '3'){
+        } else{
+            //Pazienti che visualizzeranno solo le proprie ricette
 			$id = Auth::user()->id;
 			$info = DB::table('patients')->where('id_user', $id)->select('id')->get();
 			foreach ($info as $patient) {
-				$res2 = $patient->id;
+				$res = $patient->id;
 			}
-            $prescriptions = Prescription::where('id_patient', $res2)->get();
+            $prescriptions = Prescription::where('id_patient', $res)->get();
             return view('prescription.index', compact('prescriptions'));
-        }else{
-            return redirect('login');
         }
     }
 
@@ -46,8 +51,12 @@ class PrescriptionController extends Controller
             
         }
         else if( Auth::user()->role == '2'){ // Dottore
-            $patient = Patient::where('id_doctor', '=', Auth::user()->id)->get();
-            
+            $id = Auth::user()->id;
+            $info = DB::table('doctors')->where('id_user', $id)->select('id')->get();
+			foreach ($info as $doctor) {
+				$res = $doctor->id;
+			}
+            $patient = Patient::where('id_doctor', '=', $res)->get();
             return view('prescription.create', compact('patient'));
         } else {
             return view('prescription.create');
