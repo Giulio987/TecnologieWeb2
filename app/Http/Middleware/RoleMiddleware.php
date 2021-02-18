@@ -19,7 +19,7 @@ class RoleMiddleware
         if (!Auth::check()) {
             return redirect('/');  
         }else{
-            if (! $request->user()->hasRole($role)) {
+            if ($request->user()->role == NULL) {
                 return redirect('/');
             }
             return $next($request);
