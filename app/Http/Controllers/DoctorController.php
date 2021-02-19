@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Doctor;
 use Illuminate\Http\Request;
-
+use Auth;
 class DoctorController extends Controller
 {
     /**
@@ -14,7 +14,12 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        //
+        if ( Auth::user()->role == '1') {
+            $doctors = Doctor::all();
+            return view('doctor.index', compact('doctors'));
+        }else{
+            return redirect('/home');
+        }
     }
 
     /**
@@ -24,7 +29,8 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        //
+        $doctors = Doctor::all();
+        return view('doctor.create', compact('doctors'));
     }
 
     /**
@@ -35,7 +41,12 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request -> all();
+        Doctor::create($input);
+
+        //Log::info($input);
+
+        return redirect('/doctor');
     }
 
     /**

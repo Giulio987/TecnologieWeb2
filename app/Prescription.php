@@ -13,7 +13,7 @@ class Prescription extends Model
     public function patient()
     {
         // Patients:Prescriptions => 1:N
-        return $this->belongsTo('App\Patient', 'id_patient');  //una prescrizione appartiene a un paziente
+        return $this->belongsTo('App\Patient', 'id_patient');  //una prescrizione appartiene a un e
     }
 
     public function doctor()
