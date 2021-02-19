@@ -306,8 +306,6 @@ function giornoData($d, $m, $a)
             // Animation complete.
         });
     }
-    
-
     $(document).ready(function() {
         $("#visitaPassata").on("click", function() {
             var value = $(this).val().toLowerCase();
@@ -315,8 +313,6 @@ function giornoData($d, $m, $a)
                 $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
             });
         });
-    });
-    $(document).ready(function() {
         $("#visitaFutura").on("click", function() {
             var value = $(this).val().toLowerCase();
             $("tbody tr ").filter(function() {
@@ -324,34 +320,6 @@ function giornoData($d, $m, $a)
             });
         });
     });
-
-    $(document).ready(function() {
-        $("#searchConfermata").on("click", function() {
-            var value = $(this).val().toLowerCase();
-            $("tbody tr ").filter(function() {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-    });
-    $(document).ready(function() {
-        $("#searchDaConfermare").on("click", function() {
-            var value = $(this).val().toLowerCase();
-            $("tbody tr ").filter(function() {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-    });
-    $(document).ready(function() {
-        $("#searchNegata").on("click", function() {
-            var value = $(this).val().toLowerCase();
-            $("tbody tr ").filter(function() {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-    });
-
-    
-
 </script>
 
 <?php
@@ -373,7 +341,7 @@ $visits = DB::table('visits')->where('id_patient', $res2)->get();
         </h4>
         <div class="mt-3">
             <h5>
-                <p color="#000" align="center">Scegli se visualizzare tutti i pazienti o fare una ricerca specifica.
+                <p color="#000" align="center">Visualizza i tuoi appuntamenti in programma o passati
                 </p>
             </h5>
         </div>
@@ -409,15 +377,16 @@ $visits = DB::table('visits')->where('id_patient', $res2)->get();
                 </tr>
             </thead>
             <tbody>
-
                 @foreach($visits as $v)
-               
-                <tr class="font-weight-bold text-uppercase" style="color:#626262;text-align:center;">
+               <?php
+                    if($v->time > date()){
+                        $id = "visitafutura";
+                    }else{
+                        $id = "visitapassata";
+                    }
+               ?>
+                <tr class="font-weight-bold text-uppercase" id="{{ $id }}" style="color:#626262;text-align:center;">
                     <td style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">{{ date('Y-m-d H:i:s')}};</td>
-                    <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">{{ $v->time }}</td>
-                </tr>
-                <tr class="font-weight-bold text-uppercase" style="color:#626262;text-align:center;">
-                    <td style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">{{ date('d/m/Y', strtotime($v->date)) }}</td>
                     <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">{{ $v->time }}</td>
                 </tr>
                 @endforeach

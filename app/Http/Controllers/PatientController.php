@@ -54,7 +54,7 @@ class PatientController extends Controller
         $patients = Patient::where('id_doctor', '=', $res)->get();
         return view('patient.create', compact('patients'));
     }
-
+/*
     protected function validatorPatient(array $data)
     {
         return Validator::make($data, [
@@ -71,7 +71,7 @@ class PatientController extends Controller
             'email'              => ['required'],
             'id_doctor'          => ['required'],
         ]);
-    }
+    }*/
 
     /**
      * Store a newly created resource in storage.
@@ -116,7 +116,7 @@ class PatientController extends Controller
         //$nome = $input->name;
         //Patient::create($dob, $gender, $fiscal_code, $street_address, $street_number, $city, $postal_code);
         //User::create($name, $surname, $email, $password);
-        $this->validatorPatient($request->all())->validate();
+        //$this->validatorPatient($request->all())->validate();
         $user = User::create([
             'name'          => $request->name,
             'surname'       => $request->surname,
@@ -143,6 +143,18 @@ class PatientController extends Controller
             'id_doctor'     => $res,
             'id_user'       => $id_user,
         ]);
+
+        //messagges view per i messaggi 
+        //poi vengono inclusi in layout
+        if($user)
+        {
+            $br = "
+            ";
+            $request->session()->flash('success', 'Credenziali paziente:' . $br . 'Email:' . $request->email .$br.' Password:' . $request->password . $br . '. Aggiunto con successo');
+        }else{
+            $request->session()->flash('error', 'Si è verificato un errore nella registrazione, riprova.');
+        }
+
         return redirect()->intended('/patient');
     }
 

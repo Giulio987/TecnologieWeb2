@@ -69,7 +69,7 @@ class PrescriptionController extends Controller
     protected function validatorPrescription(array $data)
     {
         return Validator::make($data, [
-            'id_user'        => ['required', 'integer'],
+            'id_patient'     => ['required', 'integer'],
             'id_doctor'      => ['required', 'integer'],
             'description'    => ['required'],
             'status'         => ['required'],
@@ -87,8 +87,8 @@ class PrescriptionController extends Controller
     public function store(Request $request)
     {
         $this->validatorPrescription($request->all())->validate();
-        Prescription::create([
-            'id_user'        => $request->id_user,
+        $prescription = Prescription::create([
+            'id_patient'     => $request->id_patient,
             'id_doctor'      => $request->id_doctor,
             'description'    => $request->description,
             'status'         => $request->status,
@@ -96,6 +96,14 @@ class PrescriptionController extends Controller
             'type'           => $request->type,
 
         ]);
+
+        if($prescription)
+        {
+            $request->session()->flash('success', 'Ricetta prescritta con successo');
+        }else{
+            $request->session()->flash('error', 'Si è verificato un problema nel prescrivere la ricetta, riprova.');
+        }
+
         return redirect()->intended('/prescription');
     }
 

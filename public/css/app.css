@@ -11542,8 +11542,7 @@ Dottori
     word-wrap: break-word;
     text-align: center;
     padding: 2.5em 1em 2.5em 1em;
-    margin-right: 1em;
-    margin-left: 1em;
+    margin: 1em;
 }
 
 .btn-orario {
@@ -11651,7 +11650,6 @@ h1 {
     -webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
-    width: 100%;
 }
 
 td {
@@ -11666,4 +11664,10 @@ td {
 
 p {
     margin: 0px;
+}
+
+.button-search {
+    background-color: #f8fafc;
+    outline: none;
+    box-shadow: none;
 }

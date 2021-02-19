@@ -13,11 +13,13 @@ $name = Auth::user()->name;
 @if(!strcmp(Auth::user()->role, '2'))
 <!-- container Dottore -->
 <div class="row-space" style="margin-left:100px;float:left;">
-  <button style="background-color: #f8fafc;border-width: 0px;" href="">
+<a href="{{ URL::action('HomeController@index') }}">
+<button style="background-color: #f8fafc;border-width: 0px;" href="">
     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
       <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
     </svg>
   </button>
+</a>
 </div>
 <div class="container-lg my-5" align="center">
     <div class="row row-space justify-content-center align-items-center">
@@ -36,41 +38,7 @@ $name = Auth::user()->name;
         </h5>
     </div>
     <div class="row row-space justify-content-center">
-        <div class="btn-group-toggle col-lg-6" data-toggle="buttons">
-            <label class="btn btn-outline-primary col-lg-4 quadrato-ricetta">
-                <input type="radio" name="type" id="searchFarmaco" value="farmaco">
-                <div class="divWrapper">
-                    <h4 class="font-weight-bold text-break">Farmaco</h4>
-                </div>
-            </label>
-            <label class="btn btn-outline-primary col-lg-4 quadrato-ricetta">
-                <input type="radio" name="type" id="searchVisita" value="visita">
-                <div class="divWrapper">
-                    <h4 class="font-weight-bold text-break">Visita</h4>
-                </div>
-            </label>
-        </div>
-        <div class="btn-group-toggle col-lg-6" data-toggle="buttons" style="padding:0px;">
-
-            <label class="btn btn-outline-primary col-lg-3 quadrato-ricetta">
-                <input type="radio" name="status" id="searchConvalidata" value="visita">
-                <div class="divWrapper">
-                    <h5 class="font-weight-bold text-break">Convalidata</h5>
-                </div>
-            </label>
-            <label class="btn btn-outline-primary col-lg-3 quadrato-ricetta">
-                <input type="radio" name="status" id="searchConvalidare" value="visita">
-                <div class="divWrapper">
-                    <h5 class="font-weight-bold text-break">Convalidare</h5>
-                </div>
-            </label>
-            <label class="btn btn-outline-primary col-lg-3 quadrato-ricetta">
-                <input type="radio" name="status" id="searchNegata" value="visita">
-                <div class="divWrapper">
-                    <h5 class="font-weight-bold text-break">Negata</h5>
-                </div>
-            </label>
-        </div>
+            <input class="quadrato-ricetta col-lg-4 text-uppercase button-search" id="myInput" type="text" placeholder="ricerca">
     </div>
     <div class="row row-space justify-content-center">
         <div class="table-responsive" style="white-space: nowrap;">
@@ -83,10 +51,12 @@ $name = Auth::user()->name;
                         <th scope="col-lg">Cognome</th>
                         <th scope="col-lg">Nome</th>
                         <th scope="col-lg">Sesso</th>
+                        <th scope="col-lg">Stato</th>
+                        <th scope="col-lg">Tipo</th>
                         <th scope="col-lg" style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">Descrizione</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="myTable">
                     @foreach($prescriptions as $p)
                     <?php $id = $p->patient->id_user;
                     $user = DB::table('users')->where('id', $id)->select('name', 'surname')->get();
@@ -96,14 +66,23 @@ $name = Auth::user()->name;
                     } ?>
                     <tr class="font-weight-bold text-uppercase" style="color:#626262;">
                         <td style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">{{ date('d/m/Y', strtotime($p->date)) }}</td>
+                        @if($p->status == 'convalidata')
                         <td>{{ $p->rfe }}</td>
+                        @else 
+                        <td>RFE non visualizzabile</td>
+                        @endif
                         <td>{{ $p->patient->fiscal_code }}</td>
                         <td>{{ $nome }}</td>
                         <td>{{ $cognome }}</td>
                         <td>{{ $p->patient->gender }}</td>
+                        <td >{{ $p->status }}</td>
+                        <td >{{ $p->type }}</td>
+                        @if($p->status == 'convalidata')
+                        <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;"><button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" data-whatever1="{{ $p->description }}" data-whatever2="{{ $p->status }}" data-whatever3="{{ $p->date }}">Visualizza descrizione</button></td>
+                        @else
                         <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;"><button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" data-whatever1="{{ $p->description }}" data-whatever2="{{ 'RFE non visualizzabile' }}" data-whatever3="{{ $p->date }}">Visualizza descrizione</button></td>
-                        <td style="display:none">{{ $p->status }}</td>
-                        <td style="display:none">{{ $p->type }}</td>
+                        @endif
+                        
                     </tr>
                     @endforeach
                 </tbody>
@@ -132,11 +111,13 @@ $name = Auth::user()->name;
 @if(!strcmp(Auth::user()->role, '3'))
 <!-- container Paziente -->
 <div class="row-space" style="margin-left:100px;float:left;">
-  <button style="background-color: #f8fafc;border-width: 0px;" href="">
+<a href="{{ URL::action('HomeController@index') }}">
+<button style="background-color: #f8fafc;border-width: 0px;" href="">
     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
       <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
     </svg>
   </button>
+</a>
 </div>
 <div class="container-lg my-5" align="center">
     <div class="row row-space justify-content-center align-items-center">
@@ -155,19 +136,13 @@ $name = Auth::user()->name;
         </h5>
     </div>
     <div class="row row-space justify-content-center">
-        <div class="btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-outline-primary col-lg-2 quadrato-ricetta">
-                <input type="radio" name="type" id="searchFarmaco" value="farmaco">
-                <div class="divWrapper">
-                    <h4 class="font-weight-bold text-break">Farmaco</h4>
-                </div>
-            </label>
-            <label class="btn btn-outline-primary col-lg-2 quadrato-ricetta">
-                <input type="radio" name="type" id="searchVisita" value="visita">
-                <div class="divWrapper">
-                    <h4 class="font-weight-bold text-break">Visita</h4>
-                </div>
-            </label>
+    <div class="btn btn-outline-primary quadrato-ricetta col-lg-2">
+            <input type="radio" name="type" id="searchVisita" value="visita" style="display:none"> 
+            <h4 class="font-weight-bold divWrapper">Farmaco</h4>
+        </div>
+        <div class="btn btn-outline-primary quadrato-ricetta col-lg-2">
+            <input type="radio" name="type" id="searchVisita" value="visita" style="display:none"> 
+            <h4 class="font-weight-bold divWrapper">Visita</h4>
         </div>
     </div>
     <div class="row row-space justify-content-center">

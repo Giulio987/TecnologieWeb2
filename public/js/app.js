@@ -50327,31 +50327,10 @@ $(document).ready(function() {
     })
 });
 
-// Filtro di ricerca Convalidata all'interno della tabella
 $(document).ready(function() {
-    $("#searchConvalidata").on("click", function() {
+    $("#myInput").on("keyup", function() {
         var value = $(this).val().toLowerCase();
-        $("tbody tr ").filter(function() {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        });
-    });
-});
-
-// Filtro di ricerca Convalidare all'interno della tabella
-$(document).ready(function() {
-    $("#searchConvalidare").on("click", function() {
-        var value = $(this).val().toLowerCase();
-        $("tbody tr ").filter(function() {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        });
-    });
-});
-
-// Filtro di ricerca Negata all'interno della tabella
-$(document).ready(function() {
-    $("#searchNegata").on("click", function() {
-        var value = $(this).val().toLowerCase();
-        $("tbody tr ").filter(function() {
+        $("#myTable tr").filter(function() {
             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
     });

@@ -64,20 +64,21 @@
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
-
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ url('/home') }}">
-                                    Home
-                                </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
-
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
                             </div>
+                            
+                        </li>
+                        <li class="nav-item dropdown fill ">
+                            <a class="dropdown-item" href="{{ url('/home') }}">
+                                Home
+                            </a>
                         </li>
                         @endguest
                         <li class="nav-item"><a class="nav-link" href="/#why-us">Perchè</a></li>
@@ -90,7 +91,8 @@
             </div>
         </nav>
         <main class="mt-4 pt-4">
-            @yield('content')
+                @include('messages.alerts')
+                @yield('content')
         </main>
         <!-- Footer -->
         <footer class="py-4">

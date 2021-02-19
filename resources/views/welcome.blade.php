@@ -87,7 +87,7 @@
 
                         <div class="icon-box">
                             <div class="icon"><i class="bx bx-gift"></i></div>
-                            <h4 class="title"><a href="{{ route('login') }}">LOGIN PAZIENTE</a></h4>
+                            <h4 class="title"><a href="{{ route('login') }}">LOGIN</a></h4>
                             <p class="description">Sei già un all'interno della nostra community, allora accedi per
                                 usufruire dei servizi di MyDoctor</p>
                         </div>
@@ -122,8 +122,8 @@
                     <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
                         <div class="count-box">
                             <i class="icofont-laboratory"></i>
-                            <span class="count">800</span>
-                            <p>BOH</p>
+                            <span class="count">200</span>
+                            <p>Ricette Scritte</p>
                         </div>
                     </div>
 
