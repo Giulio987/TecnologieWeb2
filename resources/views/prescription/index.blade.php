@@ -2,258 +2,218 @@
 
 @section('content')
 
-
-<script type="application/javascript">
-    function ShowFarmaco() {
-        $("#contentFarmaco").toggle("slow", function() {
-            // Animation complete.
-        });
-        document.getElementById('contentVisita').style.display = 'none';
-        document.getElementById('descriptionFarmaco').name = 'description';
-        document.getElementById('descriptionVisita').name = '';
-
-    }
-
-    function ShowVisita() {
-        $("#contentVisita").toggle("slow", function() {
-            // Animation complete.
-        });
-        document.getElementById('contentFarmaco').style.display = 'none';
-        document.getElementById('descriptionVisita').name = 'description';
-        document.getElementById('descriptionFarmaco').name = '';
-
-    }
-
-    $(document).ready(function() {
-        $("#searchFarmaco").on("click", function() {
-            var value = $(this).val().toLowerCase();
-            $("tbody tr ").filter(function() {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-    });
-    $(document).ready(function() {
-        $("#searchVisita").on("click", function() {
-            var value = $(this).val().toLowerCase();
-            $("tbody tr ").filter(function() {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-    });
-
-    $(document).ready(function() {
-        $("#searchConfermata").on("click", function() {
-            var value = $(this).val().toLowerCase();
-            $("tbody tr ").filter(function() {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-    });
-
-    $(document).ready(function() {
-        $("#searchDaConfermare").on("click", function() {
-            var value = $(this).val().toLowerCase();
-            $("tbody tr ").filter(function() {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-    });
-
-    $(document).ready(function() {
-        $("#searchNegata").on("click", function() {
-            var value = $(this).val().toLowerCase();
-            $("tbody tr ").filter(function() {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-    });
-</script>
+<?php
+$name = Auth::user()->name;
+?>
 
 @if(!strcmp(Auth::user()->role, '1'))
 
 @endif
 
 @if(!strcmp(Auth::user()->role, '2'))
-
-<?php
-
-$name = Auth::user()->name;
-
-?>
-
-<div class="container my-5">
-    <div class="row mt-5 py-5" align="center">
-        <h1>
-            <p color="#000" class="font-weight-bold">Benvenuto Dott. {{ $name }} </p>
+<!-- container Dottore -->
+<div class="row-space" style="margin-left:100px;float:left;">
+  <button style="background-color: #f8fafc;border-width: 0px;" href="">
+    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
+    </svg>
+  </button>
+</div>
+<div class="container-lg my-5" align="center">
+    <div class="row row-space justify-content-center align-items-center">
+        <h1 class="font-weight-bold col-lg-11">
+            Ciao Dott. {{ $name }}, visualizza le ricette dei tuoi pazienti.
         </h1>
+    </div>
+    <div class="row row-space justify-content-center">
         <h4>
-            <p color="#000" class="mt-2">Visualizza le ricette dei tuoi pazienti qui nella maniera più comoda.</p>
+            Visualizza tutte le tue ricette relative ai farmaci o visite specialistiche.
         </h4>
-        <div class="mt-3">
-            <h5>
-                <p color="#000" align="center">Scegli se visualizzare tutti i pazienti o fare una ricerca specifica.
-                </p>
-            </h5>
+    </div>
+    <div class="row row-space justify-content-center">
+        <h5>
+            Seleziona il tipo, lo stato e visualizza le ricette.
+        </h5>
+    </div>
+    <div class="row row-space justify-content-center">
+        <div class="btn-group-toggle col-lg-6" data-toggle="buttons">
+            <label class="btn btn-outline-primary col-lg-4 quadrato-ricetta">
+                <input type="radio" name="type" id="searchFarmaco" value="farmaco">
+                <div class="divWrapper">
+                    <h4 class="font-weight-bold text-break">Farmaco</h4>
+                </div>
+            </label>
+            <label class="btn btn-outline-primary col-lg-4 quadrato-ricetta">
+                <input type="radio" name="type" id="searchVisita" value="visita">
+                <div class="divWrapper">
+                    <h4 class="font-weight-bold text-break">Visita</h4>
+                </div>
+            </label>
+        </div>
+        <div class="btn-group-toggle col-lg-6" data-toggle="buttons" style="padding:0px;">
+
+            <label class="btn btn-outline-primary col-lg-3 quadrato-ricetta">
+                <input type="radio" name="status" id="searchConvalidata" value="visita">
+                <div class="divWrapper">
+                    <h5 class="font-weight-bold text-break">Convalidata</h5>
+                </div>
+            </label>
+            <label class="btn btn-outline-primary col-lg-3 quadrato-ricetta">
+                <input type="radio" name="status" id="searchConvalidare" value="visita">
+                <div class="divWrapper">
+                    <h5 class="font-weight-bold text-break">Convalidare</h5>
+                </div>
+            </label>
+            <label class="btn btn-outline-primary col-lg-3 quadrato-ricetta">
+                <input type="radio" name="status" id="searchNegata" value="visita">
+                <div class="divWrapper">
+                    <h5 class="font-weight-bold text-break">Negata</h5>
+                </div>
+            </label>
         </div>
     </div>
-
-    <div class="my-3" align="center">
-        <div class="row">
-
-            <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
-                <label class="btn btn-outline-primary col-md-2 quadrato-ricetta mx-4 mb-2 w-100 h-100">
-                    <input type="radio" name="type1" id="searchFarmaco" value="farmaco">
-                    <h4 class="font-weight-bold" style="margin-top: 25px; margin-bottom: 25px;">Farmaco</h4>
-                </label>
-                <label class="btn btn-outline-primary col-md-2 quadrato-ricetta mx-4 mb-2 w-100 h-100">
-                    <input type="radio" name="type1" id="searchVisita" value="visita">
-                    <h4 class="font-weight-bold" style="margin-top: 25px; margin-bottom: 25px;">Visita</h4>
-                </label>
-
-
-            </div>
-
-        </div>
-        <div class="row my-4 pb-5">
-            <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
-
-                <label class="btn btn-outline-primary col-md-2 quadrato-ricetta mx-4 mb-2 w-100 h-100">
-                    <input type="radio" name="type2" id="searchConfermata" value="confermata">
-                    <h4 class="font-weight-bold" style="margin-top: 25px; margin-bottom: 25px;">Confermata</h4>
-                </label>
-                <label class="btn btn-outline-primary col-md-2 quadrato-ricetta mx-4 mb-2 w-100 h-100">
-                    <input type="radio" name="type2" id="searchDaConfermare" value="da confermare">
-                    <h4 class="font-weight-bold text-nowrap" style="margin-top: 25px; margin-bottom: 25px;">Da confermare</h4>
-                </label>
-                <label class="btn btn-outline-primary col-md-2 quadrato-ricetta mx-4 mb-2 w-100 h-100">
-                    <input type="radio" name="type2" id="searchNegata" value="negata">
-                    <h4 class="font-weight-bold" style="margin-top: 25px; margin-bottom: 25px;">Negata</h4>
-                </label>
-            </div>
-        </div>
-    </div>
-
-
-
-    <div class="table-border">
-        <table class="table table-borderless table-hover" style="margin:0px;">
-            <thead>
-                <tr class="bg-info" style="color:#fff;text-align:center">
-                    <th scope="col" style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">Data</th>
-                    <th scope="col">RFE</th>
-                    <th scope="col">Codice Fiscale</th>
-                    <th scope="col">Cognome</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Sesso</th>
-                    <th scope="col">Tipologia</th>
-                    <th scope="col">Descrizione</th>
-                    <th scope="col" style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($prescriptions as $p)
-                <?php
-                    $id = $p->patient->id_user;
+    <div class="row row-space justify-content-center">
+        <div class="table-responsive" style="white-space: nowrap;">
+            <table class="table table-borderless table-hover table-border">
+                <thead>
+                    <tr class="bg-info" style="color:#fff;">
+                        <th scope="col-lg" style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">Data</th>
+                        <th scope="col-lg">RFE</th>
+                        <th scope="col-lg">Codice Fiscale</th>
+                        <th scope="col-lg">Cognome</th>
+                        <th scope="col-lg">Nome</th>
+                        <th scope="col-lg">Sesso</th>
+                        <th scope="col-lg" style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">Descrizione</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($prescriptions as $p)
+                    <?php $id = $p->patient->id_user;
                     $user = DB::table('users')->where('id', $id)->select('name', 'surname')->get();
                     foreach ($user as $info) {
-				        $nome = $info->name;
+                        $nome = $info->name;
                         $cognome = $info->surname;
-			        }                
-                ?>
-                <tr class="font-weight-bold text-uppercase" style="color:#626262;text-align:center;">
-                    <td style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">{{ date('d/m/Y', strtotime($p->date)) }}</td>
-                    <td>{{ $p->rfe }}</td>
-                    <td>{{ $p->patient->fiscal_code }}</td>
-                    <td>{{ $nome }}</td>
-                    <td>{{ $cognome }}</td>
-                    <td>{{ $p->patient->gender }}</td>
-                    <td>{{ $p->type }}</td>
-                    <td>{{ $p->description }}</td>
-                    <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">{{ $p->status }}</td>
-                </tr>
-                @endforeach
-
-            </tbody>
-        </table>
+                    } ?>
+                    <tr class="font-weight-bold text-uppercase" style="color:#626262;">
+                        <td style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">{{ date('d/m/Y', strtotime($p->date)) }}</td>
+                        <td>{{ $p->rfe }}</td>
+                        <td>{{ $p->patient->fiscal_code }}</td>
+                        <td>{{ $nome }}</td>
+                        <td>{{ $cognome }}</td>
+                        <td>{{ $p->patient->gender }}</td>
+                        <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;"><button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" data-whatever1="{{ $p->description }}" data-whatever2="{{ 'RFE non visualizzabile' }}" data-whatever3="{{ $p->date }}">Visualizza descrizione</button></td>
+                        <td style="display:none">{{ $p->status }}</td>
+                        <td style="display:none">{{ $p->type }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title font-weight-bold text-uppercase" id="exampleModalLabel"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h6 id="description" style="word-wrap: break-word;width:auto;" class="text-uppercase"></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
 @endif
 
 @if(!strcmp(Auth::user()->role, '3'))
-<div class="container my-5">
-    <div class="row mt-5 py-5" align="center">
-        <h1>
-            <p color="#000" class="font-weight-bold">Visualizza le tue ricette</p>
+<!-- container Paziente -->
+<div class="row-space" style="margin-left:100px;float:left;">
+  <button style="background-color: #f8fafc;border-width: 0px;" href="">
+    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
+    </svg>
+  </button>
+</div>
+<div class="container-lg my-5" align="center">
+    <div class="row row-space justify-content-center align-items-center">
+        <h1 class="font-weight-bold col-lg-11">
+            Ciao {{ $name }}, visualizza le tue ricette
         </h1>
+    </div>
+    <div class="row row-space justify-content-center">
         <h4>
-            <p color="#000" class="mt-2">Visualizza tutte le tue ricette di farmaci o visite specialistiche.</p>
+            Visualizza tutte le tue ricette relative ai farmaci o visite specialistiche.
         </h4>
-        <div>
-            <div class="my-3">
-                <h5>
-                    <p color="#000" align="center">Seleziona il tipo e visualizza le tue ricette.
-                    </p>
-                </h5>
-                @if ($errors->any())
-                @foreach ($errors->all() as $error)
-                <p align="center" class="alert alert-danger" style="width: 300px; height:auto; padding:0%; margin:5px;">{{ '*' . $error  }}</p>
-                @endforeach
-                @endif
-            </div>
-            <div class="container my-5 " align="center">
-                <div class="row">
-                    <div class=" btn-group-toggle w-100 h-100" data-toggle="buttons">
-                        <label class="btn btn-outline-primary col-md-2 quadrato-ricetta mx-4 mb-2 w-100 h-100">
-                            <input type="radio" name="type" id="searchFarmaco" value="farmaco">
-                            <h4 class="font-weight-bold" style="margin-top: 25px; margin-bottom: 25px;">Farmaco</h4>
-                        </label>
-                        <label class="btn btn-outline-primary col-md-2 quadrato-ricetta mx-4 mb-2 w-100 h-100">
-                            <input type="radio" name="type" id="searchVisita" value="visita">
-                            <h4 class="font-weight-bold" style="margin-top: 25px; margin-bottom: 25px;">Visita</h4>
-                        </label>
+    </div>
+    <div class="row row-space justify-content-center">
+        <h5>
+            Seleziona il tipo e visualizza le tue ricette.
+        </h5>
+    </div>
+    <div class="row row-space justify-content-center">
+        <div class="btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-outline-primary col-lg-2 quadrato-ricetta">
+                <input type="radio" name="type" id="searchFarmaco" value="farmaco">
+                <div class="divWrapper">
+                    <h4 class="font-weight-bold text-break">Farmaco</h4>
+                </div>
+            </label>
+            <label class="btn btn-outline-primary col-lg-2 quadrato-ricetta">
+                <input type="radio" name="type" id="searchVisita" value="visita">
+                <div class="divWrapper">
+                    <h4 class="font-weight-bold text-break">Visita</h4>
+                </div>
+            </label>
+        </div>
+    </div>
+    <div class="row row-space justify-content-center">
+        <div class="table-responsive" style="white-space: nowrap;">
+            <table class="table table-borderless table-hover table-border">
+                <thead>
+                    <tr class="bg-info" style="color:#fff;">
+                        <th scope="col-lg" style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">Data</th>
+                        <th scope="col-lg">RFE</th>
+                        <th scope="col-lg">Descrizione</th>
+                        <th scope="col-lg" style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">Stato</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($prescriptions as $p)
+                    <tr class="font-weight-bold text-uppercase" style="color:#626262;">
+                        <td style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">{{ $p->date }}</th>
+                            @if(($p->status) == 'convalidata')
+                        <td>{{ $p->rfe }}</td>
+                        <td><button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" data-whatever1="{{ $p->description }}" data-whatever2="{{ $p->rfe }}" data-whatever3="{{ $p->date }}">Visualizza descrizione</button></td>
+                        @else
+                        <td>RFE non visualizzabile</td>
+                        <td><button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" data-whatever1="{{ $p->description }}" data-whatever2="{{ 'RFE non visualizzabile' }}" data-whatever3="{{ $p->date }}">Visualizza descrizione</button></td>
+                        @endif
+                        <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">{{ $p->status }}</td>
+                        <td style="display:none">{{ $p->type }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title font-weight-bold text-uppercase" id="exampleModalLabel"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h6 id="description" style="word-wrap: break-word;width:auto;" class="text-uppercase"></h6>
                     </div>
                 </div>
             </div>
-
-
-
-<div class="table-border">
-            <table class="table table-borderless table-hover" align="center" id="contentVisita" >
-                <thead>
-                    <thead>
-                    <tr class="bg-info" style="color:#fff;text-align:center">
-                    <th scope="col" style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">Date</th>
-                            <th scope="col">RFE</th>
-                            <th scope="col">Descrizione</th>
-                            <th scope="col" style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">Tipo</th>
-
-                        </tr>
-                    </thead>
-                <tbody>
-
-
-
-                    @foreach($prescriptions as $p)
-                    <tr class="font-weight-bold text-uppercase" style="color:#626262;text-align:center;">
-                    <td style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">{{ $p->date }}</th>
-                        @if(($p->status) == 'confermata')
-                        <td>{{ $p->rfe }}</td>
-                        @else
-                        <td>-</td>
-                        @endif
-                        <td>{{ $p->description }}</td>
-                        <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">{{ $p->type }}</td>
-
-                    </tr>
-                    @endforeach
-
-                </tbody>
-            </table>
-</div>
         </div>
-
-
     </div>
 </div>
 @endif

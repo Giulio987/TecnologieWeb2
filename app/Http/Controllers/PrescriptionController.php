@@ -8,6 +8,8 @@ use Auth;
 use DB;
 use App\Doctor;
 use App\Patient; 
+use Illuminate\Support\Facades\Validator;
+
 class PrescriptionController extends Controller
 {
     /**
@@ -55,6 +57,18 @@ class PrescriptionController extends Controller
 
     }
 
+    protected function validatorPrescription(array $data)
+    {
+        return Validator::make($data, [
+            'id_user'        => ['required', 'integer'],
+            'id_doctor'      => ['required', 'integer'],
+            'description'    => ['required'],
+            'status'         => ['required'],
+            'date'           => ['required', 'date'],
+            'type'           => ['required'],
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -63,12 +77,17 @@ class PrescriptionController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request -> all();
+        $this->validatorPrescription($request->all())->validate();
+        Prescription::create([
+            'id_user'        => $request->id_user,
+            'id_doctor'      => $request->id_doctor,
+            'description'    => $request->description,
+            'status'         => $request->status,
+            'date'           => $request->date,
+            'type'           => $request->type,
 
-        Prescription::create($input);
-
-
-        return redirect('/prescription');
+        ]);
+        return redirect()->intended('/prescription');
     }
 
     /**
