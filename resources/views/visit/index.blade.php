@@ -301,23 +301,14 @@ function giornoData($d, $m, $a)
 @if(!strcmp(Auth::user()->role, '3'))
 
 <script type="application/javascript">
-    function Show() {
-        $("#content").show("slow", function() {
-            // Animation complete.
-        });
-    }
     $(document).ready(function() {
         $("#visitaPassata").on("click", function() {
-            var value = $(this).val().toLowerCase();
-            $("tbody tr ").filter(function() {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
+            $("#visitapassata").show();
+            $("#visitafutura").hide();
         });
         $("#visitaFutura").on("click", function() {
-            var value = $(this).val().toLowerCase();
-            $("tbody tr ").filter(function() {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
+            $("#visitapassata").hide();
+            $("#visitafutura").show();
         });
     });
 </script>
@@ -379,7 +370,7 @@ $visits = DB::table('visits')->where('id_patient', $res2)->get();
             <tbody>
                 @foreach($visits as $v)
                <?php
-                    if($v->time > date()){
+                    if($v->time > date('Y-m-d')){
                         $id = "visitafutura";
                     }else{
                         $id = "visitapassata";
