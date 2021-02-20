@@ -11524,9 +11524,9 @@ Dottori
     border-width: 5px;
     border-color: #3490dc;
     box-shadow: 10px 10px 5px #dedede;
-    -moz-border-radius: 20px;
-    -webkit-border-radius: 20px;
-    border-radius: 20px;
+    -moz-border-radius: 20px !important;
+    -webkit-border-radius: 20px !important;
+    border-radius: 20px !important;
 }
 
 .quadrato-ricetta {
@@ -11629,7 +11629,6 @@ Dottori
 
 h4 {
     margin: 0px;
-    padding: 1em 1em 1em 1em;
 }
 
 h5 {
