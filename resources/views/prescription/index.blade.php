@@ -38,7 +38,7 @@ $name = Auth::user()->name;
         </h5>
     </div>
     <div class="row row-space justify-content-center">
-            <input class="quadrato-ricetta col-lg-4 text-uppercase button-search" id="myInput" type="text" placeholder="ricerca">
+            <input class="quadrato-ricetta col-lg-4 text-uppercase button-search" id="myInput" type="text" placeholder="ricerca" style="padding:1em;">
     </div>
     <div class="row row-space justify-content-center">
         <div class="table-responsive" style="white-space: nowrap;">
@@ -185,7 +185,7 @@ $name = Auth::user()->name;
                         <td><button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" data-whatever1="{{ $p->description }}" data-whatever2="{{ 'RFE non visualizzabile' }}" data-whatever3="{{ $p->date }}">Visualizza descrizione</button></td>
                         @endif
                         <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">{{ $p->status }}</td>
-                        <td style="">{{ $p->type }}</td>
+                        <td style="display:none">{{ $p->type }}</td>
                     </tr>
                     @endforeach
                 </tbody>

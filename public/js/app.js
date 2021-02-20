@@ -50365,3 +50365,69 @@ function ShowVisita() {
 $(document).ready(function() {
     $("#selUser").select2();
 });
+
+function Show1() {
+    $("#content1").toggle("slow", function() {
+        // Animation complete.
+    });
+    document.getElementById('content2').style.display = 'none';
+    document.getElementById('content3').style.display = 'none';
+    document.getElementById('content4').style.display = 'none';
+    document.getElementById('content5').style.display = 'none';
+    document.getElementById('content6').style.display = 'none';
+}
+
+function Show2() {
+    document.getElementById('content1').style.display = 'none';
+    $("#content2").toggle("slow", function() {
+        // Animation complete.
+    });
+    document.getElementById('content3').style.display = 'none';
+    document.getElementById('content4').style.display = 'none';
+    document.getElementById('content5').style.display = 'none';
+    document.getElementById('content6').style.display = 'none';
+}
+
+function Show3() {
+    document.getElementById('content1').style.display = 'none';
+    document.getElementById('content2').style.display = 'none';
+    $("#content3").toggle("slow", function() {
+        // Animation complete.
+    });
+    document.getElementById('content4').style.display = 'none';
+    document.getElementById('content5').style.display = 'none';
+    document.getElementById('content6').style.display = 'none';
+}
+
+function Show4() {
+    document.getElementById('content1').style.display = 'none';
+    document.getElementById('content2').style.display = 'none';
+    document.getElementById('content3').style.display = 'none';
+    $("#content4").toggle("slow", function() {
+        // Animation complete.
+    });
+    document.getElementById('content5').style.display = 'none';
+    document.getElementById('content6').style.display = 'none';
+}
+
+function Show5() {
+    document.getElementById('content1').style.display = 'none';
+    document.getElementById('content2').style.display = 'none';
+    document.getElementById('content3').style.display = 'none';
+    document.getElementById('content4').style.display = 'none';
+    $("#content5").toggle("slow", function() {
+        // Animation complete.
+    });
+    document.getElementById('content6').style.display = 'none';
+}
+
+function Show6() {
+    document.getElementById('content1').style.display = 'none';
+    document.getElementById('content2').style.display = 'none';
+    document.getElementById('content3').style.display = 'none';
+    document.getElementById('content4').style.display = 'none';
+    document.getElementById('content5').style.display = 'none';
+    $("#content6").toggle("slow", function() {
+        // Animation complete.
+    });
+}

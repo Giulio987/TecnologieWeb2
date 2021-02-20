@@ -12,74 +12,6 @@
 
 @endif
 @if(!strcmp(Auth::user()->role, '3'))
-<script type="application/javascript">
-    function Show1() {
-        $("#content1").toggle("slow", function() {
-            // Animation complete.
-        });
-        document.getElementById('content2').style.display = 'none';
-        document.getElementById('content3').style.display = 'none';
-        document.getElementById('content4').style.display = 'none';
-        document.getElementById('content5').style.display = 'none';
-        document.getElementById('content6').style.display = 'none';
-    }
-
-    function Show2() {
-        document.getElementById('content1').style.display = 'none';
-        $("#content2").toggle("slow", function() {
-            // Animation complete.
-        });
-        document.getElementById('content3').style.display = 'none';
-        document.getElementById('content4').style.display = 'none';
-        document.getElementById('content5').style.display = 'none';
-        document.getElementById('content6').style.display = 'none';
-    }
-
-    function Show3() {
-        document.getElementById('content1').style.display = 'none';
-        document.getElementById('content2').style.display = 'none';
-        $("#content3").toggle("slow", function() {
-            // Animation complete.
-        });
-        document.getElementById('content4').style.display = 'none';
-        document.getElementById('content5').style.display = 'none';
-        document.getElementById('content6').style.display = 'none';
-    }
-
-    function Show4() {
-        document.getElementById('content1').style.display = 'none';
-        document.getElementById('content2').style.display = 'none';
-        document.getElementById('content3').style.display = 'none';
-        $("#content4").toggle("slow", function() {
-            // Animation complete.
-        });
-        document.getElementById('content5').style.display = 'none';
-        document.getElementById('content6').style.display = 'none';
-    }
-
-    function Show5() {
-        document.getElementById('content1').style.display = 'none';
-        document.getElementById('content2').style.display = 'none';
-        document.getElementById('content3').style.display = 'none';
-        document.getElementById('content4').style.display = 'none';
-        $("#content5").toggle("slow", function() {
-            // Animation complete.
-        });
-        document.getElementById('content6').style.display = 'none';
-    }
-
-    function Show6() {
-        document.getElementById('content1').style.display = 'none';
-        document.getElementById('content2').style.display = 'none';
-        document.getElementById('content3').style.display = 'none';
-        document.getElementById('content4').style.display = 'none';
-        document.getElementById('content5').style.display = 'none';
-        $("#content6").toggle("slow", function() {
-            // Animation complete.
-        });
-    }
-</script>
-
 <?php
 
 date_default_timezone_set('Europe/Rome');
@@ -107,7 +39,7 @@ function giornoData($d, $m, $a)
             {{ csrf_field() }}
             <div class="form-group my-3">
                 <h5>
-                    <p color="#000" align="center">Seleziona data e ora e prenota la visita dal tuo medico.
+                    <p color="#000" align="center">Seleziona data, ora e prenota la visita dal tuo medico.
                         <button type="submit" name="submit" class="btn btn-outline-success btn-prenota font-weight-bold">+</button>
                     </p>
                 </h5>
