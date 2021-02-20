@@ -136,17 +136,19 @@ $name = Auth::user()->name;
         </h5>
     </div>
     <div class="row row-space justify-content-center">
-    <div class="btn-group btn-group-toggle justify-content-center" data-toggle="buttons">
+    <div class="btn-group btn-group-toggle justify-content-center w-100 h-100" data-toggle="buttons">
       <label class="btn btn-outline-primary quadrato-ricetta col-lg-2">
         <input type="radio" name="type" id="searchFarmaco" value="farmaco" style="display:none">
-        <h4 class="font-weight-bold">Farmaco</h4>
+        <h4 class="font-weight-bold" style="padding:1em;">Farmaco</h4>
       </label>
       <label class="btn btn-outline-primary quadrato-ricetta col-lg-2">
         <input type="radio" name="type" id="searchVisita" value="visita" style="display:none">
-        <h4 class="font-weight-bold">Visita</h4>
+        <h4 class="font-weight-bold" style="padding:1em;">Visita</h4>
       </label>
       </div>
     </div>
+
+    
     <div class="row row-space justify-content-center">
         <div class="table-responsive" style="white-space: nowrap;">
             <table class="table table-borderless table-hover table-border">
