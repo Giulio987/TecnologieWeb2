@@ -111,6 +111,8 @@ class VisitController extends Controller
      */
     public function destroy(Visit $visit)
     {
-        //
+        $visit->delete();
+        
+        return redirect('/visit');
     }
 }

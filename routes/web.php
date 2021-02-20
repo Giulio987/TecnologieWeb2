@@ -23,7 +23,8 @@ Route::get('home', 'HomeController@index')->middleware('role');
 Route::resource('doctor', 'DoctorController')->middleware('role');
 Route::resource('patient', 'PatientController')->middleware('role');
 Route::resource('prescription', 'PrescriptionController')->middleware('role');
-Route::resource('visit', 'VisitController')->middleware('role');
+Route::resource('visit', 'VisitController')->except(['destroy'])->middleware('role');
+Route::get('/expense/{visit}/delete', 'VisitController@destroy')->middleware('role');
 
 
 /*// Admin

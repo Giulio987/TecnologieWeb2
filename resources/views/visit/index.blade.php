@@ -364,7 +364,8 @@ $visits = DB::table('visits')->where('id_patient', $res2)->get();
             <thead>
                 <tr class="bg-info" style="color:#fff;text-align:center">
                     <th scope="col" style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">Data</th>
-                    <th scope="col" style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">Ora</th>
+                    <th scope="col" style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 0px 0px 0px;">Ora</th>
+                    <th scope="col" style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">Elimina</th>
                 </tr>
             </thead>
             <tbody>
@@ -377,8 +378,9 @@ $visits = DB::table('visits')->where('id_patient', $res2)->get();
                     }
                ?>
                 <tr class="font-weight-bold text-uppercase" id="{{ $id }}" style="color:#626262;text-align:center;">
-                    <td style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">{{ date('Y-m-d H:i:s')}};</td>
-                    <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">{{ $v->time }}</td>
+                    <td style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">{{ $v->date }};</td>
+                    <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 0px 0px 0px;">{{ $v->time }}</td>
+                    <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;"><a href="{{ URL::action('VisitController@destroy', $v->id) }}" class="btn btn-danger">Cancella</a></td>
                 </tr>
                 @endforeach
             </tbody>
