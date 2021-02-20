@@ -120,8 +120,7 @@ $name = Auth::user()->name;
             $("#visita").show();
         });
     });
-
-    </script>
+</script>
 <!-- container Paziente -->
 <div class="row-space" style="margin-left:100px;float:left;">
 <a href="{{ URL::action('HomeController@index') }}">
@@ -149,15 +148,20 @@ $name = Auth::user()->name;
         </h5>
     </div>
     <div class="row row-space justify-content-center">
-    <div class="btn btn-outline-primary quadrato-ricetta col-lg-2">
-            <input type="radio" name="type" id="searchFarmaco" value="farmaco" style="display:none"> 
-            <h4 class="font-weight-bold divWrapper">Farmaco</h4>
+        <div class="my-3" align="center">
+            <div class="row">
+                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
+                    <label class="btn btn-outline-primary col-md-2 quadrato-ricetta mx-4 mb-2 w-100 h-100">
+                        <input type="radio" name="type" id="searchFarmaco" value="farmaco">
+                        <h4 class="font-weight-bold" style="margin-top: 25px; margin-bottom: 25px;">Farmaci</h4>
+                    </label>
+                    <label class="btn btn-outline-primary col-md-2 quadrato-ricetta mx-4 mb-2 w-100 h-100">
+                        <input type="radio" name="type" id="searchVisita" value="visita">
+                        <h4 class="font-weight-bold" style="margin-top: 25px; margin-bottom: 25px;">Visite Specialistiche</h4>
+                    </label>
+                </div>
+            </div>
         </div>
-        <div class="btn btn-outline-primary quadrato-ricetta col-lg-2">
-            <input type="radio" name="type" id="searchVisita" value="visita" style="display:none"> 
-            <h4 class="font-weight-bold divWrapper">Visita</h4>
-        </div>
-    </div>
     <div class="row row-space justify-content-center">
         <div class="table-responsive" style="white-space: nowrap;">
             <table class="table table-borderless table-hover table-border">
@@ -171,7 +175,7 @@ $name = Auth::user()->name;
                 </thead>
                 <tbody>
                     @foreach($prescriptions as $p)
-                    <tr class="font-weight-bold text-uppercase" style="color:#626262;" id="{{ $p->type }}">
+                    <tr class="font-weight-bold text-uppercase" style="color:#626262;" id="farmaco">
                         <td style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">{{ $p->date }}</th>
                             @if(($p->status) == 'convalidata')
                         <td>{{ $p->rfe }}</td>
