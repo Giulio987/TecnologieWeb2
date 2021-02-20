@@ -38,7 +38,7 @@ $name = Auth::user()->name;
         </h5>
     </div>
     <div class="row row-space justify-content-center">
-            <input class="quadrato-ricetta col-lg-4 text-uppercase button-search" id="myInput" type="text" placeholder="ricerca">
+            <input class="quadrato-ricetta col-lg-4 text-uppercase button-search" id="myInput" type="text" placeholder="ricerca" style="padding:1em;">
     </div>
     <div class="row row-space justify-content-center">
         <div class="table-responsive" style="white-space: nowrap;">
@@ -109,19 +109,6 @@ $name = Auth::user()->name;
 @endif
 
 @if(!strcmp(Auth::user()->role, '3'))
-<script type="application/javascript">      
-    $(document).ready(function() {
-        $("#searchFarmaco").on("click", function() {
-            $("#farmaco").show();
-            $("#visita").hide();
-        });
-        $("#searchVisita").on("click", function() {
-            $("#farmaco").hide();
-            $("#visita").show();
-        });
-    });
-
-    </script>
 <!-- container Paziente -->
 <div class="row-space" style="margin-left:100px;float:left;">
 <a href="{{ URL::action('HomeController@index') }}">
@@ -149,14 +136,16 @@ $name = Auth::user()->name;
         </h5>
     </div>
     <div class="row row-space justify-content-center">
-    <div class="btn btn-outline-primary quadrato-ricetta col-lg-2">
-            <input type="radio" name="type" id="searchFarmaco" value="farmaco" style="display:none"> 
-            <h4 class="font-weight-bold divWrapper">Farmaco</h4>
-        </div>
-        <div class="btn btn-outline-primary quadrato-ricetta col-lg-2">
-            <input type="radio" name="type" id="searchVisita" value="visita" style="display:none"> 
-            <h4 class="font-weight-bold divWrapper">Visita</h4>
-        </div>
+    <div class="btn-group btn-group-toggle justify-content-center" data-toggle="buttons">
+      <label class="btn btn-outline-primary quadrato-ricetta col-lg-2">
+        <input type="radio" name="type" id="searchFarmaco" value="farmaco" style="display:none">
+        <h4 class="font-weight-bold">Farmaco</h4>
+      </label>
+      <label class="btn btn-outline-primary quadrato-ricetta col-lg-2">
+        <input type="radio" name="type" id="searchVisita" value="visita" style="display:none">
+        <h4 class="font-weight-bold">Visita</h4>
+      </label>
+      </div>
     </div>
     <div class="row row-space justify-content-center">
         <div class="table-responsive" style="white-space: nowrap;">
@@ -181,7 +170,7 @@ $name = Auth::user()->name;
                         <td><button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" data-whatever1="{{ $p->description }}" data-whatever2="{{ 'RFE non visualizzabile' }}" data-whatever3="{{ $p->date }}">Visualizza descrizione</button></td>
                         @endif
                         <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">{{ $p->status }}</td>
-                        <td style="">{{ $p->type }}</td>
+                        <td style="display:none">{{ $p->type }}</td>
                     </tr>
                     @endforeach
                 </tbody>
