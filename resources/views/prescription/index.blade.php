@@ -21,8 +21,8 @@ $name = Auth::user()->name;
   </button>
 </a>
 </div>
-<div class="container-lg my-5" align="center">
-    <div class="row row-space justify-content-center align-items-center">
+<div class="container-lg" align="center">
+    <div class="row row-space justify-content-center">
         <h1 class="font-weight-bold">
             Ciao Dott. {{ $name }}, visualizza le ricette dei tuoi pazienti.
         </h1>
@@ -119,8 +119,8 @@ $name = Auth::user()->name;
   </button>
 </a>
 </div>
-<div class="container-lg my-5" align="center">
-    <div class="row row-space justify-content-center align-items-center">
+<div class="container-lg" align="center">
+    <div class="row row-space justify-content-center">
         <h1 class="font-weight-bold">
             Ciao {{ $name }}, visualizza le tue ricette
         </h1>
@@ -138,11 +138,11 @@ $name = Auth::user()->name;
     <div class="row row-space justify-content-center">
     <div class="btn-group btn-group-toggle justify-content-center w-100 h-100" data-toggle="buttons">
       <label class="btn btn-outline-primary quadrato-ricetta col-lg-2">
-        <input type="radio" name="type" id="searchFarmaco" value="farmaco" style="display:none">
+        <input type="radio" name="type" id="searchFarmaco" value="farmaco">
         <h4 class="font-weight-bold" style="padding:1em;">Farmaco</h4>
       </label>
       <label class="btn btn-outline-primary quadrato-ricetta col-lg-2">
-        <input type="radio" name="type" id="searchVisita" value="visita" style="display:none">
+        <input type="radio" name="type" id="searchVisita" value="visita">
         <h4 class="font-weight-bold" style="padding:1em;">Visita</h4>
       </label>
       </div>

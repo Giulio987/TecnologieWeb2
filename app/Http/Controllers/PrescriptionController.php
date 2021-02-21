@@ -20,7 +20,8 @@ class PrescriptionController extends Controller
     public function index()
     {
         if( Auth::user()->role == '1'){ // Admin
-			
+            $prescriptions = Prescription::all();
+            return view('prescription.index', compact('prescriptions'));
         }else if( Auth::user()->role == '2'){ // Dottore
             //Dottori visualizzeranno solo le ricette dei propri pazienti
             $id = Auth::user()->id;
@@ -87,19 +88,30 @@ class PrescriptionController extends Controller
     public function store(Request $request)
     {
         $this->validatorPrescription($request->all())->validate();
+        $rfe = 0;
+        if(Auth::user()->role == '2'){
+            $rfedata = DB::table('prescriptions')->where('rfe','!=',0)->select('rfe')->get();
+            foreach ($rfedata as $prescription) {
+				$rfe = ($prescription->rfe + 1);
+			}
+        }
         $prescription = Prescription::create([
+            'rfe'            => $rfe,
             'id_patient'     => $request->id_patient,
             'id_doctor'      => $request->id_doctor,
             'description'    => $request->description,
             'status'         => $request->status,
             'date'           => $request->date,
             'type'           => $request->type,
-
         ]);
 
         if($prescription)
         {
-            $request->session()->flash('success', 'Ricetta prescritta con successo');
+            if( Auth::user()->role == '2'){
+                $request->session()->flash('success', 'Ricetta richiesta con successo');
+            }else{
+                $request->session()->flash('success', 'Ricetta prescritta con successo');
+            }
         }else{
             $request->session()->flash('error', 'Si è verificato un problema nel prescrivere la ricetta, riprova.');
         }
@@ -136,9 +148,26 @@ class PrescriptionController extends Controller
      * @param  \App\Prescription  $prescription
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Prescription $prescription)
+    public function update(Request $request, Prescription $prescription, $status)
     {
-        //
+        $input = $request->all();
+        $rfedata = DB::table('prescriptions')->where('rfe','!=',0)->select('rfe')->get();
+            foreach ($rfedata as $prescription) {
+				$rfe = ($prescription->rfe + 1);
+			}
+
+        //$prescription->update($input); // procede all'aggiornamento massivo di tutti gli attributi presenti nell'array $input
+
+        $prescription->rfe = $rfe;
+        $prescription->rfe = $status;
+        $prescription->description = $input['description'];
+        $prescription->id_doctor = $input['id_doctor'];
+        $prescription->id_patient = $input['id_patient'];
+        $prescription->date = $input['date'];
+        $prescription->type = $input['type'];
+        $prescription->save();
+
+        return redirect('/prescription');
     }
 
     /**

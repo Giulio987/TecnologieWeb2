@@ -8,8 +8,6 @@ use Auth;
 use DB;
 use App\Doctor;
 use App\Patient;
-use Illuminate\Support\Facades\Validator;
-
 
 class VisitController extends Controller
 {
@@ -21,8 +19,16 @@ class VisitController extends Controller
     public function index()
     {
         if( Auth::user()->role == '1'){ // Admin
-			
+			$visits = Visit::all();
+            return view('visit.index', compact('visits'));
         }else if( Auth::user()->role == '2'){ // Dottore
+
+
+
+
+
+            //perchè non è gestito qui che tornano solo le visite relative a quel dotore?
+            //Come fatto qui sotto per i pazienti
             $visits = Visit::all();
             return view('visit.index', compact('visits'));
         } else {
@@ -55,16 +61,6 @@ class VisitController extends Controller
         }
     }
 
-    protected function validatorVisit(array $data)
-    {
-        return Validator::make($data, [
-            'id_patient'     => ['required', 'integer'],
-            'id_doctor'      => ['required', 'integer'],
-            'date'           => ['required', 'date'],
-            'time'           => ['required', 'date_format:H:i'],
-        ]);
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -73,23 +69,12 @@ class VisitController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validatorVisit($request->all())->validate();
-        $visit = Visit::create([
-            'id_patient'     => $request->id_patient,
-            'id_doctor'      => $request->id_doctor,
-            'date'           => $request->date,
-            'time'           => $request->time,
+        $input = $request -> all();
 
-        ]);
+        Visit::create($input);
 
-        if($visit)
-        {
-            $request->session()->flash('success', 'Visita prenotata con successo');
-        }else{
-            $request->session()->flash('error', 'Si è verificato un problema nel prenotare la visita, riprova.');
-        }
 
-        return redirect()->intended('/visit');
+        return redirect('/visit');
     }
 
     /**
@@ -134,6 +119,8 @@ class VisitController extends Controller
      */
     public function destroy(Visit $visit)
     {
-        //
+        $visit->delete();
+        
+        return redirect('/visit');
     }
 }
