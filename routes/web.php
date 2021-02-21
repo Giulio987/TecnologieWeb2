@@ -25,6 +25,7 @@ Route::resource('patient', 'PatientController')->middleware('role');
 Route::resource('prescription', 'PrescriptionController')->middleware('role');
 Route::resource('visit', 'VisitController')->except(['destroy'])->middleware('role');
 Route::get('/expense/{visit}/delete', 'VisitController@destroy')->middleware('role');
+Route::get('/prescriptionValidate', 'PrescriptionController@indexValidate')->middleware('role');
 
 
 /*// Admin
@@ -52,4 +53,4 @@ Route::group(['middleware' => ['role:3']], function () {
     Route::resource('patient', 'PatientController');
     Route::resource('prescription', 'PrescriptionController');
     Route::resource('visit', 'VisitController');
-});*/
+});

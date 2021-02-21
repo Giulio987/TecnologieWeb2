@@ -7,88 +7,43 @@
 @endif
 @if(!strcmp(Auth::user()->role, '2'))
 
-<script type="application/javascript">
-    function Show() {
-        $("#content").show("slow", function() {
-            // Animation complete.
-        });
-    }
-
-    $(document).ready(function() {
-        $("#search").on("keyup", function() {
-            var value = $(this).val().toLowerCase();
-            $("table tr button").filter(function() {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-    });
-
-    
-
-
-    $(document).ready(function() {
-        $('#exampleModal').on('show.bs.modal', function(event) {
-            var button = $(event.relatedTarget)
-            var recipientFiscalCode = button.data('whatever1')
-            var recipientName = button.data('whatever2')
-            var recipientSurname = button.data('whatever3')
-            var recipientEmail = button.data('whatever4')
-            var recipientDob = button.data('whatever5')
-            var recipientGender = button.data('whatever6')
-            var recipientPhoneNumber = button.data('whatever7r')
-            var recipientStreetAddress = button.data('whatever8')
-            var recipientStreetNumber = button.data('whatever9')
-            var recipientCity = button.data('whatever10')
-            var recipientPostalCode = button.data('whatever11')
-
-            var modal = $(this)
-            modal.find('#FiscalCode').text(recipientFiscalCode)
-            modal.find('.modal-title').text("Informazioni su " + recipientName + " " + recipientSurname)
-            modal.find('#Email').text(recipientEmail)
-            modal.find('#Dob').text(recipientDob)
-            modal.find('#Gender').text(recipientGender)
-            modal.find('#PhoneNumber').text(recipientPhoneNumber)
-            modal.find('#StreetNumber').text(recipientStreetAddress)
-            modal.find('#StreetAddress').text(recipientStreetNumber)
-            modal.find('#City').text(recipientCity)
-            modal.find('#PostalCode').text(recipientPostalCode)
-        })
-    });
-</script>
-
-
 <?php
 $name = Auth::user()->name;
 ?>
 
-<div class="container my-5">
-    <div class="row mt-5 py-5" align="center">
-        <h1>
-            <p color="#000" class="font-weight-bold">Benvenuto Dott. {{ $name }} </p>
+<div class="row-space" style="margin-left:100px;float:left;">
+<a href="{{ URL::action('HomeController@index') }}">
+<button style="background-color: #f8fafc;border-width: 0px;" href="">
+    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
+    </svg>
+  </button>
+</a>
+</div>
+<div class="container-lg" align="center">
+    <div class="row row-space justify-content-center">
+        <h1 class="font-weight-bold">
+            Ciao Dott. {{ $name }}, visualizza i tuoi pazienti.
         </h1>
-        <h4>
-            <p color="#000" class="mt-2">Visualizza tutti i tuoi pazienti qui nella maniera più comoda.</p>
-        </h4>
-        <div class="my-3">
-            <h5>
-                <p color="#000" align="center">Scegli se visualizzare tutti i pazienti o fare una ricerca specifica.
-                </p>
-            </h5>
-        </div>
     </div>
-    <div class="container my-5 " align="center">
-        <div class="row mb-5 pb-5">
-            <label class="label-ricetta col">
-                <input type="text" class="label-ricetta text-uppercase" placeholder="ricerca" class="form-control" id="search" onclick="Show()">
-            </label>
-        </div>
-        <div class="row" style="display:none" id="content">
+    <div class="row row-space justify-content-center">
+        <h4>
+            Visualizza qui tutti i tuoi pazienti quando ti è più comodo.
+        </h4>
+    </div>
+    <div class="row row-space justify-content-center">
+        <h5>
+            Ricerca per qualsiasi attributo e visualizza le informazioni del tuo paziente.
+        </h5>
+    </div>
 
-            <table>
-            
-            <tr>
-            
-                <td>
+    <div class="row row-space justify-content-center">
+            <input class="quadrato-ricetta col-lg-4 text-uppercase button-search" id="search" type="text" placeholder="ricerca"  style="padding:1em;">
+    </div>
+
+        <div class="row row-space justify-content-center" >
+        <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
+
                 @foreach($patients as $p)  
                 <?php
                     $id = $p->id_user;
@@ -99,17 +54,14 @@ $name = Auth::user()->name;
                         $email = $info->email;
 			        }  
                     ?>  
-                    <button id="searchid" class="col-md-2 btn mx-3 my-3 quadrato-list font-weight-bold w-100 h-100" data-whatever1="{{ $p->fiscal_code }}" data-whatever2="{{ $nome }}" data-whatever3="{{ $cognome }}" data-whatever4="{{ $email }}" data-whatever5="{{ $p->dob }}" data-whatever6="{{ $p->gender }}" data-whatever7="{{ $p->phone_number }}" data-whatever8="{{ $p->street_address }}" data-whatever9="{{ $p->street_number }}" data-whatever10="{{ $p->city }}" data-whatever11="{{ $p->postal_code }}" data-toggle="modal" data-target="#exampleModal" type="button" onmouseover="this.style.background='#3490dc';this.style.color='#fff';" onmouseout="this.style.background='#fff';this.style.color='#000';">
-                    <p align="center" style="margin: auto;">{{ $p->fiscal_code }} {{ $nome }} {{ $cognome }}</p></button>
-                    @endforeach
-                </td>
-                
-                </tr>
-               
-            </table>
-                
-            
 
+
+                    <label id="searchPatient" class="col-lg-2 btn quadrato-list font-weight-bold" data-whatever1="{{ $p->fiscal_code }}" data-whatever2="{{ $nome }}" data-whatever3="{{ $cognome }}" data-whatever4="{{ $email }}" data-whatever5="{{ $p->dob }}" data-whatever6="{{ $p->gender }}" data-whatever7="{{ $p->phone_number }}" data-whatever8="{{ $p->street_address }}" data-whatever9="{{ $p->street_number }}" data-whatever10="{{ $p->city }}" data-whatever11="{{ $p->postal_code }}" data-toggle="modal" data-target="#exampleModal" type="button" onmouseover="this.style.background='#3490dc';this.style.color='#fff';" onmouseout="this.style.background='#fff';this.style.color='#000';">
+                    <p>{{ $p->fiscal_code }} {{ $nome }} {{ $cognome }}</p></label>
+                    @endforeach
+                </div>
+                </div>
+                
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
@@ -135,18 +87,6 @@ $name = Auth::user()->name;
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
-                <label class="btn btn-outline-primary col-md-2 quadrato-ricetta mx-4 mb-2 w-100 h-100">
-                    <input type="radio" name="type1">
-                    <a href="{{URL::action('PatientController@create')}}">
-                    <h4 class="font-weight-bold" style="margin-top: 25px; margin-bottom: 25px;">Registra Nuovo Paziente</h4>
-                </label>
-            </div>
-        </div>
     </div>
-</div>
-
 @endif
 @endsection

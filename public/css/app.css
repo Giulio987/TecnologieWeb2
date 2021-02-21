@@ -11577,7 +11577,7 @@ Dottori
 
 .btn-color {
     width: 100px;
-    height: autopx;
+    height: auto;
     margin: 25px;
     border-style: solid;
     background-color: #3490dc;
@@ -11612,6 +11612,7 @@ Dottori
     border-radius: 20px;
     text-align: left;
     padding: 15px;
+    margin: 1em;
 }
 
 .table-border {

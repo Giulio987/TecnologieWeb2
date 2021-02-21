@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Auth;
 use DB;
 use App\Doctor;
-use App\Patient; 
+use App\Patient;
 use Illuminate\Support\Facades\Validator;
 
 class PrescriptionController extends Controller
@@ -29,7 +29,7 @@ class PrescriptionController extends Controller
 			foreach ($info as $doctor) {
 				$res = $doctor->id;
 			}
-            $prescriptions = Prescription::where('id_doctor', $res)->get();
+            $prescriptions = Prescription::where('id_doctor', $res)->where('status', 'convalidata')->get();
             return view('prescription.index', compact('prescriptions'));
         } else{
             //Pazienti che visualizzeranno solo le proprie ricette
@@ -40,6 +40,20 @@ class PrescriptionController extends Controller
 			}
             $prescriptions = Prescription::where('id_patient', $res)->get();
             return view('prescription.index', compact('prescriptions'));
+        }
+    }
+
+    public function indexValidate()
+    {
+        if( Auth::user()->role == '2'){ // Dottore
+            //Dottori visualizzeranno solo le ricette dei propri pazienti
+            $id = Auth::user()->id;
+			$info = DB::table('doctors')->where('id_user', $id)->select('id')->get();
+			foreach ($info as $doctor) {
+				$res = $doctor->id;
+			}
+            $prescriptions = Prescription::where('id_doctor', $res)->where('status', 'convalidare')->get();
+            return view('prescription.indexValidate', compact('prescriptions'));
         }
     }
 
@@ -108,9 +122,9 @@ class PrescriptionController extends Controller
         if($prescription)
         {
             if( Auth::user()->role == '2'){
-                $request->session()->flash('success', 'Ricetta richiesta con successo');
-            }else{
                 $request->session()->flash('success', 'Ricetta prescritta con successo');
+            }else{
+                $request->session()->flash('success', 'Ricetta richiesta con successo');
             }
         }else{
             $request->session()->flash('error', 'Si è verificato un problema nel prescrivere la ricetta, riprova.');
@@ -148,24 +162,26 @@ class PrescriptionController extends Controller
      * @param  \App\Prescription  $prescription
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Prescription $prescription, $status)
+    public function update(Request $request, Prescription $prescription)
     {
         $input = $request->all();
+        //recupara l'ultimo rfe inserito e lo incrementa di uno
         $rfedata = DB::table('prescriptions')->where('rfe','!=',0)->select('rfe')->get();
             foreach ($rfedata as $prescription) {
 				$rfe = ($prescription->rfe + 1);
 			}
 
-        //$prescription->update($input); // procede all'aggiornamento massivo di tutti gli attributi presenti nell'array $input
-
-        $prescription->rfe = $rfe;
-        $prescription->rfe = $status;
-        $prescription->description = $input['description'];
-        $prescription->id_doctor = $input['id_doctor'];
-        $prescription->id_patient = $input['id_patient'];
-        $prescription->date = $input['date'];
-        $prescription->type = $input['type'];
-        $prescription->save();
+        //recuperiamo l'id della ricetta
+        $id = $input['id'];
+        //se lo stato è convalidata allora assegna rfe, altrimenti cambia solo lo stato in negata
+        if($input['status'] == 'convalidata')
+        {
+            DB::table('prescriptions')->where('id', $id)->update(['rfe' => $prescription->rfe = $rfe, 'status' => $prescription->rfe = $input['status']]);
+            $request->session()->flash('success', 'Ricetta convalidata con successo');
+        }else{
+            DB::table('prescriptions')->where('id', $id)->update(['status' => $prescription->rfe = $input['status']]);
+            $request->session()->flash('success', 'Ricetta invalidata');
+        }
 
         return redirect('/prescription');
     }

@@ -50449,3 +50449,75 @@ function ShowPassate() {
     document.getElementById('contentFuture').style.display = 'none';
     document.getElementById('contentPassate').style.display = 'block';
 }
+
+function Show() {
+    $("#content").show("slow", function() {
+        // Animation complete.
+    });
+}
+
+$(document).ready(function() {
+    $("#search").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("label").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+});
+
+$(document).ready(function() {
+    $('#exampleModal').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget)
+        var recipientFiscalCode = button.data('whatever1')
+        var recipientName = button.data('whatever2')
+        var recipientSurname = button.data('whatever3')
+        var recipientEmail = button.data('whatever4')
+        var recipientDob = button.data('whatever5')
+        var recipientGender = button.data('whatever6')
+        var recipientPhoneNumber = button.data('whatever7')
+        var recipientStreetAddress = button.data('whatever8')
+        var recipientStreetNumber = button.data('whatever9')
+        var recipientCity = button.data('whatever10')
+        var recipientPostalCode = button.data('whatever11')
+
+        var modal = $(this)
+        modal.find('.modal-title').text("Informazioni su " + recipientName + " " + recipientSurname)
+        modal.find('#FiscalCode').text(recipientFiscalCode)
+        modal.find('#Email').text(recipientEmail)
+        modal.find('#Dob').text(recipientDob)
+        modal.find('#Gender').text(recipientGender)
+        modal.find('#PhoneNumber').text(recipientPhoneNumber)
+        modal.find('#StreetNumber').text(recipientStreetAddress)
+        modal.find('#StreetAddress').text(recipientStreetNumber)
+        modal.find('#City').text(recipientCity)
+        modal.find('#PostalCode').text(recipientPostalCode)
+    })
+});
+
+$(document).ready(function() {
+    $('#exampleModal').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget)
+        var recipientFiscalCode = button.data('whatever1')
+        var recipientName = button.data('whatever2')
+        var recipientSurname = button.data('whatever3')
+        var recipientDob = button.data('whatever4')
+        var recipientPhoneNumber = button.data('whatever5')
+        var recipientGender = button.data('whatever6')
+        var recipientStreetAddress = button.data('whatever7')
+        var recipientStreetNumber = button.data('whatever8')
+        var recipientPostalCode = button.data('whatever9')
+        var recipientCity = button.data('whatever10')
+
+        var modal = $(this)
+        modal.find('.modal-title').text("Informazioni su " + recipientName + " " + recipientSurname)
+        modal.find('#FiscalCode').text(recipientFiscalCode)
+        modal.find('#Name').text(recipientEmail)
+        modal.find('#Surname').text(recipientDob)
+        modal.find('#Dob').text(recipientGender)
+        modal.find('#PhoneNumber').text(recipientPhoneNumber)
+        modal.find('#StreetAddress').text(recipientStreetAddress)
+        modal.find('#StreetNumber').text(recipientStreetNumber)
+        modal.find('#Postalcode').text(recipientCity)
+        modal.find('#City').text(recipientPostalCode)
+    })
+});

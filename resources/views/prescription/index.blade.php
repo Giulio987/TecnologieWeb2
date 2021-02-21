@@ -69,7 +69,7 @@ $name = Auth::user()->name;
                         @if($p->status == 'convalidata')
                         <td>{{ $p->rfe }}</td>
                         @else 
-                        <td>RFE non visualizzabile</td>
+                        <td>Non esistente</td>
                         @endif
                         <td>{{ $p->patient->fiscal_code }}</td>
                         <td>{{ $nome }}</td>
@@ -78,11 +78,10 @@ $name = Auth::user()->name;
                         <td >{{ $p->status }}</td>
                         <td >{{ $p->type }}</td>
                         @if($p->status == 'convalidata')
-                        <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;"><button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" data-whatever1="{{ $p->description }}" data-whatever2="{{ $p->status }}" data-whatever3="{{ $p->date }}">Visualizza descrizione</button></td>
+                        <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;"><button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" data-whatever1="{{ $p->description }}" data-whatever2="{{ $p->status }}" data-whatever3="{{ date('d/m/Y', strtotime($p->date)) }}">Visualizza descrizione</button></td>
                         @else
-                        <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;"><button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" data-whatever1="{{ $p->description }}" data-whatever2="{{ 'RFE non visualizzabile' }}" data-whatever3="{{ $p->date }}">Visualizza descrizione</button></td>
+                        <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;"><button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" data-whatever1="{{ $p->description }}" data-whatever2="{{ 'RFE non esistente' }}" data-whatever3="{{ date('d/m/Y', strtotime($p->date)) }}">Visualizza descrizione</button></td>
                         @endif
-                        
                     </tr>
                     @endforeach
                 </tbody>
@@ -103,6 +102,8 @@ $name = Auth::user()->name;
                 </div>
             </div>
         </div>
+
+
     </div>
 </div>
 
