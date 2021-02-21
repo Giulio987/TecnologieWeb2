@@ -1,24 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
+
 <?php
 $name = Auth::user()->name;
 ?>
 
-@if(!strcmp(Auth::user()->role, '1')) <!--ADMIN-->
+@if(!strcmp(Auth::user()->role, '1'))
 
 @endif
 
 @if(!strcmp(Auth::user()->role, '2'))
 <!-- container Dottore -->
-<script type="application/javascript">
-    $(document).ready(function() {
-        $("#daConfermare").on("click", function() {
-            $("#Assegnato").hide();
-            $("#nonAssegnato").show();
-        });
-    });
- </script>
 <div class="row-space" style="margin-left:100px;float:left;">
 <a href="{{ URL::action('HomeController@index') }}">
 <button style="background-color: #f8fafc;border-width: 0px;" href="">
@@ -28,9 +21,9 @@ $name = Auth::user()->name;
   </button>
 </a>
 </div>
-<div class="container-lg my-5" align="center">
-    <div class="row row-space justify-content-center align-items-center">
-        <h1 class="font-weight-bold col-lg-11">
+<div class="container-lg" align="center">
+    <div class="row row-space justify-content-center">
+        <h1 class="font-weight-bold">
             Ciao Dott. {{ $name }}, visualizza le ricette dei tuoi pazienti.
         </h1>
     </div>
@@ -45,13 +38,7 @@ $name = Auth::user()->name;
         </h5>
     </div>
     <div class="row row-space justify-content-center">
-        <input class="quadrato-ricetta col-lg-4 text-uppercase button-search" id="myInput" type="text" placeholder="ricerca" style="padding:1em;">
-        <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
-    <label class="btn btn-outline-primary col-md-2 quadrato-ricetta mx-4 mb-2 w-100 h-100">
-        <input type="radio" name="type1" id="daConfermare" value="confermare">
-        <h4 class="font-weight-bold" style="margin-top: 25px; margin-bottom: 25px;">Ricette Da Confermare</h4>
-    </label>
-    </div>
+            <input class="quadrato-ricetta col-lg-4 text-uppercase button-search" id="myInput" type="text" placeholder="ricerca" style="padding:1em;">
     </div>
     <div class="row row-space justify-content-center">
         <div class="table-responsive" style="white-space: nowrap;">
@@ -66,7 +53,6 @@ $name = Auth::user()->name;
                         <th scope="col-lg">Sesso</th>
                         <th scope="col-lg">Stato</th>
                         <th scope="col-lg">Tipo</th>
-                        <th scope="col-lg">Azioni</th>
                         <th scope="col-lg" style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">Descrizione</th>
                     </tr>
                 </thead>
@@ -77,21 +63,13 @@ $name = Auth::user()->name;
                     foreach ($user as $info) {
                         $nome = $info->name;
                         $cognome = $info->surname;
-                    } 
-                    if($p->status == 'convalidata'){
-                        $id = "Assegnato";
-                    }else{
-                        $id = "nonAssegnato";
-                    }
-                    ?>
-                    <tr class="font-weight-bold text-uppercase" style="color:#626262;" id="{{$id}}">
+                    } ?>
+                    <tr class="font-weight-bold text-uppercase" style="color:#626262;">
                         <td style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">{{ date('d/m/Y', strtotime($p->date)) }}</td>
                         @if($p->status == 'convalidata')
                         <td>{{ $p->rfe }}</td>
-                        @elseif($p->status == 'negata')
-                        <td>Ricetta Negata</td>
-                        @else
-                        <td>RFE non assegnato</td>
+                        @else 
+                        <td>RFE non visualizzabile</td>
                         @endif
                         <td>{{ $p->patient->fiscal_code }}</td>
                         <td>{{ $nome }}</td>
@@ -100,11 +78,11 @@ $name = Auth::user()->name;
                         <td >{{ $p->status }}</td>
                         <td >{{ $p->type }}</td>
                         @if($p->status == 'convalidata')
-                        <td><button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" data-whatever1="{{ $p->description }}" data-whatever2="{{ $p->status }}" data-whatever3="{{ $p->date }}">Visualizza descrizione</button></td>
+                        <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;"><button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" data-whatever1="{{ $p->description }}" data-whatever2="{{ $p->status }}" data-whatever3="{{ $p->date }}">Visualizza descrizione</button></td>
                         @else
-                        <td><button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" data-whatever1="{{ $p->description }}" data-whatever2="{{ 'RFE non assegnato' }}" data-whatever3="{{ $p->date }}" >Visualizza descrizione</button></td>
+                        <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;"><button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" data-whatever1="{{ $p->description }}" data-whatever2="{{ 'RFE non visualizzabile' }}" data-whatever3="{{ $p->date }}">Visualizza descrizione</button></td>
                         @endif
-                        <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;"><a href="{{URL::action('PrescriptionController@update', $p, 'convalidata')}}"><button type="su" class="btn btn-success">Accetta</button></a>  <a href="{{URL::action('PrescriptionController@update', $p, 'negata')}}"><button type="button" class="btn btn-danger">Rifiuta</button></a></td>   
+                        
                     </tr>
                     @endforeach
                 </tbody>
@@ -131,21 +109,6 @@ $name = Auth::user()->name;
 @endif
 
 @if(!strcmp(Auth::user()->role, '3'))
-<script type="application/javascript">      
-    $(document).ready(function() {
-        jQuery(function(){
-            jQuery('#searchFarmaco').click();
-        });
-        $("#searchFarmaco").on("click", function() {
-            $("#farmaco").show();
-            $("#visita").hide();
-        });
-        $("#searchVisita").on("click", function() {
-            $("#farmaco").hide();
-            $("#visita").show();
-        });
-    });
-</script>
 <!-- container Paziente -->
 <div class="row-space" style="margin-left:100px;float:left;">
 <a href="{{ URL::action('HomeController@index') }}">
@@ -156,9 +119,9 @@ $name = Auth::user()->name;
   </button>
 </a>
 </div>
-<div class="container-lg my-5" align="center">
-    <div class="row row-space justify-content-center align-items-center">
-        <h1 class="font-weight-bold col-lg-11">
+<div class="container-lg" align="center">
+    <div class="row row-space justify-content-center">
+        <h1 class="font-weight-bold">
             Ciao {{ $name }}, visualizza le tue ricette
         </h1>
     </div>
@@ -173,20 +136,19 @@ $name = Auth::user()->name;
         </h5>
     </div>
     <div class="row row-space justify-content-center">
-        <div class="my-3" align="center">
-            <div class="row">
-                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
-                    <label class="btn btn-outline-primary col-md-2 quadrato-ricetta mx-4 mb-2 w-100 h-100">
-                        <input type="radio" name="type" id="searchFarmaco" value="farmaco">
-                        <h4 class="font-weight-bold" style="margin-top: 25px; margin-bottom: 25px;">Farmaci</h4>
-                    </label>
-                    <label class="btn btn-outline-primary col-md-2 quadrato-ricetta mx-4 mb-2 w-100 h-100">
-                        <input type="radio" name="type" id="searchVisita" value="visita">
-                        <h4 class="font-weight-bold" style="margin-top: 25px; margin-bottom: 25px;">Visite Specialistiche</h4>
-                    </label>
-                </div>
-            </div>
-        </div>
+    <div class="btn-group btn-group-toggle justify-content-center w-100 h-100" data-toggle="buttons">
+      <label class="btn btn-outline-primary quadrato-ricetta col-lg-2">
+        <input type="radio" name="type" id="searchFarmaco" value="farmaco">
+        <h4 class="font-weight-bold" style="padding:1em;">Farmaco</h4>
+      </label>
+      <label class="btn btn-outline-primary quadrato-ricetta col-lg-2">
+        <input type="radio" name="type" id="searchVisita" value="visita">
+        <h4 class="font-weight-bold" style="padding:1em;">Visita</h4>
+      </label>
+      </div>
+    </div>
+
+    
     <div class="row row-space justify-content-center">
         <div class="table-responsive" style="white-space: nowrap;">
             <table class="table table-borderless table-hover table-border">
@@ -200,7 +162,7 @@ $name = Auth::user()->name;
                 </thead>
                 <tbody>
                     @foreach($prescriptions as $p)
-                    <tr class="font-weight-bold text-uppercase" style="color:#626262;" id="farmaco">
+                    <tr class="font-weight-bold text-uppercase" style="color:#626262;" id="{{ $p->type }}">
                         <td style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">{{ $p->date }}</th>
                             @if(($p->status) == 'convalidata')
                         <td>{{ $p->rfe }}</td>

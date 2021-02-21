@@ -16,9 +16,9 @@ $name = Auth::user()->name;
     </button>
   </a>
 </div>
-<div class="container-lg align-items-center" align="center">
-  <div class="row row-space justify-content-center align-items-center">
-    <h1 class="font-weight-bold col-lg-11">
+<div class="container-lg" align="center">
+  <div class="row row-space justify-content-center">
+    <h1 class="font-weight-bold">
       Ciao Dott. {{ $name }}, crea le tue prescrizioni.
     </h1>
   </div>
@@ -43,14 +43,14 @@ $name = Auth::user()->name;
     @endforeach
     @endif
     <div class="row row-space justify-content-center">
-    <div class="btn-group btn-group-toggle justify-content-center" data-toggle="buttons">
+    <div class="btn-group btn-group-toggle justify-content-center w-100 h-100" data-toggle="buttons">
       <label class="btn btn-outline-primary quadrato-ricetta col-lg-2">
-        <input type="radio" name="type" id="type1" value="farmaco" onclick="ShowFarmaco()" style="display:none">
-        <h4 class="font-weight-bold ">Farmaco</h4>
+        <input type="radio" name="type" id="type1" value="farmaco" onclick="ShowFarmaco()">
+        <h4 class="font-weight-bold" style="padding:1em;">Farmaco</h4>
       </label>
       <label class="btn btn-outline-primary quadrato-ricetta col-lg-2">
-        <input type="radio" name="type" id="type2" value="visita" onclick="ShowVisita()" style="display:none">
-        <h4 class="font-weight-bold ">Visita</h4>
+        <input type="radio" name="type" id="type2" value="visita" onclick="ShowVisita()">
+        <h4 class="font-weight-bold" style="padding:1em;">Visita</h4>
       </label>
       </div>
     </div>
@@ -113,7 +113,7 @@ $name = Auth::user()->name;
 </div>
 <div class="container-lg" align="center">
   <div class="row row-space justify-content-center">
-    <h1 class="font-weight-bold col-lg-11">
+    <h1 class="font-weight-bold">
       Ciao {{ $name }}, richiedi le tue prescrizioni.
     </h1>
   </div>
@@ -139,14 +139,14 @@ $name = Auth::user()->name;
     @endif
 
     <div class="row row-space justify-content-center">
-    <div class="btn-group btn-group-toggle justify-content-center" data-toggle="buttons">
+    <div class="btn-group btn-group-toggle justify-content-center w-100 h-100" data-toggle="buttons">
       <label class="btn btn-outline-primary quadrato-ricetta col-lg-2">
-        <input type="radio" name="type" id="type1" value="farmaco" onclick="ShowFarmaco()" style="display:none">
-        <h4 class="font-weight-bold ">Farmaco</h4>
+        <input type="radio" name="type" id="type1" value="farmaco" onclick="ShowFarmaco()">
+        <h4 class="font-weight-bold" style="padding:1em;">Farmaco</h4>
       </label>
       <label class="btn btn-outline-primary quadrato-ricetta col-lg-2">
-        <input type="radio" name="type" id="type2" value="visita" onclick="ShowVisita()" style="display:none">
-        <h4 class="font-weight-bold ">Visita</h4>
+        <input type="radio" name="type" id="type2" value="visita" onclick="ShowVisita()">
+        <h4 class="font-weight-bold" style="padding:1em;">Visita</h4>
       </label>
       </div>
     </div>
@@ -179,7 +179,7 @@ $name = Auth::user()->name;
     ?>
     <input id="id_doctor" name="id_doctor" type="hidden" value="{{ $res1 }}">
     <input id="id_patient" name="id_patient" type="hidden" value="{{ $res2 }}">
-    <input id="status" name="status" type="hidden" value="Non ancora approvata">
+    <input id="status" name="status" type="hidden" value="convalidare">
     <input id="date" name="date" type="hidden" value="{{ date('Y-m-d') }}">
   </form>
 </div>
