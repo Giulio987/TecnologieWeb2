@@ -121,9 +121,18 @@
                                 @if (DB::table('visits')
                                 ->where('date', $date1)
                                 ->where('time', $time[$i])
-                                ->exists()) <label class=" btn-color font-weight-bold
-                                col-md">{{ $time[$i] }}
-                                </label> @endif
+                                ->exists()) 
+                                
+                                <?php
+                                    $id_patient = DB::table('visits')->where('date', $date1)->where('time', $time[$i])->select('id_patient')->get();
+                                    foreach ($id_patient as $pippo) {
+                                        $info = $pippo->id_patient;
+                                    }
+                                    $p = DB::table('patients')->where('id', $info)->get();
+                                ?>
+                                <label class="col-lg-2 btn quadrato-list font-weight-bold" data-whatever1="{{ $p->fiscal_code }}" data-whatever2="{{ $p->$surname }}" data-whatever3="{{ $cognome }}" data-whatever4="{{ $p->dob }}" data-whatever5="{{ $p->gender }}" data-whatever6="{{ $p->phone_number }}" data-whatever7="{{ $p->street_address }}" data-whatever8="{{ $p->street_number }}" data-whatever9="{{ $p->city }}" data-whatever10="{{ $p->postal_code }}" data-toggle="modal" data-target="#exampleModal2" type="button" onmouseover="this.style.background='#3490dc';this.style.color='#fff';" onmouseout="this.style.background='#fff';this.style.color='#000';">
+                                    <p>{{ $p->fiscal_code }} {{ $nome }} {{ $cognome }}</p></label>
+                                @endif
                             @endfor
                         </div>
                     @else
@@ -142,11 +151,14 @@
                                 ->where('date', $date2)
                                 ->where('time', $time[$i])
                                 ->exists()) 
-                                
+                                <?php
+                                    $id_patient = DB::table('visits')->where('date', $date2)->where('time', $time[$i])->select('id_patient')->get();
+                                    foreach ($id_patient as $patient) {
+                                        $info = $patient->id_patient;
+                                    }
+                                    $res = DB::table('patients')->where('id', $info)->get();
+                                ?>
 
-                                
-
-                                <button type="button" class="btn btn-orario btn-outline-primary font-weight-bold col-md" data-toggle="modal" data-target="#exampleModal" data-whatever1="{{ $res->fiscal_code }}" data-whatever2="{{ $res->name }}" data-whatever3="{{ $res->surname }}" data-whatever4="{{ $res->dob }}" data-whatever5="{{ $res->phone_number }}" data-whatever6="{{ $res->gender }}" data-whatever7="{{ $res->street_address }}" data-whatever8="{{ $res->street_number }}" data-whatever9="{{ $res->postal_code }}" data-whatever10="{{ $res->city }}">{{ $time[$i] }}</button>
                                 @endif
                             @endfor
                         </div>
@@ -155,6 +167,35 @@
                             <div class="alert alert-info" role="alert" style="width: 500px; height:auto;">
                                 Giornata libera.
                             </div>
+                        </div>
+                    @endif
+                </div>
+
+                <div class="row my-5" id="content3" style="display:none">
+                    @if ($gContent3 != 'Domenica')
+                        <div class="w-100 h-100" style="text-align: center;">
+                            @for ($i = 0; $i < count($time); $i++)
+                                @if (DB::table('visits')
+                                ->where('date', $date3)
+                                ->where('time', $time[$i])
+                                ->exists()) 
+
+                                
+                                @endif
+                            @endfor
+                        </div>
+                    @else
+                        <div align="center">
+                            <div class="alert alert-info" role="alert" style="width: 500px; height:auto;">
+                                Giornata libera.
+                            </div>
+                        </div>
+                    @endif
+                </div>
+                <div class="row my-5" id="content4" style="display:none">
+                    @if ($gContent4 != 'Domenica')
+                        <div class="  w-100 h-100" style="text-align: center;">
+                            @for ($i = 0; $i < count($time); $i++)
                                 @if (DB::table('visits')
                                 ->where('date', $date4)
                                 ->where('time', $time[$i])
@@ -198,8 +239,8 @@
                                 @if (DB::table('visits')
                                 ->where('date', $date6)
                                 ->where('time', $time[$i])
-                                ->exists()) 
-                                <label class=" btn-color font-weight-boldcol-md">{{ $time[$i] }}
+                                ->exists()) <label class=" btn-color font-weight-bold
+                                col-md">{{ $time[$i] }}
                                 </label> @endif
                             @endfor
                         </div>
@@ -215,7 +256,7 @@
         </div>
 
 
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -228,12 +269,12 @@
                         <p id="FiscalCode"></p>
                         <p id="Name"></p>
                         <p id="Surname"></p>
-                        <p id="Email"></p>
                         <p id="Dob"></p>
-                        <p id="Gender"></p>
                         <p id="PhoneNumber"></p>
+                        <p id="Gender"></p>
                         <p id="StreetAddress"></p>
                         <p id="StreetNumber"></p>
+                        <p id="PostalCode"></p>
                         <p id="City"></p>
                     </div>
                 </div>
@@ -241,6 +282,7 @@
         </div>
 
     @endif
+
     @if (!strcmp(Auth::user()->role, '3'))
 
         <?php
@@ -274,6 +316,13 @@
         </div>
         <div class="container-lg" align="center">
             <div class="row row-space justify-content-center">
+                <h1 class="font-weight-bold">
+                    Ciao {{ $name }}, visualizza le tue visite.
+                </h1>
+            </div>
+            <div class="row row-space justify-content-center">
+                <h4>
+                    Visualizza le tue visite passate o future con il tuo medico di base. </h4>
             </div>
             <div class=" row row-space justify-content-center">
                 <h5>

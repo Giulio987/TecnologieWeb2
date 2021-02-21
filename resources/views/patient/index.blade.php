@@ -1,12 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-@if(!strcmp(Auth::user()->role, '1'))
-
-@endif
-@if(!strcmp(Auth::user()->role, '2'))
-
 <?php
 $name = Auth::user()->name;
 ?>
@@ -23,17 +17,21 @@ $name = Auth::user()->name;
 <div class="container-lg" align="center">
     <div class="row row-space justify-content-center">
         <h1 class="font-weight-bold">
+            @if(!strcmp(Auth::user()->role, '1'))
+            Amministratore, visualizza tutti i pazienti.
+            @elseif(!strcmp(Auth::user()->role, '1'))
             Ciao Dott. {{ $name }}, visualizza i tuoi pazienti.
+            @endif
         </h1>
     </div>
     <div class="row row-space justify-content-center">
         <h4>
-            Visualizza qui tutti i tuoi pazienti quando ti è più comodo.
+            Visualizza qui tutti i pazienti quando ti è più comodo.
         </h4>
     </div>
     <div class="row row-space justify-content-center">
         <h5>
-            Ricerca per qualsiasi attributo e visualizza le informazioni del tuo paziente.
+            Ricerca per qualsiasi attributo e visualizza le informazioni del paziente.
         </h5>
     </div>
 
@@ -56,13 +54,13 @@ $name = Auth::user()->name;
                     ?>  
 
 
-                    <label id="searchPatient" class="col-lg-2 btn quadrato-list font-weight-bold" data-whatever1="{{ $p->fiscal_code }}" data-whatever2="{{ $nome }}" data-whatever3="{{ $cognome }}" data-whatever4="{{ $email }}" data-whatever5="{{ $p->dob }}" data-whatever6="{{ $p->gender }}" data-whatever7="{{ $p->phone_number }}" data-whatever8="{{ $p->street_address }}" data-whatever9="{{ $p->street_number }}" data-whatever10="{{ $p->city }}" data-whatever11="{{ $p->postal_code }}" data-toggle="modal" data-target="#exampleModal" type="button" onmouseover="this.style.background='#3490dc';this.style.color='#fff';" onmouseout="this.style.background='#fff';this.style.color='#000';">
+                    <label id="searchPatient" class="col-lg-2 btn quadrato-list font-weight-bold" data-whatever1="{{ $p->fiscal_code }}" data-whatever2="{{ $nome }}" data-whatever3="{{ $cognome }}" data-whatever4="{{ $email }}" data-whatever5="{{ $p->dob }}" data-whatever6="{{ $p->gender }}" data-whatever7="{{ $p->phone_number }}" data-whatever8="{{ $p->street_address }}" data-whatever9="{{ $p->street_number }}" data-whatever10="{{ $p->city }}" data-whatever11="{{ $p->postal_code }}" data-toggle="modal" data-target="#exampleModal3" type="button" onmouseover="this.style.background='#3490dc';this.style.color='#fff';" onmouseout="this.style.background='#fff';this.style.color='#000';">
                     <p>{{ $p->fiscal_code }} {{ $nome }} {{ $cognome }}</p></label>
                     @endforeach
                 </div>
                 </div>
                 
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -88,5 +86,4 @@ $name = Auth::user()->name;
                 </div>
             </div>
     </div>
-@endif
 @endsection

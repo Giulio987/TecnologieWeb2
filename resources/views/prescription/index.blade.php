@@ -78,16 +78,16 @@ $name = Auth::user()->name;
                         <td >{{ $p->status }}</td>
                         <td >{{ $p->type }}</td>
                         @if($p->status == 'convalidata')
-                        <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;"><button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" data-whatever1="{{ $p->description }}" data-whatever2="{{ $p->status }}" data-whatever3="{{ date('d/m/Y', strtotime($p->date)) }}">Visualizza descrizione</button></td>
+                        <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;"><button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal1" data-whatever1="{{ $p->description }}" data-whatever2="{{ $p->status }}" data-whatever3="{{ date('d/m/Y', strtotime($p->date)) }}">Visualizza descrizione</button></td>
                         @else
-                        <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;"><button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" data-whatever1="{{ $p->description }}" data-whatever2="{{ 'RFE non esistente' }}" data-whatever3="{{ date('d/m/Y', strtotime($p->date)) }}">Visualizza descrizione</button></td>
+                        <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;"><button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal1" data-whatever1="{{ $p->description }}" data-whatever2="{{ 'RFE non esistente' }}" data-whatever3="{{ date('d/m/Y', strtotime($p->date)) }}">Visualizza descrizione</button></td>
                         @endif
                     </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -167,10 +167,10 @@ $name = Auth::user()->name;
                         <td style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">{{ $p->date }}</th>
                             @if(($p->status) == 'convalidata')
                         <td>{{ $p->rfe }}</td>
-                        <td><button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" data-whatever1="{{ $p->description }}" data-whatever2="{{ $p->rfe }}" data-whatever3="{{ $p->date }}">Visualizza descrizione</button></td>
+                        <td><button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal1" data-whatever1="{{ $p->description }}" data-whatever2="{{ $p->rfe }}" data-whatever3="{{ $p->date }}">Visualizza descrizione</button></td>
                         @else
                         <td>RFE non visualizzabile</td>
-                        <td><button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" data-whatever1="{{ $p->description }}" data-whatever2="{{ 'RFE non visualizzabile' }}" data-whatever3="{{ $p->date }}">Visualizza descrizione</button></td>
+                        <td><button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal1" data-whatever1="{{ $p->description }}" data-whatever2="{{ 'RFE non visualizzabile' }}" data-whatever3="{{ $p->date }}">Visualizza descrizione</button></td>
                         @endif
                         <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">{{ $p->status }}</td>
                         <td style="display:none">{{ $p->type }}</td>
@@ -179,7 +179,7 @@ $name = Auth::user()->name;
                 </tbody>
             </table>
         </div>
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">

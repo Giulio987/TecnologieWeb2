@@ -50314,7 +50314,7 @@ $(document).ready(function() {
 
 // Modal descrizione nella lista prescrizioni Paziente
 $(document).ready(function() {
-    $('#exampleModal').on('show.bs.modal', function(event) {
+    $('#exampleModal1').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget)
         var description = button.data('whatever1')
         var rfe = button.data('whatever2')
@@ -50466,7 +50466,7 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
-    $('#exampleModal').on('show.bs.modal', function(event) {
+    $('#exampleModal3').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget)
         var recipientFiscalCode = button.data('whatever1')
         var recipientName = button.data('whatever2')
@@ -50489,13 +50489,13 @@ $(document).ready(function() {
         modal.find('#PhoneNumber').text(recipientPhoneNumber)
         modal.find('#StreetNumber').text(recipientStreetAddress)
         modal.find('#StreetAddress').text(recipientStreetNumber)
-        modal.find('#City').text(recipientCity)
         modal.find('#PostalCode').text(recipientPostalCode)
+        modal.find('#City').text(recipientCity)
     })
 });
 
 $(document).ready(function() {
-    $('#exampleModal').on('show.bs.modal', function(event) {
+    $('#exampleModal2').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget)
         var recipientFiscalCode = button.data('whatever1')
         var recipientName = button.data('whatever2')
@@ -50509,15 +50509,15 @@ $(document).ready(function() {
         var recipientCity = button.data('whatever10')
 
         var modal = $(this)
-        modal.find('.modal-title').text("Informazioni su " + recipientName + " " + recipientSurname)
         modal.find('#FiscalCode').text(recipientFiscalCode)
-        modal.find('#Name').text(recipientEmail)
-        modal.find('#Surname').text(recipientDob)
-        modal.find('#Dob').text(recipientGender)
+        modal.find('#Name').text(recipientName)
+        modal.find('#Surname').text(recipientSurname)
+        modal.find('#Dob').text(recipientDob)
         modal.find('#PhoneNumber').text(recipientPhoneNumber)
+        modal.find('#Gender').text(recipientGender)
         modal.find('#StreetAddress').text(recipientStreetAddress)
         modal.find('#StreetNumber').text(recipientStreetNumber)
-        modal.find('#Postalcode').text(recipientCity)
-        modal.find('#City').text(recipientPostalCode)
+        modal.find('#PostalCode').text(recipientPostalCode)
+        modal.find('#City').text(recipientCity)
     })
 });
