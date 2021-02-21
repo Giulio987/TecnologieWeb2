@@ -50431,3 +50431,21 @@ function Show6() {
         // Animation complete.
     });
 }
+
+function ShowFuture() {
+    $("#contentFuture").show("slow", function() {
+        // Animation complete.
+    });
+
+    document.getElementById('contentFuture').style.display = 'block';
+    document.getElementById('contentPassate').style.display = 'none';
+}
+
+function ShowPassate() {
+    $("#contentPassate").show("slow", function() {
+        // Animation complete.
+    });
+
+    document.getElementById('contentFuture').style.display = 'none';
+    document.getElementById('contentPassate').style.display = 'block';
+}

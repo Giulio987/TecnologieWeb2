@@ -23,7 +23,7 @@ $name = Auth::user()->name;
 </div>
 <div class="container-lg my-5" align="center">
     <div class="row row-space justify-content-center align-items-center">
-        <h1 class="font-weight-bold col-lg-11">
+        <h1 class="font-weight-bold">
             Ciao Dott. {{ $name }}, visualizza le ricette dei tuoi pazienti.
         </h1>
     </div>
@@ -121,7 +121,7 @@ $name = Auth::user()->name;
 </div>
 <div class="container-lg my-5" align="center">
     <div class="row row-space justify-content-center align-items-center">
-        <h1 class="font-weight-bold col-lg-11">
+        <h1 class="font-weight-bold">
             Ciao {{ $name }}, visualizza le tue ricette
         </h1>
     </div>

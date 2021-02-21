@@ -30,17 +30,17 @@ function giornoData($d, $m, $a)
 };
 ?>
 <div class="row-space" style="margin-left:100px;float:left;">
-  <a href="{{ URL::action('HomeController@index') }}">
-    <button style="background-color: #f8fafc;border-width: 0px;" href="">
-      <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
-      </svg>
-    </button>
-  </a>
+    <a href="{{ URL::action('HomeController@index') }}">
+        <button style="background-color: #f8fafc;border-width: 0px;" href="">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
+            </svg>
+        </button>
+    </a>
 </div>
 <div class="container-lg" align="center">
     <div class="row row-space justify-content-center">
-        <h1 class="font-weight-bold col-lg-11">
+        <h1 class="font-weight-bold">
             Ciao {{ $name }}, prenota la visita con il tuo medico di base.
         </h1>
     </div>
@@ -191,6 +191,20 @@ function giornoData($d, $m, $a)
     </div>
 </div>
 @endif
+@if (count(DB::table('visits')->where('date', $date1)->get()) == count($time) && $gContent1 != 'Domenica' && $gContent1 != 'Sabato')
+<div class="row justify-content-center">
+    <div class="alert alert-info" role="alert" style="width: 500px; height:auto;">
+        <h5>Non ci sono orari disponibili per oggi.</h5>
+    </div>
+</div>
+@endif
+@if (count(DB::table('visits')->where('date', $date1)->get()) == count($timeSabato) && $gContent1 == 'Sabato')
+<div class="row justify-content-center">
+    <div class="alert alert-info" role="alert" style="width: 500px; height:auto;">
+        <h5>Non ci sono orari disponibili per oggi.</h5>
+    </div>
+</div>
+@endif
 </div>
 <div class="row row-space justify-content-center" id="content2" style="display:none">
     @if($gContent2 != 'Domenica' && $gContent2 != 'Sabato')
@@ -218,6 +232,20 @@ function giornoData($d, $m, $a)
         </div>
     </div>
     @endif
+    @if (count(DB::table('visits')->where('date', $date2)->get()) == count($time) && $gContent2 != 'Domenica' && $gContent2 != 'Sabato')
+    <div class="row justify-content-center">
+        <div class="alert alert-info" role="alert" style="width: 500px; height:auto;">
+            <h5>Non ci sono orari disponibili per oggi.</h5>
+        </div>
+    </div>
+    @endif
+    @if (count(DB::table('visits')->where('date', $date2)->get()) == count($timeSabato) && $gContent2 == 'Sabato')
+    <div class="row justify-content-center">
+        <div class="alert alert-info" role="alert" style="width: 500px; height:auto;">
+            <h5>Non ci sono orari disponibili per oggi.</h5>
+        </div>
+    </div>
+    @endif
 </div>
 <div class="row row-space justify-content-center" id="content3" style="display:none">
     @if($gContent3 != 'Domenica' && $gContent3 != 'Sabato')
@@ -229,6 +257,8 @@ function giornoData($d, $m, $a)
             @endif
             @endfor
     </div>
+
+
     @elseif ($gContent3 == 'Sabato')
     <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
         @for($i = 0; $i < count($timeSabato); $i++) @if (DB::table('visits')->where('date', $date3)->where('time',$timeSabato[$i])->doesntExist())
@@ -242,6 +272,20 @@ function giornoData($d, $m, $a)
     <div class="row justify-content-center">
         <div class="alert alert-info" role="alert" style="width: 500px; height:auto;">
             <h5>Non è possibile prenotare appuntamenti per Domenica.</h5>
+        </div>
+    </div>
+    @endif
+    @if (count(DB::table('visits')->where('date', $date3)->get()) == count($time) && $gContent3 != 'Domenica' && $gContent3 != 'Sabato')
+    <div class="row justify-content-center">
+        <div class="alert alert-info" role="alert" style="width: 500px; height:auto;">
+            <h5>Non ci sono orari disponibili per oggi.</h5>
+        </div>
+    </div>
+    @endif
+    @if (count(DB::table('visits')->where('date', $date3)->get()) == count($timeSabato) && $gContent3 == 'Sabato')
+    <div class="row justify-content-center">
+        <div class="alert alert-info" role="alert" style="width: 500px; height:auto;">
+            <h5>Non ci sono orari disponibili per oggi.</h5>
         </div>
     </div>
     @endif
@@ -272,6 +316,20 @@ function giornoData($d, $m, $a)
         </div>
     </div>
     @endif
+    @if (count(DB::table('visits')->where('date', $date4)->get()) == count($time) && $gContent4 != 'Domenica' && $gContent4 != 'Sabato')
+    <div class="row justify-content-center">
+        <div class="alert alert-info" role="alert" style="width: 500px; height:auto;">
+            <h5>Non ci sono orari disponibili per oggi.</h5>
+        </div>
+    </div>
+    @endif
+    @if (count(DB::table('visits')->where('date', $date4)->get()) == count($timeSabato) && $gContent4 == 'Sabato')
+    <div class="row justify-content-center">
+        <div class="alert alert-info" role="alert" style="width: 500px; height:auto;">
+            <h5>Non ci sono orari disponibili per oggi.</h5>
+        </div>
+    </div>
+    @endif
 </div>
 <div class="row row-space justify-content-center" id="content5" style="display:none">
     @if($gContent5 != 'Domenica' && $gContent5 != 'Sabato')
@@ -299,6 +357,20 @@ function giornoData($d, $m, $a)
         </div>
     </div>
     @endif
+    @if (count(DB::table('visits')->where('date', $date5)->get()) == count($time) && $gContent5 != 'Domenica' && $gContent5 != 'Sabato')
+    <div class="row justify-content-center">
+        <div class="alert alert-info" role="alert" style="width: 500px; height:auto;">
+            <h5>Non ci sono orari disponibili per oggi.</h5>
+        </div>
+    </div>
+    @endif
+    @if (count(DB::table('visits')->where('date', $date5)->get()) == count($timeSabato) && $gContent5 == 'Sabato')
+    <div class="row justify-content-center">
+        <div class="alert alert-info" role="alert" style="width: 500px; height:auto;">
+            <h5>Non ci sono orari disponibili per oggi.</h5>
+        </div>
+    </div>
+    @endif
 </div>
 <div class="row row-space justify-content-center" id="content6" style="display:none">
     @if($gContent6 != 'Domenica' && $gContent6 != 'Sabato')
@@ -323,6 +395,20 @@ function giornoData($d, $m, $a)
     <div class="row justify-content-center">
         <div class="alert alert-info" role="alert" style="width: 500px; height:auto;">
             <h5>Non è possibile prenotare appuntamenti per Domenica.</h5>
+        </div>
+    </div>
+    @endif
+    @if (count(DB::table('visits')->where('date', $date6)->get()) == count($time) && $gContent6 != 'Domenica' && $gContent6 != 'Sabato')
+    <div class="row justify-content-center">
+        <div class="alert alert-info" role="alert" style="width: 500px; height:auto;">
+            <h5>Non ci sono orari disponibili per oggi.</h5>
+        </div>
+    </div>
+    @endif
+    @if (count(DB::table('visits')->where('date', $date6)->get()) == count($timeSabato) && $gContent6 == 'Sabato')
+    <div class="row justify-content-center">
+        <div class="alert alert-info" role="alert" style="width: 500px; height:auto;">
+            <h5>Non ci sono orari disponibili per oggi.</h5>
         </div>
     </div>
     @endif

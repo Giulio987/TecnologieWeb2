@@ -18,7 +18,7 @@ $name = Auth::user()->name;
 </div>
 <div class="container-lg" align="center">
   <div class="row row-space justify-content-center">
-    <h1 class="font-weight-bold col-lg-11">
+    <h1 class="font-weight-bold">
       Ciao Dott. {{ $name }}, crea le tue prescrizioni.
     </h1>
   </div>
@@ -113,7 +113,7 @@ $name = Auth::user()->name;
 </div>
 <div class="container-lg" align="center">
   <div class="row row-space justify-content-center">
-    <h1 class="font-weight-bold col-lg-11">
+    <h1 class="font-weight-bold">
       Ciao {{ $name }}, richiedi le tue prescrizioni.
     </h1>
   </div>
