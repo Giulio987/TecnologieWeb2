@@ -19,8 +19,16 @@ class VisitController extends Controller
     public function index()
     {
         if( Auth::user()->role == '1'){ // Admin
-			
+			$visits = Visit::all();
+            return view('visit.index', compact('visits'));
         }else if( Auth::user()->role == '2'){ // Dottore
+
+
+
+
+
+            //perchè non è gestito qui che tornano solo le visite relative a quel dotore?
+            //Come fatto qui sotto per i pazienti
             $visits = Visit::all();
             return view('visit.index', compact('visits'));
         } else {

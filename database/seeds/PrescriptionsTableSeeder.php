@@ -13,9 +13,10 @@ class PrescriptionsTableSeeder extends Seeder
     {
         DB::table('prescriptions')->insert([[
             'id_patient'    => '1',
+            'rfe'           => '120000000000000',
             'id_doctor'     => '4',
             'description'   => 'oki',
-            'status'        => 'confermata',
+            'status'        => 'convalidata',
             'type'          => 'farmaco',
             'date'          => date('Y-m-d'),
             'updated_at'    => date('Y-m-d h:s:i'),

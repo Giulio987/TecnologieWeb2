@@ -179,7 +179,7 @@ $name = Auth::user()->name;
     ?>
     <input id="id_doctor" name="id_doctor" type="hidden" value="{{ $res1 }}">
     <input id="id_patient" name="id_patient" type="hidden" value="{{ $res2 }}">
-    <input id="status" name="status" type="hidden" value="convalidare">
+    <input id="status" name="status" type="hidden" value="Non ancora approvata">
     <input id="date" name="date" type="hidden" value="{{ date('Y-m-d') }}">
   </form>
 </div>

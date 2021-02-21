@@ -14,7 +14,8 @@ class CreatePrescriptionsTable extends Migration
     public function up()
     {
         Schema::create('prescriptions', function (Blueprint $table) {
-            $table->id('rfe');
+            $table->id('id');
+            $table->bigInteger('rfe')->unsigned();
             $table->bigInteger('id_patient')->unsigned();
             $table->bigInteger('id_doctor')->unsigned();
             $table->string('description');
@@ -26,8 +27,6 @@ class CreatePrescriptionsTable extends Migration
             $table->foreign('id_patient')->references('id')->on('patients')->onDelete('cascade');
             $table->foreign('id_doctor')->references('id')->on('doctors')->onDelete('cascade');
         });
-        //inizializziamo rfe a un numero realistico
-        DB::statement("ALTER TABLE prescriptions AUTO_INCREMENT = 120000000000000;");
     }
 
     /**

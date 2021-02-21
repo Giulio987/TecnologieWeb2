@@ -302,6 +302,10 @@ function giornoData($d, $m, $a)
 
 <script type="application/javascript">
     $(document).ready(function() {
+        jQuery(function(){
+            jQuery('#visitaFutura').click();
+        });
+
         $("#visitaPassata").on("click", function() {
             $("#visitapassata").show();
             $("#visitafutura").hide();
@@ -365,22 +369,29 @@ $visits = DB::table('visits')->where('id_patient', $res2)->get();
                 <tr class="bg-info" style="color:#fff;text-align:center">
                     <th scope="col" style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">Data</th>
                     <th scope="col" style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 0px 0px 0px;">Ora</th>
-                    <th scope="col" style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">Elimina</th>
+                    <th scope="col" style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">Stato</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($visits as $v)
                <?php
-                    if($v->time > date('Y-m-d')){
+                $date = date_create($v->date);
+                $today = new DateTime(date('Y-m-d'));
+                    if($date > $today ){
                         $id = "visitafutura";
                     }else{
                         $id = "visitapassata";
                     }
                ?>
                 <tr class="font-weight-bold text-uppercase" id="{{ $id }}" style="color:#626262;text-align:center;">
-                    <td style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">{{ $v->date }};</td>
+                    <td style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">{{ date_format($date,"d-m-Y") }}</td>
                     <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 0px 0px 0px;">{{ $v->time }}</td>
+                    @if($id == "visitafutura")
                     <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;"><a href="{{ URL::action('VisitController@destroy', $v->id) }}" class="btn btn-danger">Cancella</a></td>
+                    @else 
+                    <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">Già Effettuata</td>
+                    @endif
+                    
                 </tr>
                 @endforeach
             </tbody>
