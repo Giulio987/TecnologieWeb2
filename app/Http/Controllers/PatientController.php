@@ -46,13 +46,21 @@ class PatientController extends Controller
      */
     public function create()
     {
-        $id = Auth::user()->id;
-        $info = DB::table('doctors')->where('id_user', $id)->select('id')->get();
-		foreach ($info as $doctor) {
-			$res = $doctor->id;
-		}
-        $patients = Patient::where('id_doctor', '=', $res)->get();
-        return view('patient.create', compact('patients'));
+        if ( Auth::user()->role == '1') {
+            $patients = Patient::all();
+            return view('patient.create', compact('patients'));
+        }elseif(Auth::user()->role == '2'){
+            $id = Auth::user()->id;
+            $info = DB::table('doctors')->where('id_user', $id)->select('id')->get();
+            foreach ($info as $doctor) {
+                $res = $doctor->id;
+            }
+            $patients = Patient::where('id_doctor', '=', $res)->get();
+            return view('patient.create', compact('patients'));
+        }
+        else{
+            return redirect('/home');
+        }
     }
 /*
     protected function validatorPatient(array $data)
@@ -85,20 +93,22 @@ class PatientController extends Controller
         //in teoria no ma sotto dobbiamo usare la variabile nuova.
         //in che senso
         
-        /*$validatedData = $request->validate([
-            'name' 		         => ['required', 'string', 'max:20'],
-            'surname'            => ['required', 'string', 'max:20'],
-            'dob'                => ['required', 'date'],
-            'phone_number'       => ['required', 'string', 'max:15', 'unique:patients'],
-            'gender'             => ['required', 'string', 'max:1'],
-            'fiscal_code'        => ['required', 'string', 'min:16', 'max:16','unique:patients'],
-            'street_address'     => ['required', 'string', 'max:50'],
-            'street_number'      => ['required', 'string', 'max:8'],
-            'city'               => ['required', 'string', 'max:30'],
-            'postal_code'        => ['required', 'string', 'max:5'],
-            'email'              => ['required', 'string', 'email', 'max:50', 'unique:users'],
-            'id_doctor'          => ['required'],
-        ]);*/
+        $validatedData = $request->validate([
+            'name' 		         => 'required', 'string', 'max:20',
+            'surname'            => 'required', 'string', 'max:20',
+            'dob'                => 'required', 'date',
+            'phone_number'       => 'required', 'string', 'max:15', 'unique:patients',
+            'gender'             => 'required', 'string', 'max:1',
+            'fiscal_code'        => 'required', 'string', 'min:16', 'max:16','unique:patients',
+            'street_address'     => 'required', 'string', 'max:50',
+            'street_number'      => 'required', 'string', 'max:8',
+            'city'               => 'required', 'string', 'max:30',
+            'postal_code'        => 'required', 'string', 'max:5',
+            'email'              => 'required', 'string', 'email', 'max:50', 'unique:users',
+            'id_doctor'          => 'required',
+            'email'              => 'required',
+            'password'           => 'required',
+        ]);
 /*
         $name = $request->name;
         $surname = $request->surname;
@@ -124,13 +134,17 @@ class PatientController extends Controller
             'password'      => Hash::make($request->password),
             'role'          => '3',
         ]);  
-
+        //se è admin va scritto espèlicitamente
+        $res = $request->id_doctor;
         $id_user = $user->id;
-        $id = Auth::user()->id;
-        $info = DB::table('doctors')->where('id_user', $id)->select('id')->get();
-		foreach ($info as $doctor) {
-			$res = $doctor->id;
-		}
+        //se è dottore il paziente viene associato a se stesso
+        if(Auth::user()->role == '2'){
+            $id = Auth::user()->id;
+            $info = DB::table('doctors')->where('id_user', $id)->select('id')->get();
+            foreach ($info as $doctor) {
+                $res = $doctor->id;
+            }
+        }
         Patient::create([
             'fiscal_code'   => $request->fiscal_code,
             'gender'        => $request->gender,
@@ -143,6 +157,8 @@ class PatientController extends Controller
             'id_doctor'     => $res,
             'id_user'       => $id_user,
         ]);
+        
+
 
         //messagges view per i messaggi 
         //poi vengono inclusi in layout

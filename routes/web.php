@@ -54,3 +54,4 @@ Route::group(['middleware' => ['role:3']], function () {
     Route::resource('prescription', 'PrescriptionController');
     Route::resource('visit', 'VisitController');
 });
+*/

@@ -18,12 +18,12 @@
     </div>
     <div class="row row-space justify-content-center">
         <h4>
-            Opera in totale libe
+            Opera in totale libertà
         </h4>
     </div>
     <div class="row row-space justify-content-center">
         <h5>
-            Ricerca per qualsiasi attributo e visualizza le informazioni del tuo paziente.
+            Ricerca per qualsiasi attributo e visualizza le informazioni di ogni medico.
         </h5>
     </div>
 

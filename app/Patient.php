@@ -20,13 +20,13 @@ class Patient extends Model
     public function visits()
     {
         // Patients:Prescriptions => 1:N
-        return $this->hasMany('App\Visti', 'id_user');
+        return $this->hasMany('App\Visit', 'id_patient');
     }
 
     public function doctor()
     {
         // Doctors:Patients => 1:N
-        return $this->belongTo('App\Dcotor', 'id_doctor');
+        return $this->belongsTo('App\Doctor', 'id_doctor');
     }
 
     public function user()

@@ -13,7 +13,7 @@ class Doctor extends Model
     public function building()
     {
         // Buildings:Doctors => 1:N
-        return $this->belongTo('App\Building', 'id_building');
+        return $this->belongsTo('App\Building', 'id_building');
     }  
 
     public function prescriptions()
@@ -37,6 +37,6 @@ class Doctor extends Model
     public function user()
     {
         // Doctors:Users => 1:1
-        return $this->belongTo('App\User', 'id_user');
+        return $this->belongsTo('App\User', 'id_user');
     }
 }

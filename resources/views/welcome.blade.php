@@ -185,9 +185,9 @@
 
                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
                         <div class="icon-box">
-                            <div class="icon"><i class="icofont-disabled"></i></div>
+                            <div class="icon"><i class="icofont-heartbeat"></i></div>
                             <h4><a href="">Mai stato così semplice</a></h4>
-                            <p>Interfaccia intuitiva per tutte le esigenze</p>
+                            <p>Interfaccia intuitiva per tutte le esigenze.La semplicità è ciò che ci contraddistingue</p>
                         </div>
                     </div>
 

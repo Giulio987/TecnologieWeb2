@@ -19,7 +19,7 @@ $name = Auth::user()->name;
         <h1 class="font-weight-bold">
             @if(!strcmp(Auth::user()->role, '1'))
             Amministratore, visualizza tutti i pazienti.
-            @elseif(!strcmp(Auth::user()->role, '1'))
+            @elseif(!strcmp(Auth::user()->role, '2'))
             Ciao Dott. {{ $name }}, visualizza i tuoi pazienti.
             @endif
         </h1>
@@ -39,7 +39,7 @@ $name = Auth::user()->name;
             <input class="quadrato-ricetta col-lg-4 text-uppercase button-search" id="search" type="text" placeholder="ricerca"  style="padding:1em;">
     </div>
 
-        <div class="row row-space justify-content-center" >
+        <div class="row row-space justify-content-center">
         <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
 
                 @foreach($patients as $p)  

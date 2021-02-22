@@ -3,71 +3,112 @@
 @section('content')
 
     @if (!strcmp(Auth::user()->role, '1') || !strcmp(Auth::user()->role, '2'))
-        <div class="container">
+    <?php
+$name = Auth::user()->name;
+?>
+
+<div class="row-space" style="margin-left:100px;float:left;">
+<a href="{{ URL::action('HomeController@index') }}">
+<button style="background-color: #f8fafc;border-width: 0px;" href="">
+    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
+    </svg>
+  </button>
+</a>
+</div>
+<div class="container-lg" align="center">
+    <div class="row row-space justify-content-center">
+        <h1 class="font-weight-bold">
+            @if(!strcmp(Auth::user()->role, '1'))
+            Amministratore, visualizza tutti i pazienti.
+            @elseif(!strcmp(Auth::user()->role, '2'))
+            Ciao Dott. {{ $name }}, crea i tuoi pazienti.
+            @endif
+        </h1>
+    </div>
+    <div class="row row-space justify-content-center">
+        <h4>
+            Crea un profilo per un tuo paziente, successivamente potrà accedere alla piattaforma.
+        </h4>
+    </div>
+    <div class="row row-space justify-content-center">
+        <h5>
+            Compila tutti i campi e crea il tuo nuovo paziente.
+        </h5>
+    </div>
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
             <form action="{{ URL::action('PatientController@store') }}" method="POST" class="needs-validation" novalidate>
                 {{ csrf_field() }}
-                <div class="form-group">
-                    <label for="name">Nome</label>
-                    <input type="text" class="form-control" placeholder="Nome" name="name" required>
+                <div class="form-row row-space justify-content-center py-4">
+                    <div class="col-lg-3 mx-4">
+                    <input type="text" class="label-patient text-uppercase" placeholder="Nome" name="name" required>
+                    </div>
+                    <div class="col-lg-3 mx-4">
+                    <input type="text" class="label-patient text-uppercase" placeholder="Cognome" name="surname" required>
+                    </div>
+                    <div class="col-lg-3 mx-4">
+                    <input type="text" class="label-patient text-uppercase" placeholder="Codice Fiscale" name="fiscal_code" required>
+                </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="surname">Cognome</label>
-                    <input type="text" class="form-control" placeholder="Cognome" name="surname" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="dob">Data di nascita</label>
-                    <input type="date" class="form-control" name="dob" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="gender">Sesso</label>
-                    <input type="text" class="form-control" placeholder="Sesso" name="gender" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="fiscal_code">Codice Fiscale</label>
-                    <input type="text" class="form-control" placeholder="Codice Fiscale" name="fiscal_code" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="street_address">Indirizzo Domicilio</label>
-                    <input type="text" class="form-control" placeholder="Via/Viale/Piazza" name="street_address" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="street_number">Numero Civico</label>
-                    <input type="text" class="form-control" placeholder="Numero civico" name="street_number" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="city">Città</label>
-                    <input type="text" class="form-control" placeholder="Città" name="city" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="postal_code">Codice Postale</label>
-                    <input type="text" class="form-control" placeholder="Codice Postale" name="postal_code" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="phone_number">Numero di Telefono</label>
-                    <input type="text" class="form-control" placeholder="Phone Number" name="phone_number" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email" required>
-                    <small id="email" class="form-text text-muted"></small>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
-                </div>
+                <div class="form-row row-space justify-content-center py-4">
                 
 
-                <button type="submit" class="btn btn-primary">Submit</button>
+                    <div class="col-lg-2 mx-4">
+                    <input type="date" class="label-patient text-uppercase" name="dob" required>
+
+                    </div>
+                    <div class="col-lg-1 mx-4">
+                    <input type="text" class="label-patient text-uppercase" placeholder="Sesso" name="gender" required>
+                    </div>
+                    <div class="col-lg-2 mx-4">
+                    <input type="text" class="label-patient text-uppercase" placeholder="Phone Number" name="phone_number" required>
+
+                    </div>
+                </div>
+               
+
+
+                
+                <div class="form-row row-space justify-content-center py-4">
+                    <div class="col-lg-4 mx-4">
+                    <input type="text" class="label-patient text-uppercase" placeholder="Via/Viale/Piazza" name="street_address" required>
+
+                    </div>
+                    <div class="col-lg-1 mx-4">
+                    <input type="text" class="label-patient text-uppercase" placeholder="N. civico" name="street_number" required>
+                    </div>
+                    <div class="col-lg-2 mx-4">
+                    <input type="text" class="label-patient text-uppercase" placeholder="Città" name="city" required>
+                    </div>
+                    <div class="col-lg-1 mx-4">
+                    <input type="text" class="label-patient text-uppercase" placeholder="CAP" name="postal_code" required>
+                    </div>
+                    @if(Auth::user()->role == '1')
+                        <div class="col-lg-1 mx-4">
+                            <input type="text" name="id_doctor" class="label-patient text-uppercase" placeholder="Dottore" required>
+                        </div>
+                    @endif
+                </div>
+                <div class="form-row row-space justify-content-center py-4">
+                    <div class="col-lg-3 mx-4">
+                    <input type="email" class="label-patient text-uppercase" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email" required>
+                    </div>
+                    <div class="col-lg-3 mx-4">
+                    <input type="password" class="label-patient text-uppercase" id="password" placeholder="Password" name="password" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Conferma</button>
             </form>
         </div>
 
@@ -90,9 +131,7 @@
                 });
             }, false);
         })();
-        $(document).ready(function() {
-            $("#selUser").select2();
-        });
+        
     </script>
     @endif
 @endsection

@@ -3,14 +3,10 @@
 @section('content')
 
 <?php
-$name = Auth::user()->name;
+    $name = Auth::user()->name;
 ?>
 
-@if(!strcmp(Auth::user()->role, '1'))
-
-@endif
-
-@if(!strcmp(Auth::user()->role, '2'))
+@if(!strcmp(Auth::user()->role, '2') || !strcmp(Auth::user()->role, '1'))
 <!-- container Dottore -->
 <div class="row-space" style="margin-left:100px;float:left;">
 <a href="{{ URL::action('HomeController@index') }}">
@@ -24,7 +20,11 @@ $name = Auth::user()->name;
 <div class="container-lg" align="center">
     <div class="row row-space justify-content-center">
         <h1 class="font-weight-bold">
-            Ciao Dott. {{ $name }}, visualizza le ricette dei tuoi pazienti da convalidare o negare.
+            @if (!strcmp(Auth::user()->role, '1'))
+                Benvenuto Amministratore! Visualizza le ricette di tutti i pazienti da convalidare o negare.
+            @else
+                Ciao Dott. {{ $name }}, visualizza le ricette dei tuoi pazienti da convalidare o negare.
+            @endif
         </h1>
     </div>
     <div class="row row-space justify-content-center">
