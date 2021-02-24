@@ -11545,12 +11545,20 @@ Dottori
 }
 
 .btn-orario {
-    width: 100px;
+    width: auto;
     height: auto;
-    margin: 25px;
     border-style: solid;
-    border-width: 0px;
+    border-width: 3px;
     border-color: #3490dc;
+    box-shadow: 10px 10px 5px #dedede;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+    text-align: left;
+    padding: 15px;
+    margin: 1em;
+    color: #5c5c5c;
+    background-color: #f0f8ff;
 }
 
 .btn-prenota {
@@ -11598,21 +11606,6 @@ Dottori
     -webkit-border-radius: 20px;
     border-radius: 20px;
     background-color: #f4f4f4;
-}
-
-.quadrato-list {
-    width: auto;
-    height: auto;
-    border-style: solid;
-    border-width: 5px;
-    border-color: #3490dc;
-    box-shadow: 10px 10px 5px #dedede;
-    -moz-border-radius: 20px;
-    -webkit-border-radius: 20px;
-    border-radius: 20px;
-    text-align: left;
-    padding: 15px;
-    margin: 1em;
 }
 
 .table-border {

@@ -54,7 +54,7 @@ $name = Auth::user()->name;
                     ?>  
 
 
-                    <label id="searchPatient" class="col-lg-2 btn quadrato-list font-weight-bold" data-whatever1="{{ $p->fiscal_code }}" data-whatever2="{{ $nome }}" data-whatever3="{{ $cognome }}" data-whatever4="{{ $email }}" data-whatever5="{{ $p->dob }}" data-whatever6="{{ $p->gender }}" data-whatever7="{{ $p->phone_number }}" data-whatever8="{{ $p->street_address }}" data-whatever9="{{ $p->street_number }}" data-whatever10="{{ $p->city }}" data-whatever11="{{ $p->postal_code }}" data-toggle="modal" data-target="#exampleModal3" type="button" onmouseover="this.style.background='#3490dc';this.style.color='#fff';" onmouseout="this.style.background='#fff';this.style.color='#000';">
+                    <label id="searchPatient" class="col-lg-2 btn btn-orario btn-outline-primary font-weight-bold" data-whatever1="{{ $p->fiscal_code }}" data-whatever2="{{ $nome }}" data-whatever3="{{ $cognome }}" data-whatever4="{{ $email }}" data-whatever5="{{ $p->dob }}" data-whatever6="{{ $p->gender }}" data-whatever7="{{ $p->phone_number }}" data-whatever8="{{ $p->street_address }}" data-whatever9="{{ $p->street_number }}" data-whatever10="{{ $p->city }}" data-whatever11="{{ $p->postal_code }}" data-toggle="modal" data-target="#exampleModal3" type="button">
                     <p>{{ $p->fiscal_code }} {{ $nome }} {{ $cognome }}</p></label>
                     @endforeach
                 </div>

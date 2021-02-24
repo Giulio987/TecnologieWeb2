@@ -19,7 +19,7 @@ $oraDisponibile = 0;
 
 date_default_timezone_set('Europe/Rome');
 
-$time = array('08:30', '09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00');
+$time = array('08:30', '09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00');
 $timeSabato = array('08:30', '09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30');
 
 function giornoData($d, $m, $a)
@@ -260,9 +260,9 @@ function giornoData($d, $m, $a)
             @endif
         </div>
 
-        <div class="row row-space justify-content-center" id="content3" style="display:none">
+        <div class="row row-space justify-content-center" id="content3" style="display:none;">
             @if($gContent3 != 'Domenica' && $gContent3 != 'Sabato')
-                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons" align="left">
+                <div class="btn-group-toggle w-100 h-100 col-lg-8" data-toggle="buttons" align="left">
                     @for($i = 0; $i < count($time); $i++)
                         @if (DB::table('visits')->where('date', $date3)->where('time',$time[$i])->doesntExist())
                                 <label class="btn btn-orario btn-outline-primary font-weight-bold">{{ $time[$i] }}

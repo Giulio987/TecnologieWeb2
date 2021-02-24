@@ -252,7 +252,7 @@
 
             <div class="row row-space justify-content-center" id="content1" style="display:none">
                 @if ($gContent1 != 'Domenica')
-                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons" align="left">
+                <div class="btn-group-toggle w-100 h-100 col-lg-8" data-toggle="buttons" align="left">
                         @for ($i = 0; $i < count($time); $i++)
                             @if (DB::table('visits')->where('date', $date1)->where('time', $time[$i])->exists() && strtotime($time[$i]) > strtotime(date('H:i'))) 
                             <?php $ora++ ?>
@@ -279,7 +279,7 @@
                                 $surname = $u->surname;
                             }
                             ?>
-                            <label class="col-lg-2 btn btn-orario btn-outline-primary font-weight-bold"
+                            <label class="btn btn-orario btn-outline-primary font-weight-bold"
                             data-whatever1="{{ $fiscal_code }}" data-whatever2="{{ $name }}"
                             data-whatever3="{{ $surname }}"
                             data-whatever4="{{ date('d/m/Y', strtotime($dob)) }}"
@@ -320,7 +320,7 @@
 
             <div class="row row-space justify-content-center" id="content2" style="display:none">
                 @if ($gContent2 != 'Domenica')
-                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons" align="left">
+                <div class="btn-group-toggle w-100 h-100 col-lg-8" data-toggle="buttons" align="left">
                         @for ($i = 0; $i < count($time); $i++)
                             @if (DB::table('visits')->where('date', $date2)->where('time', $time[$i])->exists()) 
                             <?php
@@ -346,7 +346,7 @@
                                 $surname = $u->surname;
                             }
                             ?>
-                            <label class="col-lg-2 btn btn-orario btn-outline-primary font-weight-bold"
+                            <label class="btn btn-orario btn-outline-primary font-weight-bold"
                             data-whatever1="{{ $fiscal_code }}" data-whatever2="{{ $name }}"
                             data-whatever3="{{ $surname }}"
                             data-whatever4="{{ date('d/m/Y', strtotime($dob)) }}"
@@ -378,11 +378,11 @@
 
             <div class="row row-space justify-content-center" id="content3" style="display:none">
                 @if ($gContent3 != 'Domenica')
-                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons" align="left">
+                <div class="btn-group-toggle w-100 h-100 col-lg-8" data-toggle="buttons" align="left">
                         @for ($i = 0; $i < count($time); $i++)
                             @if (DB::table('visits')->where('date', $date3)->where('time', $time[$i])->exists()) 
                             <?php
-                            $id_p = DB::table('visits')->where('date', $dat3)->where('time', $time[$i])->select('id_patient')->get();
+                            $id_p = DB::table('visits')->where('date', $date3)->where('time', $time[$i])->select('id_patient')->get();
                             foreach ($id_p as $pippo) {
                                 $info = $pippo->id_patient;
                             }
@@ -404,7 +404,7 @@
                                 $surname = $u->surname;
                             }
                             ?>
-                            <label class="col-lg-2 btn btn-orario btn-outline-primary font-weight-bold"
+                            <label class="btn btn-orario btn-outline-primary font-weight-bold"
                             data-whatever1="{{ $fiscal_code }}" data-whatever2="{{ $name }}"
                             data-whatever3="{{ $surname }}"
                             data-whatever4="{{ date('d/m/Y', strtotime($dob)) }}"
@@ -436,7 +436,7 @@
 
             <div class="row row-space justify-content-center" id="content4" style="display:none">
                 @if ($gContent4 != 'Domenica')
-                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons" align="left">
+                <div class="btn-group-toggle w-100 h-100 col-lg-8" data-toggle="buttons" align="left">
                         @for ($i = 0; $i < count($time); $i++)
                             @if (DB::table('visits')->where('date', $date4)->where('time', $time[$i])->exists()) 
                             <?php
@@ -462,7 +462,7 @@
                                 $surname = $u->surname;
                             }
                             ?>
-                            <label class="col-lg-2 btn btn-orario btn-outline-primary font-weight-bold"
+                            <label class="btn btn-orario btn-outline-primary font-weight-bold"
                             data-whatever1="{{ $fiscal_code }}" data-whatever2="{{ $name }}"
                             data-whatever3="{{ $surname }}"
                             data-whatever4="{{ date('d/m/Y', strtotime($dob)) }}"
@@ -494,7 +494,7 @@
             
             <div class="row row-space justify-content-center" id="content5" style="display:none">
                 @if ($gContent5 != 'Domenica')
-                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons" align="left">
+                <div class="btn-group-toggle w-100 h-100 col-lg-8" data-toggle="buttons" align="left">
                         @for ($i = 0; $i < count($time); $i++)
                             @if (DB::table('visits')->where('date', $date5)->where('time', $time[$i])->exists()) 
                             <?php
@@ -520,7 +520,7 @@
                                 $surname = $u->surname;
                             }
                             ?>
-                            <label class="col-lg-2 btn btn-orario btn-outline-primary font-weight-bold"
+                            <label class="btn btn-orario btn-outline-primary font-weight-bold"
                             data-whatever1="{{ $fiscal_code }}" data-whatever2="{{ $name }}"
                             data-whatever3="{{ $surname }}"
                             data-whatever4="{{ date('d/m/Y', strtotime($dob)) }}"
@@ -552,10 +552,10 @@
 
             <div class="row row-space justify-content-center" id="content6" style="display:none">
                 @if ($gContent6 != 'Domenica')
-                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons" align="left">
+                <div class="btn-group-toggle w-100 h-100 col-lg-8" data-toggle="buttons" align="left">
                         @for ($i = 0; $i < count($time); $i++)
                             @if (DB::table('visits')->where('date', $date6)->where('time', $time[$i])->exists()) <?php
-                            $id_p = DB::table('visits')->where('date', $date5)->where('time', $time[$i])->select('id_patient')->get();
+                            $id_p = DB::table('visits')->where('date', $date6)->where('time', $time[$i])->select('id_patient')->get();
                             foreach ($id_p as $pippo) {
                                 $info = $pippo->id_patient;
                             }
@@ -577,7 +577,7 @@
                                 $surname = $u->surname;
                             }
                             ?>
-                            <label class="col-lg-2 btn btn-orario btn-outline-primary font-weight-bold"
+                            <label class="btn btn-orario btn-outline-primary font-weight-bold"
                             data-whatever1="{{ $fiscal_code }}" data-whatever2="{{ $name }}"
                             data-whatever3="{{ $surname }}"
                             data-whatever4="{{ date('d/m/Y', strtotime($dob)) }}"
@@ -644,16 +644,11 @@
         date_default_timezone_set('Europe/Rome');
 
         $id = Auth::user()->id;
-        $info = DB::table('patients')
-        ->where('id_user', $id)
-        ->select('id')
-        ->get();
+        $info = DB::table('patients')->where('id_user', $id)->select('id')->get();
         foreach ($info as $patient) {
             $res2 = $patient->id;
         }
-        $visits = DB::table('visits')
-        ->where('id_patient', $res2)
-        ->get();
+        $visits = DB::table('visits')->where('id_patient', $res2)->orderByRaw('date - time DESC')->get();
         ?>
 
         <div class="row-space" style="margin-left:100px;float:left;">
@@ -700,77 +695,32 @@
 
 
 
-            <div class="table-border" style="display:none;" id="contentFuture">
-                <table class="table table-borderless table-hover" style="margin:0px">
-                    <thead>
-                        <tr class="bg-info" style="color:#fff;text-align:center">
-                            <th scope="col"
-                                style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">
-                                Data</th>
-                            <th scope="col"
-                                style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">
-                                Ora</th>
-                        </tr>
-                    </thead>
-
+            <div class="row row-space justify-content-center" id="contentFuture" style="display:none">
+                <div class="btn-group-toggle w-100 h-100 col-lg-10" data-toggle="buttons">
                     @foreach ($visits as $v)
                         @if (strtotime($v->date . ' ' . $v->time) > strtotime(date('Y/m/d H:i')))
                             <!-- visite future -->
-                            <tbody>
-
-                                <tr class="font-weight-bold text-uppercase" style="color:#626262;text-align:center;">
-                                    <td
-                                        style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">
-                                        {{ date('d/m/Y', strtotime($v->date)) }}</td>
-                                    <td
-                                        style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">
-                                        {{ $v->time }}</td>
-                                </tr>
-
-                            </tbody>
-
+                            <label class="btn btn-orario btn-outline-primary font-weight-bold">
+                            <p>{{ date('d/m/Y', strtotime($v->date)) }}</p>
+                            <p>{{ date('H:i', strtotime($v->time)) }}</p>
+                            </label>
                         @endif
                     @endforeach
-
-                </table>
+                </div>
             </div>
 
-            <div class="table-border" style="display:none;" id="contentPassate">
-
-                <table class="table table-borderless table-hover" style="margin:0px">
-                    <thead>
-                        <tr class="bg-info" style="color:#fff;text-align:center">
-                            <th scope="col"
-                                style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">
-                                Data</th>
-                            <th scope="col"
-                                style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">
-                                Ora</th>
-                        </tr>
-                    </thead>
-
+            <div class="row row-space justify-content-center" id="contentPassate" style="display:none">
+                <div class="btn-group-toggle w-100 h-100 col-lg-10" data-toggle="buttons" align="left">
                     @foreach ($visits as $v)
                         @if (strtotime($v->date . ' ' . $v->time) <= strtotime(date('Y/m/d H:i')))
                             <!-- visite passate -->
-                            <tbody>
-
-                                <tr class="font-weight-bold text-uppercase" style="color:#626262;text-align:center;">
-                                    <td
-                                        style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">
-                                        {{ date('d/m/Y', strtotime($v->date)) }}</td>
-                                    <td
-                                        style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">
-                                        {{ $v->time }}</td>
-                                </tr>
-
-                            </tbody>
-
+                            <label class="btn btn-orario btn-outline-primary font-weight-bold">
+                            <p>{{ date('d/m/Y', strtotime($v->date)) }}</p>
+                            <p>{{ date('H:i', strtotime($v->time)) }}</p>
+                            </label>
                         @endif
                     @endforeach
-
-                </table>
-
-
+                </div>
             </div>
         </div>
     @endif
