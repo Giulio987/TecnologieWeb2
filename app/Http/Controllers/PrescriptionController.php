@@ -81,7 +81,7 @@ class PrescriptionController extends Controller
 
     }
 
-    protected function validatorPrescription(array $data)
+    protected function validator(array $data)
     {
         return Validator::make($data, [
             'id_patient'     => ['required', 'integer'],
@@ -90,6 +90,14 @@ class PrescriptionController extends Controller
             'status'         => ['required'],
             'date'           => ['required', 'date'],
             'type'           => ['required'],
+        ], [
+            'id_patient.required'     => 'Inserimento obbligatorio',
+            'id_patient.integer'      => 'L\'id del paziente deve essere un intero',
+            'id_doctor.required'      => 'Inserimento obbligatorio',
+            'id_doctor.integer'       => 'L\'id del dottore deve essere un intero',
+            'description.required'    => 'Inserimento obbligatorio',
+            'date.required'           => 'Inserimento obbligatorio',
+            'type.required'           => 'Inserimento obbligatorio',
         ]);
     }
 
@@ -101,7 +109,7 @@ class PrescriptionController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validatorPrescription($request->all())->validate();
+        $this->validator($request->all())->validate();
         $rfe = 0;
         if(Auth::user()->role == '2'){
             $rfedata = DB::table('prescriptions')->where('rfe','!=',0)->select('rfe')->get();
@@ -164,6 +172,7 @@ class PrescriptionController extends Controller
      */
     public function update(Request $request, Prescription $prescription)
     {
+        $this->validator($request->all())->validate();
         $input = $request->all();
         //recupara l'ultimo rfe inserito e lo incrementa di uno
         $rfedata = DB::table('prescriptions')->where('rfe','!=',0)->select('rfe')->get();

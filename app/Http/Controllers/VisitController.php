@@ -22,14 +22,12 @@ class VisitController extends Controller
 			$visits = Visit::all();
             return view('visit.index', compact('visits'));
         }else if( Auth::user()->role == '2'){ // Dottore
-
-
-
-
-
-            //perchè non è gestito qui che tornano solo le visite relative a quel dotore?
-            //Come fatto qui sotto per i pazienti
-            $visits = Visit::all();
+            $id = Auth::user()->id;
+			$info = DB::table('doctors')->where('id_user', $id)->select('id')->get();
+			foreach ($info as $doctor) {
+				$res2 = $doctor->id;
+			}
+            $visits = Visit::where('id_doctor', $res2)->get();
             return view('visit.index', compact('visits'));
         } else {
 			$id = Auth::user()->id;
@@ -61,6 +59,23 @@ class VisitController extends Controller
         }
     }
 
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'id_patient'     => ['required', 'integer'],
+            'id_doctor'      => ['required', 'integer'],
+            'date'           => ['required', 'date'],
+            'time'           => ['required'],
+        ], [
+            'id_patient.required'     => 'Inserimento obbligatorio',
+            'id_patient.integer'      => 'L\'id del paziente deve essere un intero',
+            'id_doctor.required'      => 'Inserimento obbligatorio',
+            'id_doctor.integer'       => 'L\'id del dottore deve essere un intero',
+            'date.required'           => 'Inserimento obbligatorio',
+            'time.required'           => 'Inserimento obbligatorio',
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -69,6 +84,8 @@ class VisitController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validator($request->all())->validate();
+
         $input = $request -> all();
 
         Visit::create($input);
@@ -96,7 +113,7 @@ class VisitController extends Controller
      */
     public function edit(Visit $visit)
     {
-        //
+        return view('visit.edit', compact('visit'));
     }
 
     /**
@@ -108,7 +125,11 @@ class VisitController extends Controller
      */
     public function update(Request $request, Visit $visit)
     {
-        //
+        $this->validator($request->all())->validate();
+
+        $input = $request->all();
+        $visit->update($input); 
+        return redirect('/visit');
     }
 
     /**

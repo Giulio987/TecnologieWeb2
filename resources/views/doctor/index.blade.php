@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+<!-- Parte del bottone indeitro da mettere in layout -->
 @section('content')
 <div class="row-space" style="margin-left:100px;float:left;">
 <a href="{{ URL::action('HomeController@index') }}">
@@ -28,52 +28,50 @@
     </div>
 
     <div class="row row-space justify-content-center">
-            <input class="quadrato-ricetta col-lg-4 text-uppercase button-search" id="search" type="text" placeholder="ricerca"  style="padding:1em;">
+        <input class="quadrato-ricetta col-lg-4 text-uppercase button-search" id="myInput" type="text" placeholder="ricerca" style="padding:1em;">
     </div>
 
-        <div class="row row-space justify-content-center" >
-        <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
+    <div class="row row-space justify-content-center">
+        <div class="table-responsive" style="white-space: nowrap;">
+            <table class="table table-borderless table-hover table-border">
+                        <thead>
+                            <tr class="bg-info" style="color:#fff;">
+                            <th scope="col-lg" style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">Codice Fiscale</th>
+                            <th scope="col">Cognome</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Sesso</th>
+                            <th scope="col">Data di nascita</th>
+                            <th scope="col">Numero di Telefono</th>
+                            <th scope="col-lg" colspan="2" style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">Azioni</th>
+                        </tr>
+                        </thead>
+                    <tbody id="myTable">
 
-                @foreach($doctors as $d)  
-                <?php
-                    $id = $d->id_user;
-                    $user = DB::table('users')->where('id', $id)->select('name', 'surname', 'email')->get();
-                    foreach ($user as $info) {
-				        $nome = $info->name;
-                        $cognome = $info->surname;
-                        $email = $info->email;
-			        }  
-                    ?>  
-                    <label id="searchPatient" class="col-lg-2 btn quadrato-list font-weight-bold" data-whatever1="{{ $d->fiscal_code }}" data-whatever2="{{ $nome }}" data-whatever3="{{ $cognome }}" data-whatever4="{{ $email }}" data-whatever5="{{ $d->dob }}" data-whatever6="{{ $d->gender }}" data-whatever7="{{ $d->phone_number }}" data-whatever8="{{ $d->street_address }}" data-whatever9="{{ $d->street_number }}" data-whatever10="{{ $d->city }}" data-whatever11="{{ $d->postal_code }}" data-toggle="modal" data-target="#exampleModal3" type="button" onmouseover="this.style.background='#3490dc';this.style.color='#fff';" onmouseout="this.style.background='#fff';this.style.color='#000';">
-                    <p>{{ $d->fiscal_code }} {{ $nome }} {{ $cognome }}</p></label>
+                    @foreach($doctors as $d)  
+                    <?php
+                        $id = $d->id_user;
+                        $user = DB::table('users')->where('id', $id)->select('name', 'surname', 'email')->get();
+                        foreach ($user as $info) {
+                            $nome = $info->name;
+                            $cognome = $info->surname;
+                            $email = $info->email;
+                        }  
+                        ?>
+                        <tr class="font-weight-bold text-uppercase" style="color:#626262;">
+                            <td style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">{{ $d->fiscal_code }}</td>
+                            <td>{{ $cognome }}</td>
+                            <td>{{ $nome }}</td>
+                            <td>{{ $d->gender }}</td>
+                            <td>{{ date('d/m/Y', strtotime($d->dob)) }}</td>
+                            <td>{{ $d->phone_number }}</td>
+                            <td><a href="{{ URL::action('DoctorController@edit', $d) }}" class="btn btn-outline-dark btn-sm">Modifica</a></td>
+                            <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;"><a href="{{ URL::action('DoctorController@destroy', $d) }}" class="btn btn-outline-danger btn-sm">Elimina</a></td>
+                        </tr>
                     @endforeach
-                </div>
-                </div>
-                
-            <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Informazioni</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p id="FiscalCode"></p>
-                            <p id="Name"></p>
-                            <p id="Surname"></p>
-                            <p id="Email"></p>
-                            <p id="Dob"></p>
-                            <p id="Gender"></p>
-                            <p id="PhoneNumber"></p>
-                            <p id="StreetAddress"></p>
-                            <p id="StreetNumber"></p>
-                            <p id="City"></p>
-                            <p id="PostalCode"></p>
-                        </div>
-                    </div>
-                </div>
+                    </tbody>
+                </table>
             </div>
-    </div>
+
+            <a href="{{ URL::action('DoctorController@create') }}" class="btn quadrato-ricetta col-lg-4 text-uppercase">Registra un nuovo dottore</a>
+        </div>
 @endsection

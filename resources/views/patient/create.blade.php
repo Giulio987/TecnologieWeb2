@@ -37,78 +37,108 @@ $name = Auth::user()->name;
         </h5>
     </div>
 
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+        <div class="container">
 
-            <form action="{{ URL::action('PatientController@store') }}" method="POST" class="needs-validation" novalidate>
+            <form action="{{ URL::action('PatientController@store') }}" method="POST"  novalidate>
                 {{ csrf_field() }}
-                <div class="form-row row-space justify-content-center py-4">
-                    <div class="col-lg-3 mx-4">
-                    <input type="text" class="label-patient text-uppercase" placeholder="Nome" name="name" required>
-                    </div>
-                    <div class="col-lg-3 mx-4">
-                    <input type="text" class="label-patient text-uppercase" placeholder="Cognome" name="surname" required>
-                    </div>
-                    <div class="col-lg-3 mx-4">
-                    <input type="text" class="label-patient text-uppercase" placeholder="Codice Fiscale" name="fiscal_code" required>
-                </div>
+                <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Nome" name="name" required>
+                    @error('name')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
 
-                <div class="form-row row-space justify-content-center py-4">
+                <div class="form-group">
+                    <label for="surname">Cognome</label>
+                    <input type="text" class="form-control @error('surname') is-invalid @enderror" placeholder="Cognome" name="surname" required>
+                    @error('surname')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="dob">Data di nascita</label>
+                    <input type="date" class="form-control @error('dob') is-invalid @enderror" name="dob" required>
+                    @error('dob')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">Sesso</label>
+                    <input type="text" class="form-control @error('gender') is-invalid @enderror" placeholder="Sesso" name="gender" required>
+                    @error('gender')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="fiscal_code">Codice Fiscale</label>
+                    <input type="text" class="form-control @error('fiscal_code') is-invalid @enderror" placeholder="Codice Fiscale" name="fiscal_code" required>
+                    @error('fiscal_code')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="street_address">Indirizzo Domicilio</label>
+                    <input type="text" class="form-control @error('street_address') is-invalid @enderror" placeholder="Via/Viale/Piazza" name="street_address" required>
+                    @error('street_address')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="street_number">Numero Civico</label>
+                    <input type="text" class="form-control @error('street_number') is-invalid @enderror" placeholder="Numero civico" name="street_number" required>
+                    @error('street_number')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="city">Città</label>
+                    <input type="text" class="form-control @error('city') is-invalid @enderror" placeholder="Città" name="city" required>
+                    @error('city')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="postal_code">Codice Postale</label>
+                    <input type="text" class="form-control @error('postal_code') is-invalid @enderror" placeholder="Codice Postale" name="postal_code" required>
+                    @error('postal_code')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="phone_number">Numero di Telefono</label>
+                    <input type="text" class="form-control @error('phone_number') is-invalid @enderror" placeholder="Phone Number" name="phone_number" required>
+                    @error('phone_number')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email" required>
+                    <small id="email" class="form-text text-muted"></small>
+                    @error('email')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Password" name="password" required>
+                    @error('password')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
                 
 
-                    <div class="col-lg-2 mx-4">
-                    <input type="date" class="label-patient text-uppercase" name="dob" required>
-
-                    </div>
-                    <div class="col-lg-1 mx-4">
-                    <input type="text" class="label-patient text-uppercase" placeholder="Sesso" name="gender" required>
-                    </div>
-                    <div class="col-lg-2 mx-4">
-                    <input type="text" class="label-patient text-uppercase" placeholder="Phone Number" name="phone_number" required>
-
-                    </div>
-                </div>
-               
-
-
-                
-                <div class="form-row row-space justify-content-center py-4">
-                    <div class="col-lg-4 mx-4">
-                    <input type="text" class="label-patient text-uppercase" placeholder="Via/Viale/Piazza" name="street_address" required>
-
-                    </div>
-                    <div class="col-lg-1 mx-4">
-                    <input type="text" class="label-patient text-uppercase" placeholder="N. civico" name="street_number" required>
-                    </div>
-                    <div class="col-lg-2 mx-4">
-                    <input type="text" class="label-patient text-uppercase" placeholder="Città" name="city" required>
-                    </div>
-                    <div class="col-lg-1 mx-4">
-                    <input type="text" class="label-patient text-uppercase" placeholder="CAP" name="postal_code" required>
-                    </div>
-                    @if(Auth::user()->role == '1')
-                        <div class="col-lg-1 mx-4">
-                            <input type="text" name="id_doctor" class="label-patient text-uppercase" placeholder="Dottore" required>
-                        </div>
-                    @endif
-                </div>
-                <div class="form-row row-space justify-content-center py-4">
-                    <div class="col-lg-3 mx-4">
-                    <input type="email" class="label-patient text-uppercase" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email" required>
-                    </div>
-                    <div class="col-lg-3 mx-4">
-                    <input type="password" class="label-patient text-uppercase" id="password" placeholder="Password" name="password" required>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary">Conferma</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
 
@@ -131,7 +161,10 @@ $name = Auth::user()->name;
                 });
             }, false);
         })();
-        
+        $(document).ready(function() {
+            $("#selUser").select2();
+        });
     </script>
+
     @endif
 @endsection

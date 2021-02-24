@@ -21,10 +21,13 @@ Auth::routes();
 
 Route::get('home', 'HomeController@index')->middleware('role'); 
 Route::resource('doctor', 'DoctorController')->middleware('role');
+Route::resource('doctor', 'DoctorController')->except(['destroy'])->middleware('role');
+Route::get('/doctor/{doctor}/delete', 'DoctorController@destroy')->middleware('role');
 Route::resource('patient', 'PatientController')->middleware('role');
 Route::resource('prescription', 'PrescriptionController')->middleware('role');
 Route::resource('visit', 'VisitController')->except(['destroy'])->middleware('role');
-Route::get('/expense/{visit}/delete', 'VisitController@destroy')->middleware('role');
+Route::get('/visit/{visit}/delete', 'VisitController@destroy')->middleware('role');
+Route::resource('building', 'BuildingController')->middleware('role');
 Route::get('/prescriptionValidate', 'PrescriptionController@indexValidate')->middleware('role');
 
 

@@ -62,24 +62,58 @@ class PatientController extends Controller
             return redirect('/home');
         }
     }
-/*
-    protected function validatorPatient(array $data)
+
+    protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' 		         => ['required'],
-            'surname'            => ['required'],
-            'dob'                => ['required'],
-            'phone_number'       => ['required'],
-            'gender'             => ['required'],
-            'fiscal_code'        => ['required'],
-            'street_address'     => ['required'],
-            'street_number'      => ['required'],
-            'city'               => ['required'],
-            'postal_code'        => ['required'],
-            'email'              => ['required'],
-            'id_doctor'          => ['required'],
+            'name' 		         => 'required | string | max:20',
+            'surname'            => 'required | string | max:20',
+            'dob'                => 'required | date',
+            'phone_number'       => 'required | numeric | max:15 | unique:patients',
+            'gender'             => 'required | string | max:1',
+            'fiscal_code'        => 'required | string | min:16 | max:16 | unique:patients',
+            'street_address'     => 'required | string | max:50',
+            'street_number'      => 'required | string | max:8',
+            'city'               => 'required | string | max:30',
+            'postal_code'        => 'required | numeric | max:5',
+            'email'              => 'required | string | email | max:50 | unique:users',
+            'password'           => 'required',
+        ], [
+            'name.required'           => 'Inserimento obbligatorio',
+            'name.max'                => 'Il nome deve essere massimo di 20 caratteri',
+            'surname.required'        => 'Inserimento obbligatorio',
+            'surname.max'             => 'Il cognome deve essere massimo di 20 caratteri',
+            'phone_number.required'   => 'Inserimento obbligatorio',
+            'dob.required'            => 'Inserimento obbligatorio',
+            'phone_number.numeric'    => 'Il numero di telefono deve essere composto solo da numeri',
+            'phone_number.max'        => 'Il numero di telefono deve essere massimo di 15 caratteri',
+            'phone_number.unique'     => 'Il numero di telefono inserito è già presente nel database.',
+            'gender.required'         => 'Inserimento obbligatorio', // custom message
+            'gender.max'              => 'Il sesso deve essere massimo di un carattere', // custom message
+            'fiscal_code.required'    => 'Inserimento obbligatorio',
+            'fiscal_code.min'         => 'Il Codice Fiscale deve essere minimo di 16 caratteri',
+            'fiscal_code.max'         => 'Il Codice Fiscale deve essere massimo di 16 caratteri',
+            'fiscal_code.unique'      => 'Il Codice Fiscale inserito è già presente nel database.',
+            'street_address.required' => 'Inserimento obbligatorio',
+            'street_address.string'   => 'L indirizzo deve essere una stringa.',
+            'street_address.max'      => 'L indirizzo deve essere massimo di 50 caratteri',
+            'street_number.required'  => 'Inserimento obbligatorio',
+            'street_number.string'    => 'Il numero civico deve essere una stringa.',
+            'street_number.max'       => 'Il numero civico deve essere massimo di 8 caratteri',
+            'city.required'           => 'Inserimento obbligatorio',
+            'city.string'             => 'La città deve essere una stringa.',
+            'city.max'                => 'La città deve essere massimo di 30 caratteri',
+            'postal_code.required'    => 'Inserimento obbligatorio',
+            'postal_code.numeric'     => 'Il codice postale deve essere composto da numeri.',
+            'postal_code.max'         => 'Il codice postale deve essere massimo di 5 caratteri',
+            'email.required'          => 'Inserimento obbligatorio',
+            'email.string'            => 'L email deve essere una stringa.',
+            'email.max'               => 'L email deve essere massimo di 50 caratteri',
+            'email.unique'            => 'L email inserita è già presente nel database.',
+            'password.required'       => 'Inserimento obbligatorio',
+
         ]);
-    }*/
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -89,44 +123,8 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        //la prima riga è sbagliata credo
-        //in teoria no ma sotto dobbiamo usare la variabile nuova.
-        //in che senso
-        
-        $validatedData = $request->validate([
-            'name' 		         => 'required', 'string', 'max:20',
-            'surname'            => 'required', 'string', 'max:20',
-            'dob'                => 'required', 'date',
-            'phone_number'       => 'required', 'string', 'max:15', 'unique:patients',
-            'gender'             => 'required', 'string', 'max:1',
-            'fiscal_code'        => 'required', 'string', 'min:16', 'max:16','unique:patients',
-            'street_address'     => 'required', 'string', 'max:50',
-            'street_number'      => 'required', 'string', 'max:8',
-            'city'               => 'required', 'string', 'max:30',
-            'postal_code'        => 'required', 'string', 'max:5',
-            'email'              => 'required', 'string', 'email', 'max:50', 'unique:users',
-            'id_doctor'          => 'required',
-            'email'              => 'required',
-            'password'           => 'required',
-        ]);
-/*
-        $name = $request->name;
-        $surname = $request->surname;
-        $dob = $request->dob;
-        $gender = $request->gender;
-        $fiscal_code = $request->fiscal_code;
-        $street_address = $request->street_address;
-        $street_number = $request->street_number;
-        $city = $request->city;
-        $postal_code = $request->postal_code;
-        $email = $request->email;
-        $password = $request->password;
-        $id_doctor = $request->id_doctor;
-        */
-        //$nome = $input->name;
-        //Patient::create($dob, $gender, $fiscal_code, $street_address, $street_number, $city, $postal_code);
-        //User::create($name, $surname, $email, $password);
-        //$this->validatorPatient($request->all())->validate();
+        $this->validator($request->all())->validate();
+
         $user = User::create([
             'name'          => $request->name,
             'surname'       => $request->surname,
@@ -205,7 +203,28 @@ class PatientController extends Controller
      */
     public function update(Request $request, Patient $patient)
     {
-        //
+        $this->validator($request->all())->validate();
+
+        $input = $request->all();
+
+        $user = User::find($patient->id_user);
+        $user->name = $input['name'];
+        $user->surname = $input['surname'];
+        $user->email = $input['email'];
+        $user->save();
+
+        $patient->fiscal_code = $input['fiscal_code'];
+        $patient->gender = $input['gender'];
+        $patient->dob = $input['dob'];
+        $patient->street_address = $input['street_address'];
+        $patient->street_number = $input['street_number'];
+        $patient->postal_code = $input['postal_code'];
+        $patient->city = $input['city'];
+        $patient->id_doctor = $input['id_doctor'];
+        $patient->phone_number = $input['phone_number'];
+        $patient->save();
+
+        return redirect('/patient');
     }
 
     /**

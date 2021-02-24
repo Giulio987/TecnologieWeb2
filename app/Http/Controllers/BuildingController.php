@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Building;
 use Illuminate\Http\Request;
-
+use Auth;
+use Log;
 class BuildingController extends Controller
 {
     /**
@@ -14,7 +15,12 @@ class BuildingController extends Controller
      */
     public function index()
     {
-        //
+        if ( Auth::user()->role == '1') {
+            $buildings = Building::all();
+            return view('building.index', compact('buildings'));
+        }else{
+            return redirect('/home');
+        }
     }
 
     /**
@@ -35,7 +41,14 @@ class BuildingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        $building = new Building();
+        $building->street_address = $input['street_address'];
+        $building->street_number = $input['street_number'];
+        $building->postal_code = $input['postal_code'];
+        $building->city = $input['city'];
+        $building->save();
+        return json_encode(['status' => 'ok', 'building' => $building]);
     }
 
     /**
@@ -80,6 +93,10 @@ class BuildingController extends Controller
      */
     public function destroy(Building $building)
     {
-        //
+        
+        $building->delete();
+       
+        Log::info($building);
+        return json_encode(['status' => 'ok']);
     }
 }
