@@ -7,7 +7,8 @@ COSE DA FARE:
 - sistemare la visualizzazione delle tabelle in admin
 - validator (dove manca)
 - foto
-- tasti visit
+- vedere se permettere il checked nei bottoni visit e in caso sistemare lo stato active
+- sistemare index visit
 
 
 

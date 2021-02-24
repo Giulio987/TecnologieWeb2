@@ -15,6 +15,7 @@
 <?php
 
 $name = Auth::user()->name;
+$oraDisponibile = 0;
 
 date_default_timezone_set('Europe/Rome');
 
@@ -148,271 +149,305 @@ function giornoData($d, $m, $a)
                 </label>
             </div>
         </div>
+
         <div class="row row-space justify-content-center" id="content1" style="display:none">
             @if($gContent1 != 'Domenica' && $gContent1 != 'Sabato')
-            <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
-                @for($i = 0; $i < count($time); $i++) @if (DB::table('visits')->where('date', $date1)->where('time',$time[$i])->doesntExist())
-                    @if (strtotime($time[$i]) > strtotime(date('H:i')))
-                    <label class="btn btn-orario btn-outline-primary font-weight-bold col-md">{{ $time[$i] }}
-                        <input type="radio" name="time" id="{{ $time[$i] }}" value="{{ $time[$i] }}">
-                    </label>
-            </div>
-            @endif
-            @endif
-            @endfor
-            @if (strtotime($time[count($time) - 1]) <= strtotime(date('H:i'))) <div class="row justify-content-center">
-                <div class="alert alert-info" role="alert" style="width: 500px; height:auto;">
-                    <h5>L'ambulatorio chiude alle 19:00, prenota per domani</h5>
-                </div>
-                @endif
-        </div>
-        @elseif ($gContent1 == 'Sabato')
-        <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
-            @for($i = 0; $i < count($timeSabato); $i++) @if (DB::table('visits')->where('date', $date1)->where('time',$timeSabato[$i])->doesntExist())
-                @if (strtotime($timeSabato[$i]) > strtotime(date('H:i')))
-                <label class="btn btn-orario btn-outline-primary font-weight-bold col-md">{{ $timeSabato[$i] }}
-                    <input type="radio" name="time" id="{{ $timeSabato[$i] }}" value="{{ $timeSabato[$i] }}">
-                </label>
-                @endif
-                @endif
-                @endfor
-                @if (strtotime($timeSabato[count($timeSabato) - 1]) < strtotime(date('H:i'))) <div class="row justify-content-center">
-                    <div class="alert alert-info" role="alert" style="width: 500px; height:auto;">
-                        <h5>L'ambulatorio chiude alle 12:30, prenota per Lunedì</h5>
-                    </div>
+                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons" align="left">
+                    @for($i = 0; $i < count($time); $i++)
+                        @if (DB::table('visits')->where('date', $date1)->where('time',$time[$i])->doesntExist() && strtotime($time[$i]) > strtotime(date('H:i')))
+                            <?php $oraDisponibile++ ?>
+                                <label class="btn btn-orario btn-outline-primary font-weight-bold">{{ $time[$i] }}
+                                    <input type="radio" name="time" id="{{ $time[$i] }}" value="{{ $time[$i] }}">
+                                </label>
+                        @endif
+                    @endfor
+                </div> 
+                @if($oraDisponibile == 0)
+                    @if (strtotime($time[count($time) - 1]) <= strtotime(date('H:i'))) 
+                        <div class="row justify-content-center">
+                            <div class="alert alert-info col-lg-6" role="alert">
+                                <h5>L'ambulatorio chiude alle {{ $time[count($time) - 1] }}, prenota per domani</h5>
+                            </div>
+                        </div>
+                    @else
+                        <div class="row justify-content-center">
+                            <div class="alert alert-info col-lg-6" role="alert">
+                                <h5>Non ci sono orari disponibili per oggi.</h5>
+                            </div>
+                        </div>
                     @endif
+                @endif
+            @endif
+            @if ($gContent1 == 'Sabato')
+                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons" align="left">
+                    @for($i = 0; $i < count($timeSabato); $i++) 
+                        @if (DB::table('visits')->where('date', $date1)->where('time',$timeSabato[$i])->doesntExist() && strtotime($timeSabato[$i]) > strtotime(date('H:i')))
+                            <?php $oraDisponibile++ ?>
+                                <label class="btn btn-orario btn-outline-primary font-weight-bold">{{ $timeSabato[$i] }}
+                                    <input type="radio" name="time" id="{{ $timeSabato[$i] }}" value="{{ $timeSabato[$i] }}">
+                                </label>
+                        @endif
+                    @endfor
+                </div>
+                @if($oraDisponibile == 0)
+                    @if (strtotime($time[count($time) - 1]) <= strtotime(date('H:i'))) 
+                        <div class="row justify-content-center">
+                            <div class="alert alert-info col-lg-6" role="alert">
+                                <h5>L'ambulatorio chiude alle {{ $time[count($time) - 1] }}, prenota per domani</h5>
+                            </div>
+                        </div>
+                    @else
+                        <div class="row justify-content-center">
+                            <div class="alert alert-info col-lg-6" role="alert">
+                                <h5>Non ci sono orari disponibili per oggi.</h5>
+                            </div>
+                        </div>
+                    @endif
+                @endif
+            @endif
+            @if ($gContent1 == 'Domenica')
+                <div class="row justify-content-center">
+                    <div class="alert alert-info col-lg-6" role="alert">
+                        <h5>Non è possibile prenotare appuntamenti per Domenica.</h5>
+                    </div>
+                </div>            
+            @endif
         </div>
-</div>
 
-@else
-<div class="row justify-content-center">
-    <div class="alert alert-info" role="alert" style="width: 500px; height:auto;">
-        <h5>Non è possibile prenotare appuntamenti per Domenica.</h5>
-    </div>
-</div>
-@endif
-@if (count(DB::table('visits')->where('date', $date1)->get()) == count($time) && $gContent1 != 'Domenica' && $gContent1 != 'Sabato')
-<div class="row justify-content-center">
-    <div class="alert alert-info" role="alert" style="width: 500px; height:auto;">
-        <h5>Non ci sono orari disponibili per oggi.</h5>
-    </div>
-</div>
-@endif
-@if (count(DB::table('visits')->where('date', $date1)->get()) == count($timeSabato) && $gContent1 == 'Sabato')
-<div class="row justify-content-center">
-    <div class="alert alert-info" role="alert" style="width: 500px; height:auto;">
-        <h5>Non ci sono orari disponibili per oggi.</h5>
-    </div>
-</div>
-@endif
-</div>
-<div class="row row-space justify-content-center" id="content2" style="display:none">
-    @if($gContent2 != 'Domenica' && $gContent2 != 'Sabato')
-    <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
-        @for($i = 0; $i < count($time); $i++) @if (DB::table('visits')->where('date', $date2)->where('time',$time[$i])->doesntExist())
-            <label class="btn btn-orario btn-outline-primary font-weight-bold col-md">{{ $time[$i] }}
-                <input type="radio" name="time" id="{{ $time[$i] }}" value="{{ $time[$i] }}">
-            </label>
+        <div class="row row-space justify-content-center" id="content2" style="display:none">
+            @if($gContent2 != 'Domenica' && $gContent2 != 'Sabato')
+                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons" align="left">
+                    @for($i = 0; $i < count($time); $i++)
+                        @if (DB::table('visits')->where('date', $date2)->where('time',$time[$i])->doesntExist())
+                                <label class="btn btn-orario btn-outline-primary font-weight-bold">{{ $time[$i] }}
+                                    <input type="radio" name="time" id="{{ $time[$i] }}" value="{{ $time[$i] }}">
+                                </label>
+                        @endif
+                    @endfor
+                </div> 
+                @if (count(DB::table('visits')->where('date', $date2)->get()) == count($time))
+                    <div class="row justify-content-center">
+                        <div class="alert alert-info col-lg-6" role="alert">
+                            <h5>Non ci sono orari disponibili per oggi.</h5>
+                        </div>
+                    </div>
+                @endif
             @endif
-            @endfor
-    </div>
-    @elseif ($gContent2 == 'Sabato')
-    <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
-        @for($i = 0; $i < count($timeSabato); $i++) @if (DB::table('visits')->where('date', $date2)->where('time',$timeSabato[$i])->doesntExist())
-            <label class="btn btn-orario btn-outline-primary font-weight-bold col-md">{{ $timeSabato[$i] }}
-                <input type="radio" name="time" id="{{ $timeSabato[$i] }}" value="{{ $timeSabato[$i] }}">
-            </label>
+            @if ($gContent1 == 'Sabato')
+                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons" align="left">
+                    @for($i = 0; $i < count($timeSabato); $i++) 
+                        @if (DB::table('visits')->where('date', $date2)->where('time',$timeSabato[$i])->doesntExist())
+                                <label class="btn btn-orario btn-outline-primary font-weight-bold">{{ $timeSabato[$i] }}
+                                    <input type="radio" name="time" id="{{ $timeSabato[$i] }}" value="{{ $timeSabato[$i] }}">
+                                </label>
+                        @endif
+                    @endfor
+                </div>
+                @if (count(DB::table('visits')->where('date', $date2)->get()) == count($timeSabato))
+                    <div class="row justify-content-center">
+                        <div class="alert alert-info col-lg-6" role="alert">
+                            <h5>Non ci sono orari disponibili per oggi.</h5>
+                        </div>
+                    </div>
+                @endif
             @endif
-            @endfor
-    </div>
-    @else
-    <div class="row justify-content-center">
-        <div class="alert alert-info" role="alert" style="width: 500px; height:auto;">
-            <h5>Non è possibile prenotare appuntamenti per Domenica.</h5>
-        </div>
-    </div>
-    @endif
-    @if (count(DB::table('visits')->where('date', $date2)->get()) == count($time) && $gContent2 != 'Domenica' && $gContent2 != 'Sabato')
-    <div class="row justify-content-center">
-        <div class="alert alert-info" role="alert" style="width: 500px; height:auto;">
-            <h5>Non ci sono orari disponibili per oggi.</h5>
-        </div>
-    </div>
-    @endif
-    @if (count(DB::table('visits')->where('date', $date2)->get()) == count($timeSabato) && $gContent2 == 'Sabato')
-    <div class="row justify-content-center">
-        <div class="alert alert-info" role="alert" style="width: 500px; height:auto;">
-            <h5>Non ci sono orari disponibili per oggi.</h5>
-        </div>
-    </div>
-    @endif
-</div>
-<div class="row row-space justify-content-center" id="content3" style="display:none">
-    @if($gContent3 != 'Domenica' && $gContent3 != 'Sabato')
-    <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
-        @for($i = 0; $i < count($time); $i++) @if (DB::table('visits')->where('date', $date3)->where('time',$time[$i])->doesntExist())
-            <label class="btn btn-orario btn-outline-primary font-weight-bold col-md">{{ $time[$i] }}
-                <input type="radio" name="time" id="{{ $time[$i] }}" value="{{ $time[$i] }}">
-            </label>
+            @if ($gContent2 == 'Domenica')
+                <div class="row justify-content-center">
+                    <div class="alert alert-info col-lg-6" role="alert">
+                        <h5>Non è possibile prenotare appuntamenti per Domenica.</h5>
+                    </div>
+                </div>            
             @endif
-            @endfor
-    </div>
+        </div>
 
+        <div class="row row-space justify-content-center" id="content3" style="display:none">
+            @if($gContent3 != 'Domenica' && $gContent3 != 'Sabato')
+                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons" align="left">
+                    @for($i = 0; $i < count($time); $i++)
+                        @if (DB::table('visits')->where('date', $date3)->where('time',$time[$i])->doesntExist())
+                                <label class="btn btn-orario btn-outline-primary font-weight-bold">{{ $time[$i] }}
+                                    <input type="radio" name="time" id="{{ $time[$i] }}" value="{{ $time[$i] }}">
+                                </label>
+                        @endif
+                    @endfor
+                </div> 
+                @if (count(DB::table('visits')->where('date', $date3)->get()) == count($time))
+                    <div class="row justify-content-center">
+                        <div class="alert alert-info col-lg-6" role="alert">
+                            <h5>Non ci sono orari disponibili per oggi.</h5>
+                        </div>
+                    </div>
+                @endif
+            @endif
+            @if ($gContent3 == 'Sabato')
+                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons" align="left">
+                    @for($i = 0; $i < count($timeSabato); $i++) 
+                        @if (DB::table('visits')->where('date', $date3)->where('time',$timeSabato[$i])->doesntExist())
+                                <label class="btn btn-orario btn-outline-primary font-weight-bold">{{ $timeSabato[$i] }}
+                                    <input type="radio" name="time" id="{{ $timeSabato[$i] }}" value="{{ $timeSabato[$i] }}">
+                                </label>
+                        @endif
+                    @endfor
+                </div>
+                @if (count(DB::table('visits')->where('date', $date3)->get()) == count($timeSabato))
+                    <div class="row justify-content-center">
+                        <div class="alert alert-info col-lg-6" role="alert">
+                            <h5>Non ci sono orari disponibili per oggi.</h5>
+                        </div>
+                    </div>
+                @endif
+            @endif
+            @if ($gContent3 == 'Domenica')
+                <div class="row justify-content-center">
+                    <div class="alert alert-info col-lg-6" role="alert">
+                        <h5>Non è possibile prenotare appuntamenti per Domenica.</h5>
+                    </div>
+                </div>            
+            @endif
+        </div>
 
-    @elseif ($gContent3 == 'Sabato')
-    <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
-        @for($i = 0; $i < count($timeSabato); $i++) @if (DB::table('visits')->where('date', $date3)->where('time',$timeSabato[$i])->doesntExist())
-            <label class="btn btn-orario btn-outline-primary font-weight-bold col-md">{{ $timeSabato[$i] }}
-                <input type="radio" name="time" id="{{ $timeSabato[$i] }}" value="{{ $timeSabato[$i] }}">
-            </label>
+        <div class="row row-space justify-content-center" id="content4" style="display:none">
+            @if($gContent4 != 'Domenica' && $gContent4 != 'Sabato')
+                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons" align="left">
+                    @for($i = 0; $i < count($time); $i++)
+                        @if (DB::table('visits')->where('date', $date4)->where('time',$time[$i])->doesntExist())
+                                <label class="btn btn-orario btn-outline-primary font-weight-bold">{{ $time[$i] }}
+                                    <input type="radio" name="time" id="{{ $time[$i] }}" value="{{ $time[$i] }}">
+                                </label>
+                        @endif
+                    @endfor
+                </div> 
+                @if (count(DB::table('visits')->where('date', $date4)->get()) == count($time))
+                    <div class="row justify-content-center">
+                        <div class="alert alert-info col-lg-6" role="alert">
+                            <h5>Non ci sono orari disponibili per oggi.</h5>
+                        </div>
+                    </div>
+                @endif
             @endif
-            @endfor
-    </div>
-    @else
-    <div class="row justify-content-center">
-        <div class="alert alert-info" role="alert" style="width: 500px; height:auto;">
-            <h5>Non è possibile prenotare appuntamenti per Domenica.</h5>
-        </div>
-    </div>
-    @endif
-    @if (count(DB::table('visits')->where('date', $date3)->get()) == count($time) && $gContent3 != 'Domenica' && $gContent3 != 'Sabato')
-    <div class="row justify-content-center">
-        <div class="alert alert-info" role="alert" style="width: 500px; height:auto;">
-            <h5>Non ci sono orari disponibili per oggi.</h5>
-        </div>
-    </div>
-    @endif
-    @if (count(DB::table('visits')->where('date', $date3)->get()) == count($timeSabato) && $gContent3 == 'Sabato')
-    <div class="row justify-content-center">
-        <div class="alert alert-info" role="alert" style="width: 500px; height:auto;">
-            <h5>Non ci sono orari disponibili per oggi.</h5>
-        </div>
-    </div>
-    @endif
-</div>
-<div class="row row-space justify-content-center" id="content4" style="display:none">
-    @if($gContent4 != 'Domenica' && $gContent4 != 'Sabato')
-    <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
-        @for($i = 0; $i < count($time); $i++) @if (DB::table('visits')->where('date', $date4)->where('time',$time[$i])->doesntExist())
-            <label class="btn btn-orario btn-outline-primary font-weight-bold col-md">{{ $time[$i] }}
-                <input type="radio" name="time" id="{{ $time[$i] }}" value="{{ $time[$i] }}">
-            </label>
+            @if ($gContent4 == 'Sabato')
+                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons" align="left">
+                    @for($i = 0; $i < count($timeSabato); $i++) 
+                        @if (DB::table('visits')->where('date', $date4)->where('time',$timeSabato[$i])->doesntExist())
+                                <label class="btn btn-orario btn-outline-primary font-weight-bold">{{ $timeSabato[$i] }}
+                                    <input type="radio" name="time" id="{{ $timeSabato[$i] }}" value="{{ $timeSabato[$i] }}">
+                                </label>
+                        @endif
+                    @endfor
+                </div>
+                @if (count(DB::table('visits')->where('date', $date4)->get()) == count($timeSabato))
+                    <div class="row justify-content-center">
+                        <div class="alert alert-info col-lg-6" role="alert">
+                            <h5>Non ci sono orari disponibili per oggi.</h5>
+                        </div>
+                    </div>
+                @endif
             @endif
-            @endfor
-    </div>
-    @elseif ($gContent4 == 'Sabato')
-    <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
-        @for($i = 0; $i < count($timeSabato); $i++) @if (DB::table('visits')->where('date', $date4)->where('time',$timeSabato[$i])->doesntExist())
-            <label class="btn btn-orario btn-outline-primary font-weight-bold col-md">{{ $timeSabato[$i] }}
-                <input type="radio" name="time" id="{{ $timeSabato[$i] }}" value="{{ $timeSabato[$i] }}">
-            </label>
+            @if ($gContent4 == 'Domenica')
+                <div class="row justify-content-center">
+                    <div class="alert alert-info col-lg-6" role="alert">
+                        <h5>Non è possibile prenotare appuntamenti per Domenica.</h5>
+                    </div>
+                </div>            
             @endif
-            @endfor
-    </div>
-    @else
-    <div class="row justify-content-center">
-        <div class="alert alert-info" role="alert" style="width: 500px; height:auto;">
-            <h5>Non è possibile prenotare appuntamenti per Domenica.</h5>
         </div>
-    </div>
-    @endif
-    @if (count(DB::table('visits')->where('date', $date4)->get()) == count($time) && $gContent4 != 'Domenica' && $gContent4 != 'Sabato')
-    <div class="row justify-content-center">
-        <div class="alert alert-info" role="alert" style="width: 500px; height:auto;">
-            <h5>Non ci sono orari disponibili per oggi.</h5>
-        </div>
-    </div>
-    @endif
-    @if (count(DB::table('visits')->where('date', $date4)->get()) == count($timeSabato) && $gContent4 == 'Sabato')
-    <div class="row justify-content-center">
-        <div class="alert alert-info" role="alert" style="width: 500px; height:auto;">
-            <h5>Non ci sono orari disponibili per oggi.</h5>
-        </div>
-    </div>
-    @endif
-</div>
-<div class="row row-space justify-content-center" id="content5" style="display:none">
-    @if($gContent5 != 'Domenica' && $gContent5 != 'Sabato')
-    <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
-        @for($i = 0; $i < count($time); $i++) @if (DB::table('visits')->where('date', $date5)->where('time',$time[$i])->doesntExist())
-            <label class="btn btn-orario btn-outline-primary font-weight-bold col-md">{{ $time[$i] }}
-                <input type="radio" name="time" id="{{ $time[$i] }}" value="{{ $time[$i] }}">
-            </label>
+
+        <div class="row row-space justify-content-center" id="content5" style="display:none">
+            @if($gContent5 != 'Domenica' && $gContent5 != 'Sabato')
+                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons" align="left">
+                    @for($i = 0; $i < count($time); $i++)
+                        @if (DB::table('visits')->where('date', $date5)->where('time',$time[$i])->doesntExist())
+                                <label class="btn btn-orario btn-outline-primary font-weight-bold">{{ $time[$i] }}
+                                    <input type="radio" name="time" id="{{ $time[$i] }}" value="{{ $time[$i] }}">
+                                </label>
+                        @endif
+                    @endfor
+                </div> 
+                @if (count(DB::table('visits')->where('date', $dat53)->get()) == count($time))
+                    <div class="row justify-content-center">
+                        <div class="alert alert-info col-lg-6" role="alert">
+                            <h5>Non ci sono orari disponibili per oggi.</h5>
+                        </div>
+                    </div>
+                @endif
             @endif
-            @endfor
-    </div>
-    @elseif ($gContent5 == 'Sabato')
-    <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
-        @for($i = 0; $i < count($timeSabato); $i++) @if (DB::table('visits')->where('date', $date5)->where('time',$timeSabato[$i])->doesntExist())
-            <label class="btn btn-orario btn-outline-primary font-weight-bold col-md">{{ $timeSabato[$i] }}
-                <input type="radio" name="time" id="{{ $timeSabato[$i] }}" value="{{ $timeSabato[$i] }}">
-            </label>
+            @if ($gContent5 == 'Sabato')
+                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons" align="left">
+                    @for($i = 0; $i < count($timeSabato); $i++) 
+                        @if (DB::table('visits')->where('date', $date5)->where('time',$timeSabato[$i])->doesntExist())
+                                <label class="btn btn-orario btn-outline-primary font-weight-bold">{{ $timeSabato[$i] }}
+                                    <input type="radio" name="time" id="{{ $timeSabato[$i] }}" value="{{ $timeSabato[$i] }}">
+                                </label>
+                        @endif
+                    @endfor
+                </div>
+                @if (count(DB::table('visits')->where('date', $date5)->get()) == count($timeSabato))
+                    <div class="row justify-content-center">
+                        <div class="alert alert-info col-lg-6" role="alert">
+                            <h5>Non ci sono orari disponibili per oggi.</h5>
+                        </div>
+                    </div>
+                @endif
             @endif
-            @endfor
-    </div>
-    @else
-    <div class="row justify-content-center">
-        <div class="alert alert-info" role="alert" style="width: 500px; height:auto;">
-            <h5>Non è possibile prenotare appuntamenti per Domenica.</h5>
-        </div>
-    </div>
-    @endif
-    @if (count(DB::table('visits')->where('date', $date5)->get()) == count($time) && $gContent5 != 'Domenica' && $gContent5 != 'Sabato')
-    <div class="row justify-content-center">
-        <div class="alert alert-info" role="alert" style="width: 500px; height:auto;">
-            <h5>Non ci sono orari disponibili per oggi.</h5>
-        </div>
-    </div>
-    @endif
-    @if (count(DB::table('visits')->where('date', $date5)->get()) == count($timeSabato) && $gContent5 == 'Sabato')
-    <div class="row justify-content-center">
-        <div class="alert alert-info" role="alert" style="width: 500px; height:auto;">
-            <h5>Non ci sono orari disponibili per oggi.</h5>
-        </div>
-    </div>
-    @endif
-</div>
-<div class="row row-space justify-content-center" id="content6" style="display:none">
-    @if($gContent6 != 'Domenica' && $gContent6 != 'Sabato')
-    <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
-        @for($i = 0; $i < count($time); $i++) @if (DB::table('visits')->where('date', $date6)->where('time',$time[$i])->doesntExist())
-            <label class="btn btn-orario btn-outline-primary font-weight-bold col-md">{{ $time[$i] }}
-                <input type="radio" name="time" id="{{ $time[$i] }}" value="{{ $time[$i] }}">
-            </label>
+            @if ($gContent5 == 'Domenica')
+                <div class="row justify-content-center">
+                    <div class="alert alert-info col-lg-6" role="alert">
+                        <h5>Non è possibile prenotare appuntamenti per Domenica.</h5>
+                    </div>
+                </div>            
             @endif
-            @endfor
-    </div>
-    @elseif ($gContent6 == 'Sabato')
-    <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
-        @for($i = 0; $i < count($timeSabato); $i++) @if (DB::table('visits')->where('date', $date6)->where('time',$timeSabato[$i])->doesntExist())
-            <label class="btn btn-orario btn-outline-primary font-weight-bold col-md">{{ $timeSabato[$i] }}
-                <input type="radio" name="time" id="{{ $timeSabato[$i] }}" value="{{ $timeSabato[$i] }}">
-            </label>
+        </div>
+
+        <div class="row row-space justify-content-center" id="content6" style="display:none">
+            @if($gContent6 != 'Domenica' && $gContent6 != 'Sabato')
+                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons" align="left">
+                    @for($i = 0; $i < count($time); $i++)
+                        @if (DB::table('visits')->where('date', $date6)->where('time',$time[$i])->doesntExist())
+                                <label class="btn btn-orario btn-outline-primary font-weight-bold">{{ $time[$i] }}
+                                    <input type="radio" name="time" id="{{ $time[$i] }}" value="{{ $time[$i] }}">
+                                </label>
+                        @endif
+                    @endfor
+                </div> 
+                @if (count(DB::table('visits')->where('date', $date3)->get()) == count($time))
+                    <div class="row justify-content-center">
+                        <div class="alert alert-info col-lg-6" role="alert">
+                            <h5>Non ci sono orari disponibili per oggi.</h5>
+                        </div>
+                    </div>
+                @endif
             @endif
-            @endfor
-    </div>
-    @else
-    <div class="row justify-content-center">
-        <div class="alert alert-info" role="alert" style="width: 500px; height:auto;">
-            <h5>Non è possibile prenotare appuntamenti per Domenica.</h5>
+            @if ($gContent6 == 'Sabato')
+                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons" align="left">
+                    @for($i = 0; $i < count($timeSabato); $i++) 
+                        @if (DB::table('visits')->where('date', $date6)->where('time',$timeSabato[$i])->doesntExist())
+                                <label class="btn btn-orario btn-outline-primary font-weight-bold">{{ $timeSabato[$i] }}
+                                    <input type="radio" name="time" id="{{ $timeSabato[$i] }}" value="{{ $timeSabato[$i] }}">
+                                </label>
+                        @endif
+                    @endfor
+                </div>
+                @if (count(DB::table('visits')->where('date', $date6)->get()) == count($timeSabato))
+                    <div class="row justify-content-center">
+                        <div class="alert alert-info col-lg-6" role="alert">
+                            <h5>Non ci sono orari disponibili per oggi.</h5>
+                        </div>
+                    </div>
+                @endif
+            @endif
+            @if ($gContent6 == 'Domenica')
+                <div class="row justify-content-center">
+                    <div class="alert alert-info col-lg-6" role="alert">
+                        <h5>Non è possibile prenotare appuntamenti per Domenica.</h5>
+                    </div>
+                </div>            
+            @endif
         </div>
-    </div>
-    @endif
-    @if (count(DB::table('visits')->where('date', $date6)->get()) == count($time) && $gContent6 != 'Domenica' && $gContent6 != 'Sabato')
-    <div class="row justify-content-center">
-        <div class="alert alert-info" role="alert" style="width: 500px; height:auto;">
-            <h5>Non ci sono orari disponibili per oggi.</h5>
-        </div>
-    </div>
-    @endif
-    @if (count(DB::table('visits')->where('date', $date6)->get()) == count($timeSabato) && $gContent6 == 'Sabato')
-    <div class="row justify-content-center">
-        <div class="alert alert-info" role="alert" style="width: 500px; height:auto;">
-            <h5>Non ci sono orari disponibili per oggi.</h5>
-        </div>
-    </div>
-    @endif
-</div>
+
+        
+
+        
+
 <?php
 $id = Auth::user()->id;
 $info = DB::table('patients')->where('id_user', $id)->select('id_doctor', 'id')->get();
@@ -424,8 +459,8 @@ foreach ($info as $patient) {
 ?>
 <input id="id_doctor" name="id_doctor" type="hidden" value="{{ $res1 }}">
 <input id="id_patient" name="id_patient" type="hidden" value="{{ $res2 }}">
-</div>
 </form>
+
 </div>
 @endif
 @endsection

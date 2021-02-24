@@ -8,6 +8,7 @@ use Auth;
 use DB;
 use App\Doctor;
 use App\Patient;
+use Illuminate\Support\Facades\Validator;
 
 class VisitController extends Controller
 {

@@ -288,7 +288,7 @@
                             $surname = $u->surname;
                             }
                             ?>
-                            <label class="col-lg-2 btn quadrato-list font-weight-bold"
+                            <label class="col-lg-2 btn btn-orario btn-outline-primary font-weight-bold"
                             data-whatever1="{{ $fiscal_code }}" data-whatever2="{{ $name }}"
                             data-whatever3="{{ $surname }}"
                             data-whatever4="{{ date('d/m/Y', strtotime($dob)) }}"
@@ -298,9 +298,7 @@
                             data-whatever8="{{ $street_number }}"
                             data-whatever9="{{ $postal_code }}"
                             data-whatever10="{{ $city }}" data-toggle="modal"
-                            data-target="#exampleModal2" type="button"
-                            onmouseover="this.style.background='#3490dc';this.style.color='#fff';"
-                            onmouseout="this.style.background='#fff';this.style.color='#000';">
+                            data-target="#exampleModal2" type="button">
                             <p>{{ $time[$i] }}</p></label> @endif
                         @endfor
                     </div>
@@ -628,7 +626,6 @@
                     </div>
                 @endif
             </div>
-        </div>
         </div>
 
 
