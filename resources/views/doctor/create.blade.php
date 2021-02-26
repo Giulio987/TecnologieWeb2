@@ -74,14 +74,11 @@ $name = Auth::user()->name;
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
-
-                <!--Fare il select con gli edifici disponibili o aggiungere la possibilità di crearne uno--> 
                 <div class="form-group">
                     <label for="id_building">Edificio</label><br>
                     <select name="id_building" id="building">
                         @foreach($buildings as $b)
-                        {{$b->street_address}}
-                            <option value="{{$b->id}}">{{$b->street_address }} - {{$b->street_number}} - {{$b->postal_code}} - {{$b->city}}</option>
+                            <option value="{{$b->id}}">{{$b->id}} - {{$b->street_address }} - {{$b->street_number}} - {{$b->postal_code}} - {{$b->city}}</option>
                         @endforeach
                     </select>
                     @error('id_building')

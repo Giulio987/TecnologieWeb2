@@ -43,9 +43,9 @@ class DoctorController extends Controller
             'name' 		         => 'required | string | max:20',
             'surname'            => 'required | string | max:20',
             'dob'                => 'required | date',
-            'phone_number'       => 'required | numeric | max:15',
+            'phone_number'       => 'required | string | max:15',
             'gender'             => 'required | string | max:1',
-            'email'              => 'required | string | email | max:50',
+            'email'              => 'required | string | email | max:50 | unique:users',
             'password'           => 'required',
         ], [
             'name.required'           => 'Inserimento obbligatorio',
@@ -54,7 +54,7 @@ class DoctorController extends Controller
             'surname.max'             => 'Il cognome deve essere massimo di 20 caratteri',
             'phone_number.required'   => 'Inserimento obbligatorio',
             'dob.required'            => 'Inserimento obbligatorio',
-            'phone_number.numeric'    => 'Il numero di telefono deve essere composto solo da numeri',
+            'phone_number.string'     => 'Il numero di telefono deve essere composto solo da numeri',
             'phone_number.max'        => 'Il numero di telefono deve essere massimo di 15 caratteri',
             'gender.required'         => 'Inserimento obbligatorio', // custom message
             'gender.max'              => 'Il sesso deve essere massimo di un carattere', // custom message
@@ -65,6 +65,7 @@ class DoctorController extends Controller
             'email.required'          => 'Inserimento obbligatorio',
             'email.string'            => 'L email deve essere una stringa.',
             'email.max'               => 'L email deve essere massimo di 50 caratteri',
+            'email.unique'            => 'L email è già presente nel database',
             'password.required'       => 'Inserimento obbligatorio',
 
         ]);
@@ -79,7 +80,8 @@ class DoctorController extends Controller
     public function store(Request $request)
     {
         $this->validator($request->all())->validate();
-
+        
+        
         $user = User::create([
             'name'          => $request->name,
             'surname'       => $request->surname,
@@ -89,15 +91,14 @@ class DoctorController extends Controller
         ]);  
         //recuperiamo l'id_user
         $id_user = $user->id;
-        $id_building = "1";
-
         Doctor::create([
             'fiscal_code'   => $request->fiscal_code,
             'gender'        => $request->gender,
             'dob'           => $request->dob,
             'phone_number'  => $request->phone_number,
             'id_user'       => $id_user,
-            'id_building'   => $id_building,
+            'id_building'   => $request->id_building,
+            'id_user'       => $id_user,
         ]);
 
         //messagges view per i messaggi 
@@ -133,7 +134,8 @@ class DoctorController extends Controller
      */
     public function edit(Doctor $doctor)
     {
-        return view('doctor.edit', compact('doctor'));
+        $buildings = Building::all();
+        return view('doctor.edit', compact('doctor', 'buildings'));
     }
 
     /**
@@ -148,11 +150,9 @@ class DoctorController extends Controller
         $this->validator($request->all())->validate();
 
         $input = $request->all();
-
         $user = User::find($doctor->id_user);
         $user->name = $input['name'];
         $user->surname = $input['surname'];
-        $user->email = $input['email'];
         $user->save();
 
         $doctor->fiscal_code = $input['fiscal_code'];

@@ -38,7 +38,7 @@ class BuildingController extends Controller
         return Validator::make($data, [
             'street_address'     => ['required', 'string', 'max:50'],
             'street_number'      => ['required', 'string', 'max:8'],
-            'postal_code'        => ['required', 'integer', 'max:5'],
+            'postal_code'        => ['required', 'numeric', 'max:5'],
             'city'               => ['required', 'string', 'max:30'],
         ], [
             'street_address.required'   => 'Inserimento obbligatorio',
@@ -48,7 +48,7 @@ class BuildingController extends Controller
             'street_number.string'      => 'Il numero civico deve una stringa',
             'street_number.max'         => 'Il numero civico è lungo massimo 8 caratteri',
             'postal_code.required'      => 'Inserimento obbligatorio',
-            'postal_code.integer'       => 'Il codice postale deve essere composto da soli numeri',
+            'postal_code.numeric'       => 'Il codice postale deve essere composto da soli numeri',
             'postal_code.max'           => 'Il codice postale è lungo massimo 5 caratteri',
             'city.required'             => 'Inserimento obbligatorio',
             'city.string'               => 'La città deve esssere composta da lettere',

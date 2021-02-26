@@ -34,14 +34,6 @@
             @enderror
         </div>
         <div class="form-group">
-            <label for="email">Email</label>
-            <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email }}">
-            <small class="form-text text-muted">Modifica l'email del dottore</small>
-            @error('email')
-                <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-          </div>
-        <div class="form-group">
             <label for="fiscal_code">Codice Fiscale</label>
             <input type="text" class="form-control @error('fiscal_code') is-invalid @enderror" name="fiscal_code" value="{{ $doctor->fiscal_code }}">
             <small class="form-text text-muted">Modifica il codice fiscale del dottore</small>
@@ -75,12 +67,17 @@
         </div>
         <div class="form-group">
             <label for="id_building">Id Edificio</label>
-            <input type="number" class="form-control @error('id_building') is-invalid @enderror" name="id_building" value="{{ $doctor->id_building }}">
+            <select name="id_building" id="building">
+                @foreach($buildings as $b)
+                    <option value="{{$b->id}}">{{$b->id}} - {{$b->street_address }} - {{$b->street_number}} - {{$b->postal_code}} - {{$b->city}}</option>
+                @endforeach
+            </select>
             <small class="form-text text-muted">Modifica l'edificio di appartenenza</small>
             @error('id_building')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
+        
         <button type="submit" class="btn btn-primary">Aggiorna</button>
 
         <a href="{{ URL::action('DoctorController@index') }}" class="btn btn-secondary">Indietro</a>
