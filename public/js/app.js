@@ -50378,7 +50378,7 @@ $(document).ready(function() {
 });
 
 function Show1() {
-    $("#content1").toggle("slow", function() {
+    $("#content1").show("slow", function() {
         // Animation complete.
     });
     document.getElementById('content2').style.display = 'none';
@@ -50390,7 +50390,7 @@ function Show1() {
 
 function Show2() {
     document.getElementById('content1').style.display = 'none';
-    $("#content2").toggle("slow", function() {
+    $("#content2").show("slow", function() {
         // Animation complete.
     });
     document.getElementById('content3').style.display = 'none';
@@ -50402,7 +50402,7 @@ function Show2() {
 function Show3() {
     document.getElementById('content1').style.display = 'none';
     document.getElementById('content2').style.display = 'none';
-    $("#content3").toggle("slow", function() {
+    $("#content3").show("slow", function() {
         // Animation complete.
     });
     document.getElementById('content4').style.display = 'none';
@@ -50414,7 +50414,7 @@ function Show4() {
     document.getElementById('content1').style.display = 'none';
     document.getElementById('content2').style.display = 'none';
     document.getElementById('content3').style.display = 'none';
-    $("#content4").toggle("slow", function() {
+    $("#content4").show("slow", function() {
         // Animation complete.
     });
     document.getElementById('content5').style.display = 'none';
@@ -50426,7 +50426,7 @@ function Show5() {
     document.getElementById('content2').style.display = 'none';
     document.getElementById('content3').style.display = 'none';
     document.getElementById('content4').style.display = 'none';
-    $("#content5").toggle("slow", function() {
+    $("#content5").show("slow", function() {
         // Animation complete.
     });
     document.getElementById('content6').style.display = 'none';
@@ -50438,7 +50438,7 @@ function Show6() {
     document.getElementById('content3').style.display = 'none';
     document.getElementById('content4').style.display = 'none';
     document.getElementById('content5').style.display = 'none';
-    $("#content6").toggle("slow", function() {
+    $("#content6").show("slow", function() {
         // Animation complete.
     });
 }
@@ -50481,6 +50481,25 @@ $(document).ready(function() {
         });
     });
 });
+
+(function() {
+    'use strict';
+    window.addEventListener('load', function() {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    }, false);
+})();
+
 
 $(document).ready(function() {
     $('#exampleModal3').on('show.bs.modal', function(event) {

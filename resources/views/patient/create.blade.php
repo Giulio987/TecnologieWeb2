@@ -31,140 +31,133 @@ $name = Auth::user()->name;
             Crea un profilo per un tuo paziente, successivamente potrà accedere alla piattaforma.
         </h4>
     </div>
+    <form action="{{ URL::action('PatientController@store') }}" method="POST"  novalidate>
+
     <div class="row row-space justify-content-center">
         <h5>
-            Compila tutti i campi e crea il tuo nuovo paziente.
+            Compila tutti i campi e crea il tuo nuovo paziente.<button type="submit" name="submit" class="btn btn-outline-success btn-prenota font-weight-bold col-lg-2">+</button>
         </h5>
     </div>
 
-        <div class="container">
+    <div class="row row-space justify-content-center border-form">
 
-            <form action="{{ URL::action('PatientController@store') }}" method="POST"  novalidate>
+    <div class="col-lg-4">
+        <div class="row row-space justify-content-center">
                 {{ csrf_field() }}
-                <div class="form-group">
-                    <label for="name">Nome</label>
+                <div class="form-group label-space">
                     <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Nome" name="name" required>
                     @error('name')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
+        </div>
+        <div class="row row-space justify-content-center">
 
-                <div class="form-group">
-                    <label for="surname">Cognome</label>
+                <div class="form-group label-space">
                     <input type="text" class="form-control @error('surname') is-invalid @enderror" placeholder="Cognome" name="surname" required>
                     @error('surname')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
+        </div>
+        <div class="row row-space justify-content-center">
 
-                <div class="form-group">
-                    <label for="dob">Data di nascita</label>
+                <div class="form-group label-space">
                     <input type="date" class="form-control @error('dob') is-invalid @enderror" name="dob" required>
                     @error('dob')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
+        </div>
+        <div class="row row-space justify-content-center">
 
-                <div class="form-group">
-                    <label for="gender">Sesso</label>
+                <div class="form-group label-space">
                     <input type="text" class="form-control @error('gender') is-invalid @enderror" placeholder="Sesso" name="gender" required>
                     @error('gender')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
+        </div>
+            </div>
 
-                <div class="form-group">
-                    <label for="fiscal_code">Codice Fiscale</label>
+            
+            <div class="col-lg-4">
+        <div class="row row-space justify-content-center">
+                <div class="form-group label-space">
                     <input type="text" class="form-control @error('fiscal_code') is-invalid @enderror" placeholder="Codice Fiscale" name="fiscal_code" required>
                     @error('fiscal_code')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
-
-                <div class="form-group">
-                    <label for="street_address">Indirizzo Domicilio</label>
+        </div>
+        <div class="row row-space justify-content-center">
+                <div class="form-group label-space">
                     <input type="text" class="form-control @error('street_address') is-invalid @enderror" placeholder="Via/Viale/Piazza" name="street_address" required>
                     @error('street_address')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
+        </div>
+        <div class="row row-space justify-content-center">
 
-                <div class="form-group">
-                    <label for="street_number">Numero Civico</label>
+                <div class="form-group label-space">
                     <input type="text" class="form-control @error('street_number') is-invalid @enderror" placeholder="Numero civico" name="street_number" required>
                     @error('street_number')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
-
-                <div class="form-group">
-                    <label for="city">Città</label>
+        </div>
+        <div class="row row-space justify-content-center">
+                <div class="form-group label-space">
                     <input type="text" class="form-control @error('city') is-invalid @enderror" placeholder="Città" name="city" required>
                     @error('city')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
+        </div>
+</div>
 
-                <div class="form-group">
-                    <label for="postal_code">Codice Postale</label>
+        <div class="col-lg-4">
+        <div class="row row-space justify-content-center">
+                <div class="form-group label-space">
                     <input type="text" class="form-control @error('postal_code') is-invalid @enderror" placeholder="Codice Postale" name="postal_code" required>
                     @error('postal_code')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
+        </div>
 
-                <div class="form-group">
-                    <label for="phone_number">Numero di Telefono</label>
+        <div class="row row-space justify-content-center">
+                    <div class="form-group label-space">
                     <input type="text" class="form-control @error('phone_number') is-invalid @enderror" placeholder="Phone Number" name="phone_number" required>
                     @error('phone_number')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
-
-                <div class="form-group">
-                    <label for="email">Email</label>
+        </div>
+        <div class="row row-space justify-content-center">
+                <div class="form-group label-space">
                     <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email" required>
-                    <small id="email" class="form-text text-muted"></small>
                     @error('email')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
+</div>
+        <div class="row row-space justify-content-center">
+                <div class="form-group label-space">
                     <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Password" name="password" required>
                     @error('password')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
-                
+</div>
+</div>
+</div>       
 
-                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
 
-        <script type="application/javascript">
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
-        (function() {
-            'use strict';
-            window.addEventListener('load', function() {
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                var forms = document.getElementsByClassName('needs-validation');
-                // Loop over them and prevent submission
-                var validation = Array.prototype.filter.call(forms, function(form) {
-                    form.addEventListener('submit', function(event) {
-                        if (form.checkValidity() === false) {
-                            event.preventDefault();
-                            event.stopPropagation();
-                        }
-                        form.classList.add('was-validated');
-                    }, false);
-                });
-            }, false);
-        })();
-        $(document).ready(function() {
-            $("#selUser").select2();
-        });
-    </script>
+      
 
     @endif
 @endsection
