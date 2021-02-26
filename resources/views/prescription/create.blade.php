@@ -58,15 +58,15 @@ $name = Auth::user()->name;
     <div class="pt-5 row row-space justify-content-center align-items-center">
       <div class="col-lg-6" style="display:none" id="contentUser">
         <select id="selUser" name="id_patient" style="width:500px;height:auto;">
-          @foreach ($patient as $patient)
+          @foreach ($patient as $p)
           <?php
-          $user = DB::table('users')->where('id', $patient->id_user)->select('name', 'surname')->get();
+          $user = DB::table('users')->where('id', $p->id_user)->select('name', 'surname')->get();
           foreach ($user as $info) {
             $nome = $info->name;
             $cognome = $info->surname;
           }
           ?>
-          <option value="{{ $patient->id }}">{{ $cognome }} - {{ $nome }} - {{ $patient->fiscal_code }}</option>
+          <option value="{{ $p->id }}">{{ $cognome }} - {{ $nome }} - {{ $p->fiscal_code }}</option>
           @endforeach
         </select>
       </div>
