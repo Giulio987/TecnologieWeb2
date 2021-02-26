@@ -50372,6 +50372,7 @@ function ShowVisita() {
 
 }
 
+
 $(document).ready(function() {
     $("#selUser").select2();
 });
@@ -50446,8 +50447,10 @@ function ShowFuture() {
     $("#contentFuture").show("slow", function() {
         // Animation complete.
     });
+    $("#button").show("slow", function() {
+        // Animation complete.
+    });
 
-    document.getElementById('contentFuture').style.display = 'block';
     document.getElementById('contentPassate').style.display = 'none';
 }
 
@@ -50455,9 +50458,11 @@ function ShowPassate() {
     $("#contentPassate").show("slow", function() {
         // Animation complete.
     });
+    $("#button").hide("slow", function() {
+        // Animation complete.
+    });
 
     document.getElementById('contentFuture').style.display = 'none';
-    document.getElementById('contentPassate').style.display = 'block';
 }
 
 function Show() {
@@ -50591,3 +50596,12 @@ function mouseOut5() {
     document.getElementById("card5").style.backgroundColor = "#fff";
     document.getElementById("card5").style.borderColor = "#fff";
 }
+
+
+$(document).ready(function() {
+    $("#convalidare").click(function() {
+        $("#table").toggle("slow", function() {
+            $("#tableConvalidare").toggle("slow", function() {});
+        });
+    });
+});

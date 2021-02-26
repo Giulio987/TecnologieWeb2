@@ -154,13 +154,13 @@
                     <input type="radio" name="type" id="searchVisita" value="visita">
                     <h4 class="font-weight-bold button-padding">Visita</h4>
                 </label>
-                <label class="btn btn-outline-primary quadrato-ricetta col-lg-2">
-                    <input type="radio" name="type" id="searchConvalidare" value="convalidare">
+                <label class="btn btn-outline-primary quadrato-ricetta col-lg-2" >
+                    <input type="checkbox" name="convalidare" id="convalidare">
                     <h4 class="font-weight-bold button-padding">Convalidare</h4>
                 </label>
             </div>
         </div>
-        <div class="row row-space justify-content-center">
+        <div class="row row-space justify-content-center" id="table">
             <div class="table-responsive" style="white-space: nowrap;">
                 <table class="table table-borderless table-hover table-border">
                     <thead>
@@ -187,7 +187,7 @@
                                         data-whatever2="{{ $p->rfe }}"
                                         data-whatever3="{{ $p->date }}">Visualizza descrizione</button></td>
                                 @else
-                                <td>RFE non visualizzabile</td>
+                                <td>non visualizzabile</td>
                                 <td><button type="button" class="btn btn-outline-primary" data-toggle="modal"
                                         data-target="#exampleModal1" data-whatever1="{{ $p->description }}"
                                         data-whatever2="{{ 'RFE non visualizzabile' }}"
@@ -198,6 +198,46 @@
                                     {{ $p->status }}</td>
                                 <td style="display:none">{{ $p->type }}</td>
                             </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row row-space justify-content-center" id="tableConvalidare" style="display:none">
+            <div class="table-responsive" style="white-space: nowrap;">
+                <table class="table table-borderless table-hover table-border">
+                    <thead>
+                        <tr class="bg-info" style="color:#fff;">
+                            <th scope="col-lg"
+                                style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">
+                                Data</th>
+                            <th scope="col-lg">RFE</th>
+                            <th scope="col-lg">Descrizione</th>
+                            <th scope="col-lg"
+                                style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">
+                                Stato</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($prescriptions as $p)
+                        @if ($p->status == 'convalidare')
+
+                            <tr class="font-weight-bold text-uppercase" style="color:#626262;" id="{{ $p->type }}">
+                                <td style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">
+                                    {{ $p->date }}</th>
+                                <td>non visualizzabile</td>
+                                <td><button type="button" class="btn btn-outline-primary" data-toggle="modal"
+                                        data-target="#exampleModal1" data-whatever1="{{ $p->description }}"
+                                        data-whatever2="{{ 'RFE non visualizzabile' }}"
+                                        data-whatever3="{{ $p->date }}">Visualizza descrizione</button></td>
+                                <td
+                                    style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">
+                                    {{ $p->status }}</td>
+                                <td style="display:none">{{ $p->type }}</td>
+                            </tr>
+                            @endif
+
                         @endforeach
                     </tbody>
                 </table>

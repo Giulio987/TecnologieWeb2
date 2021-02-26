@@ -670,12 +670,12 @@
             </div>
             <div class="row row-space justify-content-center">
                 <h4>
-                    Visualizza le tue visite passate o future con il tuo medico di base. </h4>
+                    Seleziona e visualizza le tue visite passate o future con il tuo medico di base. </h4>
             </div>
             <div class=" row row-space justify-content-center">
                 <h5>
-                    Seleziona visite passate o future e visualizza le tue visite.
-                </h5>
+                    Tra le Visite Future puoi selezionare la visita ed eliminarla.<a class="col-lg-2" ><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x-circle btn-outline-danger btn-circle" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg></a>
+            </h5>
             </div>
 
 
@@ -700,7 +700,7 @@
                     @foreach ($visits as $v)
                         @if (strtotime($v->date . ' ' . $v->time) > strtotime(date('Y/m/d H:i')))
                             <!-- visite future -->
-                            <label class="btn btn-orario btn-outline-primary font-weight-bold">
+                            <label class="btn label-visit btn-outline-primary font-weight-bold" type="radio" name="visita" value="{{ $v->id }}">
                             <p>{{ date('d/m/Y', strtotime($v->date)) }}</p>
                             <p>{{ date('H:i', strtotime($v->time)) }}</p>
                             </label>
@@ -714,9 +714,9 @@
                     @foreach ($visits as $v)
                         @if (strtotime($v->date . ' ' . $v->time) <= strtotime(date('Y/m/d H:i')))
                             <!-- visite passate -->
-                            <label class="btn btn-orario btn-outline-primary font-weight-bold">
-                            <p>{{ date('d/m/Y', strtotime($v->date)) }}</p>
-                            <p>{{ date('H:i', strtotime($v->time)) }}</p>
+                            <label class="label-visit" onmouseover="this.style.color='#fff';this.style.backgroundColor='#3490dc'" onmouseout="this.style.color='#5c5c5c';this.style.backgroundColor='#f0f8ff';this.style.borderColor='#3490dc'">
+                            <p class="font-weight-bold">{{ date('d/m/Y', strtotime($v->date)) }}</p>
+                            <p class="font-weight-bold">{{ date('H:i', strtotime($v->time)) }}</p>
                             </label>
                         @endif
                     @endforeach
