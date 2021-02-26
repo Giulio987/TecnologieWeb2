@@ -28,8 +28,6 @@ $name = Auth::user()->name;
         <h4 class="mb-3">
             Visualizza qui tutti i pazienti quando ti è più comodo.
         </h4>
-        <h5>Per registrare un nuovo paziente clicca qui.<h5><a href="{{ URL::action('PatientController@create') }}" class="col-lg-2"><button class="btn btn-outline-success" style="margin:auto"><p class="text-uppercase">registra paziente</p></button></a>
-
     </div>
     <div class="row row-space justify-content-center">
         <h5>

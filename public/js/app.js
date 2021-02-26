@@ -50521,3 +50521,63 @@ $(document).ready(function() {
         modal.find('#City').text(recipientCity)
     })
 });
+
+function mouseOver1() {
+    document.getElementById("card1").style.color = "#fff";
+    document.getElementById("card1").style.backgroundColor = "#3490dc";
+    document.getElementById("card1").style.borderColor = "#3490dc";
+}
+
+function mouseOut1() {
+    document.getElementById("card1").style.color = "#3490dc";
+    document.getElementById("card1").style.backgroundColor = "#fff";
+    document.getElementById("card1").style.borderColor = "#fff";
+}
+
+function mouseOver2() {
+    document.getElementById("card2").style.color = "#fff";
+    document.getElementById("card2").style.backgroundColor = "#3490dc";
+    document.getElementById("card2").style.borderColor = "#3490dc";
+}
+
+function mouseOut2() {
+    document.getElementById("card2").style.color = "#3490dc";
+    document.getElementById("card2").style.backgroundColor = "#fff";
+    document.getElementById("card2").style.borderColor = "#fff";
+}
+
+function mouseOver3() {
+    document.getElementById("card3").style.color = "#fff";
+    document.getElementById("card3").style.backgroundColor = "#3490dc";
+    document.getElementById("card3").style.borderColor = "#3490dc";
+}
+
+function mouseOut3() {
+    document.getElementById("card3").style.color = "#3490dc";
+    document.getElementById("card3").style.backgroundColor = "#fff";
+    document.getElementById("card3").style.borderColor = "#fff";
+}
+
+function mouseOver4() {
+    document.getElementById("card4").style.color = "#fff";
+    document.getElementById("card4").style.backgroundColor = "#3490dc";
+    document.getElementById("card4").style.borderColor = "#3490dc";
+}
+
+function mouseOut4() {
+    document.getElementById("card4").style.color = "#3490dc";
+    document.getElementById("card4").style.backgroundColor = "#fff";
+    document.getElementById("card4").style.borderColor = "#fff";
+}
+
+function mouseOver5() {
+    document.getElementById("card5").style.color = "#fff";
+    document.getElementById("card5").style.backgroundColor = "#3490dc";
+    document.getElementById("card5").style.borderColor = "#3490dc";
+}
+
+function mouseOut5() {
+    document.getElementById("card5").style.color = "#3490dc";
+    document.getElementById("card5").style.backgroundColor = "#fff";
+    document.getElementById("card5").style.borderColor = "#fff";
+}
