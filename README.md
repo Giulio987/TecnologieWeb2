@@ -10,6 +10,7 @@ COSE DA FARE:
 - vedere se permettere il checked nei bottoni visit e in caso sistemare lo stato active
 - sistemare allineamento btn-orario
 - sistemare ordinamento date e ora in index visit paziente
+- controllare testo dentro modal(allineamento e titoli)
 
 
 

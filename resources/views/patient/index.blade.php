@@ -25,17 +25,20 @@ $name = Auth::user()->name;
         </h1>
     </div>
     <div class="row row-space justify-content-center">
-        <h4>
+        <h4 class="mb-3">
             Visualizza qui tutti i pazienti quando ti è più comodo.
         </h4>
+        <h5>Per registrare un nuovo paziente clicca qui.<h5><a href="{{ URL::action('PatientController@create') }}" class="col-lg-2"><button class="btn btn-outline-success" style="margin:auto"><p class="text-uppercase">registra paziente</p></button></a>
+
     </div>
     <div class="row row-space justify-content-center">
         <h5>
             Ricerca per qualsiasi attributo e visualizza le informazioni del paziente.
+
         </h5>
     </div>
 
-    <div class="row row-space justify-content-center">
+    <div class="row row-space justify-content-center align-items-center">
             <input class="quadrato-ricetta col-lg-4 text-uppercase button-search" id="search" type="text" placeholder="ricerca"  style="padding:1em;">
     </div>
 

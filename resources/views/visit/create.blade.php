@@ -363,7 +363,7 @@ function giornoData($d, $m, $a)
                         @endif
                     @endfor
                 </div> 
-                @if (count(DB::table('visits')->where('date', $dat53)->get()) == count($time))
+                @if (count(DB::table('visits')->where('date', $date5)->get()) == count($time))
                     <div class="row justify-content-center">
                         <div class="alert alert-info col-lg-6" role="alert">
                             <h5>Non ci sono orari disponibili per oggi.</h5>

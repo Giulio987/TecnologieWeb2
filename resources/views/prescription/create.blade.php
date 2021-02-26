@@ -29,7 +29,7 @@ $name = Auth::user()->name;
   </div>
   <form action="{{ URL::action('PrescriptionController@store') }}" method="POST">
     {{ csrf_field() }}
-    <div class=" row row-space justify-content-center">
+    <div class="row row-space justify-content-center">
       <h5>
         Seleziona il tipo, paziente, indica farmaco o visita e crea la prescrizione per il tuo paziente.<button type="submit" name="submit" class="btn btn-outline-success btn-prenota font-weight-bold col-lg-2">+</button>
       </h5>
