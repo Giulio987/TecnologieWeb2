@@ -674,7 +674,7 @@
             </div>
             <div class=" row row-space justify-content-center">
                 <h5>
-                    Tra le Visite Future puoi selezionare la visita ed eliminarla.<a class="col-lg-2" ><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x-circle btn-outline-danger btn-circle" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg></a>
+                    Tra le Visite Future puoi selezionare la visita ed eliminarla.<button id="button" type="submit" name="submit" class="btn btn-outline-danger btn-prenota font-weight-bold col-lg-2" style="display:none">-</button>
             </h5>
             </div>
 
@@ -700,7 +700,8 @@
                     @foreach ($visits as $v)
                         @if (strtotime($v->date . ' ' . $v->time) > strtotime(date('Y/m/d H:i')))
                             <!-- visite future -->
-                            <label class="btn label-visit btn-outline-primary font-weight-bold" type="radio" name="visita" value="{{ $v->id }}">
+                            <label class="btn label-visit btn-outline-primary font-weight-bold">
+                            <input type="radio" name="visita" value="{{ $v->id }}">
                             <p>{{ date('d/m/Y', strtotime($v->date)) }}</p>
                             <p>{{ date('H:i', strtotime($v->time)) }}</p>
                             </label>

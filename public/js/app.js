@@ -50444,25 +50444,27 @@ function Show6() {
 }
 
 function ShowFuture() {
+    $("#contentPassate").hide("slow", function() {
+        // Animation complete.
+    });
     $("#contentFuture").show("slow", function() {
         // Animation complete.
     });
     $("#button").show("slow", function() {
         // Animation complete.
     });
-
-    document.getElementById('contentPassate').style.display = 'none';
 }
 
 function ShowPassate() {
-    $("#contentPassate").show("slow", function() {
-        // Animation complete.
-    });
     $("#button").hide("slow", function() {
         // Animation complete.
     });
-
-    document.getElementById('contentFuture').style.display = 'none';
+    $("#contentFuture").hide("slow", function() {
+        // Animation complete.
+    });
+    $("#contentPassate").show("slow", function() {
+        // Animation complete.
+    });
 }
 
 function Show() {
