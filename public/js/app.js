@@ -50312,6 +50312,16 @@ $(document).ready(function() {
     });
 });
 
+// Filtro di ricerca Convalidare all'interno della tabella
+$(document).ready(function() {
+    $("#searchConvalidare").on("click", function() {
+        var value = $(this).val().toLowerCase();
+        $("tbody tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+});
+
 // Modal descrizione nella lista prescrizioni Paziente
 $(document).ready(function() {
     $('#exampleModal1').on('show.bs.modal', function(event) {

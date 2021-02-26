@@ -144,15 +144,19 @@
                     Seleziona il tipo di ricetta e visualizza.
                 </h5>
             </div>
-        <div class="row row-space justify-content-center">
+        <div class="row row-space justify-content-center align-items-center">
             <div class="btn-group btn-group-toggle justify-content-center w-100 h-100" data-toggle="buttons">
                 <label class="btn btn-outline-primary quadrato-ricetta col-lg-2">
                     <input type="radio" name="type" id="searchFarmaco" value="farmaco">
-                    <h4 class="font-weight-bold" style="padding:1em;">Farmaco</h4>
+                    <h4 class="font-weight-bold button-padding">Farmaco</h4>
                 </label>
                 <label class="btn btn-outline-primary quadrato-ricetta col-lg-2">
                     <input type="radio" name="type" id="searchVisita" value="visita">
-                    <h4 class="font-weight-bold" style="padding:1em;">Visita</h4>
+                    <h4 class="font-weight-bold button-padding">Visita</h4>
+                </label>
+                <label class="btn btn-outline-primary quadrato-ricetta col-lg-2">
+                    <input type="radio" name="type" id="searchConvalidare" value="convalidare">
+                    <h4 class="font-weight-bold button-padding">Convalidare</h4>
                 </label>
             </div>
         </div>

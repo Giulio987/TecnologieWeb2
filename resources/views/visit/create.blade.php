@@ -233,7 +233,7 @@ function giornoData($d, $m, $a)
                     </div>
                 @endif
             @endif
-            @if ($gContent1 == 'Sabato')
+            @if ($gContent2 == 'Sabato')
                 <div class="btn-group-toggle w-100 h-100" data-toggle="buttons" align="left">
                     @for($i = 0; $i < count($timeSabato); $i++) 
                         @if (DB::table('visits')->where('date', $date2)->where('time',$timeSabato[$i])->doesntExist())
