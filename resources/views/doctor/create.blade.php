@@ -75,21 +75,20 @@ $name = Auth::user()->name;
                     @enderror
                 </div>
 
-
-
-
-
                 <!--Fare il select con gli edifici disponibili o aggiungere la possibilità di crearne uno--> 
                 <div class="form-group">
-                    <label for="id_building">Edificio</label>
-                    <input type="text" class="form-control @error('id_building') is-invalid @enderror" placeholder="id_Edificio" name="id_building" required>
+                    <label for="id_building">Edificio</label><br>
+                    <select name="id_building" id="building">
+                        @foreach($buildings as $b)
+                        {{$b->street_address}}
+                            <option value="{{$b->id}}">{{$b->street_address }} - {{$b->street_number}} - {{$b->postal_code}} - {{$b->city}}</option>
+                        @endforeach
+                    </select>
                     @error('id_building')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
-                <div>
-                    <a href="{{URL::action('BuildingController@index')}}" class="btn quadrato-ricetta col-lg-4 text-uppercase">Aggiungi il tuo edificio</a>
-                </div>
+                
                 <div class="form-group">
                     <label for="postal_code">Codice Postale</label>
                     <input type="text" class="form-control @error('postal_code') is-invalid @enderror" placeholder="Codice Postale" name="postal_code" required>

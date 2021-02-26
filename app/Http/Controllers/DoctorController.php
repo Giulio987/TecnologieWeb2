@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Auth;
+use App\Building;
 class DoctorController extends Controller
 {
     /**
@@ -32,8 +33,8 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        $doctors = Doctor::all();
-        return view('doctor.create', compact('doctors'));
+        $buildings = Building::all();
+        return view('doctor.create', compact('buildings'));
     }
 
     protected function validator(array $data)
@@ -42,9 +43,9 @@ class DoctorController extends Controller
             'name' 		         => 'required | string | max:20',
             'surname'            => 'required | string | max:20',
             'dob'                => 'required | date',
-            'phone_number'       => 'required | numeric | max:15 | unique:patients',
+            'phone_number'       => 'required | numeric | max:15',
             'gender'             => 'required | string | max:1',
-            'email'              => 'required | string | email | max:50 | unique:users',
+            'email'              => 'required | string | email | max:50',
             'password'           => 'required',
         ], [
             'name.required'           => 'Inserimento obbligatorio',
@@ -55,7 +56,6 @@ class DoctorController extends Controller
             'dob.required'            => 'Inserimento obbligatorio',
             'phone_number.numeric'    => 'Il numero di telefono deve essere composto solo da numeri',
             'phone_number.max'        => 'Il numero di telefono deve essere massimo di 15 caratteri',
-            'phone_number.unique'     => 'Il numero di telefono inserito è già presente nel database.',
             'gender.required'         => 'Inserimento obbligatorio', // custom message
             'gender.max'              => 'Il sesso deve essere massimo di un carattere', // custom message
             'fiscal_code.required'    => 'Inserimento obbligatorio',
@@ -65,7 +65,6 @@ class DoctorController extends Controller
             'email.required'          => 'Inserimento obbligatorio',
             'email.string'            => 'L email deve essere una stringa.',
             'email.max'               => 'L email deve essere massimo di 50 caratteri',
-            'email.unique'            => 'L email inserita è già presente nel database.',
             'password.required'       => 'Inserimento obbligatorio',
 
         ]);

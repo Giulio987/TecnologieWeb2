@@ -74,9 +74,6 @@ $name = Auth::user()->name;
         <div>
           <label class="label-ricetta">
             <input type="text" class="label-ricetta text-uppercase" placeholder="Inserisci farmaco" class="form-control @error('description') is-invalid @enderror" id="descriptionFarmaco">
-            @error('description')
-              <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
           </label>
         </div>
       </div>
@@ -84,9 +81,6 @@ $name = Auth::user()->name;
         <div>
           <label class="label-ricetta">
             <input type="text" class="label-ricetta text-uppercase" placeholder="Inserisci visita" class="form-control @error('description') is-invalid @enderror" id="descriptionVisita">
-            @error('description')
-              <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
           </label>
         </div>
       </div>
@@ -163,9 +157,6 @@ $name = Auth::user()->name;
         <div>
           <label class="label-ricetta">
             <input type="text" class="label-ricetta text-uppercase" placeholder="Inserisci farmaco" class="form-control @error('description') is-invalid @enderror" id="descriptionFarmaco">
-            @error('description')
-              <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
           </label>
         </div>
       </div>
@@ -173,9 +164,6 @@ $name = Auth::user()->name;
         <div>
           <label class="label-ricetta">
             <input type="text" class="label-ricetta text-uppercase" placeholder="Inserisci visita" class="form-control @error('description') is-invalid @enderror" id="descriptionVisita">
-            @error('description')
-              <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
           </label>
         </div>
       </div>

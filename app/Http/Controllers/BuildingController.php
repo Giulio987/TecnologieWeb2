@@ -33,6 +33,29 @@ class BuildingController extends Controller
         //
     }
 
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'street_address'     => ['required', 'string', 'max:50'],
+            'street_number'      => ['required', 'string', 'max:8'],
+            'postal_code'        => ['required', 'integer', 'max:5'],
+            'city'               => ['required', 'string', 'max:30'],
+        ], [
+            'street_address.required'   => 'Inserimento obbligatorio',
+            'street_address.string'     => 'Inserimento obbligatorio',
+            'street_address.max'        => 'L\'indirizzo può essere lungo massimo 50 caratteri',
+            'street_number.required'    => 'Inserimento obbligatorio',
+            'street_number.string'      => 'Il numero civico deve una stringa',
+            'street_number.max'         => 'Il numero civico è lungo massimo 8 caratteri',
+            'postal_code.required'      => 'Inserimento obbligatorio',
+            'postal_code.integer'       => 'Il codice postale deve essere composto da soli numeri',
+            'postal_code.max'           => 'Il codice postale è lungo massimo 5 caratteri',
+            'city.required'             => 'Inserimento obbligatorio',
+            'city.string'               => 'La città deve esssere composta da lettere',
+            'city.max'                  => 'Impossibile inserire più di 30 caratteri',
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
