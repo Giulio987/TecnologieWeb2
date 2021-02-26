@@ -45,13 +45,19 @@
         </div>
         <div class="form-group">
             <label for="id_doctor">Id Dottore</label>
-            <input type="number" class="form-control" name="id_doctor" value="{{ $visit->id_doctor }}">
+            <input type="number" class="form-control @error('id_doctor') is-invalid @enderror" name="id_doctor" value="{{ $visit->id_doctor }}">
             <small class="form-text text-muted">Modifica l'Id del dottore</small>
+            @error('id_doctor')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div class="form-group">
             <label for="id_patient">Id Paziente</label>
-            <input type="number" class="form-control" name="id_patient" value="{{ $visit->id_patient }}">
+            <input type="number" class="form-control @error('id_patient') is-invalid @enderror" name="id_patient" value="{{ $visit->id_patient }}">
             <small class="form-text text-muted">Modifica l'Id del paziente</small>
+            @error('id_patient')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </div>
 
         <button type="submit" class="btn btn-primary">Aggiorna</button>

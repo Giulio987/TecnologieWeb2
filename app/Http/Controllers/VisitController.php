@@ -72,8 +72,8 @@ class VisitController extends Controller
             'id_patient.integer'      => 'L\'id del paziente deve essere un intero',
             'id_doctor.required'      => 'Inserimento obbligatorio',
             'id_doctor.integer'       => 'L\'id del dottore deve essere un intero',
-            'date.required'           => 'Inserimento obbligatorio',
-            'time.required'           => 'Inserimento obbligatorio',
+            'date.required'           => 'Seleziona una data',
+            'time.required'           => 'Seleziona un orario',
         ]);
     }
 

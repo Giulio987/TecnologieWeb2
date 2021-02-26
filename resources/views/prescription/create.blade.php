@@ -37,11 +37,12 @@ $name = Auth::user()->name;
 
     @if ($errors->any())
     @foreach ($errors->all() as $error)
-    <div class="row justify-content-center col-lg-4" style="margin:0.5em;">
+    <div class="row justify-content-center col-lg-4 " style="margin:0.5em;">
       <h6 class="alert alert-danger alert-error">{{ '*' . $error  }}</h6>
     </div>
     @endforeach
     @endif
+
     <div class="row row-space justify-content-center">
     <div class="btn-group btn-group-toggle justify-content-center w-100 h-100" data-toggle="buttons">
       <label class="btn btn-outline-primary quadrato-ricetta col-lg-2">
@@ -72,14 +73,20 @@ $name = Auth::user()->name;
       <div class="col-lg-6" id="contentFarmaco" style="display:none">
         <div>
           <label class="label-ricetta">
-            <input type="text" class="label-ricetta text-uppercase" placeholder="Inserisci farmaco" class="form-control" id="descriptionFarmaco">
+            <input type="text" class="label-ricetta text-uppercase" placeholder="Inserisci farmaco" class="form-control @error('description') is-invalid @enderror" id="descriptionFarmaco">
+            @error('description')
+              <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
           </label>
         </div>
       </div>
       <div class="col-lg-6" id="contentVisita" style="display:none">
         <div>
           <label class="label-ricetta">
-            <input type="text" class="label-ricetta text-uppercase" placeholder="Inserisci visita" class="form-control" id="descriptionVisita">
+            <input type="text" class="label-ricetta text-uppercase" placeholder="Inserisci visita" class="form-control @error('description') is-invalid @enderror" id="descriptionVisita">
+            @error('description')
+              <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
           </label>
         </div>
       </div>
@@ -155,14 +162,20 @@ $name = Auth::user()->name;
       <div id="contentFarmaco" style="display:none">
         <div>
           <label class="label-ricetta">
-            <input type="text" class="label-ricetta text-uppercase" placeholder="Inserisci farmaco" class="form-control" id="descriptionFarmaco">
+            <input type="text" class="label-ricetta text-uppercase" placeholder="Inserisci farmaco" class="form-control @error('description') is-invalid @enderror" id="descriptionFarmaco">
+            @error('description')
+              <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
           </label>
         </div>
       </div>
       <div id="contentVisita" style="display:none">
         <div>
           <label class="label-ricetta">
-            <input type="text" class="label-ricetta text-uppercase" placeholder="Inserisci visita" class="form-control" id="descriptionVisita">
+            <input type="text" class="label-ricetta text-uppercase" placeholder="Inserisci visita" class="form-control @error('description') is-invalid @enderror" id="descriptionVisita">
+            @error('description')
+              <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
           </label>
         </div>
       </div>

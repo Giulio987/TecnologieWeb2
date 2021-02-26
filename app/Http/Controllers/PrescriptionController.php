@@ -95,9 +95,9 @@ class PrescriptionController extends Controller
             'id_patient.integer'      => 'L\'id del paziente deve essere un intero',
             'id_doctor.required'      => 'Inserimento obbligatorio',
             'id_doctor.integer'       => 'L\'id del dottore deve essere un intero',
-            'description.required'    => 'Inserimento obbligatorio',
+            'description.required'    => 'Inserisci una descrizione',
             'date.required'           => 'Inserimento obbligatorio',
-            'type.required'           => 'Inserimento obbligatorio',
+            'type.required'           => 'Seleziona la tipologia di ricetta',
         ]);
     }
 

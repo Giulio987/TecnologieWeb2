@@ -29,7 +29,7 @@
           <label for="surname">Cognome</label>
           <input type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ $cognome }}">
           <small class="form-text text-muted">Modifica il cognome del dottore</small>
-          @error('surname')
+            @error('surname')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
