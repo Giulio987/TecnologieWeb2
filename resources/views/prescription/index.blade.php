@@ -144,21 +144,24 @@
                     Seleziona il tipo di ricetta e visualizza.
                 </h5>
             </div>
-        <div class="row row-space justify-content-center align-items-center">
-            <div class="btn-group btn-group-toggle justify-content-center w-100 h-100" data-toggle="buttons">
-                <label class="btn btn-outline-primary quadrato-ricetta col-lg-2">
+        <div class="row row-space justify-content-center">
+            <div class="btn-group btn-group-toggle justify-content-center h-100 col-lg-4" data-toggle="buttons" style="padding-right:0px;">
+                <label class="btn btn-outline-primary quadrato-ricetta col-lg-6">
                     <input type="radio" name="type" id="searchFarmaco" value="farmaco">
                     <h4 class="font-weight-bold button-padding">Farmaco</h4>
                 </label>
-                <label class="btn btn-outline-primary quadrato-ricetta col-lg-2">
+                <label class="btn btn-outline-primary quadrato-ricetta col-lg-6">
                     <input type="radio" name="type" id="searchVisita" value="visita">
                     <h4 class="font-weight-bold button-padding">Visita</h4>
                 </label>
-                <label class="btn btn-outline-primary quadrato-ricetta col-lg-2" >
-                    <input type="checkbox" name="convalidare" id="convalidare">
-                    <h4 class="font-weight-bold button-padding">Convalidare</h4>
-                </label>
-            </div>
+             </div>
+                <div class="btn-group btn-group-toggle justify-content-center h-100 col-lg-4" data-toggle="buttons" style="padding-left:0px;">
+
+                    <label class="btn btn-outline-primary quadrato-ricetta col-lg-6" >
+                        <input type="checkbox" name="convalidare" id="convalidare">
+                        <h4 class="font-weight-bold button-padding">Convalidare</h4>
+                    </label>
+                </div>
         </div>
         <div class="row row-space justify-content-center" id="table">
             <div class="table-responsive" style="white-space: nowrap;">
