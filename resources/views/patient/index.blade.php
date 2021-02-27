@@ -14,6 +14,7 @@ $name = Auth::user()->name;
   </button>
 </a>
 </div>
+@if(!strcmp(Auth::user()->role, '1'))
 <div class="row-space justify-content-center" style="margin-right:100px;float:right;">
 <a href="{{ URL::action('PatientController@create') }}">
 <button class="btn btn-outline-primary"><span class="text-uppercase">registra paziente</span>
@@ -23,7 +24,8 @@ $name = Auth::user()->name;
 </button>
 </a>
         
-        </div>
+</div>
+@endif
 <div class="container-lg" align="center">
     <div class="row row-space justify-content-center">
         <h1 class="font-weight-bold">

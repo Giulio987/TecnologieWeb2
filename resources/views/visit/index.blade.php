@@ -129,6 +129,7 @@
         date_default_timezone_set('Europe/Rome');
 
         $time = array('08:30', '09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '15:00', '15:30', '16:00','16:30', '17:00', '17:30', '18:00', '18:30', '19:00');
+        $timeSabato = array('08:30', '09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30');
 
         function giornoData($d, $m, $a)
         {
@@ -295,7 +296,9 @@
                             <p>{{ $time[$i] }}</p></label> 
                             @endif
                         @endfor
-                    </div>
+                        </div>
+                    @endif
+                    @if($gContent1 != 'Sabato' && $gContent1 != 'Domenica')
                     @if($ora == 0)
                     @if (strtotime($time[count($time) - 1]) <= strtotime(date('H:i'))) 
                         <div class="row justify-content-center">
@@ -311,7 +314,26 @@
                         </div>
                     @endif
                     @endif
-                @else
+                    @endif
+                @if($gContent1 == 'Sabato')
+                @if($ora == 0)
+                    @if (strtotime($timeSabato[count($timeSabato) - 1]) <= strtotime(date('H:i'))) 
+                        <div class="row justify-content-center">
+                            <div class="alert alert-info col-lg-8" role="alert">
+                                <h5>Giornata di lavoro terminata, visualizza le visite dei prossimi giorni</h5>
+                            </div>
+                        </div>
+                    @else
+                        <div class="row justify-content-center">
+                            <div class="alert alert-info col-lg-6" role="alert">
+                                <h5>Non ci sono visite prenotate per oggi.</h5>
+                            </div>
+                        </div>
+                    @endif
+                    @endif
+                @endif
+                    
+                @if($gContent1 == 'Domenica')
                     <div class="row justify-content-center">
                         <div class="alert alert-info col-lg-3" role="alert">
                                 <h5>Giornata libera.</h5>
