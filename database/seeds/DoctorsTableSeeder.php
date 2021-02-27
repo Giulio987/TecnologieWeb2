@@ -23,7 +23,7 @@ class DoctorsTableSeeder extends Seeder
     ], [
         'fiscal_code'   => 'CHLLVC92M47C950A',
         'gender'        => 'F',
-        'dob'           => '1963-08-27',
+        'dob'           => '1973-08-27',
         'phone_number'  => '053277904',
         'id_building'   => '3',
         'id_user'       => '5',
@@ -32,7 +32,7 @@ class DoctorsTableSeeder extends Seeder
     ], [    
         'fiscal_code'   => 'CLVSDI28P61D491Y',
         'gender'        => 'F',
-        'dob'           => '1933-07-21',
+        'dob'           => '1983-07-21',
         'phone_number'  => '051634292',
         'id_building'   => '2',
         'id_user'       => '6',

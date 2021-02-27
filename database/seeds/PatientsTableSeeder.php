@@ -105,7 +105,7 @@ class PatientsTableSeeder extends Seeder
             'created_at'         => date('Y-m-d h:s:i')
         ], [
             'fiscal_code'        => 'BRSDNA44C25H047K',
-            'dob'                => '1938-11-14',
+            'dob'                => '1988-11-14',
             'phone_number'       => '0510848583',
             'gender'             => 'M',
             'street_address'     => 'Via Val di Fassa',
@@ -119,7 +119,7 @@ class PatientsTableSeeder extends Seeder
         ], [
             'fiscal_code'        => 'BRTLNE98E67H468M',
             
-            'dob'                => '1930-07-26',
+            'dob'                => '1990-07-26',
             'phone_number'       => '0510958493',
             'gender'             => 'F',
             'street_address'     => 'Via G.Ragusa',
