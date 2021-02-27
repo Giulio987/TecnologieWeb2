@@ -40,33 +40,32 @@ class DoctorController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' 		         => 'required | string | max:20',
-            'surname'            => 'required | string | max:20',
-            'dob'                => 'required | date',
-            'phone_number'       => 'required | string | max:15',
-            'gender'             => 'required | string | max:1',
-            'email'              => 'required | string | email | max:50 | unique:users',
-            'password'           => 'required',
+            'name' 		         => ['required', 'string', 'max:20'],
+            'surname'            => ['required', 'string', 'max:20'],
+            'dob'                => ['required', 'date'],
+            'phone_number'       => ['required', 'string', 'max:15'],
+            'gender'             => ['required', 'string', 'max:1'],
+            'fiscal_code'        => ['required', 'min:16', 'max:16'],
+            'id_building'        => ['required'],
         ], [
             'name.required'           => 'Inserimento obbligatorio',
+            'name.string'             => 'Deve essere composto da lettere',
             'name.max'                => 'Il nome deve essere massimo di 20 caratteri',
+            'surname.string'          => 'Deve essere composto da lettere',
             'surname.required'        => 'Inserimento obbligatorio',
             'surname.max'             => 'Il cognome deve essere massimo di 20 caratteri',
-            'phone_number.required'   => 'Inserimento obbligatorio',
             'dob.required'            => 'Inserimento obbligatorio',
+            'dob.date'                => 'Deve essere una data',
+            'phone_number.required'   => 'Inserimento obbligatorio',
             'phone_number.string'     => 'Il numero di telefono deve essere composto solo da numeri',
             'phone_number.max'        => 'Il numero di telefono deve essere massimo di 15 caratteri',
             'gender.required'         => 'Inserimento obbligatorio', // custom message
+            'gender.string'           => 'Deve essere composto da lettere',
             'gender.max'              => 'Il sesso deve essere massimo di un carattere', // custom message
             'fiscal_code.required'    => 'Inserimento obbligatorio',
             'fiscal_code.min'         => 'Il Codice Fiscale deve essere minimo di 16 caratteri',
             'fiscal_code.max'         => 'Il Codice Fiscale deve essere massimo di 16 caratteri',
-            'fiscal_code.unique'      => 'Il Codice Fiscale inserito è già presente nel database.',
-            'email.required'          => 'Inserimento obbligatorio',
-            'email.string'            => 'L email deve essere una stringa.',
-            'email.max'               => 'L email deve essere massimo di 50 caratteri',
-            'email.unique'            => 'L email è già presente nel database',
-            'password.required'       => 'Inserimento obbligatorio',
+            'id_building'             => 'Inserimento obbligatorio',
 
         ]);
     }
