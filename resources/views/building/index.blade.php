@@ -38,28 +38,10 @@
         </div>
         <div class="row row-space justify-content-center">
             <h4>
-                Aggiungi un nuovo edificio direttamente qui
+                Aggsisasdadasdasda
             </h4>
         </div>
-        <div class="row row-space justify-content-center border-form align-items-center py-5">
-            <div class="col-lg-2">
-                    <input type="text" class="form-control" name="street_address" id="street_address" placeholder="Via/Viale/Piazza">
-            </div>
-            <div class="col-lg-2">
-                    <input type="text" class="form-control" name="street_number" id="street_number" placeholder="N°">
-            </div>
-            <div class="col-lg-2">
-                    <input type="text" class="form-control" name="postal_code" id="postal_code" placeholder="CAP">
-            </div>
-            <div class="col-lg-2">
-                    <input type="text" class="form-control" name="city" id="city" placeholder="Città">
-            </div>
-            <div class="col-lg-2">
-
-                <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
-                <a href="" id="add-building-btn" class="btn btn-outline-primary" style="float:right">Aggiungi</a>
-            </div>
-        </div>
+        
         <div class="row row-space justify-content-center">
             <input class="quadrato-ricetta col-lg-4 text-uppercase button-search" id="myInput" type="text"
                 placeholder="ricerca" style="padding:1em;">

@@ -24,10 +24,10 @@ $timeSabato = array('08:30', '09:00', '09:30', '10:00', '10:30', '11:00', '11:30
 
 function giornoData($d, $m, $a)
 {
-    $gShort = array('Domenica', 'Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato');
+    $g = array('Domenica', 'Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato');
     $ts = mktime(0, 0, 0, $m, $d, $a);
     $gd = getdate($ts);
-    return $gShort[$gd['wday']];
+    return $g[$gd['wday']];
 };
 ?>
 <div class="row-space" style="margin-left:100px;float:left;">
@@ -155,7 +155,7 @@ function giornoData($d, $m, $a)
                 <div class="btn-group-toggle w-100 h-100" data-toggle="buttons" align="left">
                     @for($i = 0; $i < count($time); $i++)
                         @if (DB::table('visits')->where('date', $date1)->where('time',$time[$i])->doesntExist() && strtotime($time[$i]) > strtotime(date('H:i')))
-                            <?php $oraDisponibile++ ?>
+                            <?php $oraDisponibile++; ?>
                                 <label class="btn btn-orario btn-outline-primary font-weight-bold">{{ $time[$i] }}
                                     <input type="radio" name="time" id="{{ $time[$i] }}" value="{{ $time[$i] }}">
                                 </label>
@@ -182,7 +182,7 @@ function giornoData($d, $m, $a)
                 <div class="btn-group-toggle w-100 h-100" data-toggle="buttons" align="left">
                     @for($i = 0; $i < count($timeSabato); $i++) 
                         @if (DB::table('visits')->where('date', $date1)->where('time',$timeSabato[$i])->doesntExist() && strtotime($timeSabato[$i]) > strtotime(date('H:i')))
-                            <?php $oraDisponibile++ ?>
+                            <?php $oraDisponibile++; ?>
                                 <label class="btn btn-orario btn-outline-primary font-weight-bold">{{ $timeSabato[$i] }}
                                     <input type="radio" name="time" id="{{ $timeSabato[$i] }}" value="{{ $timeSabato[$i] }}">
                                 </label>
@@ -190,10 +190,10 @@ function giornoData($d, $m, $a)
                     @endfor
                 </div>
                 @if($oraDisponibile == 0)
-                    @if (strtotime($time[count($time) - 1]) <= strtotime(date('H:i'))) 
+                    @if (strtotime($timeSabato[count($timeSabato) - 1]) <= strtotime(date('H:i'))) 
                         <div class="row justify-content-center">
                             <div class="alert alert-info col-lg-6" role="alert">
-                                <h5>L'ambulatorio chiude alle {{ $time[count($time) - 1] }}, prenota per domani</h5>
+                                <h5>L'ambulatorio chiude alle {{ $timeSabato[count($timeSabato) - 1] }}, prenota per domani</h5>
                             </div>
                         </div>
                     @else

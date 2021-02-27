@@ -30,7 +30,8 @@ class BuildingController extends Controller
      */
     public function create()
     {
-        //
+        $buildings = Building::all();
+        return view('building.create', compact('buildings'));
     }
 
     protected function validator(array $data)

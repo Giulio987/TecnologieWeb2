@@ -33,8 +33,7 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        $buildings = Building::all();
-        return view('doctor.create', compact('buildings'));
+        //
     }
 
     protected function validator(array $data)

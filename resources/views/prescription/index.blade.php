@@ -191,10 +191,10 @@
                                         data-whatever2="{{ $p->rfe }}"
                                         data-whatever3="{{ $p->date }}">Visualizza descrizione</button></td>
                                 @else
-                                <td>non visualizzabile</td>
+                                <td>ricetta negata</td>
                                 <td><button type="button" class="btn btn-outline-primary" data-toggle="modal"
                                         data-target="#exampleModal1" data-whatever1="{{ $p->description }}"
-                                        data-whatever2="{{ 'RFE non visualizzabile' }}"
+                                        data-whatever2="{{ 'ricetta negata' }}"
                                         data-whatever3="{{ $p->date }}">Visualizza descrizione</button></td>
                                 @endif
                                 <td
@@ -258,7 +258,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" align="left">
                     <h6 id="description" style="word-wrap: break-word;width:auto;" class="text-uppercase"></h6>
                 </div>
             </div>

@@ -50339,8 +50339,7 @@ function ShowFarmaco() {
     $("#contentFarmaco").toggle("slow", function() {
         // Animation complete.
     });
-    $("#contentUser").show("slow", function() {
-    });
+    $("#contentUser").show("slow", function() {});
     document.getElementById('contentVisita').style.display = 'none';
     document.getElementById('descriptionFarmaco').name = 'description';
     document.getElementById('descriptionVisita').name = '';
@@ -50358,128 +50357,131 @@ function ShowVisita() {
     document.getElementById('descriptionFarmaco').name = '';
 
 }
-$("#selUser").select2();
+$('document').ready(function() {
+    $("#selUser").select2();
+});
 
 function Show1() {
-$("#content1").show("slow", function() {
-    // Animation complete.
-});
-document.getElementById('content2').style.display = 'none';
-document.getElementById('content3').style.display = 'none';
-document.getElementById('content4').style.display = 'none';
-document.getElementById('content5').style.display = 'none';
-document.getElementById('content6').style.display = 'none';
+    $("#content1").show("slow", function() {
+        // Animation complete.
+    });
+    document.getElementById('content2').style.display = 'none';
+    document.getElementById('content3').style.display = 'none';
+    document.getElementById('content4').style.display = 'none';
+    document.getElementById('content5').style.display = 'none';
+    document.getElementById('content6').style.display = 'none';
 }
 
 function Show2() {
-document.getElementById('content1').style.display = 'none';
-$("#content2").show("slow", function() {
-    // Animation complete.
-});
-document.getElementById('content3').style.display = 'none';
-document.getElementById('content4').style.display = 'none';
-document.getElementById('content5').style.display = 'none';
-document.getElementById('content6').style.display = 'none';
+    document.getElementById('content1').style.display = 'none';
+    $("#content2").show("slow", function() {
+        // Animation complete.
+    });
+    document.getElementById('content3').style.display = 'none';
+    document.getElementById('content4').style.display = 'none';
+    document.getElementById('content5').style.display = 'none';
+    document.getElementById('content6').style.display = 'none';
 }
 
 function Show3() {
-document.getElementById('content1').style.display = 'none';
-document.getElementById('content2').style.display = 'none';
-$("#content3").show("slow", function() {
-    // Animation complete.
-});
-document.getElementById('content4').style.display = 'none';
-document.getElementById('content5').style.display = 'none';
-document.getElementById('content6').style.display = 'none';
+    document.getElementById('content1').style.display = 'none';
+    document.getElementById('content2').style.display = 'none';
+    $("#content3").show("slow", function() {
+        // Animation complete.
+    });
+    document.getElementById('content4').style.display = 'none';
+    document.getElementById('content5').style.display = 'none';
+    document.getElementById('content6').style.display = 'none';
 }
 
 function Show4() {
-document.getElementById('content1').style.display = 'none';
-document.getElementById('content2').style.display = 'none';
-document.getElementById('content3').style.display = 'none';
-$("#content4").show("slow", function() {
-    // Animation complete.
-});
-document.getElementById('content5').style.display = 'none';
-document.getElementById('content6').style.display = 'none';
+    document.getElementById('content1').style.display = 'none';
+    document.getElementById('content2').style.display = 'none';
+    document.getElementById('content3').style.display = 'none';
+    $("#content4").show("slow", function() {
+        // Animation complete.
+    });
+    document.getElementById('content5').style.display = 'none';
+    document.getElementById('content6').style.display = 'none';
 }
 
 function Show5() {
-document.getElementById('content1').style.display = 'none';
-document.getElementById('content2').style.display = 'none';
-document.getElementById('content3').style.display = 'none';
-document.getElementById('content4').style.display = 'none';
-$("#content5").show("slow", function() {
-    // Animation complete.
-});
-document.getElementById('content6').style.display = 'none';
+    document.getElementById('content1').style.display = 'none';
+    document.getElementById('content2').style.display = 'none';
+    document.getElementById('content3').style.display = 'none';
+    document.getElementById('content4').style.display = 'none';
+    $("#content5").show("slow", function() {
+        // Animation complete.
+    });
+    document.getElementById('content6').style.display = 'none';
 }
 
 function Show6() {
-document.getElementById('content1').style.display = 'none';
-document.getElementById('content2').style.display = 'none';
-document.getElementById('content3').style.display = 'none';
-document.getElementById('content4').style.display = 'none';
-document.getElementById('content5').style.display = 'none';
-$("#content6").show("slow", function() {
-    // Animation complete.
-});
+    document.getElementById('content1').style.display = 'none';
+    document.getElementById('content2').style.display = 'none';
+    document.getElementById('content3').style.display = 'none';
+    document.getElementById('content4').style.display = 'none';
+    document.getElementById('content5').style.display = 'none';
+    $("#content6").show("slow", function() {
+        // Animation complete.
+    });
 }
 
 function ShowFuture() {
-$("#contentPassate").hide("slow", function() {
-    // Animation complete.
-});
-$("#contentFuture").show("slow", function() {
-    // Animation complete.
-});
-$("#button").show("slow", function() {
-    // Animation complete.
-});
+    $("#contentPassate").hide("slow", function() {
+        // Animation complete.
+    });
+    $("#contentFuture").show("slow", function() {
+        // Animation complete.
+    });
+    $("#button").show("slow", function() {
+        // Animation complete.
+    });
 }
 
 function ShowPassate() {
-$("#button").hide("slow", function() {
-    // Animation complete.
-});
-$("#contentFuture").hide("slow", function() {
-    // Animation complete.
-});
-$("#contentPassate").show("slow", function() {
-    // Animation complete.
-});
+    $("#button").hide("slow", function() {
+        // Animation complete.
+    });
+    $("#contentFuture").hide("slow", function() {
+        // Animation complete.
+    });
+    $("#contentPassate").show("slow", function() {
+        // Animation complete.
+    });
 }
 
 function Show() {
-$("#content").show("slow", function() {
-    // Animation complete.
-});
+    $("#content").show("slow", function() {
+        // Animation complete.
+    });
 }
 
 $("#search").on("keyup", function() {
     var value = $(this).val().toLowerCase();
-    $("label").filter(function() {
+    $("tbody tr ").filter(function() {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
 });
 
 (function() {
-'use strict';
-window.addEventListener('load', function() {
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.getElementsByClassName('needs-validation');
-    // Loop over them and prevent submission
-    var validation = Array.prototype.filter.call(forms, function(form) {
-        form.addEventListener('submit', function(event) {
-            if (form.checkValidity() === false) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
-            form.classList.add('was-validated');
-        }, false);
-    });
-}, false);
+    'use strict';
+    window.addEventListener('load', function() {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    }, false);
 })();
+
 
 $('#exampleModal3').on('show.bs.modal', function(event) {
     var button = $(event.relatedTarget)

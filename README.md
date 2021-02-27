@@ -1,5 +1,4 @@
 COSE DA FARE:
-- sistemare grandezza tasti nelle home dei vari utenti
 - sistemare la visualizzazione delle tabelle in admin
 - foto
 - validator VERIFICARE POI AL'ULTIMO SE FUNZIONANO TUTTI

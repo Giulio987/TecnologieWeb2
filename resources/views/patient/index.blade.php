@@ -14,6 +14,7 @@ $name = Auth::user()->name;
   </button>
 </a>
 </div>
+@if(!strcmp(Auth::user()->role, '1'))
 <div class="row-space justify-content-center" style="margin-right:100px;float:right;">
 <a href="{{ URL::action('PatientController@create') }}">
 <button class="btn btn-outline-primary"><span class="text-uppercase">registra paziente</span>
@@ -23,7 +24,8 @@ $name = Auth::user()->name;
 </button>
 </a>
         
-        </div>
+</div>
+@endif
 <div class="container-lg" align="center">
     <div class="row row-space justify-content-center">
         <h1 class="font-weight-bold">
@@ -56,7 +58,7 @@ $name = Auth::user()->name;
 
 
 <div class="table-responsive" style="white-space: nowrap;">
-                <table class="table table-borderless table-hover table-border" id="searchPatient">
+                <table class="table table-borderless table-hover table-border">
                     <thead>
                         <tr class="bg-info" style="color:#fff;">
                             <th scope="col-lg" style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">Codice Fiscale</th>
@@ -99,30 +101,31 @@ $name = Auth::user()->name;
             </div>
         </div>
                 
-            <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Informazioni</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p id="FiscalCode"></p>
-                            <p id="Name"></p>
-                            <p id="Surname"></p>
-                            <p id="Email"></p>
-                            <p id="Dob"></p>
-                            <p id="Gender"></p>
-                            <p id="PhoneNumber"></p>
-                            <p id="StreetAddress"></p>
-                            <p id="StreetNumber"></p>
-                            <p id="City"></p>
-                            <p id="PostalCode"></p>
-                        </div>
-                    </div>
+           
+        <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title font-weight-bold text-uppercase" id="exampleModalLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" align="left">
+                <p id="FiscalCode" class="text-uppercase"></p>
+                            <p id="Name" class="text-uppercase"></p>
+                            <p id="Surname"  class="text-uppercase"></p>
+                            <p id="Email" class="text-uppercase"></p>
+                            <p id="Dob"  class="text-uppercase"></p>
+                            <p id="Gender"  class="text-uppercase"></p>
+                            <p id="PhoneNumber"  class="text-uppercase"></p>
+                            <p id="StreetAddress"  class="text-uppercase"></p>
+                            <p id="StreetNumber"  class="text-uppercase"></p>
+                            <p id="City"  class="text-uppercase"></p>
+                            <p id="PostalCode"  class="text-uppercase"></p>
                 </div>
             </div>
+        </div>
+    </div>
     </div>
 @endsection
