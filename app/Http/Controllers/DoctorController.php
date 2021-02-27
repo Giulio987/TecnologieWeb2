@@ -43,7 +43,7 @@ class DoctorController extends Controller
             'name' 		         => ['required', 'string', 'max:20'],
             'surname'            => ['required', 'string', 'max:20'],
             'dob'                => ['required', 'date'],
-            'phone_number'       => ['required', 'string', 'max:15'],
+            'phone_number'       => ['required', 'numeric', 'max:15'],
             'gender'             => ['required', 'string', 'max:1'],
             'fiscal_code'        => ['required', 'min:16', 'max:16'],
             'id_building'        => ['required'],
@@ -57,7 +57,7 @@ class DoctorController extends Controller
             'dob.required'            => 'Inserimento obbligatorio',
             'dob.date'                => 'Deve essere una data',
             'phone_number.required'   => 'Inserimento obbligatorio',
-            'phone_number.string'     => 'Il numero di telefono deve essere composto solo da numeri',
+            'phone_number.numeric'    => 'Il numero di telefono deve essere composto solo da numeri',
             'phone_number.max'        => 'Il numero di telefono deve essere massimo di 15 caratteri',
             'gender.required'         => 'Inserimento obbligatorio', // custom message
             'gender.string'           => 'Deve essere composto da lettere',

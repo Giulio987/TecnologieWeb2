@@ -50278,71 +50278,60 @@
 });
 
 /*  FUNZIONE COUNTER */
-$(document).ready(function() {
-    $('.count').each(function() {
-        $(this).prop('Counter', 0).animate({
-            Counter: $(this).text()
-        }, {
-            duration: 4000,
-            easing: 'swing',
-            step: function(now) {
-                $(this).text(Math.ceil(now));
-            }
-        });
+$('.count').each(function() {
+    $(this).prop('Counter', 0).animate({
+        Counter: $(this).text()
+    }, {
+        duration: 4000,
+        easing: 'swing',
+        step: function(now) {
+            $(this).text(Math.ceil(now));
+        }
     });
 });
 
 // Filtro di ricerca Farmaco all'interno della tabella
-$(document).ready(function() {
-    $("#searchFarmaco").on("click", function() {
-        var value = $(this).val().toLowerCase();
-        $("tbody tr").filter(function() {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        });
+
+$("#searchFarmaco").on("click", function() {
+    var value = $(this).val().toLowerCase();
+    $("tbody tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
 });
 
 // Filtro di ricerca Visita all'interno della tabella
-$(document).ready(function() {
-    $("#searchVisita").on("click", function() {
-        var value = $(this).val().toLowerCase();
-        $("tbody tr").filter(function() {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        });
+$("#searchVisita").on("click", function() {
+    var value = $(this).val().toLowerCase();
+    $("tbody tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
 });
 
 // Filtro di ricerca Convalidare all'interno della tabella
-$(document).ready(function() {
-    $("#searchConvalidare").on("click", function() {
-        var value = $(this).val().toLowerCase();
-        $("tbody tr").filter(function() {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        });
+$("#searchConvalidare").on("click", function() {
+    var value = $(this).val().toLowerCase();
+    $("tbody tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
 });
 
 // Modal descrizione nella lista prescrizioni Paziente
-$(document).ready(function() {
-    $('#exampleModal1').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var description = button.data('whatever1')
-        var rfe = button.data('whatever2')
-        var date = button.data('whatever3')
+$('#exampleModal1').on('show.bs.modal', function(event) {
+    var button = $(event.relatedTarget)
+    var description = button.data('whatever1')
+    var rfe = button.data('whatever2')
+    var date = button.data('whatever3')
 
-        var modal = $(this)
-        modal.find('#description').text(description)
-        modal.find('.modal-title').text("Informazioni sulla ricetta: " + rfe + " con data: " + date)
+    var modal = $(this)
+    modal.find('#description').text(description)
+    modal.find('.modal-title').text("Informazioni sulla ricetta: " + rfe + " con data: " + date)
 
-    })
-});
+})
 
-$(document).ready(function() {
-    $("#myInput").on("keyup", function() {
-        var value = $(this).val().toLowerCase();
-        $("#myTable tr").filter(function() {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        });
+$("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
 });
 
@@ -50351,12 +50340,10 @@ function ShowFarmaco() {
         // Animation complete.
     });
     $("#contentUser").show("slow", function() {
-
     });
     document.getElementById('contentVisita').style.display = 'none';
     document.getElementById('descriptionFarmaco').name = 'description';
     document.getElementById('descriptionVisita').name = '';
-
 }
 
 function ShowVisita() {
@@ -50371,192 +50358,181 @@ function ShowVisita() {
     document.getElementById('descriptionFarmaco').name = '';
 
 }
-
-
-$(document).ready(function() {
-    $("#selUser").select2();
-});
+$("#selUser").select2();
 
 function Show1() {
-    $("#content1").show("slow", function() {
-        // Animation complete.
-    });
-    document.getElementById('content2').style.display = 'none';
-    document.getElementById('content3').style.display = 'none';
-    document.getElementById('content4').style.display = 'none';
-    document.getElementById('content5').style.display = 'none';
-    document.getElementById('content6').style.display = 'none';
+$("#content1").show("slow", function() {
+    // Animation complete.
+});
+document.getElementById('content2').style.display = 'none';
+document.getElementById('content3').style.display = 'none';
+document.getElementById('content4').style.display = 'none';
+document.getElementById('content5').style.display = 'none';
+document.getElementById('content6').style.display = 'none';
 }
 
 function Show2() {
-    document.getElementById('content1').style.display = 'none';
-    $("#content2").show("slow", function() {
-        // Animation complete.
-    });
-    document.getElementById('content3').style.display = 'none';
-    document.getElementById('content4').style.display = 'none';
-    document.getElementById('content5').style.display = 'none';
-    document.getElementById('content6').style.display = 'none';
+document.getElementById('content1').style.display = 'none';
+$("#content2").show("slow", function() {
+    // Animation complete.
+});
+document.getElementById('content3').style.display = 'none';
+document.getElementById('content4').style.display = 'none';
+document.getElementById('content5').style.display = 'none';
+document.getElementById('content6').style.display = 'none';
 }
 
 function Show3() {
-    document.getElementById('content1').style.display = 'none';
-    document.getElementById('content2').style.display = 'none';
-    $("#content3").show("slow", function() {
-        // Animation complete.
-    });
-    document.getElementById('content4').style.display = 'none';
-    document.getElementById('content5').style.display = 'none';
-    document.getElementById('content6').style.display = 'none';
+document.getElementById('content1').style.display = 'none';
+document.getElementById('content2').style.display = 'none';
+$("#content3").show("slow", function() {
+    // Animation complete.
+});
+document.getElementById('content4').style.display = 'none';
+document.getElementById('content5').style.display = 'none';
+document.getElementById('content6').style.display = 'none';
 }
 
 function Show4() {
-    document.getElementById('content1').style.display = 'none';
-    document.getElementById('content2').style.display = 'none';
-    document.getElementById('content3').style.display = 'none';
-    $("#content4").show("slow", function() {
-        // Animation complete.
-    });
-    document.getElementById('content5').style.display = 'none';
-    document.getElementById('content6').style.display = 'none';
+document.getElementById('content1').style.display = 'none';
+document.getElementById('content2').style.display = 'none';
+document.getElementById('content3').style.display = 'none';
+$("#content4").show("slow", function() {
+    // Animation complete.
+});
+document.getElementById('content5').style.display = 'none';
+document.getElementById('content6').style.display = 'none';
 }
 
 function Show5() {
-    document.getElementById('content1').style.display = 'none';
-    document.getElementById('content2').style.display = 'none';
-    document.getElementById('content3').style.display = 'none';
-    document.getElementById('content4').style.display = 'none';
-    $("#content5").show("slow", function() {
-        // Animation complete.
-    });
-    document.getElementById('content6').style.display = 'none';
+document.getElementById('content1').style.display = 'none';
+document.getElementById('content2').style.display = 'none';
+document.getElementById('content3').style.display = 'none';
+document.getElementById('content4').style.display = 'none';
+$("#content5").show("slow", function() {
+    // Animation complete.
+});
+document.getElementById('content6').style.display = 'none';
 }
 
 function Show6() {
-    document.getElementById('content1').style.display = 'none';
-    document.getElementById('content2').style.display = 'none';
-    document.getElementById('content3').style.display = 'none';
-    document.getElementById('content4').style.display = 'none';
-    document.getElementById('content5').style.display = 'none';
-    $("#content6").show("slow", function() {
-        // Animation complete.
-    });
+document.getElementById('content1').style.display = 'none';
+document.getElementById('content2').style.display = 'none';
+document.getElementById('content3').style.display = 'none';
+document.getElementById('content4').style.display = 'none';
+document.getElementById('content5').style.display = 'none';
+$("#content6").show("slow", function() {
+    // Animation complete.
+});
 }
 
 function ShowFuture() {
-    $("#contentPassate").hide("slow", function() {
-        // Animation complete.
-    });
-    $("#contentFuture").show("slow", function() {
-        // Animation complete.
-    });
-    $("#button").show("slow", function() {
-        // Animation complete.
-    });
+$("#contentPassate").hide("slow", function() {
+    // Animation complete.
+});
+$("#contentFuture").show("slow", function() {
+    // Animation complete.
+});
+$("#button").show("slow", function() {
+    // Animation complete.
+});
 }
 
 function ShowPassate() {
-    $("#button").hide("slow", function() {
-        // Animation complete.
-    });
-    $("#contentFuture").hide("slow", function() {
-        // Animation complete.
-    });
-    $("#contentPassate").show("slow", function() {
-        // Animation complete.
-    });
+$("#button").hide("slow", function() {
+    // Animation complete.
+});
+$("#contentFuture").hide("slow", function() {
+    // Animation complete.
+});
+$("#contentPassate").show("slow", function() {
+    // Animation complete.
+});
 }
 
 function Show() {
-    $("#content").show("slow", function() {
-        // Animation complete.
-    });
+$("#content").show("slow", function() {
+    // Animation complete.
+});
 }
 
-$(document).ready(function() {
-    $("#search").on("keyup", function() {
-        var value = $(this).val().toLowerCase();
-        $("label").filter(function() {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        });
+$("#search").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("label").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
 });
 
 (function() {
-    'use strict';
-    window.addEventListener('load', function() {
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var forms = document.getElementsByClassName('needs-validation');
-        // Loop over them and prevent submission
-        var validation = Array.prototype.filter.call(forms, function(form) {
-            form.addEventListener('submit', function(event) {
-                if (form.checkValidity() === false) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                }
-                form.classList.add('was-validated');
-            }, false);
-        });
-    }, false);
+'use strict';
+window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+        }, false);
+    });
+}, false);
 })();
 
+$('#exampleModal3').on('show.bs.modal', function(event) {
+    var button = $(event.relatedTarget)
+    var recipientFiscalCode = button.data('whatever1')
+    var recipientName = button.data('whatever2')
+    var recipientSurname = button.data('whatever3')
+    var recipientEmail = button.data('whatever4')
+    var recipientDob = button.data('whatever5')
+    var recipientGender = button.data('whatever6')
+    var recipientPhoneNumber = button.data('whatever7')
+    var recipientStreetAddress = button.data('whatever8')
+    var recipientStreetNumber = button.data('whatever9')
+    var recipientCity = button.data('whatever10')
+    var recipientPostalCode = button.data('whatever11')
 
-$(document).ready(function() {
-    $('#exampleModal3').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var recipientFiscalCode = button.data('whatever1')
-        var recipientName = button.data('whatever2')
-        var recipientSurname = button.data('whatever3')
-        var recipientEmail = button.data('whatever4')
-        var recipientDob = button.data('whatever5')
-        var recipientGender = button.data('whatever6')
-        var recipientPhoneNumber = button.data('whatever7')
-        var recipientStreetAddress = button.data('whatever8')
-        var recipientStreetNumber = button.data('whatever9')
-        var recipientCity = button.data('whatever10')
-        var recipientPostalCode = button.data('whatever11')
+    var modal = $(this)
+    modal.find('.modal-title').text("Informazioni su " + recipientName + " " + recipientSurname)
+    modal.find('#FiscalCode').text(recipientFiscalCode)
+    modal.find('#Email').text(recipientEmail)
+    modal.find('#Dob').text(recipientDob)
+    modal.find('#Gender').text(recipientGender)
+    modal.find('#PhoneNumber').text(recipientPhoneNumber)
+    modal.find('#StreetNumber').text(recipientStreetAddress)
+    modal.find('#StreetAddress').text(recipientStreetNumber)
+    modal.find('#PostalCode').text(recipientPostalCode)
+    modal.find('#City').text(recipientCity)
+})
 
-        var modal = $(this)
-        modal.find('.modal-title').text("Informazioni su " + recipientName + " " + recipientSurname)
-        modal.find('#FiscalCode').text(recipientFiscalCode)
-        modal.find('#Email').text(recipientEmail)
-        modal.find('#Dob').text(recipientDob)
-        modal.find('#Gender').text(recipientGender)
-        modal.find('#PhoneNumber').text(recipientPhoneNumber)
-        modal.find('#StreetNumber').text(recipientStreetAddress)
-        modal.find('#StreetAddress').text(recipientStreetNumber)
-        modal.find('#PostalCode').text(recipientPostalCode)
-        modal.find('#City').text(recipientCity)
-    })
-});
+$('#exampleModal2').on('show.bs.modal', function(event) {
+    var button = $(event.relatedTarget)
+    var recipientFiscalCode = button.data('whatever1')
+    var recipientName = button.data('whatever2')
+    var recipientSurname = button.data('whatever3')
+    var recipientDob = button.data('whatever4')
+    var recipientPhoneNumber = button.data('whatever5')
+    var recipientGender = button.data('whatever6')
+    var recipientStreetAddress = button.data('whatever7')
+    var recipientStreetNumber = button.data('whatever8')
+    var recipientPostalCode = button.data('whatever9')
+    var recipientCity = button.data('whatever10')
 
-$(document).ready(function() {
-    $('#exampleModal2').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var recipientFiscalCode = button.data('whatever1')
-        var recipientName = button.data('whatever2')
-        var recipientSurname = button.data('whatever3')
-        var recipientDob = button.data('whatever4')
-        var recipientPhoneNumber = button.data('whatever5')
-        var recipientGender = button.data('whatever6')
-        var recipientStreetAddress = button.data('whatever7')
-        var recipientStreetNumber = button.data('whatever8')
-        var recipientPostalCode = button.data('whatever9')
-        var recipientCity = button.data('whatever10')
-
-        var modal = $(this)
-        modal.find('#FiscalCode').text(recipientFiscalCode)
-        modal.find('#Name').text(recipientName)
-        modal.find('#Surname').text(recipientSurname)
-        modal.find('#Dob').text(recipientDob)
-        modal.find('#PhoneNumber').text(recipientPhoneNumber)
-        modal.find('#Gender').text(recipientGender)
-        modal.find('#StreetAddress').text(recipientStreetAddress)
-        modal.find('#StreetNumber').text(recipientStreetNumber)
-        modal.find('#PostalCode').text(recipientPostalCode)
-        modal.find('#City').text(recipientCity)
-    })
-});
+    var modal = $(this)
+    modal.find('#FiscalCode').text(recipientFiscalCode)
+    modal.find('#Name').text(recipientName)
+    modal.find('#Surname').text(recipientSurname)
+    modal.find('#Dob').text(recipientDob)
+    modal.find('#PhoneNumber').text(recipientPhoneNumber)
+    modal.find('#Gender').text(recipientGender)
+    modal.find('#StreetAddress').text(recipientStreetAddress)
+    modal.find('#StreetNumber').text(recipientStreetNumber)
+    modal.find('#PostalCode').text(recipientPostalCode)
+    modal.find('#City').text(recipientCity)
+})
 
 function mouseOver1() {
     document.getElementById("card1").style.color = "#fff";
@@ -50617,13 +50593,9 @@ function mouseOut5() {
     document.getElementById("card5").style.backgroundColor = "#fff";
     document.getElementById("card5").style.borderColor = "#fff";
 }
-
-
-$(document).ready(function() {
-    $("#convalidare").click(function() {
-        $("#table").toggle("slow", function() {
-            $("#tableConvalidare").toggle("slow", function() {});
-        });
+$("#convalidare").on("click", function() {
+    $("#table").toggle("slow", function() {
+        $("#tableConvalidare").toggle("slow", function() {});
     });
 });
 
