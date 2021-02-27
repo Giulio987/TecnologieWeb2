@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Auth;
 use App\Building;
+use Illuminate\Validation\Rule;
 class DoctorController extends Controller
 {
     /**
@@ -42,7 +43,7 @@ class DoctorController extends Controller
         }
     }
 
-    protected function validator(array $data)
+    protected function validatorCreate(array $data)
     {
         return Validator::make($data, [
             'name' 		         => ['required', 'string', 'max:20'],
@@ -75,6 +76,35 @@ class DoctorController extends Controller
         ]);
     }
 
+    protected function validatorUpdate(array $data, Doctor $doctor)
+    {
+        return Validator::make($data, [
+            'name' 		         => ['required', 'string'],
+            'surname'            => ['required', 'string'],
+            'dob'                => ['required', 'date'],
+            'phone_number'       => ['required', 'numeric', Rule::unique('doctors')->ignore($doctor->id)],
+            'gender'             => ['required', 'string'],
+            'fiscal_code'        => ['required', Rule::unique('doctors')->ignore($doctor->id),],
+            'id_building'        => ['required'],
+        ], [
+            'name.required'           => 'Inserimento obbligatorio',
+            'name.string'             => 'Deve essere composto da caratteri',
+            'surname.string'          => 'Deve essere composto da caratteri',
+            'surname.required'        => 'Inserimento obbligatorio',
+            'dob.required'            => 'Inserimento obbligatorio',
+            'dob.date'                => 'Deve essere una data',
+            'phone_number.required'   => 'Inserimento obbligatorio',
+            'phone_number.numeric'    => 'Deve essere composto solo da numeri',
+            'phone_number.unique'     => 'Il numero di telefono inserito è già presente nel database.',
+            'gender.required'         => 'Inserimento obbligatorio', // custom message
+            'gender.string'           => 'Deve essere composto da caratteri',
+            'fiscal_code.required'    => 'Inserimento obbligatorio',
+            'fiscal_code.unique'      => 'Il Codice Fiscale inserito è già presente nel database.',
+            'id_building.required'    => 'Inserimento obbligatorio',
+
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -83,7 +113,7 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validator($request->all())->validate();
+        $this->validatorCreate($request->all())->validate();
         
         
         $user = User::create([
@@ -151,7 +181,7 @@ class DoctorController extends Controller
      */
     public function update(Request $request, Doctor $doctor)
     {
-        $this->validator($request->all())->validate();
+        $this->validatorUpdate($request->all(), $doctor)->validate();
 
         $input = $request->all();
         $user = User::find($doctor->id_user);
