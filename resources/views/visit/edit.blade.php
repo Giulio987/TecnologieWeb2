@@ -39,6 +39,7 @@ $date = strtotime($visit->date);
             Comdddddddddddddddddd.<button type="submit" name="submit" class="btn btn-outline-success btn-prenota font-weight-bold col-lg-2">+</button>
         </h5>
     </div>
+    
     <form action="{{ URL::action('VisitController@update', $visit) }}" method="POST">
         <input type="hidden" name="_method" value="PATCH">
         {{ csrf_field() }}
@@ -100,6 +101,4 @@ $date = strtotime($visit->date);
 
     </form>    
 </div>
-        </div>
-
 @endsection

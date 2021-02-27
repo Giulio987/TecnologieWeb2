@@ -50361,6 +50361,10 @@ $('document').ready(function() {
     $("#selUser").select2();
 });
 
+$('document').ready(function() {
+    $(".selUser").select2();
+});
+
 function Show1() {
     $("#content1").show("slow", function() {
         // Animation complete.
