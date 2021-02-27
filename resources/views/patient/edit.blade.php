@@ -18,14 +18,21 @@
         </h1>
     </div>
 
-    <div class="row row-space justify-content-center">
-        <h5>
-            Compila tutti i campi e crea il tuo nuovo paziente.<button type="submit" name="submit" class="btn btn-outline-success btn-prenota font-weight-bold col-lg-2">+</button>
-        </h5>
-    </div>
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+        <div class="row justify-content-center col-lg-4" style="margin:0.5em;">
+            <h6 class="alert alert-danger alert-error">{{ '*' . $error  }}</h6>
+        </div>
+        @endforeach
+    @endif
     <form action="{{ URL::action('PatientController@update', $patient) }}" method="POST">
         <input type="hidden" name="_method" value="PATCH">
         {{ csrf_field() }}
+        <div class="row row-space justify-content-center">
+        <h5>
+            Compila tutti i campi e crea il tuo nuovo paziente.<button type="submit" class="btn btn-outline-success btn-prenota font-weight-bold col-lg-2">+</button>
+        </h5>
+    </div>
         <?php
             $id = $patient->id_user;
             $user = DB::table('users')->where('id', $id)->select('name', 'surname', 'email')->get();
@@ -52,27 +59,29 @@
             <div class="form-group label-space">
             <input type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ $cognome }}">
           <small class="form-text text-muted">Modifica il cognome</small>
-                          @error('surname')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
+            @error('surname')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             </div>
     </div>
     <div class="row row-space justify-content-center">
 
             <div class="form-group label-space">
             <input type="date" class="form-control @error('dob') is-invalid @enderror" name="dob" value="{{ $patient->dob }}">
-            <small class="form-text text-muted">Modifica la data di nascita</small>                @error('dob')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
+            <small class="form-text text-muted">Modifica la data di nascita</small>
+            @error('dob')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             </div>
     </div>
     <div class="row row-space justify-content-center">
 
             <div class="form-group label-space">
             <input type="text" class="form-control @error('gender') is-invalid @enderror" name="gender" value="{{ $patient->gender }}">
-            <small class="form-text text-muted">Modifica il sesso</small>                @error('gender')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
+            <small class="form-text text-muted">Modifica il sesso</small>
+            @error('gender')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             </div>
     </div>
         </div>
@@ -82,34 +91,38 @@
     <div class="row row-space justify-content-center">
             <div class="form-group label-space">
             <input type="text" class="form-control @error('fiscal_code') is-invalid @enderror" name="fiscal_code" value="{{ $patient->fiscal_code }}">
-            <small class="form-text text-muted">Modifica il codice fiscale</small>                @error('fiscal_code')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
+            <small class="form-text text-muted">Modifica il codice fiscale</small>
+            @error('fiscal_code')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             </div>
     </div>
     <div class="row row-space justify-content-center">
             <div class="form-group label-space">
             <input type="text" class="form-control @error('street_address') is-invalid @enderror" name="street_address" value="{{ $patient->street_address }}">
-            <small class="form-text text-muted">Modifica l'indirizzo di domicilio</small>                @error('street_address')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
+            <small class="form-text text-muted">Modifica l'indirizzo di domicilio</small>
+            @error('street_address')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             </div>
     </div>
     <div class="row row-space justify-content-center">
 
             <div class="form-group label-space">
             <input type="text" class="form-control @error('street_number') is-invalid @enderror" name="street_number" value="{{ $patient->street_number }}">
-            <small class="form-text text-muted">Modifica il numero civico</small>                @error('street_number')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
+            <small class="form-text text-muted">Modifica il numero civico</small>
+            @error('street_number')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             </div>
     </div>
     <div class="row row-space justify-content-center">
             <div class="form-group label-space">
             <input type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ $patient->city }}">
-            <small class="form-text text-muted">Modifica la città</small>                @error('city')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
+            <small class="form-text text-muted">Modifica la città</small>
+            @error('city')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             </div>
     </div>
 </div>
@@ -118,24 +131,35 @@
     <div class="row row-space justify-content-center">
             <div class="form-group label-space">
             <input type="text" class="form-control @error('postal_code') is-invalid @enderror" name="postal_code" value="{{ $patient->postal_code }}">
-            <small class="form-text text-muted">Modifica il CAP</small>                @error('postal_code')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
+            <small class="form-text text-muted">Modifica il CAP</small>
+            @error('postal_code')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             </div>
     </div>
 
     <div class="row row-space justify-content-center">
                 <div class="form-group label-space">
                 <input type="text" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ $patient->phone_number }}">
-            <small class="form-text text-muted">Modifica il telefono</small>                @error('phone_number')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
+            <small class="form-text text-muted">Modifica il telefono</small>
+            @error('phone_number')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+            </div>
+    </div>
+    <div class="row row-space justify-content-center">
+                <div class="form-group label-space">
+                <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email }}">
+            <small class="form-text text-muted">Modifica l'email</small>
+            @error('email')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             </div>
     </div>
     <div class="row row-space justify-content-center">
 
         <div class="form-group label-space">
-            <select name="selUser" id="doctor" class="@error('id_doctor') is-invalid @enderror selUser">
+            <select id="selUser" name   ="id_doctor" for="id_doctor" class="@error('id_doctor') is-invalid @enderror selUser">
                 <?php
                     $doctor = DB::table('doctors')->where('id', $patient->id_doctor)->select('id_user')->get();
                     foreach ($doctor as $info) {
@@ -166,7 +190,7 @@
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
-                </div>
+    </div>
                 </div>
                 </div>
 

@@ -33,7 +33,13 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        //
+        if ( Auth::user()->role == '1') {
+            $doctos = Doctor::all();
+            return view('doctor.create', compact('doctors'));
+        }
+        else{
+            return redirect('/home');
+        }
     }
 
     protected function validator(array $data)

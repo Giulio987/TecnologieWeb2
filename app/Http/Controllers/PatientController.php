@@ -12,6 +12,8 @@ use App\Doctor;
 use App\User;
 use Illuminate\Support\Facades\Validator;
 
+use Illuminate\Validation\Rule;
+
 class PatientController extends Controller
 {
     /**
@@ -63,61 +65,101 @@ class PatientController extends Controller
         }
     }
 
-    protected function validator(array $data)
+    protected function validatorCreate(array $data)
     {
         return Validator::make($data, [
-            'name' 		         => ['required', 'string', 'max:20'],
-            'surname'            => ['required', 'string', 'max:20'],
+            'name' 		         => ['required', 'string'],
+            'surname'            => ['required', 'string'],
             'dob'                => ['required', 'date'],
-            'phone_number'       => ['required', 'numeric', 'max:15'],
-            'gender'             => ['required', 'string', 'max:1'],
-            'fiscal_code'        => ['required', 'string', 'min:16', 'max:16'],
-            'street_address'     => ['required', 'string', 'max:50'],
-            'street_number'      => ['required', 'string', 'max:8'],
-            'city'               => ['required', 'string', 'max:30'],
-            'postal_code'        => ['required', 'numeric', 'max:5'],
-            'email'              => ['required', 'string', 'email', 'max:50'],
+            'phone_number'       => ['required', 'numeric', 'unique:patients'],
+            'gender'             => ['required', 'string'],
+            'fiscal_code'        => ['required', 'string', 'unique:patients'],
+            'street_address'     => ['required', 'string'],
+            'street_number'      => ['required', 'string'],
+            'city'               => ['required', 'string'],
+            'postal_code'        => ['required', 'numeric'],
+            'id_doctor'          => ['required'],
+            'email'              => ['required', 'string', 'email', 'unique:patients'],
             'password'           => ['required'],
         ], [
             'name.required'           => 'Inserimento obbligatorio',
             'name.string'             => 'Deve essere composta da caratteri',
-            'name.max'                => 'Impossibile inserire più di 20 caratteri',
             'surname.required'        => 'Inserimento obbligatorio',
-            'surname.max'             => 'Impossibile inserire più di 20 caratteri',
             'surname.string'          => 'Deve essere composta da caratteri',
             'dob.required'            => 'Inserimento obbligatorio',
             'dob.date'                => 'Deve essere di tipo data',
             'phone_number.required'   => 'Inserimento obbligatorio',
             'phone_number.numeric'    => 'Il numero di telefono deve essere composto solo da numeri',
-            'phone_number.max'        => 'Impossibile inserire più di 15 caratteri',
-            //'phone_number.unique'     => 'Il numero di telefono inserito è già presente nel database.',
+            'phone_number.unique'     => 'Il numero di telefono inserito è già presente nel database.',
             'gender.required'         => 'Inserimento obbligatorio', // custom message
             'gender.string'           => 'Deve essere composta da caratteri',
-            'gender.max'              => 'Impossibile inserire più di un carattere', // custom message
             'fiscal_code.required'    => 'Inserimento obbligatorio',
             'fiscal_code.string'      => 'Deve essere composta da caratteri',
-            'fiscal_code.min'         => 'Inserire minimo 16 caratteri',
-            'fiscal_code.max'         => 'Impossibile inserire più di 16 caratteri',
-            //'fiscal_code.unique'      => 'Il Codice Fiscale inserito è già presente nel database.',
+            'fiscal_code.unique'      => 'Il Codice Fiscale inserito è già presente nel database.',
             'street_address.required' => 'Inserimento obbligatorio',
             'street_address.string'   => 'Deve essere composta da caratteri',
-            'street_address.max'      => 'Impossibile inserire più di 50 caratteri',
             'street_number.required'  => 'Inserimento obbligatorio',
             'street_number.string'    => 'Deve essere composta da caratteri',
-            'street_number.max'       => 'Impossibile inserire più di 8 caratteri',
             'city.required'           => 'Inserimento obbligatorio',
             'city.string'             => 'Deve essere composta da caratteri',
-            'city.max'                => 'Impossibile inserire più di 30 caratteri',
             'postal_code.required'    => 'Inserimento obbligatorio',
             'postal_code.numeric'     => 'Deve essere composto da soli numeri.',
-            'postal_code.max'         => 'Impossibile inserire più di 5 caratteri',
+            'id_doctor.required'      => 'Inserimento obbligario',
             'email.required'          => 'Inserimento obbligatorio',
             'email.string'            => 'Deve essere composta da caratteri',
             'email.email'             => 'Deve essere un email @',
-            'email.max'               => 'Impossibile inserire più di 50 caratteri',
-            //'email.unique'            => 'L\'email inserita è già presente nel database.',
+            'email.unique'            => 'L\'email inserita è già presente nel database.',
             'password.required'       => 'Inserimento obbligatorio',
+        ]);
+    }
 
+    protected function validatorUpdate(array $data, Patient $patient)
+    {
+        $info = DB::table('users')->where('id', $patient->id_user)->select('id')->get();
+        foreach ($info as $p) {
+            $res = $info->id;
+        }
+        return Validator::make($data, [
+            'name' 		         => ['required', 'string'],
+            'surname'            => ['required', 'string'],
+            'dob'                => ['required', 'date'],
+            'phone_number'       => ['required', 'numeric', Rule::unique('patients')->ignore($patient->id),],
+            'gender'             => ['required', 'string'],
+            'fiscal_code'        => ['required', 'string', Rule::unique('patients')->ignore($patient->id),],
+            'street_address'     => ['required', 'string'],
+            'street_number'      => ['required', 'string'],
+            'city'               => ['required', 'string'],
+            'postal_code'        => ['required', 'numeric'],
+            'id_doctor'          => ['required'],
+            'email'              => ['required', 'string', 'email', Rule::unique('users')->ignore($res),],
+        ], [
+            'name.required'           => 'Inserimento obbligatorio',
+            'name.string'             => 'Deve essere composta da caratteri',
+            'surname.required'        => 'Inserimento obbligatorio',
+            'surname.string'          => 'Deve essere composta da caratteri',
+            'dob.required'            => 'Inserimento obbligatorio',
+            'dob.date'                => 'Deve essere di tipo data',
+            'phone_number.required'   => 'Inserimento obbligatorio',
+            'phone_number.numeric'    => 'Il numero di telefono deve essere composto solo da numeri',
+            'phone_number.unique'     => 'Il numero di telefono inserito è già presente nel database.',
+            'gender.required'         => 'Inserimento obbligatorio', // custom message
+            'gender.string'           => 'Deve essere composta da caratteri',
+            'fiscal_code.required'    => 'Inserimento obbligatorio',
+            'fiscal_code.string'      => 'Deve essere composta da caratteri',
+            'fiscal_code.unique'      => 'Il Codice Fiscale inserito è già presente nel database.',
+            'street_address.required' => 'Inserimento obbligatorio',
+            'street_address.string'   => 'Deve essere composta da caratteri',
+            'street_number.required'  => 'Inserimento obbligatorio',
+            'street_number.string'    => 'Deve essere composta da caratteri',
+            'city.required'           => 'Inserimento obbligatorio',
+            'city.string'             => 'Deve essere composta da caratteri',
+            'postal_code.required'    => 'Inserimento obbligatorio',
+            'postal_code.numeric'     => 'Deve essere composto da soli numeri.',
+            'id_doctor.required'      => 'Inserimento obbligario',
+            'email.required'          => 'Inserimento obbligatorio',
+            'email.string'            => 'Deve essere composta da caratteri',
+            'email.email'             => 'Deve essere un email @',
+            'email.unique'            => 'L\'email inserita è già presente nel database.',
         ]);
     }
 
@@ -129,7 +171,7 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validator($request->all())->validate();
+        $this->validatorCreate($request->all())->validate();
 
         $user = User::create([
             'name'          => $request->name,
@@ -210,10 +252,9 @@ class PatientController extends Controller
      */
     public function update(Request $request, Patient $patient)
     {
-        $this->validator($request->all())->validate();
+        $this->validatorUpdate($request->all(), $patient)->validate();
 
         $input = $request->all();
-
         $user = User::find($patient->id_user);
         $user->name = $input['name'];
         $user->surname = $input['surname'];
