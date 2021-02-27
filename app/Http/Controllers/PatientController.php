@@ -117,7 +117,7 @@ class PatientController extends Controller
     {
         $info = DB::table('users')->where('id', $patient->id_user)->select('id')->get();
         foreach ($info as $p) {
-            $res = $info->id;
+            $res = $p->id;
         }
         return Validator::make($data, [
             'name' 		         => ['required', 'string'],
