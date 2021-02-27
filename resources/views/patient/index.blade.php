@@ -56,7 +56,7 @@ $name = Auth::user()->name;
 
 
 <div class="table-responsive" style="white-space: nowrap;">
-                <table class="table table-borderless table-hover table-border" id="searchPatient">
+                <table class="table table-borderless table-hover table-border">
                     <thead>
                         <tr class="bg-info" style="color:#fff;">
                             <th scope="col-lg" style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">Codice Fiscale</th>
