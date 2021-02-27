@@ -32,6 +32,7 @@ $name = Auth::user()->name;
         </h4>
     </div>
     <form action="{{ URL::action('PatientController@store') }}" method="POST"  novalidate>
+    {{ csrf_field() }}
 
     <div class="row row-space justify-content-center">
         <h5>
@@ -43,7 +44,6 @@ $name = Auth::user()->name;
 
     <div class="col-lg-4">
         <div class="row row-space justify-content-center">
-                {{ csrf_field() }}
                 <div class="form-group label-space">
                     <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Nome" name="name" required>
                     @error('name')
