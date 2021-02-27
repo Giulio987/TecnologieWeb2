@@ -26,6 +26,8 @@ $name = Auth::user()->name;
             Crea un profilo per un dottore, successivamente potrà accedere alla piattaforma.
         </h4>
     </div>
+    <form action="{{ URL::action('DoctorController@store') }}" method="POST"  novalidate>
+    {{ csrf_field() }}
     <div class="row row-space justify-content-center">
         <h5>
             Compila tutti i campi e crea il tuo nuovo dottore.<button type="submit" name="submit" class="btn btn-outline-success btn-prenota font-weight-bold col-lg-2">+</button>
@@ -130,27 +132,4 @@ $name = Auth::user()->name;
             </form>
         </div>
 
-        <script type="application/javascript">
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
-        (function() {
-            'use strict';
-            window.addEventListener('load', function() {
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                var forms = document.getElementsByClassName('needs-validation');
-                // Loop over them and prevent submission
-                var validation = Array.prototype.filter.call(forms, function(form) {
-                    form.addEventListener('submit', function(event) {
-                        if (form.checkValidity() === false) {
-                            event.preventDefault();
-                            event.stopPropagation();
-                        }
-                        form.classList.add('was-validated');
-                    }, false);
-                });
-            }, false);
-        })();
-        $(document).ready(function() {
-            $("#selUser").select2();
-        });
-    </script>
 @endsection
