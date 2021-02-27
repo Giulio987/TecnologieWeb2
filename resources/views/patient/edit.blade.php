@@ -17,8 +17,6 @@
             dsds
         </h1>
     </div>
-    <form action="{{ URL::action('PatientController@store') }}" method="POST"  novalidate>
-    {{ csrf_field() }}
 
     <div class="row row-space justify-content-center">
         <h5>
