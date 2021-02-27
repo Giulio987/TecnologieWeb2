@@ -50482,6 +50482,7 @@ $("#search").on("keyup", function() {
     }, false);
 })();
 
+
 $('#exampleModal3').on('show.bs.modal', function(event) {
     var button = $(event.relatedTarget)
     var recipientFiscalCode = button.data('whatever1')

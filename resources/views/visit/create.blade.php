@@ -24,10 +24,10 @@ $timeSabato = array('08:30', '09:00', '09:30', '10:00', '10:30', '11:00', '11:30
 
 function giornoData($d, $m, $a)
 {
-    $gShort = array('Domenica', 'Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato');
+    $g = array('Domenica', 'Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato');
     $ts = mktime(0, 0, 0, $m, $d, $a);
     $gd = getdate($ts);
-    return $gShort[$gd['wday']];
+    return $g[$gd['wday']];
 };
 ?>
 <div class="row-space" style="margin-left:100px;float:left;">
