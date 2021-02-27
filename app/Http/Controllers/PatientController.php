@@ -66,53 +66,56 @@ class PatientController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' 		         => 'required | string | max:20',
-            'surname'            => 'required | string | max:20',
-            'dob'                => 'required | date',
-            'phone_number'       => 'required | numeric | max:15 | unique:patients',
-            'gender'             => 'required | string | max:1',
-            'fiscal_code'        => 'required | string | min:16 | max:16 | unique:patients',
-            'street_address'     => 'required | string | max:50',
-            'street_number'      => 'required | string | max:8',
-            'city'               => 'required | string | max:30',
-            'postal_code'        => 'required | numeric | max:5',
-            'email'              => 'required | string | email | max:50 | unique:users',
-            'password'           => 'required',
+            'name' 		         => ['required', 'string', 'max:20'],
+            'surname'            => ['required', 'string', 'max:20'],
+            'dob'                => ['required', 'date'],
+            'phone_number'       => ['required', 'numeric', 'max:15'],
+            'gender'             => ['required', 'string', 'max:1'],
+            'fiscal_code'        => ['required', 'string', 'min:16', 'max:16'],
+            'street_address'     => ['required', 'string', 'max:50'],
+            'street_number'      => ['required', 'string', 'max:8'],
+            'city'               => ['required', 'string', 'max:30'],
+            'postal_code'        => ['required', 'numeric', 'max:5'],
+            'email'              => ['required', 'string', 'email', 'max:50'],
+            'password'           => ['required'],
         ], [
             'name.required'           => 'Inserimento obbligatorio',
             'name.string'             => 'Deve essere composta da caratteri',
-            'name.max'                => 'Il nome deve essere massimo di 20 caratteri',
+            'name.max'                => 'Impossibile inserire più di 20 caratteri',
             'surname.required'        => 'Inserimento obbligatorio',
-            'surname.max'             => 'Il cognome deve essere massimo di 20 caratteri',
-            'surname.string'             => 'Deve essere composta da caratteri',
-            'phone_number.required'   => 'Inserimento obbligatorio',
+            'surname.max'             => 'Impossibile inserire più di 20 caratteri',
+            'surname.string'          => 'Deve essere composta da caratteri',
             'dob.required'            => 'Inserimento obbligatorio',
+            'dob.date'                => 'Deve essere di tipo data',
+            'phone_number.required'   => 'Inserimento obbligatorio',
             'phone_number.numeric'    => 'Il numero di telefono deve essere composto solo da numeri',
-            'phone_number.max'        => 'Il numero di telefono deve essere massimo di 15 caratteri',
-            'phone_number.unique'     => 'Il numero di telefono inserito è già presente nel database.',
+            'phone_number.max'        => 'Impossibile inserire più di 15 caratteri',
+            //'phone_number.unique'     => 'Il numero di telefono inserito è già presente nel database.',
             'gender.required'         => 'Inserimento obbligatorio', // custom message
             'gender.string'           => 'Deve essere composta da caratteri',
             'gender.max'              => 'Impossibile inserire più di un carattere', // custom message
             'fiscal_code.required'    => 'Inserimento obbligatorio',
+            'fiscal_code.string'      => 'Deve essere composta da caratteri',
             'fiscal_code.min'         => 'Inserire minimo 16 caratteri',
-            'fiscal_code.max'         => 'Inserire massimo 16 caratteri',
-            'fiscal_code.unique'      => 'Il Codice Fiscale inserito è già presente nel database.',
+            'fiscal_code.max'         => 'Impossibile inserire più di 16 caratteri',
+            //'fiscal_code.unique'      => 'Il Codice Fiscale inserito è già presente nel database.',
             'street_address.required' => 'Inserimento obbligatorio',
             'street_address.string'   => 'Deve essere composta da caratteri',
-            'street_address.max'      => 'Inserire massimo 50 caratteri',
+            'street_address.max'      => 'Impossibile inserire più di 50 caratteri',
             'street_number.required'  => 'Inserimento obbligatorio',
             'street_number.string'    => 'Deve essere composta da caratteri',
-            'street_number.max'       => 'Inserire massimo 8 caratteri',
+            'street_number.max'       => 'Impossibile inserire più di 8 caratteri',
             'city.required'           => 'Inserimento obbligatorio',
             'city.string'             => 'Deve essere composta da caratteri',
-            'city.max'                => 'Inserire massimo 30 caratteri',
+            'city.max'                => 'Impossibile inserire più di 30 caratteri',
             'postal_code.required'    => 'Inserimento obbligatorio',
-            'postal_code.numeric'     => 'Il codice postale deve essere composto da numeri.',
-            'postal_code.max'         => 'Il codice postale deve essere massimo di 5 caratteri',
+            'postal_code.numeric'     => 'Deve essere composto da soli numeri.',
+            'postal_code.max'         => 'Impossibile inserire più di 5 caratteri',
             'email.required'          => 'Inserimento obbligatorio',
-            'email.string'            => 'L email deve essere una stringa.',
-            'email.max'               => 'L email deve essere massimo di 50 caratteri',
-            'email.unique'            => 'L email inserita è già presente nel database.',
+            'email.string'            => 'Deve essere composta da caratteri',
+            'email.email'             => 'Deve essere un email @',
+            'email.max'               => 'Impossibile inserire più di 50 caratteri',
+            //'email.unique'            => 'L\'email inserita è già presente nel database.',
             'password.required'       => 'Inserimento obbligatorio',
 
         ]);
@@ -194,7 +197,8 @@ class PatientController extends Controller
      */
     public function edit(Patient $patient)
     {
-        //
+        $doctors = Doctor::all();
+        return view('patient.edit', compact('patient', 'doctors'));
     }
 
     /**
@@ -238,6 +242,8 @@ class PatientController extends Controller
      */
     public function destroy(Patient $patient)
     {
-        //
+        $patient->delete();
+        
+        return redirect('/patient');
     }
 }

@@ -49,23 +49,23 @@ class DoctorController extends Controller
             'id_building'        => ['required'],
         ], [
             'name.required'           => 'Inserimento obbligatorio',
-            'name.string'             => 'Deve essere composto da lettere',
-            'name.max'                => 'Il nome deve essere massimo di 20 caratteri',
-            'surname.string'          => 'Deve essere composto da lettere',
+            'name.string'             => 'Deve essere composto da caratteri',
+            'name.max'                => 'Impossibile inserire più di 20 caratteri',
+            'surname.string'          => 'Deve essere composto da caratteri',
             'surname.required'        => 'Inserimento obbligatorio',
-            'surname.max'             => 'Il cognome deve essere massimo di 20 caratteri',
+            'surname.max'             => 'Impossibile inserire più di 20 caratteri',
             'dob.required'            => 'Inserimento obbligatorio',
             'dob.date'                => 'Deve essere una data',
             'phone_number.required'   => 'Inserimento obbligatorio',
-            'phone_number.numeric'    => 'Il numero di telefono deve essere composto solo da numeri',
-            'phone_number.max'        => 'Il numero di telefono deve essere massimo di 15 caratteri',
+            'phone_number.numeric'    => 'Deve essere composto solo da numeri',
+            'phone_number.max'        => 'Impossibile inserire più di 15 caratteri',
             'gender.required'         => 'Inserimento obbligatorio', // custom message
-            'gender.string'           => 'Deve essere composto da lettere',
-            'gender.max'              => 'Il sesso deve essere massimo di un carattere', // custom message
+            'gender.string'           => 'Deve essere composto da caratteri',
+            'gender.max'              => 'Impossibile inserire più di un carattere', // custom message
             'fiscal_code.required'    => 'Inserimento obbligatorio',
-            'fiscal_code.min'         => 'Il Codice Fiscale deve essere minimo di 16 caratteri',
-            'fiscal_code.max'         => 'Il Codice Fiscale deve essere massimo di 16 caratteri',
-            'id_building'             => 'Inserimento obbligatorio',
+            'fiscal_code.min'         => 'Inserire minimo 16 caratteri',
+            'fiscal_code.max'         => 'Impossibile inserire più di 16 caratteri',
+            'id_building.required'    => 'Inserimento obbligatorio',
 
         ]);
     }

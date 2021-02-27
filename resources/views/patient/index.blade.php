@@ -47,7 +47,7 @@ $name = Auth::user()->name;
     </div>
 
     <div class="row row-space justify-content-center align-items-center">
-            <input class="quadrato-ricetta col-lg-4 text-uppercase button-search" id="search" type="text" placeholder="ricerca"  style="padding:1em;">
+            <input class="quadrato-ricetta col-lg-4 text-uppercase button-search" id="myInput" type="text" placeholder="ricerca"  style="padding:1em;">
     </div>
 
         <div class="row row-space justify-content-center">
@@ -62,7 +62,12 @@ $name = Auth::user()->name;
                             <th scope="col-lg" style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">Codice Fiscale</th>
                             <th scope="col-lg">Nome</th>
                             <th scope="col-lg">Cognome</th>
+                            @if(!strcmp(Auth::user()->role, '1'))
+                            <th scope="col-lg">Informazioni</th>
+                            <th scope="col-lg" colspan="2" style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 0px 20px 20px 0px;">Azioni</th>
+                            @elseif(!strcmp(Auth::user()->role, '2'))
                             <th scope="col-lg" style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 0px 20px 20px 0px;">Informazioni</th>
+                            @endif
                         </tr>
                     </thead>
                     <tbody id="myTable">
@@ -80,7 +85,13 @@ $name = Auth::user()->name;
                                 <td style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">{{ $p->fiscal_code }}</td>
                                 <td>{{ $nome}}</td>
                                 <td>{{ $cognome }}</td>
+                                @if(!strcmp(Auth::user()->role, '1'))
+                                    <td><button type="button" class="btn btn-outline-primary" data-whatever1="{{ $p->fiscal_code }}" data-whatever2="{{ $nome }}" data-whatever3="{{ $cognome }}" data-whatever4="{{ $email }}" data-whatever5="{{ $p->dob }}" data-whatever6="{{ $p->gender }}" data-whatever7="{{ $p->phone_number }}" data-whatever8="{{ $p->street_address }}" data-whatever9="{{ $p->street_number }}" data-whatever10="{{ $p->city }}" data-whatever11="{{ $p->postal_code }}" data-toggle="modal" data-target="#exampleModal3">Visualizza descrizione</button></td>
+                                    <td><a href="{{ URL::action('PatientController@edit', $p) }}" class="btn btn-outline-dark btn-sm">Modifica</a></td>
+                                    <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;"><a href="{{ URL::action('PatientController@destroy', $p) }}" class="btn btn-outline-danger btn-sm">Elimina</a></td>
+                                @elseif(!strcmp(Auth::user()->role, '2'))
                                 <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 0px 20px 20px 0px;"><button type="button" class="btn btn-outline-primary" data-whatever1="{{ $p->fiscal_code }}" data-whatever2="{{ $nome }}" data-whatever3="{{ $cognome }}" data-whatever4="{{ $email }}" data-whatever5="{{ $p->dob }}" data-whatever6="{{ $p->gender }}" data-whatever7="{{ $p->phone_number }}" data-whatever8="{{ $p->street_address }}" data-whatever9="{{ $p->street_number }}" data-whatever10="{{ $p->city }}" data-whatever11="{{ $p->postal_code }}" data-toggle="modal" data-target="#exampleModal3">Visualizza descrizione</button></td>
+                                @endif
                             </tr> 
                         @endforeach
                     </tbody>

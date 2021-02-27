@@ -57,7 +57,7 @@ $name = Auth::user()->name;
     </div>
     <div class="py-5 row row-space justify-content-center align-items-center">
       <div class="col-lg-6" style="display:none" id="contentUser">
-        <select id="selUser" name="id_patient" class="label-ricetta"> 
+        <select id="selUser" name="id_patient" class="label-ricetta"  
           @foreach ($patient as $p)
           <?php
           $user = DB::table('users')->where('id', $p->id_user)->select('name', 'surname')->get();

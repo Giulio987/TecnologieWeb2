@@ -43,15 +43,15 @@ class BuildingController extends Controller
         ], [
             'street_address.required'   => 'Inserimento obbligatorio',
             'street_address.string'     => 'Inserimento obbligatorio',
-            'street_address.max'        => 'L\'indirizzo può essere lungo massimo 50 caratteri',
+            'street_address.max'        => 'Impossibile inserire più di 50 caratteri',
             'street_number.required'    => 'Inserimento obbligatorio',
-            'street_number.string'      => 'Il numero civico deve una stringa',
-            'street_number.max'         => 'Il numero civico è lungo massimo 8 caratteri',
+            'street_number.string'      => 'Deve essere composto da caratteri',
+            'street_number.max'         => 'Impossibile inserire più di 8 caratteri',
             'postal_code.required'      => 'Inserimento obbligatorio',
-            'postal_code.numeric'       => 'Il codice postale deve essere composto da soli numeri',
-            'postal_code.max'           => 'Il codice postale è lungo massimo 5 caratteri',
+            'postal_code.numeric'       => 'Deve essere composto da soli numeri',
+            'postal_code.max'           => 'Impossibile inserire più di 5 caratteri',
             'city.required'             => 'Inserimento obbligatorio',
-            'city.string'               => 'La città deve esssere composta da lettere',
+            'city.string'               => 'Deve essere composto da caratteri',
             'city.max'                  => 'Impossibile inserire più di 30 caratteri',
         ]);
     }
