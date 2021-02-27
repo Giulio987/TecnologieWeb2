@@ -1,7 +1,6 @@
 COSE DA FARE:
-- sistemare grandezza tasti nelle home dei vari utenti
 - sistemare la visualizzazione delle tabelle in admin
-- foto
+- Sistemare foto
 - validator edifici
 - vedere se permettere il checked nei bottoni visit e in caso sistemare lo stato active
 - sistemare allineamento btn-orario
@@ -10,6 +9,8 @@ COSE DA FARE:
 - sistemare opacità background
 - sistemare modifica dottore
 - modifica dei pazienti (file edit)
+- Controllare ordine card home
+- Controllare scritte di ogni pagina
 
 
 Considerazioni:
