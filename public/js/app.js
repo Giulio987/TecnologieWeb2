@@ -50691,3 +50691,25 @@ $('document').ready(function() {
         });
     });
 });
+
+$('#confirmDelete').click(function() {
+
+    if (confirm("Vuoi davvero eliminare?") == true) {
+        alert("Eliminazione avvenuta!");
+        return true;
+    } else {
+        alert("Hai annullato");
+        return false;
+    }
+});
+
+$('#confirmChange').click(function() {
+
+    if (confirm("Vuoi davvero modificare?") == true) {
+        alert("Modifica avvenuta!");
+        return true;
+    } else {
+        alert("Hai annullato");
+        return false;
+    }
+});

@@ -76,7 +76,7 @@
                                         style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 0px 0px 0px;border-radius: 0px 0px 0px 0px;">
                                         {{ $v->time }}</td>
                                     <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">
-                                        <a href="{{URL::action('VisitController@edit', $v)}}" class="btn btn-outline-primary btn-sm">Modifica</a>
+                                        <a href="{{URL::action('VisitController@edit', $v)}}" class="btn btn-outline-secondary btn-sm">Modifica</a>
                                     </td>
                                 </tr>
                             </tbody>
@@ -92,11 +92,8 @@
                                 style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">
                                 Data</th>
                             <th scope="col"
-                                style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 0px 0px 0px;border-radius: 0px 0px 0px 0px;">
-                                Ora</th>
-                            <th scope="col"
                                 style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">
-                                Modifica</th>
+                                Ora</th>
                         </tr>
                     </thead>
                     @foreach ($visits as $v)
@@ -107,11 +104,8 @@
                                     <td
                                         style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">
                                         {{ date('d/m/Y', strtotime($v->date)) }}</td>
-                                    <td
-                                        style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 0px 0px 0px;border-radius: 0px 0px 0px 0px;">
-                                        {{ $v->time }}</td>
                                     <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">
-                                        <a href="{{URL::action('VisitController@edit', $v)}}" class="btn btn-outline-primary btn-sm">Modifica</a>
+                                        {{ $v->time }}
                                     </td>
                                 </tr>
                             </tbody>

@@ -77,8 +77,8 @@
                             <td>{{ $d->gender }}</td>
                             <td>{{ date('d/m/Y', strtotime($d->dob)) }}</td>
                             <td>{{ $d->phone_number }}</td>
-                            <td><a href="{{ URL::action('DoctorController@edit', $d) }}" class="btn btn-outline-dark btn-sm">Modifica</a></td>
-                            <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;"><a href="{{ URL::action('DoctorController@destroy', $d) }}" class="btn btn-outline-danger btn-sm">Elimina</a></td>
+                            <td><a href="{{ URL::action('DoctorController@edit', $d) }}" class="btn btn-outline-secondary btn-sm">Modifica</a></td>
+                            <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;"><a id="confirmDelete" href="{{ URL::action('DoctorController@destroy', $d) }}" class="btn btn-outline-danger btn-sm">Elimina</a></td>
                         </tr>
                     @endforeach
                     </tbody>

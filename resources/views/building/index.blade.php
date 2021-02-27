@@ -69,7 +69,7 @@
                                 <td>{{ $b->street_number }}</td>
                                 <td>{{ $b->postal_code }}</td>
                                 <td>{{ $b->city }}</td>
-                                <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 0px 20px 20px 0px;"><a href="" class="btn btn-outline-danger btn-sm delete-btn" data-id="{{ $b->id }}">Elimina</a></td>
+                                <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 0px 20px 20px 0px;"><a id="confirmDelete" href="" class="btn btn-outline-danger btn-sm delete-btn" data-id="{{ $b->id }}">Elimina</a></td>
                             </tr> 
                         @endforeach
                     </tbody>
