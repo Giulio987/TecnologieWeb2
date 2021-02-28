@@ -17,7 +17,6 @@
             </button>
         </a>
     </div>
-    
         <div class="container-lg" align="center">
             <div class="row row-space justify-content-center">
                 <h1 class="font-weight-bold">

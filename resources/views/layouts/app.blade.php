@@ -81,6 +81,7 @@
                             </a>
                         </li>
                         @endguest
+                        <li class="nav-item"><a class="nav-link" href="/#why-us">Area Personale</a></li>
                         <li class="nav-item"><a class="nav-link" href="/#why-us">Perchè</a></li>
                         <li class="nav-item"><a class="nav-link" href="/#servizi">Servizi</a></li>
                         <li class="nav-item"><a class="nav-link" href="/#dottori">Dottori</a></li>

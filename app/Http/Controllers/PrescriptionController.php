@@ -53,7 +53,7 @@ class PrescriptionController extends Controller
 				$res = $doctor->id;
 			}
             $prescriptions = Prescription::where('id_doctor', $res)->where('status', 'convalidare')->get();
-            return view('prescription.indexValidate', compact('prescriptions'));
+            return view('prescription.index-validate', compact('prescriptions'));
         }
     }
 
