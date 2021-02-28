@@ -106,7 +106,17 @@ class BuildingController extends Controller
      */
     public function update(Request $request, Building $building)
     {
-        //
+        $this->validatorUpdate($request->all(), $building)->validate();
+
+        $input = $request->all();
+
+        $building->street_address = $input['street_address'];
+        $building->street_number = $input['street_number'];
+        $building->postal_code = $input['postal_code'];
+        $building->city = $input['city'];
+        $building->save();
+
+        return redirect('/building');
     }
 
     /**

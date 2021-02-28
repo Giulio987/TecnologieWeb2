@@ -79,7 +79,7 @@ class PatientController extends Controller
             'city'               => ['required', 'string'],
             'postal_code'        => ['required', 'numeric'],
             'id_doctor'          => ['required'],
-            'email'              => ['required', 'string', 'email', 'unique:patients'],
+            'email'              => ['required', 'string', 'email', 'unique:users'],
             'password'           => ['required'],
         ], [
             'name.required'           => 'Inserimento obbligatorio',
