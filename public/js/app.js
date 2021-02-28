@@ -50614,6 +50614,18 @@ function mouseOut5() {
     document.getElementById("card5").style.backgroundColor = "#fff";
     document.getElementById("card5").style.borderColor = "#fff";
 }
+
+function mouseOver6() {
+    document.getElementById("card6").style.color = "#fff";
+    document.getElementById("card6").style.backgroundColor = "#3490dc";
+    document.getElementById("card6").style.borderColor = "#3490dc";
+}
+
+function mouseOut6() {
+    document.getElementById("card6").style.color = "#3490dc";
+    document.getElementById("card6").style.backgroundColor = "#fff";
+    document.getElementById("card6").style.borderColor = "#fff";
+}
 $("#convalidare").on("click", function() {
     $("#table").toggle("slow", function() {
         $("#tableConvalidare").toggle("slow", function() {});
