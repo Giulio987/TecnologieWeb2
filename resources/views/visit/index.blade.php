@@ -611,7 +611,7 @@
                             @endif
                         @endfor
                     </div>
-                    @if (count(DB::table('visits')->where('date', $date5)->get()) == 0)
+                    @if (count(DB::table('visits')->where('date', $date6)->get()) == 0)
                     <div class="row justify-content-center">
                         <div class="alert alert-info col-lg-6" role="alert">
                             <h5>Non ci sono visite prenotate per oggi.</h5>
