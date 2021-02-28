@@ -99,17 +99,29 @@
         </div>
         </div>
         <div class="row  justify-content-center" align="center">
-        <div class="form-group"> 
-            <select name="id_building" id="selUser">
+
+        <div class="form-group label-space">
+            <select id="selUser" name="id_building" for="id_building" class="@error('id_building') is-invalid @enderror selUser">
+                <?php
+                    $building = DB::table('buildings')->where('id', $doctor->id_building)->get();
+                    foreach ($building as $info) {
+                        $street_address = $info->street_address;
+                        $street_number = $info->street_number;
+                        $city = $info->city;
+                        $postal_code = $info->postal_code;
+                    }
+                ?>
+                <option value="{{$doctor->id_building}}" selected="selected">{{ $id }} - {{ $street_address }}, {{ $street_number }} - {{ $city }}, {{ $postal_code }}</option>
                 @foreach($buildings as $b)
+                @if($b->id != $doctor->id_building)
                     <option value="{{$b->id}}">{{$b->id}} - {{$b->street_address }} - {{$b->street_number}} - {{$b->postal_code}} - {{$b->city}}</option>
+                @endif
                 @endforeach
             </select>
-            <small class="form-text text-muted">Modifica l'edificio di appartenenza</small>
+            <small class="form-text text-muted">Modifica l'ambulatorio</small>
             @error('id_building')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
-            
         </div>
         <button id="confirmChange" class="btn btn-outline-success col-lg-2 mt-2">Aggiorna<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-circle pl-2" viewBox="0 0 16 16">
   <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
