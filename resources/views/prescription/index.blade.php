@@ -182,19 +182,19 @@
                         @foreach ($prescriptions as $p)
                             <tr class="font-weight-bold text-uppercase" style="color:#626262;" id="{{ $p->type }}">
                                 <td style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">
-                                    {{ $p->date }}</th>
+                                {{ date('d/m/Y', strtotime($p->date)) }}</th>
                                 @if ($p->status == 'convalidata')
                                 <td>{{ $p->rfe }}</td>
                                 <td><button type="button" class="btn btn-outline-primary" data-toggle="modal"
                                         data-target="#exampleModal1" data-whatever1="{{ $p->description }}"
                                         data-whatever2="{{ $p->rfe }}"
-                                        data-whatever3="{{ $p->date }}">Visualizza descrizione</button></td>
+                                        data-whatever3="{{ date('d/m/Y', strtotime($p->date)) }}">Visualizza descrizione</button></td>
                                 @else
                                 <td>ricetta negata</td>
                                 <td><button type="button" class="btn btn-outline-primary" data-toggle="modal"
                                         data-target="#exampleModal1" data-whatever1="{{ $p->description }}"
                                         data-whatever2="{{ 'ricetta negata' }}"
-                                        data-whatever3="{{ $p->date }}">Visualizza descrizione</button></td>
+                                        data-whatever3="{{ date('d/m/Y', strtotime($p->date)) }}">Visualizza descrizione</button></td>
                                 @endif
                                 <td
                                     style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">
@@ -228,12 +228,12 @@
 
                             <tr class="font-weight-bold text-uppercase" style="color:#626262;" id="{{ $p->type }}">
                                 <td style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">
-                                    {{ $p->date }}</th>
+                                {{ date('d/m/Y', strtotime($p->date)) }}</th>
                                 <td>non visualizzabile</td>
                                 <td><button type="button" class="btn btn-outline-primary" data-toggle="modal"
                                         data-target="#exampleModal1" data-whatever1="{{ $p->description }}"
                                         data-whatever2="{{ 'RFE non visualizzabile' }}"
-                                        data-whatever3="{{ $p->date }}">Visualizza descrizione</button></td>
+                                        data-whatever3="{{ date('d/m/Y', strtotime($p->date)) }}">Visualizza descrizione</button></td>
                                 <td
                                     style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">
                                     {{ $p->status }}</td>
