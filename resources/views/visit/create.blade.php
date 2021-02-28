@@ -73,7 +73,7 @@ function giornoData($d, $m, $a)
                 $gContent1 = giornoData($d, $m, $y);
                 ?>
                 <label class="btn btn-outline-primary col-lg-2 quadrato mx-4 mb-2">
-                    <input type="radio" name="date" id="date1" value="{{ $date1 }}" onclick="Show1()">
+                    <input type="radio" name="date" id="Show1" value="{{ $date1 }}">
                     <h5 class="my-3">{{ $gContent1 }}</h5>
                     <h3 class="font-weight-bold my-3">{{ $d }}</h3>
                 </label>
@@ -87,7 +87,7 @@ function giornoData($d, $m, $a)
                 $gContent2 = giornoData($d, $m, $y);
                 ?>
                 <label class="btn btn-outline-primary col-lg-2 quadrato mx-4 mb-2">
-                    <input type="radio" name="date" id="date2" value="{{ $date2 }}" onclick="Show2()">
+                    <input type="radio" name="date" id="Show2" value="{{ $date2 }}">
                     <h5 class="my-3">{{ $gContent2 }}</h5>
                     <h3 class="font-weight-bold my-3">{{ $d }}</h3>
                 </label>
@@ -101,7 +101,7 @@ function giornoData($d, $m, $a)
                 $gContent3 = giornoData($d, $m, $y);
                 ?>
                 <label class="btn btn-outline-primary col-lg-2 quadrato mx-4 mb-2">
-                    <input type="radio" name="date" id="date3" value="{{ $date3 }}" onclick="Show3()">
+                    <input type="radio" name="date" id="Show3" value="{{ $date3 }}">
                     <h5 class="my-3">{{ $gContent3 }}</h5>
                     <h3 class="font-weight-bold my-3">{{ $d }}</h3>
                 </label>
@@ -115,7 +115,7 @@ function giornoData($d, $m, $a)
                 $gContent4 = giornoData($d, $m, $y);
                 ?>
                 <label class="btn btn-outline-primary col-lg-2 quadrato mx-4 mb-2">
-                    <input type="radio" name="date" id="date4" value="{{ $date4 }}" onclick="Show4()">
+                    <input type="radio" name="date" id="Show4" value="{{ $date4 }}">
                     <h5 class="my-3">{{ $gContent4 }}</h5>
                     <h3 class="font-weight-bold my-3">{{ $d }}</h3>
                 </label>
@@ -129,7 +129,7 @@ function giornoData($d, $m, $a)
                 $gContent5 = giornoData($d, $m, $y);
                 ?>
                 <label class="btn btn-outline-primary col-lg-2 quadrato mx-4 mb-2">
-                    <input type="radio" name="date" id="date5" value="{{ $date5 }}" onclick="Show5()">
+                    <input type="radio" name="date" id="Show5" value="{{ $date5 }}">
                     <h5 class="my-3">{{ $gContent5 }}</h5>
                     <h3 class="font-weight-bold my-3">{{ $d }}</h3>
                 </label>
@@ -143,7 +143,7 @@ function giornoData($d, $m, $a)
                 $gContent6 = giornoData($d, $m, $y);
                 ?>
                 <label class="btn btn-outline-primary col-lg-2 quadrato mx-4 mb-2">
-                    <input type="radio" name="date" id="date6" value="{{ $date6 }}" onclick="Show6()">
+                    <input type="radio" name="date" id="Show6" value="{{ $date6 }}">
                     <h5 class="my-3">{{ $gContent6 }}</h5>
                     <h3 class="font-weight-bold my-3">{{ $d }}</h3>
                 </label>
@@ -152,7 +152,7 @@ function giornoData($d, $m, $a)
 
         <div class="row row-space justify-content-center" id="content1" style="display:none">
             @if($gContent1 != 'Domenica' && $gContent1 != 'Sabato')
-                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons" align="left">
+                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
                     @for($i = 0; $i < count($time); $i++)
                         @if (DB::table('visits')->where('date', $date1)->where('time',$time[$i])->doesntExist() && strtotime($time[$i]) > strtotime(date('H:i')))
                             <?php $oraDisponibile++; ?>
@@ -179,7 +179,7 @@ function giornoData($d, $m, $a)
                 @endif
             @endif
             @if ($gContent1 == 'Sabato')
-                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons" align="left">
+                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
                     @for($i = 0; $i < count($timeSabato); $i++) 
                         @if (DB::table('visits')->where('date', $date1)->where('time',$timeSabato[$i])->doesntExist() && strtotime($timeSabato[$i]) > strtotime(date('H:i')))
                             <?php $oraDisponibile++; ?>
@@ -216,7 +216,7 @@ function giornoData($d, $m, $a)
 
         <div class="row row-space justify-content-center" id="content2" style="display:none">
             @if($gContent2 != 'Domenica' && $gContent2 != 'Sabato')
-                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons" align="left">
+                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
                     @for($i = 0; $i < count($time); $i++)
                         @if (DB::table('visits')->where('date', $date2)->where('time',$time[$i])->doesntExist())
                                 <label class="btn btn-orario btn-outline-primary font-weight-bold">{{ $time[$i] }}
@@ -234,7 +234,7 @@ function giornoData($d, $m, $a)
                 @endif
             @endif
             @if ($gContent2 == 'Sabato')
-                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons" align="left">
+                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
                     @for($i = 0; $i < count($timeSabato); $i++) 
                         @if (DB::table('visits')->where('date', $date2)->where('time',$timeSabato[$i])->doesntExist())
                                 <label class="btn btn-orario btn-outline-primary font-weight-bold">{{ $timeSabato[$i] }}
@@ -262,7 +262,7 @@ function giornoData($d, $m, $a)
 
         <div class="row row-space justify-content-center" id="content3" style="display:none;">
             @if($gContent3 != 'Domenica' && $gContent3 != 'Sabato')
-                <div class="btn-group-toggle w-100 h-100 col-lg-8" data-toggle="buttons" align="left">
+                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
                     @for($i = 0; $i < count($time); $i++)
                         @if (DB::table('visits')->where('date', $date3)->where('time',$time[$i])->doesntExist())
                                 <label class="btn btn-orario btn-outline-primary font-weight-bold">{{ $time[$i] }}
@@ -280,7 +280,7 @@ function giornoData($d, $m, $a)
                 @endif
             @endif
             @if ($gContent3 == 'Sabato')
-                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons" align="left">
+                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
                     @for($i = 0; $i < count($timeSabato); $i++) 
                         @if (DB::table('visits')->where('date', $date3)->where('time',$timeSabato[$i])->doesntExist())
                                 <label class="btn btn-orario btn-outline-primary font-weight-bold">{{ $timeSabato[$i] }}
@@ -308,7 +308,7 @@ function giornoData($d, $m, $a)
 
         <div class="row row-space justify-content-center" id="content4" style="display:none">
             @if($gContent4 != 'Domenica' && $gContent4 != 'Sabato')
-                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons" align="left">
+                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
                     @for($i = 0; $i < count($time); $i++)
                         @if (DB::table('visits')->where('date', $date4)->where('time',$time[$i])->doesntExist())
                                 <label class="btn btn-orario btn-outline-primary font-weight-bold">{{ $time[$i] }}
@@ -326,7 +326,7 @@ function giornoData($d, $m, $a)
                 @endif
             @endif
             @if ($gContent4 == 'Sabato')
-                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons" align="left">
+                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
                     @for($i = 0; $i < count($timeSabato); $i++) 
                         @if (DB::table('visits')->where('date', $date4)->where('time',$timeSabato[$i])->doesntExist())
                                 <label class="btn btn-orario btn-outline-primary font-weight-bold">{{ $timeSabato[$i] }}
@@ -354,7 +354,7 @@ function giornoData($d, $m, $a)
 
         <div class="row row-space justify-content-center" id="content5" style="display:none">
             @if($gContent5 != 'Domenica' && $gContent5 != 'Sabato')
-                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons" align="left">
+                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
                     @for($i = 0; $i < count($time); $i++)
                         @if (DB::table('visits')->where('date', $date5)->where('time',$time[$i])->doesntExist())
                                 <label class="btn btn-orario btn-outline-primary font-weight-bold">{{ $time[$i] }}
@@ -372,7 +372,7 @@ function giornoData($d, $m, $a)
                 @endif
             @endif
             @if ($gContent5 == 'Sabato')
-                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons" align="left">
+                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
                     @for($i = 0; $i < count($timeSabato); $i++) 
                         @if (DB::table('visits')->where('date', $date5)->where('time',$timeSabato[$i])->doesntExist())
                                 <label class="btn btn-orario btn-outline-primary font-weight-bold">{{ $timeSabato[$i] }}
@@ -400,7 +400,7 @@ function giornoData($d, $m, $a)
 
         <div class="row row-space justify-content-center" id="content6" style="display:none">
             @if($gContent6 != 'Domenica' && $gContent6 != 'Sabato')
-                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons" align="left">
+                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
                     @for($i = 0; $i < count($time); $i++)
                         @if (DB::table('visits')->where('date', $date6)->where('time',$time[$i])->doesntExist())
                                 <label class="btn btn-orario btn-outline-primary font-weight-bold">{{ $time[$i] }}
@@ -418,7 +418,7 @@ function giornoData($d, $m, $a)
                 @endif
             @endif
             @if ($gContent6 == 'Sabato')
-                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons" align="left">
+                <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
                     @for($i = 0; $i < count($timeSabato); $i++) 
                         @if (DB::table('visits')->where('date', $date6)->where('time',$timeSabato[$i])->doesntExist())
                                 <label class="btn btn-orario btn-outline-primary font-weight-bold">{{ $timeSabato[$i] }}

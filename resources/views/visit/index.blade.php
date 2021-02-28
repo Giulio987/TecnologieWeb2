@@ -38,12 +38,11 @@
             <div class="row row-space justify-content-center">
                 <div class="btn-group btn-group-toggle justify-content-center w-100 h-100" data-toggle="buttons">
                     <label class="btn btn-outline-primary quadrato-ricetta col-lg-2">
-                        <input type="radio" name="visita" value="visitaPassate" onclick="ShowPassate()"
-                            style="display:none">
+                        <input type="radio" name="visita" value="visitaPassate" id="ShowPassate" style="display:none">
                         <h4 class="font-weight-bold" style="padding:1em;">Visite passate</h4>
                     </label>
                     <label class="btn btn-outline-primary quadrato-ricetta col-lg-2">
-                        <input type="radio" name="visita" value="visitaFuture" onclick="ShowFuture()" style="display:none">
+                        <input type="radio" name="visita" value="visitaFuture" id="ShowFuture" style="display:none">
                         <h4 class="font-weight-bold" style="padding:1em;">Visite future</h4>
                     </label>
                 </div>
@@ -170,7 +169,7 @@
                     $gContent1 = giornoData($d, $m, $y);
                     ?>
                     <label class="btn btn-outline-primary col-md-2 quadrato mx-4 mb-2">
-                        <input type="radio" name="date" id="date1" value="{{ $date1 }}" onclick="Show1()">
+                        <input type="radio" name="date" id="Show1" value="{{ $date1 }}">
                         <h5 class="my-3">{{ $gContent1 }}</h5>
                         <h3 class="font-weight-bold my-3">{{ $d }}</h3>
                     </label>
@@ -184,7 +183,7 @@
                     $gContent2 = giornoData($d, $m, $y);
                     ?>
                     <label class="btn btn-outline-primary col-md-2 quadrato mx-4 mb-2 ">
-                        <input type="radio" name="date" id="date2" value="{{ $date2 }}" onclick="Show2()">
+                        <input type="radio" name="date" id="Show2" value="{{ $date2 }}">
                         <h5 class="my-3">{{ $gContent2 }}</h5>
                         <h3 class="font-weight-bold my-3">{{ $d }}</h3>
                     </label>
@@ -198,7 +197,7 @@
                     $gContent3 = giornoData($d, $m, $y);
                     ?>
                     <label class="btn btn-outline-primary col-md-2 quadrato mx-4 mb-2">
-                        <input type="radio" name="date" id="date3" value="{{ $date3 }}" onclick="Show3()">
+                        <input type="radio" name="date" id="Show3" value="{{ $date3 }}">
                         <h5 class="my-3">{{ $gContent3 }}</h5>
                         <h3 class="font-weight-bold my-3">{{ $d }}</h3>
                     </label>
@@ -212,7 +211,7 @@
                     $gContent4 = giornoData($d, $m, $y);
                     ?>
                     <label class="btn btn-outline-primary col-md-2 quadrato mx-4 mb-2">
-                        <input type="radio" name="date" id="date4" value="{{ $date4 }}" onclick="Show4()">
+                        <input type="radio" name="date" id="Show4" value="{{ $date4 }}">
                         <h5 class="my-3">{{ $gContent4 }}</h5>
                         <h3 class="font-weight-bold my-3">{{ $d }}</h3>
                     </label>
@@ -226,7 +225,7 @@
                     $gContent5 = giornoData($d, $m, $y);
                     ?>
                     <label class="btn btn-outline-primary col-md-2 quadrato mx-4 mb-2">
-                        <input type="radio" name="date" id="date5" value="{{ $date5 }}" onclick="Show5()">
+                        <input type="radio" name="date" id="Show5" value="{{ $date5 }}">
                         <h5 class="my-3">{{ $gContent5 }}</h5>
                         <h3 class="font-weight-bold my-3">{{ $d }}</h3>
                     </label>
@@ -240,7 +239,7 @@
                     $gContent6 = giornoData($d, $m, $y);
                     ?>
                     <label class="btn btn-outline-primary col-md-2 quadrato mx-4 mb-2">
-                        <input type="radio" name="date" id="date6" value="{{ $date6 }}" onclick="Show6()">
+                        <input type="radio" name="date" id="Show6" value="{{ $date6 }}">
                         <h5 class="my-3">{{ $gContent6 }}</h5>
                         <h3 class="font-weight-bold my-3">{{ $d }}</h3>
                     </label>

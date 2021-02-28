@@ -50365,71 +50365,83 @@ $('document').ready(function() {
     $(".selUser").select2();
 });
 
-function Show1() {
-    $("#content1").show("slow", function() {
-        // Animation complete.
+$('document').ready(function() {
+    $("#Show1").on("click", function() {
+        $("#content1").show("slow", function() {
+            // Animation complete.
+        });
+        document.getElementById('content2').style.display = 'none';
+        document.getElementById('content3').style.display = 'none';
+        document.getElementById('content4').style.display = 'none';
+        document.getElementById('content5').style.display = 'none';
+        document.getElementById('content6').style.display = 'none';
     });
-    document.getElementById('content2').style.display = 'none';
-    document.getElementById('content3').style.display = 'none';
-    document.getElementById('content4').style.display = 'none';
-    document.getElementById('content5').style.display = 'none';
-    document.getElementById('content6').style.display = 'none';
-}
+});
 
-function Show2() {
-    document.getElementById('content1').style.display = 'none';
-    $("#content2").show("slow", function() {
-        // Animation complete.
+$('document').ready(function() {
+    $("#Show2").on("click", function() {
+        document.getElementById('content1').style.display = 'none';
+        $("#content2").show("slow", function() {
+            // Animation complete.
+        });
+        document.getElementById('content3').style.display = 'none';
+        document.getElementById('content4').style.display = 'none';
+        document.getElementById('content5').style.display = 'none';
+        document.getElementById('content6').style.display = 'none';
     });
-    document.getElementById('content3').style.display = 'none';
-    document.getElementById('content4').style.display = 'none';
-    document.getElementById('content5').style.display = 'none';
-    document.getElementById('content6').style.display = 'none';
-}
+});
 
-function Show3() {
-    document.getElementById('content1').style.display = 'none';
-    document.getElementById('content2').style.display = 'none';
-    $("#content3").show("slow", function() {
-        // Animation complete.
+$('document').ready(function() {
+    $("#Show3").on("click", function() {
+        document.getElementById('content1').style.display = 'none';
+        document.getElementById('content2').style.display = 'none';
+        $("#content3").show("slow", function() {
+            // Animation complete.
+        });
+        document.getElementById('content4').style.display = 'none';
+        document.getElementById('content5').style.display = 'none';
+        document.getElementById('content6').style.display = 'none';
     });
-    document.getElementById('content4').style.display = 'none';
-    document.getElementById('content5').style.display = 'none';
-    document.getElementById('content6').style.display = 'none';
-}
+});
 
-function Show4() {
-    document.getElementById('content1').style.display = 'none';
-    document.getElementById('content2').style.display = 'none';
-    document.getElementById('content3').style.display = 'none';
-    $("#content4").show("slow", function() {
-        // Animation complete.
+$('document').ready(function() {
+    $("#Show4").on("click", function() {
+        document.getElementById('content1').style.display = 'none';
+        document.getElementById('content2').style.display = 'none';
+        document.getElementById('content3').style.display = 'none';
+        $("#content4").show("slow", function() {
+            // Animation complete.
+        });
+        document.getElementById('content5').style.display = 'none';
+        document.getElementById('content6').style.display = 'none';
     });
-    document.getElementById('content5').style.display = 'none';
-    document.getElementById('content6').style.display = 'none';
-}
+});
 
-function Show5() {
-    document.getElementById('content1').style.display = 'none';
-    document.getElementById('content2').style.display = 'none';
-    document.getElementById('content3').style.display = 'none';
-    document.getElementById('content4').style.display = 'none';
-    $("#content5").show("slow", function() {
-        // Animation complete.
+$('document').ready(function() {
+    $("#Show5").on("click", function() {
+        document.getElementById('content1').style.display = 'none';
+        document.getElementById('content2').style.display = 'none';
+        document.getElementById('content3').style.display = 'none';
+        document.getElementById('content4').style.display = 'none';
+        $("#content5").show("slow", function() {
+            // Animation complete.
+        });
+        document.getElementById('content6').style.display = 'none';
     });
-    document.getElementById('content6').style.display = 'none';
-}
+});
 
-function Show6() {
-    document.getElementById('content1').style.display = 'none';
-    document.getElementById('content2').style.display = 'none';
-    document.getElementById('content3').style.display = 'none';
-    document.getElementById('content4').style.display = 'none';
-    document.getElementById('content5').style.display = 'none';
-    $("#content6").show("slow", function() {
-        // Animation complete.
+$('document').ready(function() {
+    $("#Show6").on("click", function() {
+        document.getElementById('content1').style.display = 'none';
+        document.getElementById('content2').style.display = 'none';
+        document.getElementById('content3').style.display = 'none';
+        document.getElementById('content4').style.display = 'none';
+        document.getElementById('content5').style.display = 'none';
+        $("#content6").show("slow", function() {
+            // Animation complete.
+        });
     });
-}
+});
 $('document').ready(function() {
     $("#ShowFuture").on("click", function() {
         $("#contentPassate").hide("slow", function() {
