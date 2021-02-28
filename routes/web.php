@@ -20,7 +20,7 @@ Auth::routes();
 
 
 Route::get('home', 'HomeController@index')->middleware('role');
-Route::get('/personal-area', 'HomeController@index_personal_area')->middleware('role');
+Route::get('/personal-area', 'HomeController@indexPersonalArea')->middleware('role');
 //Doctor
 Route::resource('doctor', 'DoctorController')->except(['destroy'])->middleware('role');
 Route::get('/doctor/{doctor}/delete', 'DoctorController@destroy')->middleware('role');

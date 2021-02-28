@@ -82,7 +82,7 @@
                         </li>
                         <?php $notification = count(DB::table('prescriptions')->where('status', 'convalidare')->get()); ?>
 
-                        <li class="nav-item"><a class="nav-link" href="">Area Personale</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ URL::action('HomeController@indexPersonalArea') }}">Area Personale</a></li>
                         @if(!strcmp(Auth::user()->role, '2'))
                         @if($notification > 0)
                         <li class="nav-item dropdown fill ">

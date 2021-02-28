@@ -32,7 +32,7 @@ class HomeController extends Controller
         return view('/home');
     }
 
-    public function index_personal_area()
+    public function indexPersonalArea()
     {
         if ( Auth::user()->role == '1') {
             //prendo i dati del'admin loggato
