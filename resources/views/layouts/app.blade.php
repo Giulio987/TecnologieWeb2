@@ -80,10 +80,10 @@
                                 Home
                             </a>
                         </li>
-                        @endguest
                         <?php $notification = count(DB::table('prescriptions')->where('status', 'convalidare')->get()); ?>
 
-                        <li class="nav-item"><a class="nav-link" href="/#why-us">Area Personale</a></li>
+                        <li class="nav-item"><a class="nav-link" href="">Area Personale</a></li>
+                        @if(!strcmp(Auth::user()->role, '2'))
                         @if($notification > 0)
                         <li class="nav-item dropdown fill ">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -103,11 +103,14 @@
                             </div>
                         </li>
                         @endif
+                        @endif
+                        @endguest
                         <li class="nav-item"><a class="nav-link" href="/#why-us">Perchè</a></li>
                         <li class="nav-item"><a class="nav-link" href="/#servizi">Servizi</a></li>
                         <li class="nav-item"><a class="nav-link" href="/#dottori">Dottori</a></li>
                         <li class="nav-item"><a class="nav-link" href="/#creatori">Creatori</a></li>
                         <li class="nav-item"><a class="nav-link" href="/#galleria">Galleria</a></li>
+                        
                     </ul>
                 </div>
             </div>
