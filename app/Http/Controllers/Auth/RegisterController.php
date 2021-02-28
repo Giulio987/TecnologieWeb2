@@ -51,16 +51,41 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name'           => ['required', 'string', 'max:255'],
-            'surname'        => ['required', 'string', 'max:255'],
-            'email'          => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'name'           => ['required', 'string', 'max:20'],
+            'surname'        => ['required', 'string', 'max:20'],
+            'email'          => ['required', 'email', 'max:50', 'unique:users'],
             'password'       => ['required', 'string', 'min:8', 'confirmed'],
-            'role'           => ['required', 'string', 'max:255'],
-            'fiscal_code'    => ['required', 'string', 'max:255'],
+            'role'           => ['required', 'string'],
+            'fiscal_code'    => ['required', 'string', 'min:16', 'max:16'],
             'gender'         => ['required', 'string', 'max:1'],
-            'dob'            => ['required', 'date', 'max:255'],
-            'phone_number'   => ['required', 'string', 'max:255'],
-            'id_building'    => ['required', 'string', 'max:255'],
+            'dob'            => ['required', 'date'],
+            'phone_number'   => ['required', 'numeric'],
+            'id_building'    => ['required'],
+        ], [
+            'name.required'           => 'Inserimento obbligatorio',
+            'name.string'             => 'Deve essere composto da caratteri',
+            'name.max'                => 'Impossibile inserire più di 20 caratteri',
+            'surname.string'          => 'Deve essere composto da caratteri',
+            'surname.required'        => 'Inserimento obbligatorio',
+            'surname.max'             => 'Impossibile inserire più di 20 caratteri',
+            'dob.required'            => 'Inserimento obbligatorio',
+            'dob.date'                => 'Deve essere una data',
+            'phone_number.required'   => 'Inserimento obbligatorio',
+            'phone_number.numeric'    => 'Deve essere composto solo da numeri',
+            'gender.required'         => 'Inserimento obbligatorio', // custom message
+            'gender.string'           => 'Deve essere composto da caratteri',
+            'gender.max'              => 'Impossibile inserire più di un carattere', // custom message
+            'fiscal_code.required'    => 'Inserimento obbligatorio',
+            'fiscal_code.min'         => 'Inserire minimo 16 caratteri',
+            'fiscal_code.max'         => 'Impossibile inserire più di 16 caratteri',
+            'id_building.required'    => 'Inserimento obbligatorio',
+            'email.required'          => 'Inserimento obbligatorio',
+            'email.email'             => 'Deve essere un email',
+            'email.max'               => 'Impossibile inserire più di 50 caratteri',
+            'email.unique'            => 'Email già presente',
+            'password.required'       => 'Inserire password',
+            'password.min'            => 'Inserisci minimo 8 caratteri',
+            'password.confirmed'      => 'La conferma della password non corrisponde'
         ]);
     }
 

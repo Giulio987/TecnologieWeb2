@@ -573,53 +573,55 @@
                 <div class="btn-group-toggle w-100 h-100 col-lg-8" data-toggle="buttons" align="left">
                         @for ($i = 0; $i < count($time); $i++)
                             @if (DB::table('visits')->where('date', $date6)->where('time', $time[$i])->exists()) <?php
-                            $id_p = DB::table('visits')->where('date', $date6)->where('time', $time[$i])->select('id_patient')->get();
-                            foreach ($id_p as $pippo) {
-                                $info = $pippo->id_patient;
-                            }
-                            $p = DB::table('patients')->where('id', $info)->get();
-                            foreach ($p as $pa) {
-                                $fiscal_code = $pa->fiscal_code;
-                                $dob = $pa->dob;
-                                $phone_number = $pa->phone_number;
-                                $gender = $pa->gender;
-                                $street_address = $pa->street_address;
-                                $street_number = $pa->street_number;
-                                $postal_code = $pa->postal_code;
-                                $city = $pa->city;
-                                $id_user = $pa->id_user;
-                            }
-                            $user = DB::table('users')->where('id', $id_user)->select('name', 'surname')->get();
-                            foreach ($user as $u) {
-                                $name = $u->name;
-                                $surname = $u->surname;
-                            }
-                            ?>
-                            <label class="btn btn-orario btn-outline-primary font-weight-bold"
-                            data-whatever1="{{ $fiscal_code }}" data-whatever2="{{ $name }}"
-                            data-whatever3="{{ $surname }}"
-                            data-whatever4="{{ date('d/m/Y', strtotime($dob)) }}"
-                            data-whatever5="{{ $phone_number }}"
-                            data-whatever6="{{ $gender }}"
-                            data-whatever7="{{ $street_address }}"
-                            data-whatever8="{{ $street_number }}"
-                            data-whatever9="{{ $postal_code }}"
-                            data-whatever10="{{ $city }}" data-toggle="modal"
-                            data-target="#exampleModal2" type="button">
-                            <p>{{ $time[$i] }}</p></label> @endif
+                                $id_p = DB::table('visits')->where('date', $date6)->where('time', $time[$i])->select('id_patient')->get();
+                                foreach ($id_p as $pippo) {
+                                    $info = $pippo->id_patient;
+                                }
+                                $p = DB::table('patients')->where('id', $info)->get();
+                                foreach ($p as $pa) {
+                                    $fiscal_code = $pa->fiscal_code;
+                                    $dob = $pa->dob;
+                                    $phone_number = $pa->phone_number;
+                                    $gender = $pa->gender;
+                                    $street_address = $pa->street_address;
+                                    $street_number = $pa->street_number;
+                                    $postal_code = $pa->postal_code;
+                                    $city = $pa->city;
+                                    $id_user = $pa->id_user;
+                                }
+                                $user = DB::table('users')->where('id', $id_user)->select('name', 'surname')->get();
+                                foreach ($user as $u) {
+                                    $name = $u->name;
+                                    $surname = $u->surname;
+                                }
+                                ?>
+                                <label class="btn btn-orario btn-outline-primary font-weight-bold"
+                                data-whatever1="{{ $fiscal_code }}" data-whatever2="{{ $name }}"
+                                data-whatever3="{{ $surname }}"
+                                data-whatever4="{{ date('d/m/Y', strtotime($dob)) }}"
+                                data-whatever5="{{ $phone_number }}"
+                                data-whatever6="{{ $gender }}"
+                                data-whatever7="{{ $street_address }}"
+                                data-whatever8="{{ $street_number }}"
+                                data-whatever9="{{ $postal_code }}"
+                                data-whatever10="{{ $city }}" data-toggle="modal"
+                                data-target="#exampleModal2" type="button">
+                                <p>{{ $time[$i] }}</p>
+                                </label>
+                            @endif
                         @endfor
                     </div>
                     @if (count(DB::table('visits')->where('date', $date5)->get()) == 0)
                     <div class="row justify-content-center">
                         <div class="alert alert-info col-lg-6" role="alert">
-                        <h5>Non ci sono visite prenotate per oggi.</h5>
+                            <h5>Non ci sono visite prenotate per oggi.</h5>
                         </div>
                     </div>
                     @endif
                 @else
                     <div class="row justify-content-center">
                         <div class="alert alert-info col-lg-3" role="alert">
-                                <h5>Giornata libera.</h5>
+                            <h5>Giornata libera.</h5>
                         </div>
                     </div>
                 @endif
@@ -657,25 +659,23 @@
     @if (!strcmp(Auth::user()->role, '3'))
 
         <?php
-        $name = Auth::user()->name;
+            $name = Auth::user()->name;
 
-        date_default_timezone_set('Europe/Rome');
+            date_default_timezone_set('Europe/Rome');
 
-        $id = Auth::user()->id;
-        $info = DB::table('patients')->where('id_user', $id)->select('id')->get();
-        foreach ($info as $patient) {
-            $res2 = $patient->id;
-        }
-        $visits = DB::table('visits')->where('id_patient', $res2)->orderByRaw('date - time DESC')->get();
+            $id = Auth::user()->id;
+            $info = DB::table('patients')->where('id_user', $id)->select('id')->get();
+            foreach ($info as $patient) {
+                $res2 = $patient->id;
+            }
+            $visits = DB::table('visits')->where('id_patient', $res2)->orderByRaw('date - time DESC')->get();
         ?>
 
         <div class="row-space" style="margin-left:100px;float:left;">
             <a href="{{ URL::action('HomeController@index') }}">
                 <button style="background-color: #f8fafc;border-width: 0px;" href="">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
-                        class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
                     </svg>
                 </button>
             </a>
@@ -688,24 +688,23 @@
             </div>
             <div class="row row-space justify-content-center">
                 <h4>
-                    Seleziona e visualizza le tue visite passate o future con il tuo medico di base. </h4>
+                    Seleziona e visualizza le tue visite passate o future con il tuo medico di base.
+                </h4>
             </div>
             <div class=" row row-space justify-content-center">
                 <h5>
-                    Tra le Visite Future puoi selezionare la visita ed eliminarla.<button id="button" type="submit" name="submit" class="btn btn-outline-danger btn-prenota font-weight-bold col-lg-2" style="display:none">-</button>
-            </h5>
+                    Tra le Visite Future puoi selezionare la visita ed eliminarla.
+                </h5>
             </div>
-
 
             <div class="row row-space justify-content-center">
                 <div class="btn-group btn-group-toggle justify-content-center w-100 h-100" data-toggle="buttons">
                     <label class="btn btn-outline-primary quadrato-ricetta col-lg-2">
-                        <input type="radio" name="visita" value="visitaPassate" onclick="ShowPassate()"
-                            style="display:none">
+                        <input type="radio" name="visita" value="visitaPassate" id="ShowPassate" style="display:none">
                         <h4 class="font-weight-bold" style="padding:1em;">Visite passate</h4>
                     </label>
                     <label class="btn btn-outline-primary quadrato-ricetta col-lg-2">
-                        <input type="radio" name="visita" value="visitaFuture" onclick="ShowFuture()" style="display:none">
+                        <input type="radio" name="visita" value="visitaFuture" id="ShowFuture" style="display:none">
                         <h4 class="font-weight-bold" style="padding:1em;">Visite future</h4>
                     </label>
                 </div>
@@ -718,24 +717,25 @@
                     @foreach ($visits as $v)
                         @if (strtotime($v->date . ' ' . $v->time) > strtotime(date('Y/m/d H:i')))
                             <!-- visite future -->
-                            <label class="btn label-visit btn-outline-primary font-weight-bold">
-                            <input type="radio" name="visita" value="{{ $v->id }}">
-                            <p>{{ date('d/m/Y', strtotime($v->date)) }}</p>
-                            <p>{{ date('H:i', strtotime($v->time)) }}</p>
-                            </label>
+                            <a id="confirmDelete" href="{{ URL::action('VisitController@destroy', $v->id) }}">
+                                <label class="btn label-visit btn-outline-primary font-weight-bold">
+                                    <p>{{ date('d/m/Y', strtotime($v->date)) }}</p>
+                                    <p>{{ date('H:i', strtotime($v->time)) }}</p>
+                                </label>
+                            </a>
                         @endif
                     @endforeach
                 </div>
             </div>
 
             <div class="row row-space justify-content-center" id="contentPassate" style="display:none">
-                <div class="btn-group-toggle w-100 h-100 col-lg-10" data-toggle="buttons" align="left">
+                <div class="btn-group-toggle w-100 h-100 col-lg-10" data-toggle="buttons">
                     @foreach ($visits as $v)
                         @if (strtotime($v->date . ' ' . $v->time) <= strtotime(date('Y/m/d H:i')))
                             <!-- visite passate -->
                             <label class="label-visit" onmouseover="this.style.color='#fff';this.style.backgroundColor='#3490dc'" onmouseout="this.style.color='#5c5c5c';this.style.backgroundColor='#f0f8ff';this.style.borderColor='#3490dc'">
-                            <p class="font-weight-bold">{{ date('d/m/Y', strtotime($v->date)) }}</p>
-                            <p class="font-weight-bold">{{ date('H:i', strtotime($v->time)) }}</p>
+                                <p class="font-weight-bold">{{ date('d/m/Y', strtotime($v->date)) }}</p>
+                                <p class="font-weight-bold">{{ date('H:i', strtotime($v->time)) }}</p>
                             </label>
                         @endif
                     @endforeach

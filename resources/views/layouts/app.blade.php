@@ -36,7 +36,7 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'MyDoctor') }}
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -55,7 +55,7 @@
                         </li>
                         @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Registrazione') }}</a>
                         </li>
                         @endif
                         @else
@@ -107,9 +107,7 @@
                         @endguest
                         <li class="nav-item"><a class="nav-link" href="/#why-us">Perchè</a></li>
                         <li class="nav-item"><a class="nav-link" href="/#servizi">Servizi</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/#dottori">Dottori</a></li>
                         <li class="nav-item"><a class="nav-link" href="/#creatori">Creatori</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/#galleria">Galleria</a></li>
                         
                     </ul>
                 </div>

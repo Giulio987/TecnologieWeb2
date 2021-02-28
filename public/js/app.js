@@ -50430,30 +50430,27 @@ function Show6() {
         // Animation complete.
     });
 }
+$('document').ready(function() {
+    $("#ShowFuture").on("click", function() {
+        $("#contentPassate").hide("slow", function() {
+            // Animation complete.
+        });
+        $("#contentFuture").show("slow", function() {
+            // Animation complete.
+        });
+    });
+});
+$('document').ready(function() {
+    $("#ShowPassate").on("click", function() {
+        $("#contentFuture").hide("slow", function() {
+            // Animation complete.
+        });
+        $("#contentPassate").show("slow", function() {
+            // Animation complete.
+        });
+    });
+});
 
-function ShowFuture() {
-    $("#contentPassate").hide("slow", function() {
-        // Animation complete.
-    });
-    $("#contentFuture").show("slow", function() {
-        // Animation complete.
-    });
-    $("#button").show("slow", function() {
-        // Animation complete.
-    });
-}
-
-function ShowPassate() {
-    $("#button").hide("slow", function() {
-        // Animation complete.
-    });
-    $("#contentFuture").hide("slow", function() {
-        // Animation complete.
-    });
-    $("#contentPassate").show("slow", function() {
-        // Animation complete.
-    });
-}
 
 function Show() {
     $("#content").show("slow", function() {
