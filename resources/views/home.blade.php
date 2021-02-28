@@ -17,7 +17,7 @@
                 <div class="col-lg-6 my-3">
                     <a href="{{ URL::action('DoctorController@index') }}" ng-mouseover="mouseOver2()" ng-mouseleave="mouseOut2()">
                         <div class="card h-100 border-card">
-                            <img src="images/users/medici.jpg" class="card-img-top dim-img-card" alt="...">
+                            <img src="images/admin/dottori-admin.jpg" class="card-img-top dim-img-card" alt="...">
                                 <p id="card2" class="card-text font-weight-bold text-uppercase border-button py-4 btn-outline-primary">dottori</p>
                         </div>
                     </a>
@@ -29,7 +29,7 @@
                 <div class="col-lg-4 my-3">
                     <a href="{{ URL::action('VisitController@index') }}" ng-mouseover="mouseOver3()" ng-mouseleave="mouseOut3()">
                         <div class="card h-100 border-card">
-                            <img src="images/users/medici.jpg" class="card-img-top dim-img-card" alt="...">
+                            <img src="images/admin/visite-admin.jpg" class="card-img-top dim-img-card" alt="...">
                                 <p id="card3" class="card-text font-weight-bold text-uppercase border-button py-4 btn-outline-primary">visite</p>
                         </div>
                     </a>
@@ -47,7 +47,7 @@
                 <div class="col-lg-4 my-3">
                     <a href="{{ URL::action('BuildingController@index') }}" ng-mouseover="mouseOver5()" ng-mouseleave="mouseOut5()">
                         <div class="card h-100 border-card">
-                            <img src="images/users/medici.jpg" class="card-img-top dim-img-card" alt="...">
+                            <img src="images/admin/ambulatorio.jpg" class="card-img-top dim-img-card" alt="...">
                             <p id="card5" class="card-text font-weight-bold text-uppercase border-button py-4 btn-outline-primary">edifici</p>
                         </div>
                     </a>
@@ -140,7 +140,7 @@
                 <div class="col-lg-6 my-3">
                     <a href="{{ URL::action('VisitController@index') }}" ng-mouseover="mouseOver1()" ng-mouseleave="mouseOut1()">
                         <div class="card h-100 border-card">
-                            <img src="images/users/medici.jpg" class="card-img-top dim-img-card" alt="...">
+                            <img src="images//medici.jpg" class="card-img-top dim-img-card" alt="...">
                                 <p id="card1" class="card-text font-weight-bold text-uppercase border-button py-4 btn-outline-primary">visualizza visite</p>
                         </div>
                     </a>
@@ -149,7 +149,7 @@
                 <div class="col-lg-6 my-3">
                     <a href="{{ URL::action('VisitController@create') }}" ng-mouseover="mouseOver2()" ng-mouseleave="mouseOut2()">
                         <div class="card h-100 border-card">
-                            <img src="images/users/medici.jpg" class="card-img-top dim-img-card" alt="...">
+                            <img src="images/patient/visit.jpg" class="card-img-top dim-img-card" alt="...">
                                 <p id="card2" class="card-text font-weight-bold text-uppercase border-button py-4 btn-outline-primary">prenota una visita dal tuo medico</p>
                         </div>
                     </a>
@@ -161,7 +161,7 @@
                 <div class="col-lg-6 my-3">
                     <a href="{{ URL::action('PrescriptionController@index') }}" ng-mouseover="mouseOver3()" ng-mouseleave="mouseOut3()">
                         <div class="card h-100 border-card">
-                            <img src="images/users/medici.jpg" class="card-img-top dim-img-card" alt="...">
+                            <img src="images/patient/prescription.jpg" class="card-img-top dim-img-card" alt="...">
                                 <p id="card3" class="card-text font-weight-bold text-uppercase border-button py-4 btn-outline-primary">visualizza prescrizioni</p>
                         </div>
                     </a>
