@@ -94,7 +94,7 @@ class BuildingController extends Controller
      */
     public function edit(Building $building)
     {
-        //
+        return view('building.edit', compact('building'));
     }
 
     /**

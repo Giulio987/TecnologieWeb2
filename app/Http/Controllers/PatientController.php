@@ -210,9 +210,7 @@ class PatientController extends Controller
         //poi vengono inclusi in layout
         if($user)
         {
-            $br = "
-            ";
-            $request->session()->flash('success', 'Credenziali paziente:' . $br . 'Email:' . $request->email .$br.' Password:' . $request->password . $br . '. Aggiunto con successo');
+            $request->session()->flash('success', 'Paziente aggiunto con successo');
         }else{
             $request->session()->flash('error', 'Si è verificato un errore nella registrazione, riprova.');
         }

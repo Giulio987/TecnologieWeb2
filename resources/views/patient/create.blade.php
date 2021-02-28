@@ -40,45 +40,44 @@ $name = Auth::user()->name;
         </h5>
     </div>
 
+    <input type="hidden" name="id_doctor" value="{{ Auth::user()->id }}">
+
     <div class="row row-space justify-content-center border-form">
 
     <div class="col-lg-4">
         <div class="row row-space justify-content-center">
-                <div class="form-group label-space">
-                    <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Nome" name="name" required>
-                    @error('name')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                </div>
-        </div>
-        <div class="row row-space justify-content-center">
-
-                <div class="form-group label-space">
-                    <input type="text" class="form-control @error('surname') is-invalid @enderror" placeholder="Cognome" name="surname" required>
-                    @error('surname')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                </div>
-        </div>
-        <div class="row row-space justify-content-center">
-
-                <div class="form-group label-space">
-                    <input type="date" class="form-control @error('dob') is-invalid @enderror" name="dob" required>
-                    @error('dob')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                </div>
-        </div>
-        <div class="row row-space justify-content-center">
-
-                <div class="form-group label-space">
-                    <input type="text" class="form-control @error('gender') is-invalid @enderror" placeholder="Sesso" name="gender" required>
-                    @error('gender')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                </div>
-        </div>
+            <div class="form-group label-space">
+                <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Nome" name="name" required>
+                @error('name')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
+        </div>
+        <div class="row row-space justify-content-center">
+            <div class="form-group label-space">
+                <input type="text" class="form-control @error('surname') is-invalid @enderror" placeholder="Cognome" name="surname" required>
+                @error('surname')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            </div>
+        </div>
+        <div class="row row-space justify-content-center">
+            <div class="form-group label-space">
+                <input type="date" class="form-control @error('dob') is-invalid @enderror" name="dob" required>
+                @error('dob')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            </div>
+        </div>
+        <div class="row row-space justify-content-center">
+            <div class="form-group label-space">
+                <input type="text" class="form-control @error('gender') is-invalid @enderror" placeholder="Sesso" name="gender" required>
+                @error('gender')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            </div>
+        </div>
+    </div>
 
             
             <div class="col-lg-4">
