@@ -50335,28 +50335,34 @@ $("#myInput").on("keyup", function() {
     });
 });
 
-function ShowFarmaco() {
-    $("#contentFarmaco").toggle("slow", function() {
-        // Animation complete.
-    });
-    $("#contentUser").show("slow", function() {});
-    document.getElementById('contentVisita').style.display = 'none';
-    document.getElementById('descriptionFarmaco').name = 'description';
-    document.getElementById('descriptionVisita').name = '';
-}
+$('document').ready(function() {
+    $("#ShowFarmaco").on("click", function() {
+        $("#contentFarmaco").toggle("slow", function() {
+            // Animation complete.
+        });
+        $("#contentUser").show("slow", function() {
 
-function ShowVisita() {
-    $("#contentVisita").toggle("slow", function() {
-        // Animation complete.
-    });
-    $("#contentUser").show("slow", function() {
+        });
 
+        document.getElementById('contentVisita').style.display = 'none';
+        document.getElementById('descriptionFarmaco').name = 'description';
+        document.getElementById('descriptionVisita').name = '';
     });
-    document.getElementById('contentFarmaco').style.display = 'none';
-    document.getElementById('descriptionVisita').name = 'description';
-    document.getElementById('descriptionFarmaco').name = '';
+});
 
-}
+$('document').ready(function() {
+    $("#ShowVisita").on("click", function() {
+        $("#contentVisita").toggle("slow", function() {
+            // Animation complete.
+        });
+        $("#contentUser").show("slow", function() {
+
+        });
+        document.getElementById('contentFarmaco').style.display = 'none';
+        document.getElementById('descriptionVisita').name = 'description';
+        document.getElementById('descriptionFarmaco').name = '';
+    });
+});
 $('document').ready(function() {
     $("#selUser").select2();
 });

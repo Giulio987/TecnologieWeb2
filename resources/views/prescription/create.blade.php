@@ -31,7 +31,7 @@ $name = Auth::user()->name;
     {{ csrf_field() }}
     <div class="row row-space justify-content-center">
       <h5>
-        Seleziona il tipo, paziente, indica farmaco o visita e crea la prescrizione per il tuo paziente.<button type="submit" name="submit" class="btn btn-outline-success btn-prenota font-weight-bold col-lg-2">+</button>
+        Seleziona il tipo, paziente, indica farmaco o visita e crea la prescrizione per il tuo paziente.
       </h5>
     </div>
 
@@ -46,11 +46,11 @@ $name = Auth::user()->name;
     <div class="row row-space justify-content-center">
     <div class="btn-group btn-group-toggle justify-content-center w-100 h-100" data-toggle="buttons">
       <label class="btn btn-outline-primary quadrato-ricetta col-lg-2">
-        <input type="radio" name="type" id="type1" value="farmaco" onclick="ShowFarmaco()">
+        <input type="radio" name="type" id="ShowFarmaco" value="farmaco">
         <h4 class="font-weight-bold" style="padding:1em;">Farmaco</h4>
       </label>
       <label class="btn btn-outline-primary quadrato-ricetta col-lg-2">
-        <input type="radio" name="type" id="type2" value="visita" onclick="ShowVisita()">
+        <input type="radio" name="type" id="ShowVisita" value="visita">
         <h4 class="font-weight-bold" style="padding:1em;">Visita</h4>
       </label>
       </div>
@@ -77,11 +77,13 @@ $name = Auth::user()->name;
           </label>
         </div>
       </div>
+
       <div class="col-lg-6" id="contentVisita" style="display:none">
         <div>
           <label class="label-ricetta">
             <input type="text" class="label-ricetta text-uppercase" placeholder="Inserisci visita" class="form-control @error('description') is-invalid @enderror" id="descriptionVisita">
           </label>
+
         </div>
       </div>
     </div>
@@ -142,11 +144,11 @@ $name = Auth::user()->name;
     <div class="row row-space justify-content-center">
     <div class="btn-group btn-group-toggle justify-content-center w-100 h-100" data-toggle="buttons">
       <label class="btn btn-outline-primary quadrato-ricetta col-lg-2">
-        <input type="radio" name="type" id="type1" value="farmaco" onclick="ShowFarmaco()">
+        <input type="radio" name="type" id="ShowFarmaco" value="farmaco">
         <h4 class="font-weight-bold" style="padding:1em;">Farmaco</h4>
       </label>
       <label class="btn btn-outline-primary quadrato-ricetta col-lg-2">
-        <input type="radio" name="type" id="type2" value="visita" onclick="ShowVisita()">
+        <input type="radio" name="type" id="ShowVisita" value="visita">
         <h4 class="font-weight-bold" style="padding:1em;">Visita</h4>
       </label>
       </div>
