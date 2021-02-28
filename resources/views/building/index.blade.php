@@ -18,17 +18,12 @@
     <div class="container-lg" align="center">
         <div class="row row-space justify-content-center">
             <h1 class="font-weight-bold">
-                Benvenuto Amministratore! Visualizza Gli edifici dei dottori.
+                Amministratore, visualizza gli edifici dei dottori.
             </h1>
         </div>
         <div class="row row-space justify-content-center">
             <h4>
                 Visualizza tutti gli edifici e modifica le informazioni a tuo piacere
-            </h4>
-        </div>
-        <div class="row row-space justify-content-center">
-            <h4>
-                Aggsisasdadasdasda
             </h4>
         </div>
 

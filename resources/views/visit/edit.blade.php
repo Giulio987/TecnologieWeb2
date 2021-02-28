@@ -31,7 +31,7 @@ $date = strtotime($visit->date);
 <div class="container-lg" align="center">
 <div class="row row-space justify-content-center">
         <h1 class="font-weight-bold">
-            sssss
+            Modifica le Informazioni riguradanti una visita.
         </h1>
     </div>
     <form action="{{ URL::action('VisitController@update', $visit) }}" method="POST">

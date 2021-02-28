@@ -21,7 +21,7 @@
             <div class="row row-space justify-content-center">
                 <h1 class="font-weight-bold">
                     @if (!strcmp(Auth::user()->role, '1'))
-                    Benvenuto Amministratore! Visualizza le prescrizioni dei tuoi pazienti.
+                    Benvenuto Amministratore, visualizza le prescrizioni dei tuoi pazienti.
                     @else
                     Ciao Dott. {{ $name }}, visualizza le prescrizioni dei tuoi pazienti.
                     @endif

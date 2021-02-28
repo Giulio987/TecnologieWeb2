@@ -28,12 +28,12 @@
         <div class="container-lg" align="center">
             <div class="row row-space justify-content-center">
                 <h1 class="font-weight-bold">
-                    Benvenuto Amministratore! visualizza tutte le visite.
+                    Amministratore, visualizza tutte le visite.
                 </h1>
             </div>
             <div class="row row-space justify-content-center">
                 <h4>
-                    Modifica, Aggiungi o elimina gli appuntamenti. </h4>
+                    Modifica le visite. </h4>
             </div>
             <div class="row row-space justify-content-center">
                 <div class="btn-group btn-group-toggle justify-content-center w-100 h-100" data-toggle="buttons">
