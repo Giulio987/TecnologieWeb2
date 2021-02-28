@@ -105,6 +105,7 @@
                 <?php
                     $building = DB::table('buildings')->where('id', $doctor->id_building)->get();
                     foreach ($building as $info) {
+                        $id = $info->id;
                         $street_address = $info->street_address;
                         $street_number = $info->street_number;
                         $city = $info->city;

@@ -93,4 +93,90 @@
             </div>
         </div>
     </div>
+
+<script type="text/javascript">
+    $('document').ready(function() {
+        $('#add-building-btn').bind('click', function(e) {
+            e.preventDefault();
+            var street_address = $('#street_address').val();
+            var street_number = $('#street_number').val();
+            var postal_code = $('#postal_code').val();
+            var city = $('#city').val();
+            var _token = $('#_token').val();
+            console.log(street_address);
+            console.log(street_number);
+            console.log(postal_code);
+            console.log(city);
+            if (street_address.length > 0 ) {
+                $.ajax({
+                    url: "/building",
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        'street_address': street_address,
+                        'street_number': street_number,
+                        'postal_code': postal_code,
+                        'city': city,
+                        '_token': _token
+                    },
+                    success: function(data) {
+                        if (data.status === 'ok') {
+                            var newColId = $('<td/>', {
+                                text: data.building.id
+                            });
+                            var newColStreetName = $('<td/>', {
+                                text: data.building.street_address
+                            });
+                            var newColStreetNum = $('<td/>', {
+                                text: data.building.street_number
+                            });
+                            var newColCap = $('<td/>', {
+                                text: data.building.postal_code
+                            });
+                            var newColCity = $('<td/>', {
+                                text: data.building.city
+                            });
+                            var delAction = $('<a/>', {
+                                href: '#',
+                                text: 'Elimina',
+                                class: "btn btn-outline-danger btn-sm delete-btn",
+                                "id": data.building.id
+                            });
+                            var newColAction = $('<td/>').append(delAction);
+                            var newRow = $('<tr/>').append(newColId).append(
+                                newColStreetName).append(newColStreetNum).append(
+                                newColCity).append(newColCap).append(newColAction).addClass("font-weight-bold text-uppercase");;
+                            $('#buildings-table').append(newRow);
+                        }
+                    },
+                    error: function(response, stato) {
+                        console.log(response);
+                        console.log(stato);
+                    }
+                });
+            }
+        });
+        $('.delete-btn').bind('click', function(e) {
+            e.preventDefault();
+            // Nota, qui $(this) è l'elemento <a> ovvero il bottone.
+            var row = $(this).parents('tr');            // Ottengo  la riga della tabella cercando fa i parents del bottone l'elemento <tr>
+            var buildingId = $(this).attr('data-id');     // Ottengo l'id dell'edificio andando a prelevare il valore dell'attributo "id"
+            var _token = $('#_token').val();            // Ottengo il token del form perchè mi serve anche per l'azione che sto per compiere 
+            $.ajax({
+                    url: "/building/" + buildingId,     // Visto che posso configurarla usa l'azione di default per la Destroy 
+                    type: "DELETE",                     // Uso appunto il metodo DELETE
+                    dataType: "json",  
+                    data: { 'building': buildingId, '_token': _token }, // Passo l'id della categria e il token 
+                    success: function(data) {                        
+                        if (data.status === 'ok') {
+                            $(row).remove();            // Qui ho usato un semplice remove() ma potrei usare un fadeOut() o altro 
+                        }
+                    }, 
+                    error: function(response, stato) {
+                        console.log(stato);
+                    }
+                });
+        });
+    });
+</script>
 @endsection
