@@ -38,14 +38,8 @@ $name = Auth::user()->name;
     </div>
     <div class="row row-space justify-content-center">
         <h4 class="mb-3">
-            Visualizza qui tutti i pazienti quando ti è più comodo.
+        Ricerca per qualsiasi attributo e visualizza le informazioni del paziente.
         </h4>
-    </div>
-    <div class="row row-space justify-content-center">
-        <h5>
-            Ricerca per qualsiasi attributo e visualizza le informazioni del paziente.
-
-        </h5>
     </div>
 
     <div class="row row-space justify-content-center align-items-center">
