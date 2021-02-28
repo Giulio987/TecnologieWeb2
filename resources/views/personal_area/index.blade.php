@@ -38,7 +38,7 @@ $name = Auth::user()->name;
     <div class="row row-space justify-content-center border-form align-items-center">
 
 
-    <div class="col-lg-5">
+    <div class="col-lg-4">
         <div class="row row-space justify-content-center">
                 <p class="text-uppercase font-weight-bold">Codice Fiscale</p>
         </div>
@@ -82,21 +82,33 @@ $name = Auth::user()->name;
             </div>
 
             
-            <div class="col-lg-5">
+    <div class="col-lg-4" align="center">
         <div class="row row-space justify-content-center">
-        <p class="text-uppercase">{{ $doctor->fiscal_code }}</p>
-
+            <p class="text-uppercase">{{ $doctor->fiscal_code }}</p>
         </div>
-        
         <div class="row row-space justify-content-center">    
-            <p class="text-uppercase">{{ $doctor->name }}</p>
+            <p class="text-uppercase">inserisci</p>
         </div>
-        <div class="row row-space justify-content-center">
-        
+        <div class="row row-space justify-content-center">    
+            <p class="text-uppercase">inserisci</p>
         </div>
-        <div class="row row-space justify-content-center">
-
-                
+        <div class="row row-space justify-content-center">    
+            <p class="text-uppercase">inserisci</p>
+        </div>
+        <div class="row row-space justify-content-center">    
+            <p class="text-uppercase">inserisci</p>
+        </div>
+        <div class="row row-space justify-content-center">    
+            <p class="text-uppercase">inserisci</p>
+        </div>
+        <div class="row row-space justify-content-center">    
+            <p class="text-uppercase">inserisci</p>
+        </div>
+        <div class="row row-space justify-content-center">    
+            <p class="text-uppercase">inserisci</p>
+        </div>
+        <div class="row row-space justify-content-center">    
+            <p class="text-uppercase">inserisci</p>
         </div>
 
 </div>
