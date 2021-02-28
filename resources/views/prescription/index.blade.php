@@ -188,7 +188,7 @@
                                 <td>non esistente</td>
                                 <td><button type="button" class="btn btn-outline-primary" data-toggle="modal"
                                         data-target="#exampleModal1" data-whatever1="{{ $p->description }}"
-                                        data-whatever2="{{ 'non esistente' }}"
+                                        data-whatever2="{{ 'RFE non esistente' }}"
                                         data-whatever3="{{ date('d/m/Y', strtotime($p->date)) }}">Visualizza descrizione</button></td>
                                 @endif
                                 <td
