@@ -17,13 +17,15 @@
 <div class="container-lg" align="center">
     <div class="row row-space justify-content-center">
         <h1 class="font-weight-bold">
-            Ciao Dott. {{ $admin->name }}, ti presento la tua area personale.
+            @if (!strcmp(Auth::user()->role, '1'))
+                Ciao Amministratore {{ $admin->name }}, ti presento la tua area personale.
+            @elseif (!strcmp(Auth::user()->role, '2'))
+                Ciao Dott. {{ $name }}, ti presento la tua area personale.
+            @else
+                Ciao {{ $name }}, ti presento la tua area personale.
+            @endif
+            
         </h1>
-    </div>
-    <div class="row row-space justify-content-center">
-        <h5>
-            Visualizza le tue informazioni e/o modificale.
-        </h5>
     </div>
     
     <div class="row row-space justify-content-center border-form align-items-center">
