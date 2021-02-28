@@ -12,6 +12,7 @@ COSE DA FARE:
 - fare area personale
 - modificare foto i tuoi pazienti
 - mettere index edifici come prima con ajax
+- ordinamento delle tabelle 
 
 Considerazioni:
 - Un dottore che vuole usare il sito contatta prima un amministratore per far aggiungere il proprio edificio
