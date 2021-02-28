@@ -249,7 +249,7 @@
 
             <div class="row row-space justify-content-center" id="content1" style="display:none">
                 @if ($gContent1 != 'Domenica')
-                <div class="btn-group-toggle w-100 h-100 col-lg-8" data-toggle="buttons" align="left">
+                <div class="btn-group-toggle w-100 h-100 col-lg-8" data-toggle="buttons">
                         @for ($i = 0; $i < count($time); $i++)
                             @if (DB::table('visits')->where('date', $date1)->where('time', $time[$i])->exists() && strtotime($time[$i]) > strtotime(date('H:i'))) 
                             <?php $ora++ ?>
@@ -338,7 +338,7 @@
 
             <div class="row row-space justify-content-center" id="content2" style="display:none">
                 @if ($gContent2 != 'Domenica')
-                <div class="btn-group-toggle w-100 h-100 col-lg-8" data-toggle="buttons" align="left">
+                <div class="btn-group-toggle w-100 h-100 col-lg-8" data-toggle="buttons">
                         @for ($i = 0; $i < count($time); $i++)
                             @if (DB::table('visits')->where('date', $date2)->where('time', $time[$i])->exists()) 
                             <?php
@@ -396,7 +396,7 @@
 
             <div class="row row-space justify-content-center" id="content3" style="display:none">
                 @if ($gContent3 != 'Domenica')
-                <div class="btn-group-toggle w-100 h-100 col-lg-8" data-toggle="buttons" align="left">
+                <div class="btn-group-toggle w-100 h-100 col-lg-8" data-toggle="buttons">
                         @for ($i = 0; $i < count($time); $i++)
                             @if (DB::table('visits')->where('date', $date3)->where('time', $time[$i])->exists()) 
                             <?php
@@ -454,7 +454,7 @@
 
             <div class="row row-space justify-content-center" id="content4" style="display:none">
                 @if ($gContent4 != 'Domenica')
-                <div class="btn-group-toggle w-100 h-100 col-lg-8" data-toggle="buttons" align="left">
+                <div class="btn-group-toggle w-100 h-100 col-lg-8" data-toggle="buttons">
                         @for ($i = 0; $i < count($time); $i++)
                             @if (DB::table('visits')->where('date', $date4)->where('time', $time[$i])->exists()) 
                             <?php
@@ -512,7 +512,7 @@
             
             <div class="row row-space justify-content-center" id="content5" style="display:none">
                 @if ($gContent5 != 'Domenica')
-                <div class="btn-group-toggle w-100 h-100 col-lg-8" data-toggle="buttons" align="left">
+                <div class="btn-group-toggle w-100 h-100 col-lg-8" data-toggle="buttons">
                         @for ($i = 0; $i < count($time); $i++)
                             @if (DB::table('visits')->where('date', $date5)->where('time', $time[$i])->exists()) 
                             <?php
@@ -570,7 +570,7 @@
 
             <div class="row row-space justify-content-center" id="content6" style="display:none">
                 @if ($gContent6 != 'Domenica')
-                <div class="btn-group-toggle w-100 h-100 col-lg-8" data-toggle="buttons" align="left">
+                <div class="btn-group-toggle w-100 h-100 col-lg-8" data-toggle="buttons">
                         @for ($i = 0; $i < count($time); $i++)
                             @if (DB::table('visits')->where('date', $date6)->where('time', $time[$i])->exists()) <?php
                                 $id_p = DB::table('visits')->where('date', $date6)->where('time', $time[$i])->select('id_patient')->get();
