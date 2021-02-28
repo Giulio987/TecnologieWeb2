@@ -13,6 +13,7 @@ COSE DA FARE:
 - modificare foto i tuoi pazienti
 - mettere index edifici come prima con ajax
 - ordinamento delle tabelle 
+- sistemare bottone aggiunta
 
 Considerazioni:
 - Un dottore che vuole usare il sito contatta prima un amministratore per far aggiungere il proprio edificio
