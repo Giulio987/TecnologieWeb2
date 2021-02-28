@@ -141,7 +141,7 @@
             </div>
             <div class=" row row-space justify-content-center">
                 <h5>
-                    Seleziona il tipo di ricetta e visualizza.
+                    Filtra la tabella e visualizza.
                 </h5>
             </div>
         <div class="row row-space justify-content-center">
