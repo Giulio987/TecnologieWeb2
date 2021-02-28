@@ -152,11 +152,12 @@
             </div>
             <div class="row row-space justify-content-center">
                 <h4>
-                    Visualizza le tue visite passate o future con il tuo medico di base. </h4>
+                    Visualizza le visite da effettuare.
+                </h4>
             </div>
             <div class="row row-space justify-content-center">
                 <h5>
-                    Seleziona visite passate o future e visualizza le tue visite.
+                    Seleziona l'orario per visualizzare il paziente da visitare.
                 </h5>
             </div>
             <div class="row row row-space justify-content-center">
