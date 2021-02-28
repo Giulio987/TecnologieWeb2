@@ -19,21 +19,16 @@ $name = Auth::user()->name;
 <div class="container-lg" align="center">
   <div class="row row-space justify-content-center">
     <h1 class="font-weight-bold">
-      Ciao Dott. {{ $name }}, crea le tue prescrizioni.
+      Ciao Dott. {{ $name }}, crea una nuova prescrizione.
     </h1>
   </div>
   <div class="row row-space justify-content-center">
     <h4>
-      Crea prescrizioni relative ai farmaci o visite specialistiche per i tuoi pazienti.
+    Seleziona la tipologia della prescrizione, inserisci il farmaco o visita specialistica e seleziona il paziente.
     </h4>
   </div>
   <form action="{{ URL::action('PrescriptionController@store') }}" method="POST">
     {{ csrf_field() }}
-    <div class="row row-space justify-content-center">
-      <h5>
-        Seleziona il tipo, paziente, indica farmaco o visita e crea la prescrizione per il tuo paziente.
-      </h5>
-    </div>
 
     @if ($errors->any())
     @foreach ($errors->all() as $error)
