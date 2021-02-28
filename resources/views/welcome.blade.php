@@ -98,6 +98,12 @@
         </section><!-- Fine sezione Accesso -->
 
         <!-- ======= Sezione counter ======= -->
+        <?php
+        $doctors = DB::table('doctors')->count();
+        $patients = DB::table('patients')->count();
+        $buildings = DB::table('buildings')->count();
+        $prescriptions = DB::table('prescriptions')->count();
+        ?>
         <section id="counts" class="counts">
             <div class="container">
 
@@ -106,7 +112,7 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="count-box">
                             <i class="icofont-dottori-alt"></i>
-                            <span class="count">20</span>
+                            <span class="count">{{ $doctors }}</span>
                             <p>Medici</p>
                         </div>
                     </div>
@@ -114,7 +120,7 @@
                     <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
                         <div class="count-box">
                             <i class="icofont-patient-bed"></i>
-                            <span class="count">12</span>
+                            <span class="count">{{ $buildings }}</span>
                             <p>Edifici</p>
                         </div>
                     </div>
@@ -122,7 +128,7 @@
                     <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
                         <div class="count-box">
                             <i class="icofont-laboratory"></i>
-                            <span class="count">200</span>
+                            <span class="count">{{ $prescriptions }}</span>
                             <p>Ricette Scritte</p>
                         </div>
                     </div>
@@ -130,7 +136,7 @@
                     <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
                         <div class="count-box">
                             <i class="icofont-award"></i>
-                            <span class="count">150</span>
+                            <span class="count">{{ $patients }}</span>
                             <p>Pazienti</p>
                         </div>
                     </div>
@@ -204,65 +210,6 @@
             </div>
         </section>
         <!-- Fine sezione Servizi -->
-
-        <!-- ======= Sezione Dottori ======= -->
-        <section id="dottori" class="dottori">
-            <div class="container">
-
-                <div class="section-title">
-                    <h2>Dottori</h2>
-                    <p>Un Team altamente specializzato in continua espansione</p>
-                </div>
-
-                <div class="row">
-
-                    <div class="col-lg-6">
-                        <div class="membro d-flex align-items-start">
-                            <div class="pic"><img src="images/dottori/dottori-1.jpg" class="img-fluid" alt=""></div>
-                            <div class="membro-info">
-                                <h4>Walter White</h4>
-                                <span>Chief Medical Officer</span>
-                                <p>Explicabo voluptatem mollitia et repellat qui dolorum quasi</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6 mt-4 mt-lg-0">
-                        <div class="membro d-flex align-items-start">
-                            <div class="pic"><img src="images/dottori/dottori-2.jpg" class="img-fluid" alt=""></div>
-                            <div class="membro-info">
-                                <h4>Sarah Jhonson</h4>
-                                <span>Anesthesiologist</span>
-                                <p>Aut maiores voluptates amet et quis praesentium qui senda para</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6 mt-4">
-                        <div class="membro d-flex align-items-start">
-                            <div class="pic"><img src="images/dottori/dottori-3.jpg" class="img-fluid" alt=""></div>
-                            <div class="membro-info">
-                                <h4>William Anderson</h4>
-                                <span>Cardiology</span>
-                                <p>Quisquam facilis cum velit laborum corrupti fuga rerum quia</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6 mt-4">
-                        <div class="membro d-flex align-items-start">
-                            <div class="pic"><img src="images/dottori/dottori-4.jpg" class="img-fluid" alt=""></div>
-                            <div class="membro-info">
-                                <h4>Amanda Jepson</h4>
-                                <span>Neurosurgeon</span>
-                                <p>Dolorum tempora officiis odit laborum officiis et et accusamus</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Fine sezione Dottori -->
 
         <!-- ======= Creatori ======= -->
         <section id="creatori" class="creatori">
