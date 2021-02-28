@@ -8,7 +8,7 @@
                 <div class="col-lg-6 my-3">
                     <a href="{{ URL::action('PatientController@index') }}" ng-mouseover="mouseOver1()" ng-mouseleave="mouseOut1()">
                         <div class="card h-100 border-card">
-                            <img src="images/users/medici.jpg" class="card-img-top dim-img-card" alt="...">
+                            <img src="images/persone.jpg" class="card-img-top dim-img-card img-fluid" alt="...">
                                 <p id="card1" class="card-text font-weight-bold text-uppercase border-button py-4 btn-outline-primary">pazienti</p>
                         </div>
                     </a>
@@ -17,7 +17,7 @@
                 <div class="col-lg-6 my-3">
                     <a href="{{ URL::action('DoctorController@index') }}" ng-mouseover="mouseOver2()" ng-mouseleave="mouseOut2()">
                         <div class="card h-100 border-card">
-                            <img src="images/admin/dottori-admin.jpg" class="card-img-top dim-img-card" alt="...">
+                            <img src="images/dottori.jpg" class="card-img-top dim-img-card img-fluid" alt="...">
                                 <p id="card2" class="card-text font-weight-bold text-uppercase border-button py-4 btn-outline-primary">dottori</p>
                         </div>
                     </a>
@@ -29,7 +29,7 @@
                 <div class="col-lg-4 my-3">
                     <a href="{{ URL::action('VisitController@index') }}" ng-mouseover="mouseOver3()" ng-mouseleave="mouseOut3()">
                         <div class="card h-100 border-card">
-                            <img src="images/admin/visite-admin.jpg" class="card-img-top dim-img-card" alt="...">
+                            <img src="images/visite.jpg" class="card-img-top dim-img-card img-fluid" alt="...">
                                 <p id="card3" class="card-text font-weight-bold text-uppercase border-button py-4 btn-outline-primary">visite</p>
                         </div>
                     </a>
@@ -38,7 +38,7 @@
                 <div class="col-lg-4 my-3">
                     <a href="{{ URL::action('PrescriptionController@index') }}" ng-mouseover="mouseOver4()" ng-mouseleave="mouseOut4()">
                         <div class="card h-100 border-card">
-                            <img src="images/users/medici.jpg" class="card-img-top dim-img-card" alt="...">
+                            <img src="images/prescriptions.jpg" class="card-img-top dim-img-card img-fluid" alt="...">
                             <p id="card4" class="card-text font-weight-bold text-uppercase border-button py-4 btn-outline-primary">prescrizioni</p>
                         </div>
                     </a>
@@ -47,7 +47,7 @@
                 <div class="col-lg-4 my-3">
                     <a href="{{ URL::action('BuildingController@index') }}" ng-mouseover="mouseOver5()" ng-mouseleave="mouseOut5()">
                         <div class="card h-100 border-card">
-                            <img src="images/admin/ambulatorio.jpg" class="card-img-top dim-img-card" alt="...">
+                            <img src="images/ambulatorio.jpg" class="card-img-top dim-img-card img-fluid" alt="...">
                             <p id="card5" class="card-text font-weight-bold text-uppercase border-button py-4 btn-outline-primary">edifici</p>
                         </div>
                     </a>
@@ -64,7 +64,7 @@
                 <div class="col-lg-4 my-3">
                     <a href="{{ URL::action('PatientController@index') }}" ng-mouseover="mouseOver1()" ng-mouseleave="mouseOut1()">
                         <div class="card h-100 border-card">
-                            <img src="images/users/medici.jpg" class="card-img-top dim-img-card" alt="...">
+                            <img src="images/persone.jpg" class="card-img-top dim-img-card img-fluid" alt="...">
                                 <p id="card1" class="card-text font-weight-bold text-uppercase border-button py-4 btn-outline-primary">i tuoi pazienti</p>
                         </div>
                     </a>
@@ -73,7 +73,7 @@
                 <div class="col-lg-4 my-3">
                     <a href="{{ URL::action('PatientController@create') }}" ng-mouseover="mouseOver2()" ng-mouseleave="mouseOut2()">
                         <div class="card h-100 border-card">
-                            <img src="images/users/medici.jpg" class="card-img-top dim-img-card" alt="...">
+                            <img src="images/registrazionepaziente.jpg" class="card-img-top dim-img-card img-fluid" alt="...">
                                 <p id="card2" class="card-text font-weight-bold text-uppercase border-button py-4 btn-outline-primary">registra un paziente</p>
                         </div>
                     </a>
@@ -83,7 +83,7 @@
                 <div class="col-lg-4 my-3">
                     <a href="{{ URL::action('VisitController@index') }}" ng-mouseover="mouseOver3()" ng-mouseleave="mouseOut3()">
                         <div class="card h-100 border-card">
-                            <img src="images/users/medici.jpg" class="card-img-top dim-img-card" alt="...">
+                            <img src="images/visit-list.jpg" class="card-img-top dim-img-card img-fluid" alt="...">
                                 <p id="card3" class="card-text font-weight-bold text-uppercase border-button py-4 btn-outline-primary">visualizza le visite</p>
                         </div>
                     </a>
@@ -95,7 +95,7 @@
                 <div class="col-lg-4 my-3">
                     <a href="{{ URL::action('PrescriptionController@index') }}" ng-mouseover="mouseOver4()" ng-mouseleave="mouseOut4()">
                         <div class="card h-100 border-card">
-                            <img src="images/users/medici.jpg" class="card-img-top dim-img-card" alt="...">
+                            <img src="images/prescriptions.jpg" class="card-img-top dim-img-card img-fluid" alt="...">
                             <p id="card4" class="card-text font-weight-bold text-uppercase border-button py-4 btn-outline-primary">visualizza prescrizioni</p>
                         </div>
                     </a>
@@ -104,7 +104,7 @@
                 <div class="col-lg-4 my-3">
                     <a href="{{ URL::action('PrescriptionController@create') }}" ng-mouseover="mouseOver5()" ng-mouseleave="mouseOut5()">
                         <div class="card h-100 border-card">
-                            <img src="images/users/medici.jpg" class="card-img-top dim-img-card" alt="...">
+                            <img src="images/create-prescription.jpg" class="card-img-top dim-img-card img-fluid" alt="...">
                             <p id="card5" class="card-text font-weight-bold text-uppercase border-button py-4 btn-outline-primary">crea prescrizione</p>
                         </div>
                     </a>
@@ -115,7 +115,7 @@
                 <div class="col-lg-4 my-3">
                     <a href="{{ URL::action('PrescriptionController@indexValidate') }}" ng-mouseover="mouseOver6()" ng-mouseleave="mouseOut6()">
                         <div class="card h-100 border-card">
-                            <img src="images/users/medici.jpg" class="card-img-top dim-img-card" alt="...">
+                            <img src="images/prescription-validate.jpg" class="card-img-top dim-img-card img-fluid" alt="...">
                                 <p id="card6" class="card-text font-weight-bold text-uppercase border-button py-4 btn-outline-primary">prescrizioni da convalidare
                                 @if($notification > 0)
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-bell ml-3" viewBox="0 0 16 16">
@@ -140,7 +140,7 @@
                 <div class="col-lg-6 my-3">
                     <a href="{{ URL::action('VisitController@index') }}" ng-mouseover="mouseOver1()" ng-mouseleave="mouseOut1()">
                         <div class="card h-100 border-card">
-                            <img src="images//medici.jpg" class="card-img-top dim-img-card" alt="...">
+                            <img src="images/visit-list.jpg" class="card-img-top dim-img-card img-fluid" alt="...">
                                 <p id="card1" class="card-text font-weight-bold text-uppercase border-button py-4 btn-outline-primary">visualizza visite</p>
                         </div>
                     </a>
@@ -149,7 +149,7 @@
                 <div class="col-lg-6 my-3">
                     <a href="{{ URL::action('VisitController@create') }}" ng-mouseover="mouseOver2()" ng-mouseleave="mouseOut2()">
                         <div class="card h-100 border-card">
-                            <img src="images/patient/visit.jpg" class="card-img-top dim-img-card" alt="...">
+                            <img src="images/richiedi-visita.jpg" class="card-img-top dim-img-card img-fluid" alt="...">
                                 <p id="card2" class="card-text font-weight-bold text-uppercase border-button py-4 btn-outline-primary">prenota una visita dal tuo medico</p>
                         </div>
                     </a>
@@ -161,7 +161,7 @@
                 <div class="col-lg-6 my-3">
                     <a href="{{ URL::action('PrescriptionController@index') }}" ng-mouseover="mouseOver3()" ng-mouseleave="mouseOut3()">
                         <div class="card h-100 border-card">
-                            <img src="images/patient/prescription.jpg" class="card-img-top dim-img-card" alt="...">
+                            <img src="images/prescriptions.jpg" class="card-img-top dim-img-card img-fluid" alt="...">
                                 <p id="card3" class="card-text font-weight-bold text-uppercase border-button py-4 btn-outline-primary">visualizza prescrizioni</p>
                         </div>
                     </a>
@@ -170,7 +170,7 @@
                 <div class="col-lg-6 my-3">
                     <a href="{{ URL::action('PrescriptionController@create') }}" ng-mouseover="mouseOver4()" ng-mouseleave="mouseOut4()">
                         <div class="card h-100 border-card">
-                            <img src="images/users/medici.jpg" class="card-img-top dim-img-card" alt="...">
+                            <img src="images/create-prescription.jpg" class="card-img-top dim-img-card img-fluid" alt="...">
                             <p id="card4" class="card-text font-weight-bold text-uppercase border-button py-4 btn-outline-primary">richiedi una prescrizione dal tuo medico</p>
                         </div>
                     </a>

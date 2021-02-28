@@ -278,64 +278,64 @@
 
                     <div class="col-lg-3 col-md-4">
                         <div class="galleria-oggetto">
-                            <a href="images/galleria/galleria-1.jpg" class="venobox" data-gall="galleria-oggetto">
-                                <img src="images/galleria/galleria-1.jpg" alt="" class="img-fluid">
+                            <a href="images/dottori.jpg" class="venobox" data-gall="galleria-oggetto">
+                                <img src="images/dottori.jpg" alt="" class="img-fluid">
                             </a>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-4">
                         <div class="galleria-oggetto">
-                            <a href="images/galleria/galleria-2.jpg" class="venobox" data-gall="galleria-oggetto">
-                                <img src="images/galleria/galleria-2.jpg" alt="" class="img-fluid">
+                            <a href="images/visite.jpg" class="venobox" data-gall="galleria-oggetto">
+                                <img src="images/visite.jpg" alt="" class="img-fluid">
                             </a>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-4">
                         <div class="galleria-oggetto">
-                            <a href="images/galleria/galleria-3.jpg" class="venobox" data-gall="galleria-oggetto">
-                                <img src="images/galleria/galleria-3.jpg" alt="" class="img-fluid">
+                            <a href="images/prescriptions.jpg" class="venobox" data-gall="galleria-oggetto">
+                                <img src="images/prescriptions.jpg" alt="" class="img-fluid">
                             </a>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-4">
                         <div class="galleria-oggetto">
-                            <a href="images/galleria/galleria-4.jpg" class="venobox" data-gall="galleria-oggetto">
-                                <img src="images/galleria/galleria-4.jpg" alt="" class="img-fluid">
+                            <a href="images/ambulatorio.jpg" class="venobox" data-gall="galleria-oggetto">
+                                <img src="images/ambulatorio.jpg" alt="" class="img-fluid">
                             </a>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-4">
                         <div class="galleria-oggetto">
-                            <a href="images/galleria/galleria-5.jpg" class="venobox" data-gall="galleria-oggetto">
-                                <img src="images/galleria/galleria-5.jpg" alt="" class="img-fluid">
+                            <a href="images/persone.jpg" class="venobox" data-gall="galleria-oggetto">
+                                <img src="images/persone.jpg" alt="" class="img-fluid">
                             </a>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-4">
                         <div class="galleria-oggetto">
-                            <a href="images/galleria/galleria-6.jpg" class="venobox" data-gall="galleria-oggetto">
-                                <img src="images/galleria/galleria-6.jpg" alt="" class="img-fluid">
+                            <a href="images/registrazionepaziente.jpg" class="venobox" data-gall="galleria-oggetto">
+                                <img src="images/registrazionepaziente.jpg" alt="" class="img-fluid">
                             </a>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-4">
                         <div class="galleria-oggetto">
-                            <a href="images/galleria/galleria-7.jpg" class="venobox" data-gall="galleria-oggetto">
-                                <img src="images/galleria/galleria-7.jpg" alt="" class="img-fluid">
+                            <a href="images/create-prescription.jpg" class="venobox" data-gall="galleria-oggetto">
+                                <img src="images/visit-list.jpg" alt="" class="img-fluid">
                             </a>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-4">
                         <div class="galleria-oggetto">
-                            <a href="images/galleria/galleria-8.jpg" class="venobox" data-gall="galleria-oggetto">
-                                <img src="images/galleria/galleria-8.jpg" alt="" class="img-fluid">
+                            <a href="images/richiedi-visita.jpg" class="venobox" data-gall="galleria-oggetto">
+                                <img src="images/richiedi-visita.jpg" alt="" class="img-fluid">
                             </a>
                         </div>
                     </div>
