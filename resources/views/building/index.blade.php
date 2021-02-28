@@ -14,16 +14,6 @@
             </button>
         </a>
     </div>
-    <div class="row-space justify-content-center" style="margin-right:100px;float:right;">
-<a href="{{ URL::action('BuildingController@create') }}">
-<button class="btn btn-outline-primary"><span class="text-uppercase">registra edificio</span>
-<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-arrow-right-circle pl-1" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
-        </svg>
-</button>
-</a>
-        
-        </div>
     <!-- Se sono admin o medici entrano qua -->
     <div class="container-lg" align="center">
         <div class="row row-space justify-content-center">
@@ -40,6 +30,32 @@
             <h4>
                 Aggsisasdadasdasda
             </h4>
+        </div>
+
+        <div class="row row-space justify-content-center border-form align-items-center py-5">
+            <div class="col-lg-2">
+                    <input type="text" class="form-control" name="street_address" id="street_address" placeholder="Via/Viale/Piazza">
+            </div>
+            <div class="col-lg-2">
+                    <input type="text" class="form-control" name="street_number" id="street_number" placeholder="N°">
+            </div>
+            <div class="col-lg-2">
+                    <input type="text" class="form-control" name="postal_code" id="postal_code" placeholder="CAP">
+            </div>
+            <div class="col-lg-2">
+                    <input type="text" class="form-control" name="city" id="city" placeholder="Città">
+            </div>
+            <div class="col-lg-2">
+
+                <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
+                <a href="" id="add-building-btn" style="float:right">
+                <button class="btn btn-outline-success">Aggiungi<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-circle pl-2" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                    </svg>
+                </button>
+                </a>
+            </div>
         </div>
         
         <div class="row row-space justify-content-center">
