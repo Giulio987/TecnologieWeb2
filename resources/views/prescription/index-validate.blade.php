@@ -72,7 +72,7 @@
                         <td>{{ $cognome }}</td>
                         <td>{{ $p->patient->gender }}</td>
                         <td >{{ $p->type }}</td>
-                        <td><button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" data-whatever1="{{ $p->description }}" data-whatever2="{{ 'RFE non visualizzabile' }}" data-whatever3="{{ date('d/m/Y', strtotime($p->date)) }}">Visualizza descrizione</button></td>
+                        <td><button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal1" data-whatever1="{{ $p->description }}" data-whatever2="{{ 'RFE non eistente' }}" data-whatever3="{{ date('d/m/Y', strtotime($p->date)) }}">Visualizza descrizione</button></td>
                         <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">
                         <form action="{{ URL::action('PrescriptionController@update', $p) }}" method="POST">
                             <input type="hidden" name="_method" value="PATCH">
@@ -95,10 +95,10 @@
                 </tbody>
             </table>
         </div>
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <div class="modal-header" align="left">
                         <h5 class="modal-title font-weight-bold text-uppercase" id="exampleModalLabel"></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
