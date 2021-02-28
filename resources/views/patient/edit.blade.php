@@ -14,19 +14,13 @@
 <div class="container-lg" align="center">
 <div class="row row-space justify-content-center">
         <h1 class="font-weight-bold">
-            dsds
+            Modifica le informazioni del paziente.
         </h1>
     </div>
 
     <form action="{{ URL::action('PatientController@update', $patient) }}" method="POST">
         <input type="hidden" name="_method" value="PATCH">
         {{ csrf_field() }}
-    <div class="row row-space justify-content-center">
-        <h5>
-            Compila tutti i campi e crea il tuo nuovo paziente.
-        </h5>
-    </div>
-    
         <?php
             $id = $patient->id_user;
             $user = DB::table('users')->where('id', $id)->select('name', 'surname', 'email')->get();
@@ -71,7 +65,7 @@
     <div class="row row-space justify-content-center">
 
             <div class="form-group label-space">
-            <input type="text" class="form-control @error('gender') is-invalid @enderror" name="gender" value="{{ $patient->gender }}">
+            <input type="text" class="form-control @error('gender') is-invalid @enderror" name="gender" value="{{ $patient->gender }}" maxlength="1">
             <small class="form-text text-muted">Modifica il sesso</small>
             @error('gender')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -84,7 +78,7 @@
         <div class="col-lg-4">
     <div class="row row-space justify-content-center">
             <div class="form-group label-space">
-            <input type="text" class="form-control @error('fiscal_code') is-invalid @enderror" name="fiscal_code" value="{{ $patient->fiscal_code }}">
+            <input type="text" class="form-control @error('fiscal_code') is-invalid @enderror" name="fiscal_code" value="{{ $patient->fiscal_code }}" maxlength="16">
             <small class="form-text text-muted">Modifica il codice fiscale</small>
             @error('fiscal_code')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -103,7 +97,7 @@
     <div class="row row-space justify-content-center">
 
             <div class="form-group label-space">
-            <input type="text" class="form-control @error('street_number') is-invalid @enderror" name="street_number" value="{{ $patient->street_number }}">
+            <input type="text" class="form-control @error('street_number') is-invalid @enderror" name="street_number" value="{{ $patient->street_number }}" maxlength="8">
             <small class="form-text text-muted">Modifica il numero civico</small>
             @error('street_number')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -124,7 +118,7 @@
     <div class="col-lg-4">
     <div class="row row-space justify-content-center">
             <div class="form-group label-space">
-            <input type="text" class="form-control @error('postal_code') is-invalid @enderror" name="postal_code" value="{{ $patient->postal_code }}">
+            <input type="text" class="form-control @error('postal_code') is-invalid @enderror" name="postal_code" value="{{ $patient->postal_code }}" maxlength="5">
             <small class="form-text text-muted">Modifica il CAP</small>
             @error('postal_code')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -134,7 +128,7 @@
 
     <div class="row row-space justify-content-center">
                 <div class="form-group label-space">
-                <input type="text" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ $patient->phone_number }}">
+                <input type="text" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ $patient->phone_number }}" maxlength="15">
             <small class="form-text text-muted">Modifica il telefono</small>
             @error('phone_number')
                 <div class="alert alert-danger">{{ $message }}</div>
