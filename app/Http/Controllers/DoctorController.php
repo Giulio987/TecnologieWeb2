@@ -50,10 +50,12 @@ class DoctorController extends Controller
             'name' 		         => ['required', 'string', 'max:20'],
             'surname'            => ['required', 'string', 'max:20'],
             'dob'                => ['required', 'date'],
-            'phone_number'       => ['required', 'numeric', 'max:15'],
+            'phone_number'       => ['required', 'numeric'],
             'gender'             => ['required', 'string', 'max:1'],
             'fiscal_code'        => ['required', 'min:16', 'max:16'],
             'id_building'        => ['required'],
+            'email'              => ['required', 'string', 'email', 'unique:users'],
+            'password'           => ['required'],
         ], [
             'name.required'           => 'Inserimento obbligatorio',
             'name.string'             => 'Deve essere composto da caratteri',
@@ -65,7 +67,6 @@ class DoctorController extends Controller
             'dob.date'                => 'Deve essere una data',
             'phone_number.required'   => 'Inserimento obbligatorio',
             'phone_number.numeric'    => 'Deve essere composto solo da numeri',
-            'phone_number.max'        => 'Impossibile inserire più di 15 caratteri',
             'gender.required'         => 'Inserimento obbligatorio', // custom message
             'gender.string'           => 'Deve essere composto da caratteri',
             'gender.max'              => 'Impossibile inserire più di un carattere', // custom message
@@ -73,6 +74,11 @@ class DoctorController extends Controller
             'fiscal_code.min'         => 'Inserire minimo 16 caratteri',
             'fiscal_code.max'         => 'Impossibile inserire più di 16 caratteri',
             'id_building.required'    => 'Inserimento obbligatorio',
+            'email.required'          => 'Inserimento obbligatorio',
+            'email.string'            => 'Deve essere composta da caratteri',
+            'email.email'             => 'Deve essere un email @',
+            'email.unique'            => 'L\'email inserita è già presente nel database.',
+            'password.required'       => 'Inserimento obbligatorio',
 
         ]);
     }
@@ -142,7 +148,7 @@ class DoctorController extends Controller
         {
             $br = "
             ";
-            $request->session()->flash('success', 'Credenziali dottore:' . $br . 'Email:' . $request->email .$br.' Password:' . $request->password . $br . '. Aggiunto con successo');
+            $request->session()->flash('success', 'Dottore ' . $request->surname . ' ' . $request->name . ' creato con successo');
         }else{
             $request->session()->flash('error', 'Si è verificato un errore nella registrazione, riprova.');
         }
