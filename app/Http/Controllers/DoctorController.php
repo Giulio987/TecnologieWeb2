@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Validator;
 use Auth;
 use App\Building;
 use Illuminate\Validation\Rule;
+
 class DoctorController extends Controller
 {
     /**

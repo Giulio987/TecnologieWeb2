@@ -114,7 +114,9 @@
                     <a href="{{ URL::action('PrescriptionController@indexValidate') }}" onmouseover="mouseOver6()" onmouseout="mouseOut6()">
                         <div class="card h-100 border-card">
                             <img src="images/users/medici.jpg" class="card-img-top dim-img-card" alt="...">
-                                <p id="card3" class="card-text font-weight-bold text-uppercase border-button py-4 btn-outline-primary">prescrizioni da convalidare</p>
+                                <p id="card3" class="card-text font-weight-bold text-uppercase border-button py-4 btn-outline-primary notification">prescrizioni da convalidare<span class="badge">3</span></p>
+                                SITO CAMPANELLINA
+                                http://lab.iamrohit.in/eg/?s=Tm90aWZpY2F0aW9uIEJlbGwkJCReXl5odHRwczovL2NvZGVwZW4uaW8vcmFkaWJpdC9wZW4vYnBScFB6
                         </div>
                     </a>
                 </div>
