@@ -98,13 +98,13 @@
         <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
                 <div class="modal-content">
-                    <div class="modal-header" align="left">
+                    <div class="modal-header">
                         <h5 class="modal-title font-weight-bold text-uppercase" id="exampleModalLabel"></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body" align="left">
                         <h6 id="description" style="word-wrap: break-word;width:auto;" class="text-uppercase"></h6>
                     </div>
                 </div>
