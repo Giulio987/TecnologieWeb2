@@ -28,7 +28,7 @@ Route::resource('patient', 'PatientController')->except(['destroy'])->middleware
 Route::get('/patient/{patient}/delete', 'PatientController@destroy')->middleware('role');
 //Prescription
 Route::resource('prescription', 'PrescriptionController')->middleware('role');
-Route::get('/prescriptionValidate', 'PrescriptionController@indexValidate')->middleware('role');
+Route::get('/prescription-validate', 'PrescriptionController@indexValidate')->middleware('role');
 //Visit
 Route::resource('visit', 'VisitController')->except(['destroy'])->middleware('role');
 Route::get('/visit/{visit}/delete', 'VisitController@destroy')->middleware('role');
