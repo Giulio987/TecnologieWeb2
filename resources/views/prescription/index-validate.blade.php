@@ -21,20 +21,20 @@
     <div class="row row-space justify-content-center">
         <h1 class="font-weight-bold">
             @if (!strcmp(Auth::user()->role, '1'))
-                Benvenuto Amministratore! Visualizza le ricette di tutti i pazienti da convalidare o negare.
+                Benvenuto Amministratore! visualizza le prescrizioni da convalidare.
             @else
-                Ciao Dott. {{ $name }}, visualizza le ricette dei tuoi pazienti da convalidare o negare.
+                Ciao Dott. {{ $name }}, visualizza le prescrizioni da convalidare.
             @endif
         </h1>
     </div>
     <div class="row row-space justify-content-center">
         <h4>
-            Visualizza tutte le tue ricette relative ai farmaci o visite specialistiche.
+            Convalida o invalida le prescrizioni.
         </h4>
     </div>
     <div class="row row-space justify-content-center">
         <h5>
-            Seleziona il tipo, lo stato e visualizza le ricette.
+        Ricerca per qualsiasi attributo e visualizza le prescrizioni.
         </h5>
     </div>
     <div class="row row-space justify-content-center">
