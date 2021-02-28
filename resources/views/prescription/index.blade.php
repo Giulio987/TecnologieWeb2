@@ -189,11 +189,17 @@
                                         data-target="#exampleModal1" data-whatever1="{{ $p->description }}"
                                         data-whatever2="{{ $p->rfe }}"
                                         data-whatever3="{{ date('d/m/Y', strtotime($p->date)) }}">Visualizza descrizione</button></td>
-                                @else
+                                @elseif($p->status == 'negata')
                                 <td>ricetta negata</td>
                                 <td><button type="button" class="btn btn-outline-primary" data-toggle="modal"
                                         data-target="#exampleModal1" data-whatever1="{{ $p->description }}"
                                         data-whatever2="{{ 'ricetta negata' }}"
+                                        data-whatever3="{{ date('d/m/Y', strtotime($p->date)) }}">Visualizza descrizione</button></td>
+                                @else
+                                <td>non visualizzabile</td>
+                                <td><button type="button" class="btn btn-outline-primary" data-toggle="modal"
+                                        data-target="#exampleModal1" data-whatever1="{{ $p->description }}"
+                                        data-whatever2="{{ 'non visualizzabile' }}"
                                         data-whatever3="{{ date('d/m/Y', strtotime($p->date)) }}">Visualizza descrizione</button></td>
                                 @endif
                                 <td
