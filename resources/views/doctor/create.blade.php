@@ -65,7 +65,7 @@ $name = Auth::user()->name;
         <div class="row row-space justify-content-center">
 
                 <div class="form-group label-space">
-                    <input type="text" class="form-control @error('gender') is-invalid @enderror" placeholder="Sesso" name="gender" required>
+                    <input type="text" class="form-control @error('gender') is-invalid @enderror" placeholder="Sesso" name="gender" maxlength="1" required>
                     @error('gender')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -77,7 +77,7 @@ $name = Auth::user()->name;
             <div class="col-lg-5">
         <div class="row row-space justify-content-center">
                 <div class="form-group label-space">
-                    <input type="text" class="form-control @error('fiscal_code') is-invalid @enderror" placeholder="Codice Fiscale" name="fiscal_code" required>
+                    <input type="text" class="form-control @error('fiscal_code') is-invalid @enderror" placeholder="Codice Fiscale" name="fiscal_code" maxlength="16" required>
                     @error('fiscal_code')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -87,7 +87,7 @@ $name = Auth::user()->name;
         <div class="row row-space justify-content-center">
 
                 <div class="form-group label-space">
-                <input type="text" class="form-control @error('phone_number') is-invalid @enderror" placeholder="Phone Number" name="phone_number" required>
+                <input type="text" class="form-control @error('phone_number') is-invalid @enderror" placeholder="Phone Number" name="phone_number" maxlength="15" required>
                     @error('phone_number')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror

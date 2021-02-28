@@ -13,16 +13,16 @@
 </div>
 <div class="container-lg" align="center">
 <div class="row row-space justify-content-center">
-        <h1 class="font-weight-bold">
-            sssss
-        </h1>
+    <h1 class="font-weight-bold">
+        Amministratore, modifica le informazioni riguradanti questo dottore.
+    </h1>
     </div>
     <form action="{{ URL::action('DoctorController@update', $doctor) }}" method="POST">
         <input type="hidden" name="_method" value="PATCH">
         {{ csrf_field() }}
     <div class="row row-space justify-content-center">
         <h5>
-            Comdddddddddddddddddd.
+            Basta modificare solo i campi interessati.
         </h5>
     </div>
     
@@ -60,7 +60,7 @@
 
         <div class="row row-space justify-content-center">
         <div class="form-group">
-            <input type="text" class="form-control @error('fiscal_code') is-invalid @enderror" name="fiscal_code" value="{{ $doctor->fiscal_code }}">
+            <input type="text" class="form-control @error('fiscal_code') is-invalid @enderror" name="fiscal_code" value="{{ $doctor->fiscal_code }}" maxlength="16">
             <small class="form-text text-muted">Modifica il codice fiscale del dottore</small>
             @error('fiscal_code')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -71,7 +71,7 @@
         <div class="col-lg-5">
         <div class="row row-space justify-content-center">
         <div class="form-group">
-            <input type="text" class="form-control @error('gender') is-invalid @enderror" name="gender" value="{{ $doctor->gender }}">
+            <input type="text" class="form-control @error('gender') is-invalid @enderror" name="gender" value="{{ $doctor->gender }}" maxlength="1">
             <small class="form-text text-muted">Modifica il sesso del dottore</small>
             @error('gender')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -90,7 +90,7 @@
         </div>
         <div class="row row-space justify-content-center">
         <div class="form-group">
-            <input type="text" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ $doctor->phone_number }}">
+            <input type="text" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ $doctor->phone_number }}" maxlength="15">
             <small class="form-text text-muted">Modifica il telefono del dottore</small>
             @error('phone_number')
                 <div class="alert alert-danger">{{ $message }}</div>
