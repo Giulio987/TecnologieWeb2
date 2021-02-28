@@ -184,17 +184,11 @@
                                         data-target="#exampleModal1" data-whatever1="{{ $p->description }}"
                                         data-whatever2="{{ $p->rfe }}"
                                         data-whatever3="{{ date('d/m/Y', strtotime($p->date)) }}">Visualizza descrizione</button></td>
-                                @elseif ($p->status == 'invalidata')
-                                <td>ricetta invalidata</td>
-                                <td><button type="button" class="btn btn-outline-primary" data-toggle="modal"
-                                        data-target="#exampleModal1" data-whatever1="{{ $p->description }}"
-                                        data-whatever2="{{ 'ricetta invalidata' }}"
-                                        data-whatever3="{{ date('d/m/Y', strtotime($p->date)) }}">Visualizza descrizione</button></td>
                                 @else
-                                <td>non visualizzabile</td>
+                                <td>non esistente</td>
                                 <td><button type="button" class="btn btn-outline-primary" data-toggle="modal"
                                         data-target="#exampleModal1" data-whatever1="{{ $p->description }}"
-                                        data-whatever2="{{ 'non visualizzabile' }}"
+                                        data-whatever2="{{ 'non esistente' }}"
                                         data-whatever3="{{ date('d/m/Y', strtotime($p->date)) }}">Visualizza descrizione</button></td>
                                 @endif
                                 <td
@@ -230,10 +224,10 @@
                             <tr class="font-weight-bold text-uppercase" style="color:#626262;" id="{{ $p->type }}">
                                 <td style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">
                                 {{ date('d/m/Y', strtotime($p->date)) }}</th>
-                                <td>non visualizzabile</td>
+                                <td>non esistente</td>
                                 <td><button type="button" class="btn btn-outline-primary" data-toggle="modal"
                                         data-target="#exampleModal1" data-whatever1="{{ $p->description }}"
-                                        data-whatever2="{{ 'RFE non visualizzabile' }}"
+                                        data-whatever2="{{ 'RFE non esistente' }}"
                                         data-whatever3="{{ date('d/m/Y', strtotime($p->date)) }}">Visualizza descrizione</button></td>
                                 <td
                                     style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">
