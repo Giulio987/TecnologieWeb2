@@ -26,18 +26,13 @@
 <div class="container-lg" align="center">
     <div class="row row-space justify-content-center">
         <h1 class="font-weight-bold">
-            Benvenuto Amministratore!
+            Amministratore, visualizza tutti i dottori.
         </h1>
     </div>
     <div class="row row-space justify-content-center">
         <h4>
-            Opera in totale libertà
+            Ricerca per qualsiasi attributo e visualizza le informazioni del dottore.
         </h4>
-    </div>
-    <div class="row row-space justify-content-center">
-        <h5>
-            Ricerca per qualsiasi attributo e visualizza le informazioni di ogni medico.
-        </h5>
     </div>
 
     <div class="row row-space justify-content-center">

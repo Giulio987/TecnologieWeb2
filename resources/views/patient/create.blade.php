@@ -40,7 +40,11 @@ $name = Auth::user()->name;
 
     <div class="row row-space justify-content-center">
         <h5>
-            Compila tutti i campi e crea il tuo nuovo paziente.
+        @if(!strcmp(Auth::user()->role, '1'))
+        Compila tutti i campi e crea un nuovo paziente.
+        @elseif(!strcmp(Auth::user()->role, '2'))
+        Compila tutti i campi e crea il tuo nuovo paziente.
+        @endif
         </h5>
     </div>
 

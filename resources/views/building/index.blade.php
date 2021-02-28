@@ -85,7 +85,7 @@
                                 <td>{{ $b->street_number }}</td>
                                 <td>{{ $b->postal_code }}</td>
                                 <td>{{ $b->city }}</td>
-                                <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 0px 20px 20px 0px;"><a id="confirmDelete" href="" class="btn btn-outline-danger btn-sm delete-btn" data-id="{{ $b->id }}">Elimina</a></td>
+                                <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 0px 20px 20px 0px;"><a href="" class="btn btn-outline-danger btn-sm delete-btn" data-id="{{ $b->id }}">Elimina</a></td>
                             </tr> 
                         @endforeach
                     </tbody>
@@ -158,24 +158,31 @@
         });
         $('.delete-btn').bind('click', function(e) {
             e.preventDefault();
-            // Nota, qui $(this) è l'elemento <a> ovvero il bottone.
-            var row = $(this).parents('tr');            // Ottengo  la riga della tabella cercando fa i parents del bottone l'elemento <tr>
-            var buildingId = $(this).attr('data-id');     // Ottengo l'id dell'edificio andando a prelevare il valore dell'attributo "id"
-            var _token = $('#_token').val();            // Ottengo il token del form perchè mi serve anche per l'azione che sto per compiere 
-            $.ajax({
-                    url: "/building/" + buildingId,     // Visto che posso configurarla usa l'azione di default per la Destroy 
-                    type: "DELETE",                     // Uso appunto il metodo DELETE
-                    dataType: "json",  
-                    data: { 'building': buildingId, '_token': _token }, // Passo l'id della categria e il token 
-                    success: function(data) {                        
-                        if (data.status === 'ok') {
-                            $(row).remove();            // Qui ho usato un semplice remove() ma potrei usare un fadeOut() o altro 
+            if (confirm("Vuoi davvero eliminare?") == true) {
+                alert("Eliminazione avvenuta!");
+            
+                // Nota, qui $(this) è l'elemento <a> ovvero il bottone.
+                var row = $(this).parents('tr');            // Ottengo  la riga della tabella cercando fa i parents del bottone l'elemento <tr>
+                var buildingId = $(this).attr('data-id');     // Ottengo l'id dell'edificio andando a prelevare il valore dell'attributo "id"
+                var _token = $('#_token').val();            // Ottengo il token del form perchè mi serve anche per l'azione che sto per compiere 
+                $.ajax({
+                        url: "/building/" + buildingId,     // Visto che posso configurarla usa l'azione di default per la Destroy 
+                        type: "DELETE",                     // Uso appunto il metodo DELETE
+                        dataType: "json",  
+                        data: { 'building': buildingId, '_token': _token }, // Passo l'id della categria e il token 
+                        success: function(data) {                        
+                            if (data.status === 'ok') {
+                                $(row).remove();            // Qui ho usato un semplice remove() ma potrei usare un fadeOut() o altro 
+                            }
+                        }, 
+                        error: function(response, stato) {
+                            console.log(response);
                         }
-                    }, 
-                    error: function(response, stato) {
-                        console.log(stato);
-                    }
-                });
+                    });
+                }else {
+                alert("Hai annullato");
+                return false;
+            }
         });
     });
 </script>

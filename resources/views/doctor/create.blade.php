@@ -23,14 +23,14 @@ $name = Auth::user()->name;
     </div>
     <div class="row row-space justify-content-center">
         <h4>
-            Crea un profilo per un dottore, successivamente potrà accedere alla piattaforma.
+        Inserisci tutti i campi richiesti per registrare un nuovo dottore.
         </h4>
     </div>
     <form action="{{ URL::action('DoctorController@store') }}" method="POST"  novalidate>
     {{ csrf_field() }}
     <div class="row row-space justify-content-center">
         <h5>
-            Compila tutti i campi e crea il tuo nuovo dottore.
+            Compila tutti i campi e crea un nuovo dottore.
         </h5>
     </div>
     <div class="row row-space justify-content-center border-form align-items-center">
