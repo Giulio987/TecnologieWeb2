@@ -6,6 +6,7 @@ use App\Building;
 use Illuminate\Http\Request;
 use Auth;
 use Log;
+use Illuminate\Support\Facades\Validator;
 class BuildingController extends Controller
 {
     /**
@@ -39,7 +40,7 @@ class BuildingController extends Controller
         return Validator::make($data, [
             'street_address'     => ['required', 'string', 'max:50'],
             'street_number'      => ['required', 'string', 'max:8'],
-            'postal_code'        => ['required', 'numeric', 'max:5'],
+            'postal_code'        => ['required', 'numeric'],
             'city'               => ['required', 'string', 'max:30'],
         ], [
             'street_address.required'   => 'Inserimento obbligatorio',
@@ -50,7 +51,6 @@ class BuildingController extends Controller
             'street_number.max'         => 'Impossibile inserire più di 8 caratteri',
             'postal_code.required'      => 'Inserimento obbligatorio',
             'postal_code.numeric'       => 'Deve essere composto da soli numeri',
-            'postal_code.max'           => 'Impossibile inserire più di 5 caratteri',
             'city.required'             => 'Inserimento obbligatorio',
             'city.string'               => 'Deve essere composto da caratteri',
             'city.max'                  => 'Impossibile inserire più di 30 caratteri',
@@ -106,7 +106,7 @@ class BuildingController extends Controller
      */
     public function update(Request $request, Building $building)
     {
-        $this->validatorUpdate($request->all(), $building)->validate();
+        $this->validator($request->all(), $building)->validate();
 
         $input = $request->all();
 
