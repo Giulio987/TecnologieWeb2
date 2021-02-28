@@ -21,21 +21,16 @@
             <div class="row row-space justify-content-center">
                 <h1 class="font-weight-bold">
                     @if (!strcmp(Auth::user()->role, '1'))
-                    Benvenuto Amministratore! Visualizza le ricette dei tuoi pazienti.
+                    Benvenuto Amministratore! Visualizza le prescrizioni dei tuoi pazienti.
                     @else
-                    Ciao Dott. {{ $name }}, visualizza le ricette dei tuoi pazienti.
+                    Ciao Dott. {{ $name }}, visualizza le prescrizioni dei tuoi pazienti.
                     @endif
                 </h1>
             </div>
             <div class="row row-space justify-content-center">
                 <h4>
-                    Visualizza tutte le ricette relative ai farmaci o visite specialistiche.
+                    Ricerca per qualsiasi attributo e visualizza le prescrizioni.
                 </h4>
-            </div>
-            <div class="row row-space justify-content-center">
-                <h5>
-                    Seleziona il tipo, lo stato e visualizza le ricette.
-                </h5>
             </div>
             <div class="row row-space justify-content-center">
                 <input class="quadrato-ricetta col-lg-4 text-uppercase button-search" id="myInput" type="text"
