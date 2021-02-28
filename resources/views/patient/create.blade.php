@@ -22,7 +22,7 @@ $name = Auth::user()->name;
             @if(!strcmp(Auth::user()->role, '1'))
             Amministratore, visualizza tutti i pazienti.
             @elseif(!strcmp(Auth::user()->role, '2'))
-            Ciao Dott. {{ $name }}, crea i tuoi pazienti.
+            Ciao Dott. {{ $name }}, registra i tuoi pazienti.
             @endif
         </h1>
     </div>

@@ -10,7 +10,8 @@ COSE DA FARE:
 - sistemare modifica dottore
 - modifica dei pazienti (file edit)
 - fare area personale
-
+- modificare foto i tuoi pazienti
+- mettere index edifici come prima con ajax
 
 Considerazioni:
 - Un dottore che vuole usare il sito contatta prima un amministratore per far aggiungere il proprio edificio

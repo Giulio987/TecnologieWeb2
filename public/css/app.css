@@ -11563,8 +11563,8 @@ Dottori
 }
 
 .btn-prenota {
-    width: auto;
-    height: auto;
+    width: 100px;
+    height: 100px;
     margin-left: 10px;
     border-style: solid;
     border-width: 2px;
