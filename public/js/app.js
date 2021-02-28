@@ -50626,6 +50626,7 @@ function mouseOut6() {
     document.getElementById("card6").style.backgroundColor = "#fff";
     document.getElementById("card6").style.borderColor = "#fff";
 }
+
 $("#convalidare").on("click", function() {
     $("#table").toggle("slow", function() {
         $("#tableConvalidare").toggle("slow", function() {});

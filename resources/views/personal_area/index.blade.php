@@ -47,7 +47,7 @@
     </div>
 
             
-    <div class="col-lg-4" align="center">
+    <div class="col-lg-4">
         <div class="row row-space justify-content-center">    
             <p class="text-uppercase">{{ $admin->name }}</p>
         </div>
@@ -133,7 +133,7 @@
     </div>
 
             
-    <div class="col-lg-4" align="center">
+    <div class="col-lg-4">
         <div class="row row-space justify-content-center">
             <p class="text-uppercase">{{ $doctor->fiscal_code }}</p>
         </div>
@@ -247,7 +247,7 @@
     </div>
 
             
-    <div class="col-lg-4" align="center">
+    <div class="col-lg-4">
         <div class="row row-space justify-content-center">
             <p class="text-uppercase">{{ $patient->fiscal_code }}</p>
         </div>
