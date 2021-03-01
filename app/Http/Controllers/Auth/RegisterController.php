@@ -51,6 +51,9 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
+            'pay'            => ['required', 'numeric'],
+            'data-scadenza'  => ['required', 'date'],
+            'cvv'            => ['required', 'numeric'],
             'name'           => ['required', 'string', 'max:20'],
             'surname'        => ['required', 'string', 'max:20'],
             'email'          => ['required', 'email', 'max:50', 'unique:users'],
@@ -62,6 +65,12 @@ class RegisterController extends Controller
             'phone_number'   => ['required', 'numeric'],
             'id_building'    => ['required'],
         ], [
+            'pay.required'            => 'Inserimento obbligatorio',
+            'pay.numeric'             => 'Deve essere composto da numeri',
+            'data-scadenza.required'  => 'Inserimento obbligatorio',
+            'data-scadenza.date'      => 'Deve essere una data',
+            'cvv.required'            => 'Inserimento obbligatorio',
+            'cvv.numeric'             => 'Deve essere composto da numeri',
             'name.required'           => 'Inserimento obbligatorio',
             'name.string'             => 'Deve essere composto da caratteri',
             'name.max'                => 'Impossibile inserire più di 20 caratteri',

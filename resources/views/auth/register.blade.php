@@ -10,7 +10,7 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
-
+                        
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
 
@@ -53,7 +53,7 @@
                             <label for="fiscal_code" class="col-md-4 col-form-label text-md-right">{{ __('Codice Fiscale') }}</label>
 
                             <div class="col-md-6">
-                                <input id="fiscal_code" type="text" class="form-control @error('fiscal_code') is-invalid @enderror" name="fiscal_code" required autocomplete="fiscal_code">
+                                <input id="fiscal_code" type="text" class="form-control @error('fiscal_code') is-invalid @enderror" name="fiscal_code" required autocomplete="fiscal_code" maxlength="16">
 
                                 @error('fiscal_code')
                                     <span class="invalid-feedback" role="alert">
@@ -81,7 +81,7 @@
                             <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Sesso') }}</label>
 
                             <div class="col-md-6">
-                                <input id="gender" type="text" class="form-control @error('gender') is-invalid @enderror" name="gender" value="{{ old('gender') }}" required autocomplete="gender" autofocus>
+                                <input id="gender" type="text" class="form-control @error('gender') is-invalid @enderror" name="gender" value="{{ old('gender') }}" required autocomplete="gender" maxlength="1" autofocus>
 
                                 @error('gender')
                                 <span class="invalid-feedback" role="alert">
@@ -95,7 +95,7 @@
                             <label for="phone_number" class="col-md-4 col-form-label text-md-right">{{ __('Numero di Telefono') }}</label>
 
                             <div class="col-md-6">
-                                <input id="phone_number" type="text" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ old('phone_number') }}" required autocomplete="phone_number" autofocus>
+                                <input id="phone_number" type="text" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ old('phone_number') }}" required autocomplete="phone_number" maxlength="15" autofocus>
 
                                 @error('phone_number')
                                 <span class="invalid-feedback" role="alert">
@@ -131,24 +131,22 @@
                                             </svg>
                                         </div>
                                 </div>
-                                <input id="pay" type="text" class="form-control @error('pay') is-invalid @enderror" name="pay" value="{{ old('pay') }}" required autocomplete="pay" autofocus>
-                            </div>
+                                <input id="pay" type="text" class="form-control @error('pay') is-invalid @enderror" name="pay" value="{{ old('pay') }}" required autocomplete="pay" maxlength="16" autofocus>
                                 @error('pay')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
+                                </div>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                        <label for="pay" class="col-md-4 col-form-label text-md-right"></label>
+                        <label for="data-scadenza" class="col-md-4 col-form-label text-md-right">Data di scadenza</label>
                             <div class="col-md-3">
                                 <div class="input-group mb-2">
-                                
-                                <input id="date" type="date" class="form-control @error('date') is-invalid @enderror" name="pay" value="{{ old('date') }}" required autocomplete="date" autofocus>
-                        
-                                @error('date')
+                                <input id="date" type="date" class="form-control @error('data-scadenza') is-invalid @enderror" name="data-scadenza" value="{{ old('data-scadenza') }}" required autocomplete="date" autofocus>
+                                @error('data-scadenza')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -162,16 +160,16 @@
                                             CVV
                                         </div>
                                 </div>
-                                <input id="cvv" type="text" class="form-control @error('cvv') is-invalid @enderror" name="cvv" value="{{ old('cvv') }}" required autocomplete="cvv" autofocus>
-                                </div>
+                                <input id="cvv" type="text" class="form-control @error('cvv') is-invalid @enderror" name="cvv" value="{{ old('cvv') }}" required autocomplete="cvv" maxlength="3" autofocus>
                                 @error('cvv')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
+                                </div>
                             </div>
                             </div>
-
+    
 
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
@@ -199,7 +197,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Registra e Paga') }}
+                                    {{ __('Registrati') }}
                                 </button>
                             </div>
                         </div>
