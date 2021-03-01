@@ -119,6 +119,61 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            
+                            <label for="pay" class="col-md-4 col-form-label text-md-right">{{ __('Dati di pagamento') }}</label>
+                            <div class="col-md-6">
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-credit-card" viewBox="0 0 16 16">
+                                                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z"/>
+                                                <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z"/>
+                                            </svg>
+                                        </div>
+                                </div>
+                                <input id="pay" type="text" class="form-control @error('pay') is-invalid @enderror" name="pay" value="{{ old('pay') }}" required autocomplete="pay" autofocus>
+                            </div>
+                                @error('pay')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                        <label for="pay" class="col-md-4 col-form-label text-md-right"></label>
+                            <div class="col-md-3">
+                                <div class="input-group mb-2">
+                                
+                                <input id="date" type="date" class="form-control @error('date') is-invalid @enderror" name="pay" value="{{ old('date') }}" required autocomplete="date" autofocus>
+                        
+                                @error('date')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            CVV
+                                        </div>
+                                </div>
+                                <input id="cvv" type="text" class="form-control @error('cvv') is-invalid @enderror" name="cvv" value="{{ old('cvv') }}" required autocomplete="cvv" autofocus>
+                                </div>
+                                @error('cvv')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            </div>
+
+
+                        <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
@@ -144,7 +199,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Registra') }}
+                                    {{ __('Registra e Paga') }}
                                 </button>
                             </div>
                         </div>
