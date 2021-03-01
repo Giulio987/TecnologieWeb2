@@ -30,6 +30,7 @@ class PrescriptionController extends Controller
 				$res = $doctor->id;
 			}
             $prescriptions = Prescription::where('id_doctor', $res)->where('status', 'convalidata')->get();
+            $prescriptions = $prescriptions->sortByDesc('rfe');
             return view('prescription.index', compact('prescriptions'));
         } else{
             //Pazienti che visualizzeranno solo le proprie ricette
@@ -39,6 +40,7 @@ class PrescriptionController extends Controller
 				$res = $patient->id;
 			}
             $prescriptions = Prescription::where('id_patient', $res)->get();
+            $prescriptions = $prescriptions->sortByDesc('rfe');
             return view('prescription.index', compact('prescriptions'));
         }
     }
