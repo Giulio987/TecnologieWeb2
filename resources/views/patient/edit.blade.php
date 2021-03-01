@@ -147,7 +147,7 @@
     <div class="row row-space justify-content-center">
 
         <div class="form-group label-space">
-            <select id="selUser" name="id_doctor" for="id_doctor" class="@error('id_doctor') is-invalid @enderror selUser">
+            <select id="selUser" name="id_doctor" for="id_doctor" class="@error('id_doctor') is-invalid @enderror selUser" style="width:100%">
                 <?php
                     $doctor = DB::table('doctors')->where('id', $patient->id_doctor)->select('id_user')->get();
                     foreach ($doctor as $info) {
