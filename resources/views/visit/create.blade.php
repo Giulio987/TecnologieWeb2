@@ -66,83 +66,83 @@ function giornoData($d, $m, $a)
         @endif
         <div class="row row-space justify-content-center">
             <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
-                <?php
-                $d = date("d");
-                $m = date("m");
-                $y = date("y");
-                $date1 = date('Y/m/d');
-                $gContent1 = giornoData($d, $m, $y);
-                ?>
-                <label class="btn btn-outline-primary col-lg-2 quadrato mx-4 mb-2">
-                    <input type="radio" name="date" id="Show1" value="{{ $date1 }}">
-                    <h5 class="my-3">{{ $gContent1 }}</h5>
-                    <h3 class="font-weight-bold my-3">{{ $d }}</h3>
-                </label>
-                <?php
-                $date = date('Y/m/d');
-                $CalculateDate = strtotime('+1 day', strtotime($date));
-                $date2 = date("Y/m/d", $CalculateDate);
-                $d = date("d", $CalculateDate);
-                $m = date("m", $CalculateDate);
-                $y = date("y", $CalculateDate);
-                $gContent2 = giornoData($d, $m, $y);
-                ?>
-                <label class="btn btn-outline-primary col-lg-2 quadrato mx-4 mb-2">
-                    <input type="radio" name="date" id="Show2" value="{{ $date2 }}">
-                    <h5 class="my-3">{{ $gContent2 }}</h5>
-                    <h3 class="font-weight-bold my-3">{{ $d }}</h3>
-                </label>
-                <?php
-                $date = date('Y/m/d');
-                $CalculateDate = strtotime('+2 day', strtotime($date));
-                $date3 = date("Y/m/d", $CalculateDate);
-                $d = date("d", $CalculateDate);
-                $m = date("m", $CalculateDate);
-                $y = date("y", $CalculateDate);
-                $gContent3 = giornoData($d, $m, $y);
-                ?>
-                <label class="btn btn-outline-primary col-lg-2 quadrato mx-4 mb-2">
-                    <input type="radio" name="date" id="Show3" value="{{ $date3 }}">
-                    <h5 class="my-3">{{ $gContent3 }}</h5>
-                    <h3 class="font-weight-bold my-3">{{ $d }}</h3>
-                </label>
-                <?php
-                $date = date('Y/m/d');
-                $CalculateDate = strtotime('+3 day', strtotime($date));
-                $date4 = date("Y/m/d", $CalculateDate);
-                $d = date("d", $CalculateDate);
-                $m = date("m", $CalculateDate);
-                $y = date("y", $CalculateDate);
-                $gContent4 = giornoData($d, $m, $y);
-                ?>
-                <label class="btn btn-outline-primary col-lg-2 quadrato mx-4 mb-2">
-                    <input type="radio" name="date" id="Show4" value="{{ $date4 }}">
-                    <h5 class="my-3">{{ $gContent4 }}</h5>
-                    <h3 class="font-weight-bold my-3">{{ $d }}</h3>
-                </label>
-                <?php
-                $date = date('Y/m/d');
-                $CalculateDate = strtotime('+4 day', strtotime($date));
-                $date5 = date("Y/m/d", $CalculateDate);
-                $d = date("d", $CalculateDate);
-                $m = date("m", $CalculateDate);
-                $y = date("y", $CalculateDate);
-                $gContent5 = giornoData($d, $m, $y);
-                ?>
-                <label class="btn btn-outline-primary col-lg-2 quadrato mx-4 mb-2">
-                    <input type="radio" name="date" id="Show5" value="{{ $date5 }}">
-                    <h5 class="my-3">{{ $gContent5 }}</h5>
-                    <h3 class="font-weight-bold my-3">{{ $d }}</h3>
-                </label>
-                <?php
-                $date = date('Y/m/d');
-                $CalculateDate = strtotime('+5 day', strtotime($date));
-                $date6 = date("Y/m/d", $CalculateDate);
-                $d = date("d", $CalculateDate);
-                $m = date("m", $CalculateDate);
-                $y = date("y", $CalculateDate);
-                $gContent6 = giornoData($d, $m, $y);
-                ?>
+            <?php
+                    $d1 = date('d');
+                    $m1 = date('m');
+                    $y1 = date('y');
+                    $date1 = date('Y/m/d');
+                    $gContent1 = giornoData($d1, $m1, $y1);
+                    ?>
+                    <label class="btn btn-outline-primary col-md-2 quadrato mx-4 mb-2">
+                        <input type="radio" name="date" id="Show1" value="{{ $date1 }}">
+                        <h5 class="my-3">{{ $gContent1 }}</h5>
+                        <h3 class="font-weight-bold my-3">{{ $d1 }}</h3>
+                    </label>
+                    <?php
+                    $datenow2 = date('Y/m/d');
+                    $CalculateDate2 = strtotime('+1 day', strtotime($datenow2));
+                    $date2 = date('Y/m/d', $CalculateDate2);
+                    $d2 = date('d', $CalculateDate2);
+                    $m2 = date('m', $CalculateDate2);
+                    $y2 = date('y', $CalculateDate2);
+                    $gContent2 = giornoData($d2, $m2, $y2);
+                    ?>
+                    <label class="btn btn-outline-primary col-md-2 quadrato mx-4 mb-2 ">
+                        <input type="radio" name="date" id="Show2" value="{{ $date2 }}">
+                        <h5 class="my-3">{{ $gContent2 }}</h5>
+                        <h3 class="font-weight-bold my-3">{{ $d2 }}</h3>
+                    </label>
+                    <?php
+                    $datenow3 = date('Y/m/d');
+                    $CalculateDate3 = strtotime('+2 day', strtotime($datenow3));
+                    $date3 = date('Y/m/d', $CalculateDate3);
+                    $d3 = date('d', $CalculateDate3);
+                    $m3 = date('m', $CalculateDate3);
+                    $y3 = date('y', $CalculateDate3);
+                    $gContent3 = giornoData($d3, $m3, $y3);
+                    ?>
+                    <label class="btn btn-outline-primary col-md-2 quadrato mx-4 mb-2">
+                        <input type="radio" name="date" id="Show3" value="{{ $date3 }}">
+                        <h5 class="my-3">{{ $gContent3 }}</h5>
+                        <h3 class="font-weight-bold my-3">{{ $d3 }}</h3>
+                    </label>
+                    <?php
+                    $datenow4 = date('Y/m/d');
+                    $CalculateDate4 = strtotime('+3 day', strtotime($datenow4));
+                    $date4 = date('Y/m/d', $CalculateDate4);
+                    $d4 = date('d', $CalculateDate4);
+                    $m4 = date('m', $CalculateDate4);
+                    $y4 = date('y', $CalculateDate4);
+                    $gContent4 = giornoData($d4, $m4, $y4);
+                    ?>
+                    <label class="btn btn-outline-primary col-md-2 quadrato mx-4 mb-2">
+                        <input type="radio" name="date" id="Show4" value="{{ $date4 }}">
+                        <h5 class="my-3">{{ $gContent4 }}</h5>
+                        <h3 class="font-weight-bold my-3">{{ $d4 }}</h3>
+                    </label>
+                    <?php
+                    $datenow5 = date('Y/m/d');
+                    $CalculateDate5 = strtotime('+4 day', strtotime($datenow5));
+                    $date5 = date('Y/m/d', $CalculateDate5);
+                    $d5 = date('d', $CalculateDate5);
+                    $m5 = date('m', $CalculateDate5);
+                    $y5 = date('y', $CalculateDate5);
+                    $gContent5 = giornoData($d5, $m5, $y5);
+                    ?>
+                    <label class="btn btn-outline-primary col-md-2 quadrato mx-4 mb-2">
+                        <input type="radio" name="date" id="Show5" value="{{ $date5 }}">
+                        <h5 class="my-3">{{ $gContent5 }}</h5>
+                        <h3 class="font-weight-bold my-3">{{ $d }}</h3>
+                    </label>
+                    <?php
+                    $datenow6 = date('Y/m/d');
+                    $CalculateDate = strtotime('+5 day', strtotime($datenow6));
+                    $date6 = date('Y/m/d', $CalculateDate6);
+                    $d6 = date('d', $CalculateDate6);
+                    $m6 = date('m', $CalculateDate6);
+                    $y6 = date('y', $CalculateDate6);
+                    $gContent6 = giornoData($d6, $m6, $y6);
+                    ?>
                 <label class="btn btn-outline-primary col-lg-2 quadrato mx-4 mb-2">
                     <input type="radio" name="date" id="Show6" value="{{ $date6 }}">
                     <h5 class="my-3">{{ $gContent6 }}</h5>
