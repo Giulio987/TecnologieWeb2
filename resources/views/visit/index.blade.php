@@ -5,11 +5,7 @@
     @if (!strcmp(Auth::user()->role, '1'))
 
         <?php
-        $name = Auth::user()->name;
-
-        date_default_timezone_set('Europe/Rome');
-
-        $id = Auth::user()->id;
+            date_default_timezone_set('Europe/Rome');
         ?>
 
         <div class="row-space" style="margin-left:100px;float:left;">
@@ -114,7 +110,6 @@
     @endif
     @if (!strcmp(Auth::user()->role, '2'))
         <?php
-        $name = Auth::user()->name;
         $ora = 0;
 
         date_default_timezone_set('Europe/Rome');
@@ -160,7 +155,7 @@
             </div>
             <div class="row row row-space justify-content-center">
                 <div class="btn-group-toggle btn w-100 h-100" data-toggle="buttons">
-                    <?php
+                <?php
                     $d1 = date('d');
                     $m1 = date('m');
                     $y1 = date('y');
@@ -226,22 +221,22 @@
                     <label class="btn btn-outline-primary col-md-2 quadrato mx-4 mb-2">
                         <input type="radio" name="date" id="Show5" value="{{ $date5 }}">
                         <h5 class="my-3">{{ $gContent5 }}</h5>
-                        <h3 class="font-weight-bold my-3">{{ $d }}</h3>
+                        <h3 class="font-weight-bold my-3">{{ $d5 }}</h3>
                     </label>
                     <?php
                     $datenow6 = date('Y/m/d');
-                    $CalculateDate = strtotime('+5 day', strtotime($datenow6));
+                    $CalculateDate6 = strtotime('+5 day', strtotime($datenow6));
                     $date6 = date('Y/m/d', $CalculateDate6);
                     $d6 = date('d', $CalculateDate6);
                     $m6 = date('m', $CalculateDate6);
                     $y6 = date('y', $CalculateDate6);
                     $gContent6 = giornoData($d6, $m6, $y6);
                     ?>
-                    <label class="btn btn-outline-primary col-md-2 quadrato mx-4 mb-2">
-                        <input type="radio" name="date" id="Show6" value="{{ $date6 }}">
-                        <h5 class="my-3">{{ $gContent6 }}</h5>
-                        <h3 class="font-weight-bold my-3">{{ $d }}</h3>
-                    </label>
+                <label class="btn btn-outline-primary col-lg-2 quadrato mx-4 mb-2">
+                    <input type="radio" name="date" id="Show6" value="{{ $date6 }}">
+                    <h5 class="my-3">{{ $gContent6 }}</h5>
+                    <h3 class="font-weight-bold my-3">{{ $d6 }}</h3>
+                </label>
                 </div>
             </div>
 
@@ -252,38 +247,22 @@
                             @if (DB::table('visits')->where('date', $date1)->where('time', $time[$i])->exists() && strtotime($time[$i]) > strtotime(date('H:i'))) 
                             <?php $ora++ ?>
                             <?php
-                            $id_p = DB::table('visits')->where('date', $date1)->where('time', $time[$i])->select('id_patient')->get();
-                            foreach ($id_p as $pippo) {
-                                $info = $pippo->id_patient;
-                            }
-                            $p = DB::table('patients')->where('id', $info)->get();
-                            foreach ($p as $pa) {
-                                $fiscal_code = $pa->fiscal_code;
-                                $dob = $pa->dob;
-                                $phone_number = $pa->phone_number;
-                                $gender = $pa->gender;
-                                $street_address = $pa->street_address;
-                                $street_number = $pa->street_number;
-                                $postal_code = $pa->postal_code;
-                                $city = $pa->city;
-                                $id_user = $pa->id_user;
-                            }
-                            $user = DB::table('users')->where('id', $id_user)->select('name', 'surname')->get();
-                            foreach ($user as $u) {
-                                $name = $u->name;
-                                $surname = $u->surname;
-                            }
+                            $patient = DB::table('visits')->where('date', $date1)->where('time', $time[$i])->first();
+                            
+                            $p = DB::table('patients')->where('id', $patient->id_patient)->first();
+
+                            $user = DB::table('users')->where('id', $p->id_user)->first();
                             ?>
                             <label class="btn btn-orario btn-outline-primary font-weight-bold"
-                            data-whatever1="{{ $fiscal_code }}" data-whatever2="{{ $name }}"
-                            data-whatever3="{{ $surname }}"
-                            data-whatever4="{{ date('d/m/Y', strtotime($dob)) }}"
-                            data-whatever5="{{ $phone_number }}"
-                            data-whatever6="{{ $gender }}"
-                            data-whatever7="{{ $street_address }}"
-                            data-whatever8="{{ $street_number }}"
-                            data-whatever9="{{ $postal_code }}"
-                            data-whatever10="{{ $city }}" data-toggle="modal"
+                            data-whatever1="{{ $p->fiscal_code }}" data-whatever2="{{ $user->name }}"
+                            data-whatever3="{{ $user->surname }}"
+                            data-whatever4="{{ date('d/m/Y', strtotime($p->dob)) }}"
+                            data-whatever5="{{ $p->phone_number }}"
+                            data-whatever6="{{ $p->gender }}"
+                            data-whatever7="{{ $p->street_address }}"
+                            data-whatever8="{{ $p->street_number }}"
+                            data-whatever9="{{ $p->postal_code }}"
+                            data-whatever10="{{ $p->city }}" data-toggle="modal"
                             data-target="#exampleModal2" type="button">
                             <p>{{ $time[$i] }}</p></label> 
                             @endif
@@ -340,38 +319,22 @@
                         @for ($i = 0; $i < count($time); $i++)
                             @if (DB::table('visits')->where('date', $date2)->where('time', $time[$i])->exists()) 
                             <?php
-                            $id_p = DB::table('visits')->where('date', $date2)->where('time', $time[$i])->select('id_patient')->get();
-                            foreach ($id_p as $pippo) {
-                                $info = $pippo->id_patient;
-                            }
-                            $p = DB::table('patients')->where('id', $info)->get();
-                            foreach ($p as $pa) {
-                                $fiscal_code = $pa->fiscal_code;
-                                $dob = $pa->dob;
-                                $phone_number = $pa->phone_number;
-                                $gender = $pa->gender;
-                                $street_address = $pa->street_address;
-                                $street_number = $pa->street_number;
-                                $postal_code = $pa->postal_code;
-                                $city = $pa->city;
-                                $id_user = $pa->id_user;
-                            }
-                            $user = DB::table('users')->where('id', $id_user)->select('name', 'surname')->get();
-                            foreach ($user as $u) {
-                                $name = $u->name;
-                                $surname = $u->surname;
-                            }
+                            $patient = DB::table('visits')->where('date', $date2)->where('time', $time[$i])->first();
+                            
+                            $p = DB::table('patients')->where('id', $patient->id_patient)->first();
+
+                            $user = DB::table('users')->where('id', $p->id_user)->first();
                             ?>
                             <label class="btn btn-orario btn-outline-primary font-weight-bold"
-                            data-whatever1="{{ $fiscal_code }}" data-whatever2="{{ $name }}"
-                            data-whatever3="{{ $surname }}"
-                            data-whatever4="{{ date('d/m/Y', strtotime($dob)) }}"
-                            data-whatever5="{{ $phone_number }}"
-                            data-whatever6="{{ $gender }}"
-                            data-whatever7="{{ $street_address }}"
-                            data-whatever8="{{ $street_number }}"
-                            data-whatever9="{{ $postal_code }}"
-                            data-whatever10="{{ $city }}" data-toggle="modal"
+                            data-whatever1="{{ $p->fiscal_code }}" data-whatever2="{{ $user->name }}"
+                            data-whatever3="{{ $user->surname }}"
+                            data-whatever4="{{ date('d/m/Y', strtotime($p->dob)) }}"
+                            data-whatever5="{{ $p->phone_number }}"
+                            data-whatever6="{{ $p->gender }}"
+                            data-whatever7="{{ $p->street_address }}"
+                            data-whatever8="{{ $p->street_number }}"
+                            data-whatever9="{{ $p->postal_code }}"
+                            data-whatever10="{{ $p->city }}" data-toggle="modal"
                             data-target="#exampleModal2" type="button">
                             <p>{{ $time[$i] }}</p></label> @endif
                         @endfor
@@ -398,38 +361,22 @@
                         @for ($i = 0; $i < count($time); $i++)
                             @if (DB::table('visits')->where('date', $date3)->where('time', $time[$i])->exists()) 
                             <?php
-                            $id_p = DB::table('visits')->where('date', $date3)->where('time', $time[$i])->select('id_patient')->get();
-                            foreach ($id_p as $pippo) {
-                                $info = $pippo->id_patient;
-                            }
-                            $p = DB::table('patients')->where('id', $info)->get();
-                            foreach ($p as $pa) {
-                                $fiscal_code = $pa->fiscal_code;
-                                $dob = $pa->dob;
-                                $phone_number = $pa->phone_number;
-                                $gender = $pa->gender;
-                                $street_address = $pa->street_address;
-                                $street_number = $pa->street_number;
-                                $postal_code = $pa->postal_code;
-                                $city = $pa->city;
-                                $id_user = $pa->id_user;
-                            }
-                            $user = DB::table('users')->where('id', $id_user)->select('name', 'surname')->get();
-                            foreach ($user as $u) {
-                                $name = $u->name;
-                                $surname = $u->surname;
-                            }
+                            $patient = DB::table('visits')->where('date', $date3)->where('time', $time[$i])->first();
+                            
+                            $p = DB::table('patients')->where('id', $patient->id_patient)->first();
+
+                            $user = DB::table('users')->where('id', $p->id_user)->first();
                             ?>
                             <label class="btn btn-orario btn-outline-primary font-weight-bold"
-                            data-whatever1="{{ $fiscal_code }}" data-whatever2="{{ $name }}"
-                            data-whatever3="{{ $surname }}"
-                            data-whatever4="{{ date('d/m/Y', strtotime($dob)) }}"
-                            data-whatever5="{{ $phone_number }}"
-                            data-whatever6="{{ $gender }}"
-                            data-whatever7="{{ $street_address }}"
-                            data-whatever8="{{ $street_number }}"
-                            data-whatever9="{{ $postal_code }}"
-                            data-whatever10="{{ $city }}" data-toggle="modal"
+                            data-whatever1="{{ $p->fiscal_code }}" data-whatever2="{{ $user->name }}"
+                            data-whatever3="{{ $user->surname }}"
+                            data-whatever4="{{ date('d/m/Y', strtotime($p->dob)) }}"
+                            data-whatever5="{{ $p->phone_number }}"
+                            data-whatever6="{{ $p->gender }}"
+                            data-whatever7="{{ $p->street_address }}"
+                            data-whatever8="{{ $p->street_number }}"
+                            data-whatever9="{{ $p->postal_code }}"
+                            data-whatever10="{{ $p->city }}" data-toggle="modal"
                             data-target="#exampleModal2" type="button">
                             <p>{{ $time[$i] }}</p></label> @endif
                         @endfor
@@ -456,38 +403,22 @@
                         @for ($i = 0; $i < count($time); $i++)
                             @if (DB::table('visits')->where('date', $date4)->where('time', $time[$i])->exists()) 
                             <?php
-                            $id_p = DB::table('visits')->where('date', $date4)->where('time', $time[$i])->select('id_patient')->get();
-                            foreach ($id_p as $pippo) {
-                                $info = $pippo->id_patient;
-                            }
-                            $p = DB::table('patients')->where('id', $info)->get();
-                            foreach ($p as $pa) {
-                                $fiscal_code = $pa->fiscal_code;
-                                $dob = $pa->dob;
-                                $phone_number = $pa->phone_number;
-                                $gender = $pa->gender;
-                                $street_address = $pa->street_address;
-                                $street_number = $pa->street_number;
-                                $postal_code = $pa->postal_code;
-                                $city = $pa->city;
-                                $id_user = $pa->id_user;
-                            }
-                            $user = DB::table('users')->where('id', $id_user)->select('name', 'surname')->get();
-                            foreach ($user as $u) {
-                                $name = $u->name;
-                                $surname = $u->surname;
-                            }
+                            $patient = DB::table('visits')->where('date', $date4)->where('time', $time[$i])->first();
+                            
+                            $p = DB::table('patients')->where('id', $patient->id_patient)->first();
+
+                            $user = DB::table('users')->where('id', $p->id_user)->first();
                             ?>
                             <label class="btn btn-orario btn-outline-primary font-weight-bold"
-                            data-whatever1="{{ $fiscal_code }}" data-whatever2="{{ $name }}"
-                            data-whatever3="{{ $surname }}"
-                            data-whatever4="{{ date('d/m/Y', strtotime($dob)) }}"
-                            data-whatever5="{{ $phone_number }}"
-                            data-whatever6="{{ $gender }}"
-                            data-whatever7="{{ $street_address }}"
-                            data-whatever8="{{ $street_number }}"
-                            data-whatever9="{{ $postal_code }}"
-                            data-whatever10="{{ $city }}" data-toggle="modal"
+                            data-whatever1="{{ $p->fiscal_code }}" data-whatever2="{{ $user->name }}"
+                            data-whatever3="{{ $user->surname }}"
+                            data-whatever4="{{ date('d/m/Y', strtotime($p->dob)) }}"
+                            data-whatever5="{{ $p->phone_number }}"
+                            data-whatever6="{{ $p->gender }}"
+                            data-whatever7="{{ $p->street_address }}"
+                            data-whatever8="{{ $p->street_number }}"
+                            data-whatever9="{{ $p->postal_code }}"
+                            data-whatever10="{{ $p->city }}" data-toggle="modal"
                             data-target="#exampleModal2" type="button">
                             <p>{{ $time[$i] }}</p></label> @endif
                         @endfor
@@ -514,38 +445,22 @@
                         @for ($i = 0; $i < count($time); $i++)
                             @if (DB::table('visits')->where('date', $date5)->where('time', $time[$i])->exists()) 
                             <?php
-                            $id_p = DB::table('visits')->where('date', $date5)->where('time', $time[$i])->select('id_patient')->get();
-                            foreach ($id_p as $pippo) {
-                                $info = $pippo->id_patient;
-                            }
-                            $p = DB::table('patients')->where('id', $info)->get();
-                            foreach ($p as $pa) {
-                                $fiscal_code = $pa->fiscal_code;
-                                $dob = $pa->dob;
-                                $phone_number = $pa->phone_number;
-                                $gender = $pa->gender;
-                                $street_address = $pa->street_address;
-                                $street_number = $pa->street_number;
-                                $postal_code = $pa->postal_code;
-                                $city = $pa->city;
-                                $id_user = $pa->id_user;
-                            }
-                            $user = DB::table('users')->where('id', $id_user)->select('name', 'surname')->get();
-                            foreach ($user as $u) {
-                                $name = $u->name;
-                                $surname = $u->surname;
-                            }
+                            $patient = DB::table('visits')->where('date', $date5)->where('time', $time[$i])->first();
+                            
+                            $p = DB::table('patients')->where('id', $patient->id_patient)->first();
+
+                            $user = DB::table('users')->where('id', $p->id_user)->first();
                             ?>
                             <label class="btn btn-orario btn-outline-primary font-weight-bold"
-                            data-whatever1="{{ $fiscal_code }}" data-whatever2="{{ $name }}"
-                            data-whatever3="{{ $surname }}"
-                            data-whatever4="{{ date('d/m/Y', strtotime($dob)) }}"
-                            data-whatever5="{{ $phone_number }}"
-                            data-whatever6="{{ $gender }}"
-                            data-whatever7="{{ $street_address }}"
-                            data-whatever8="{{ $street_number }}"
-                            data-whatever9="{{ $postal_code }}"
-                            data-whatever10="{{ $city }}" data-toggle="modal"
+                            data-whatever1="{{ $p->fiscal_code }}" data-whatever2="{{ $user->name }}"
+                            data-whatever3="{{ $user->surname }}"
+                            data-whatever4="{{ date('d/m/Y', strtotime($p->dob)) }}"
+                            data-whatever5="{{ $p->phone_number }}"
+                            data-whatever6="{{ $p->gender }}"
+                            data-whatever7="{{ $p->street_address }}"
+                            data-whatever8="{{ $p->street_number }}"
+                            data-whatever9="{{ $p->postal_code }}"
+                            data-whatever10="{{ $p->city }}" data-toggle="modal"
                             data-target="#exampleModal2" type="button">
                             <p>{{ $time[$i] }}</p></label> @endif
                         @endfor
@@ -570,40 +485,25 @@
                 @if ($gContent6 != 'Domenica')
                 <div class="btn-group-toggle w-100 h-100 col-lg-8" data-toggle="buttons">
                         @for ($i = 0; $i < count($time); $i++)
-                            @if (DB::table('visits')->where('date', $date6)->where('time', $time[$i])->exists()) <?php
-                                $id_p = DB::table('visits')->where('date', $date6)->where('time', $time[$i])->select('id_patient')->get();
-                                foreach ($id_p as $pippo) {
-                                    $info = $pippo->id_patient;
-                                }
-                                $p = DB::table('patients')->where('id', $info)->get();
-                                foreach ($p as $pa) {
-                                    $fiscal_code = $pa->fiscal_code;
-                                    $dob = $pa->dob;
-                                    $phone_number = $pa->phone_number;
-                                    $gender = $pa->gender;
-                                    $street_address = $pa->street_address;
-                                    $street_number = $pa->street_number;
-                                    $postal_code = $pa->postal_code;
-                                    $city = $pa->city;
-                                    $id_user = $pa->id_user;
-                                }
-                                $user = DB::table('users')->where('id', $id_user)->select('name', 'surname')->get();
-                                foreach ($user as $u) {
-                                    $name = $u->name;
-                                    $surname = $u->surname;
-                                }
-                                ?>
-                                <label class="btn btn-orario btn-outline-primary font-weight-bold"
-                                data-whatever1="{{ $fiscal_code }}" data-whatever2="{{ $name }}"
-                                data-whatever3="{{ $surname }}"
-                                data-whatever4="{{ date('d/m/Y', strtotime($dob)) }}"
-                                data-whatever5="{{ $phone_number }}"
-                                data-whatever6="{{ $gender }}"
-                                data-whatever7="{{ $street_address }}"
-                                data-whatever8="{{ $street_number }}"
-                                data-whatever9="{{ $postal_code }}"
-                                data-whatever10="{{ $city }}" data-toggle="modal"
-                                data-target="#exampleModal2" type="button">
+                            @if (DB::table('visits')->where('date', $date6)->where('time', $time[$i])->exists())
+                            <?php
+                            $patient = DB::table('visits')->where('date', $date6)->where('time', $time[$i])->first();
+                            
+                            $p = DB::table('patients')->where('id', $patient->id_patient)->first();
+
+                            $user = DB::table('users')->where('id', $p->id_user)->first();
+                            ?>
+                            <label class="btn btn-orario btn-outline-primary font-weight-bold"
+                            data-whatever1="{{ $p->fiscal_code }}" data-whatever2="{{ $user->name }}"
+                            data-whatever3="{{ $user->surname }}"
+                            data-whatever4="{{ date('d/m/Y', strtotime($p->dob)) }}"
+                            data-whatever5="{{ $p->phone_number }}"
+                            data-whatever6="{{ $p->gender }}"
+                            data-whatever7="{{ $p->street_address }}"
+                            data-whatever8="{{ $p->street_number }}"
+                            data-whatever9="{{ $p->postal_code }}"
+                            data-whatever10="{{ $p->city }}" data-toggle="modal"
+                            data-target="#exampleModal2" type="button">
                                 <p>{{ $time[$i] }}</p>
                                 </label>
                             @endif
@@ -657,16 +557,7 @@
     @if (!strcmp(Auth::user()->role, '3'))
 
         <?php
-            $name = Auth::user()->name;
-
             date_default_timezone_set('Europe/Rome');
-
-            $id = Auth::user()->id;
-            $info = DB::table('patients')->where('id_user', $id)->select('id')->get();
-            foreach ($info as $patient) {
-                $res2 = $patient->id;
-            }
-            $visits = DB::table('visits')->where('id_patient', $res2)->orderByRaw('date - time DESC')->get();
         ?>
 
         <div class="row-space" style="margin-left:100px;float:left;">

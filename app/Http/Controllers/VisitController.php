@@ -24,20 +24,16 @@ class VisitController extends Controller
             return view('visit.index', compact('visits'));
         }else if( Auth::user()->role == '2'){ // Dottore
             $id = Auth::user()->id;
-			$info = DB::table('doctors')->where('id_user', $id)->select('id')->get();
-			foreach ($info as $doctor) {
-				$res2 = $doctor->id;
-			}
-            $visits = Visit::where('id_doctor', $res2)->get();
-            return view('visit.index', compact('visits'));
+            $name = Auth::user()->name;
+			$doctor = DB::table('doctors')->where('id_user', $id)->first();
+            $visits = Visit::where('id_doctor', $doctor->id)->get();
+            return view('visit.index', compact('name', 'visits'));
         } else {
 			$id = Auth::user()->id;
-			$info = DB::table('patients')->where('id_user', $id)->select('id')->get();
-			foreach ($info as $patient) {
-				$res2 = $patient->id;
-			}
-            $visits = Visit::where('id_patient', $res2)->get();
-            return view('visit.index', compact('visits'));
+            $name = Auth::user()->name;
+			$patient = DB::table('patients')->where('id_user', $id)->first();
+            $visits = Visit::where('id_patient', $patient->id)->orderByRaw('date - time DESC')->get();
+            return view('visit.index', compact('name', 'visits'));
         }
     }
 
