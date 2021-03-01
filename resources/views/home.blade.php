@@ -8,7 +8,7 @@
                 <div class="col-lg-6 my-3">
                     <a href="{{ URL::action('PatientController@index') }}" onmouseover="mouseOver1()" onmouseout="mouseOut1()">
                         <div class="card h-100 border-card">
-                            <img src="images/persone.jpg" class="card-img-top dim-img-card img-fluid" alt="...">
+                            <img src="images/patient.jpg" class="card-img-top dim-img-card img-fluid" alt="...">
                                 <p id="card1" class="card-text font-weight-bold text-uppercase border-button py-4 btn-outline-primary">pazienti</p>
                         </div>
                     </a>
@@ -64,7 +64,7 @@
                 <div class="col-lg-4 my-3">
                     <a href="{{ URL::action('PatientController@index') }}" onmouseover="mouseOver1()" onmouseout="mouseOut1()">
                         <div class="card h-100 border-card">
-                            <img src="images/persone.jpg" class="card-img-top dim-img-card img-fluid" alt="...">
+                            <img src="images/patient.jpg" class="card-img-top dim-img-card img-fluid" alt="...">
                                 <p id="card1" class="card-text font-weight-bold text-uppercase border-button py-4 btn-outline-primary">i tuoi pazienti</p>
                         </div>
                     </a>
