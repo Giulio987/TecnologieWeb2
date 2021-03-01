@@ -50277,64 +50277,77 @@
     /******/
 });
 
-/*  FUNZIONE COUNTER */
-$('.count').each(function() {
-    $(this).prop('Counter', 0).animate({
-        Counter: $(this).text()
-    }, {
-        duration: 4000,
-        easing: 'swing',
-        step: function(now) {
-            $(this).text(Math.ceil(now));
-        }
+// Funzione counter
+$('document').ready(function() {
+    $('.count').each(function() {
+        $(this).prop('Counter', 0).animate({
+            Counter: $(this).text()
+        }, {
+            duration: 4000,
+            easing: 'swing',
+            step: function(now) {
+                $(this).text(Math.ceil(now));
+            }
+        });
     });
 });
 
 // Filtro di ricerca Farmaco all'interno della tabella
-
-$("#searchFarmaco").on("click", function() {
-    var value = $(this).val().toLowerCase();
-    $("tbody tr").filter(function() {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+$('document').ready(function() {
+    $("#searchFarmaco").on("click", function() {
+        var value = $(this).val().toLowerCase();
+        $("tbody tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
     });
 });
 
 // Filtro di ricerca Visita all'interno della tabella
-$("#searchVisita").on("click", function() {
-    var value = $(this).val().toLowerCase();
-    $("tbody tr").filter(function() {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+$('document').ready(function() {
+    $("#searchVisita").on("click", function() {
+        var value = $(this).val().toLowerCase();
+        $("tbody tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
     });
 });
 
 // Filtro di ricerca Convalidare all'interno della tabella
-$("#searchConvalidare").on("click", function() {
-    var value = $(this).val().toLowerCase();
-    $("tbody tr").filter(function() {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+$('document').ready(function() {
+    $("#searchConvalidare").on("click", function() {
+        var value = $(this).val().toLowerCase();
+        $("tbody tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
     });
 });
 
-// Modal descrizione nella lista prescrizioni Paziente
-$('#exampleModal1').on('show.bs.modal', function(event) {
-    var button = $(event.relatedTarget)
-    var description = button.data('whatever1')
-    var rfe = button.data('whatever2')
-    var date = button.data('whatever3')
+// Modal1 
+$('document').ready(function() {
+    $('#exampleModal1').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget)
+        var description = button.data('whatever1')
+        var rfe = button.data('whatever2')
+        var date = button.data('whatever3')
 
-    var modal = $(this)
-    modal.find('#description').text(description)
-    modal.find('.modal-title').text("Informazioni sulla ricetta: " + rfe + " con data: " + date)
+        var modal = $(this)
+        modal.find('#description').text(description)
+        modal.find('.modal-title').text("Informazioni sulla ricetta: " + rfe + " con data: " + date)
 
-})
-
-$("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#myTable tr").filter(function() {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
 });
 
+// Ricerca all'interno della tabella
+$('document').ready(function() {
+    $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+});
+
+// Visualizzazione form Farmaco, select Paziente e bottone
 $('document').ready(function() {
     $("#ShowFarmaco").on("click", function() {
         $("#contentFarmaco").toggle("slow", function() {
@@ -50343,15 +50356,15 @@ $('document').ready(function() {
             });
         });
         $("#contentUser").show("slow", function() {
-
+            // Animation complete.
         });
-
         document.getElementById('contentVisita').style.display = 'none';
         document.getElementById('descriptionFarmaco').name = 'description';
         document.getElementById('descriptionVisita').name = '';
     });
 });
 
+// Visualizzazione form Visita, select Paziente e bottone 
 $('document').ready(function() {
     $("#ShowVisita").on("click", function() {
         $("#contentVisita").toggle("slow", function() {
@@ -50367,14 +50380,18 @@ $('document').ready(function() {
         document.getElementById('descriptionFarmaco').name = '';
     });
 });
+
+// Ricera all'interno di select
 $('document').ready(function() {
     $("#selUser").select2();
 });
 
+// Ricera all'interno di select
 $('document').ready(function() {
     $(".selUser").select2();
 });
 
+// Visualizzazione orari prima data
 $('document').ready(function() {
     $("#Show1").on("click", function() {
         $("#content1").show("slow", function() {
@@ -50390,6 +50407,7 @@ $('document').ready(function() {
     });
 });
 
+// Visualizzazione orari seconda data
 $('document').ready(function() {
     $("#Show2").on("click", function() {
         document.getElementById('content1').style.display = 'none';
@@ -50405,6 +50423,7 @@ $('document').ready(function() {
     });
 });
 
+// Visualizzazione orari terza data
 $('document').ready(function() {
     $("#Show3").on("click", function() {
         document.getElementById('content1').style.display = 'none';
@@ -50420,6 +50439,7 @@ $('document').ready(function() {
     });
 });
 
+// Visualizzazione orari quarta data
 $('document').ready(function() {
     $("#Show4").on("click", function() {
         document.getElementById('content1').style.display = 'none';
@@ -50435,6 +50455,7 @@ $('document').ready(function() {
     });
 });
 
+// Visualizzazione orari quinta data
 $('document').ready(function() {
     $("#Show5").on("click", function() {
         document.getElementById('content1').style.display = 'none';
@@ -50450,6 +50471,7 @@ $('document').ready(function() {
     });
 });
 
+// Visualizzazione orari sesta data
 $('document').ready(function() {
     $("#Show6").on("click", function() {
         document.getElementById('content1').style.display = 'none';
@@ -50464,6 +50486,8 @@ $('document').ready(function() {
         });
     });
 });
+
+// Visualizzazioen visite Future
 $('document').ready(function() {
     $("#ShowFuture").on("click", function() {
         $("#contentPassate").hide("slow", function() {
@@ -50474,6 +50498,8 @@ $('document').ready(function() {
         });
     });
 });
+
+// Visualizzazioen visite Passate
 $('document').ready(function() {
     $("#ShowPassate").on("click", function() {
         $("#contentFuture").hide("slow", function() {
@@ -50486,12 +50512,14 @@ $('document').ready(function() {
 });
 
 
+// Visualizzazione content
 function Show() {
     $("#content").show("slow", function() {
         // Animation complete.
     });
 }
 
+// Ricerca all'interno della tabella
 $("#search").on("keyup", function() {
     var value = $(this).val().toLowerCase();
     $("tbody tr ").filter(function() {
@@ -50517,155 +50545,179 @@ $("#search").on("keyup", function() {
     }, false);
 })();
 
+// Modal3
+$('document').ready(function() {
+    $('#exampleModal3').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget)
+        var recipientFiscalCode = button.data('whatever1')
+        var recipientName = button.data('whatever2')
+        var recipientSurname = button.data('whatever3')
+        var recipientEmail = button.data('whatever4')
+        var recipientDob = button.data('whatever5')
+        var recipientGender = button.data('whatever6')
+        var recipientPhoneNumber = button.data('whatever7')
+        var recipientStreetAddress = button.data('whatever8')
+        var recipientStreetNumber = button.data('whatever9')
+        var recipientCity = button.data('whatever10')
+        var recipientPostalCode = button.data('whatever11')
 
-$('#exampleModal3').on('show.bs.modal', function(event) {
-    var button = $(event.relatedTarget)
-    var recipientFiscalCode = button.data('whatever1')
-    var recipientName = button.data('whatever2')
-    var recipientSurname = button.data('whatever3')
-    var recipientEmail = button.data('whatever4')
-    var recipientDob = button.data('whatever5')
-    var recipientGender = button.data('whatever6')
-    var recipientPhoneNumber = button.data('whatever7')
-    var recipientStreetAddress = button.data('whatever8')
-    var recipientStreetNumber = button.data('whatever9')
-    var recipientCity = button.data('whatever10')
-    var recipientPostalCode = button.data('whatever11')
+        var modal = $(this)
+        modal.find('.modal-title').text("Informazioni su " + recipientName + " " + recipientSurname)
+        modal.find('#FiscalCode').text(recipientFiscalCode)
+        modal.find('#Email').text(recipientEmail)
+        modal.find('#Dob').text(recipientDob)
+        modal.find('#Gender').text(recipientGender)
+        modal.find('#PhoneNumber').text(recipientPhoneNumber)
+        modal.find('#StreetNumber').text(recipientStreetAddress)
+        modal.find('#StreetAddress').text(recipientStreetNumber)
+        modal.find('#PostalCode').text(recipientPostalCode)
+        modal.find('#City').text(recipientCity)
+    });
+});
 
-    var modal = $(this)
-    modal.find('.modal-title').text("Informazioni su " + recipientName + " " + recipientSurname)
-    modal.find('#FiscalCode').text(recipientFiscalCode)
-    modal.find('#Email').text(recipientEmail)
-    modal.find('#Dob').text(recipientDob)
-    modal.find('#Gender').text(recipientGender)
-    modal.find('#PhoneNumber').text(recipientPhoneNumber)
-    modal.find('#StreetNumber').text(recipientStreetAddress)
-    modal.find('#StreetAddress').text(recipientStreetNumber)
-    modal.find('#PostalCode').text(recipientPostalCode)
-    modal.find('#City').text(recipientCity)
-})
+// Modal2
+$('document').ready(function() {
+    $('#exampleModal2').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget)
+        var recipientFiscalCode = button.data('whatever1')
+        var recipientName = button.data('whatever2')
+        var recipientSurname = button.data('whatever3')
+        var recipientDob = button.data('whatever4')
+        var recipientPhoneNumber = button.data('whatever5')
+        var recipientGender = button.data('whatever6')
+        var recipientStreetAddress = button.data('whatever7')
+        var recipientStreetNumber = button.data('whatever8')
+        var recipientPostalCode = button.data('whatever9')
+        var recipientCity = button.data('whatever10')
 
-$('#exampleModal2').on('show.bs.modal', function(event) {
-    var button = $(event.relatedTarget)
-    var recipientFiscalCode = button.data('whatever1')
-    var recipientName = button.data('whatever2')
-    var recipientSurname = button.data('whatever3')
-    var recipientDob = button.data('whatever4')
-    var recipientPhoneNumber = button.data('whatever5')
-    var recipientGender = button.data('whatever6')
-    var recipientStreetAddress = button.data('whatever7')
-    var recipientStreetNumber = button.data('whatever8')
-    var recipientPostalCode = button.data('whatever9')
-    var recipientCity = button.data('whatever10')
+        var modal = $(this)
+        modal.find('#FiscalCode').text(recipientFiscalCode)
+        modal.find('#Name').text(recipientName)
+        modal.find('#Surname').text(recipientSurname)
+        modal.find('#Dob').text(recipientDob)
+        modal.find('#PhoneNumber').text(recipientPhoneNumber)
+        modal.find('#Gender').text(recipientGender)
+        modal.find('#StreetAddress').text(recipientStreetAddress)
+        modal.find('#StreetNumber').text(recipientStreetNumber)
+        modal.find('#PostalCode').text(recipientPostalCode)
+        modal.find('#City').text(recipientCity)
+    });
+});
 
-    var modal = $(this)
-    modal.find('#FiscalCode').text(recipientFiscalCode)
-    modal.find('#Name').text(recipientName)
-    modal.find('#Surname').text(recipientSurname)
-    modal.find('#Dob').text(recipientDob)
-    modal.find('#PhoneNumber').text(recipientPhoneNumber)
-    modal.find('#Gender').text(recipientGender)
-    modal.find('#StreetAddress').text(recipientStreetAddress)
-    modal.find('#StreetNumber').text(recipientStreetNumber)
-    modal.find('#PostalCode').text(recipientPostalCode)
-    modal.find('#City').text(recipientCity)
-})
-
+// MouseOver1
 function mouseOver1() {
     document.getElementById("card1").style.color = "#fff";
     document.getElementById("card1").style.backgroundColor = "#3490dc";
     document.getElementById("card1").style.borderColor = "#3490dc";
 }
 
+// MouseOut1
 function mouseOut1() {
     document.getElementById("card1").style.color = "#3490dc";
     document.getElementById("card1").style.backgroundColor = "#fff";
     document.getElementById("card1").style.borderColor = "#fff";
 }
 
+// MouseOver2
 function mouseOver2() {
     document.getElementById("card2").style.color = "#fff";
     document.getElementById("card2").style.backgroundColor = "#3490dc";
     document.getElementById("card2").style.borderColor = "#3490dc";
 }
 
+// MouseOut2
 function mouseOut2() {
     document.getElementById("card2").style.color = "#3490dc";
     document.getElementById("card2").style.backgroundColor = "#fff";
     document.getElementById("card2").style.borderColor = "#fff";
 }
 
+// MouseOver3
 function mouseOver3() {
     document.getElementById("card3").style.color = "#fff";
     document.getElementById("card3").style.backgroundColor = "#3490dc";
     document.getElementById("card3").style.borderColor = "#3490dc";
 }
 
+// MouseOut3
 function mouseOut3() {
     document.getElementById("card3").style.color = "#3490dc";
     document.getElementById("card3").style.backgroundColor = "#fff";
     document.getElementById("card3").style.borderColor = "#fff";
 }
 
+// MouseOver4
 function mouseOver4() {
     document.getElementById("card4").style.color = "#fff";
     document.getElementById("card4").style.backgroundColor = "#3490dc";
     document.getElementById("card4").style.borderColor = "#3490dc";
 }
 
+// MouseOut4
 function mouseOut4() {
     document.getElementById("card4").style.color = "#3490dc";
     document.getElementById("card4").style.backgroundColor = "#fff";
     document.getElementById("card4").style.borderColor = "#fff";
 }
 
+// MouseOver5
 function mouseOver5() {
     document.getElementById("card5").style.color = "#fff";
     document.getElementById("card5").style.backgroundColor = "#3490dc";
     document.getElementById("card5").style.borderColor = "#3490dc";
 }
 
+// MouseOut5
 function mouseOut5() {
     document.getElementById("card5").style.color = "#3490dc";
     document.getElementById("card5").style.backgroundColor = "#fff";
     document.getElementById("card5").style.borderColor = "#fff";
 }
 
+// MouseOver6
 function mouseOver6() {
     document.getElementById("card6").style.color = "#fff";
     document.getElementById("card6").style.backgroundColor = "#3490dc";
     document.getElementById("card6").style.borderColor = "#3490dc";
 }
 
+// MouseOut6
 function mouseOut6() {
     document.getElementById("card6").style.color = "#3490dc";
     document.getElementById("card6").style.backgroundColor = "#fff";
     document.getElementById("card6").style.borderColor = "#fff";
 }
 
-$("#convalidare").on("click", function() {
-    $("#table").toggle("slow", function() {
-        $("#tableConvalidare").toggle("slow", function() {});
+// Visualizzazione prescrizioni da convalidare
+$('document').ready(function() {
+    $("#convalidare").on("click", function() {
+        $("#table").toggle("slow", function() {
+            $("#tableConvalidare").toggle("slow", function() {});
+        });
     });
 });
 
-$('#confirmDelete').click(function() {
-
-    if (confirm("Vuoi davvero eliminare?") == true) {
-        alert("Eliminazione avvenuta!");
-        return true;
-    } else {
-        alert("Hai annullato");
-        return false;
-    }
+// Alert conferma eliminazione
+$('document').ready(function() {
+    $('#confirmDelete').click(function() {
+        if (confirm("Vuoi davvero eliminare?") == true) {
+            alert("Eliminazione avvenuta!");
+            return true;
+        } else {
+            alert("Hai annullato");
+            return false;
+        }
+    });
 });
 
-$('#confirmChange').click(function() {
-
-    if (confirm("Vuoi davvero modificare?") == true) {
-        return true;
-    } else {
-        alert("Hai annullato");
-        return false;
-    }
+// Alert conferma modifica
+$('document').ready(function() {
+    $('#confirmChange').click(function() {
+        if (confirm("Vuoi davvero modificare?") == true) {
+            return true;
+        } else {
+            alert("Hai annullato");
+            return false;
+        }
+    });
 });
