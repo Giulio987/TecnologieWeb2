@@ -132,9 +132,9 @@ class PrescriptionController extends Controller
         if($prescription)
         {
             if( Auth::user()->role == '2'){
-                $request->session()->flash('success', 'Ricetta prescritta con successo');
+                $request->session()->flash('success', 'Ricetta prescritta con successo!');
             }else{
-                $request->session()->flash('success', 'Ricetta richiesta con successo');
+                $request->session()->flash('success', 'Ricetta richiesta con successo!');
             }
         }else{
             $request->session()->flash('error', 'Si è verificato un problema nel prescrivere la ricetta, riprova.');
@@ -188,13 +188,13 @@ class PrescriptionController extends Controller
         if($input['status'] == 'convalidata')
         {
             DB::table('prescriptions')->where('id', $id)->update(['rfe' => $prescription->rfe = $rfe, 'status' => $prescription->rfe = $input['status']]);
-            $request->session()->flash('success', 'Ricetta convalidata con successo');
+            $request->session()->flash('success', 'Ricetta convalidata con successo!');
         }else{
             DB::table('prescriptions')->where('id', $id)->update(['status' => $prescription->rfe = $input['status']]);
-            $request->session()->flash('success', 'Ricetta invalidata');
+            $request->session()->flash('success', 'Ricetta invalidata.');
         }
 
-        return redirect('/prescription');
+        return redirect('/prescription-validate');
     }
 
     /**

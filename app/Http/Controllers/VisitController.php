@@ -90,7 +90,15 @@ class VisitController extends Controller
 
         $input = $request -> all();
 
-        Visit::create($input);
+        $visit = Visit::create($input);
+
+        if($visit)
+        {
+           $request->session()->flash('success', 'Visita prenotata con successo!');
+            
+        }else{
+            $request->session()->flash('error', 'Si è verificato un problema nel prescrivere la ricetta, riprova.');
+        }
 
 
         return redirect('/visit');
@@ -130,7 +138,16 @@ class VisitController extends Controller
         $this->validator($request->all())->validate();
 
         $input = $request->all();
-        $visit->update($input); 
+        $visit->update($input);
+
+        if($visit)
+        {
+           $request->session()->flash('success', 'Visita modificata con successo!');
+            
+        }else{
+            $request->session()->flash('error', 'Si è verificato un problema nel modificare la visita, riprova.');
+        }
+
         return redirect('/visit');
     }
 

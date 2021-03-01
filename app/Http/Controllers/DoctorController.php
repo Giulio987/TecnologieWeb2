@@ -146,8 +146,6 @@ class DoctorController extends Controller
         //poi vengono inclusi in layout
         if($user)
         {
-            $br = "
-            ";
             $request->session()->flash('success', 'Dottore ' . $request->surname . ' ' . $request->name . ' creato con successo');
         }else{
             $request->session()->flash('error', 'Si è verificato un errore nella registrazione, riprova.');
@@ -202,6 +200,13 @@ class DoctorController extends Controller
         $doctor->phone_number = $input['phone_number'];
         $doctor->id_building = $input['id_building'];
         $doctor->save();
+
+        if($doctor)
+        {
+            $request->session()->flash('success', 'Dottore ' . $request->surname . ' ' . $request->name . ' modificato con successo');
+        }else{
+            $request->session()->flash('error', 'Si è verificato un errore nella modifica del dottore, riprova.');
+        }
 
         return redirect('/doctor');
     }

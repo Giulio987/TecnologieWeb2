@@ -210,7 +210,7 @@ class PatientController extends Controller
         //poi vengono inclusi in layout
         if($user)
         {
-            $request->session()->flash('success', 'Paziente aggiunto con successo');
+            $request->session()->flash('success', 'Paziente ' . $request->surname . ' ' . $request->name . ' aggiunto con successo!');
         }else{
             $request->session()->flash('error', 'Si è verificato un errore nella registrazione, riprova.');
         }
@@ -269,6 +269,13 @@ class PatientController extends Controller
         $patient->id_doctor = $input['id_doctor'];
         $patient->phone_number = $input['phone_number'];
         $patient->save();
+
+        if($patient)
+        {
+            $request->session()->flash('success', 'Paziente ' . $request->surname . ' ' . $request->name . ' modificato con successo!');
+        }else{
+            $request->session()->flash('error', 'Si è verificato un errore nella modifica, riprova.');
+        }
 
         return redirect('/patient');
     }
