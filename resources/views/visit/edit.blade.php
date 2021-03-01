@@ -31,20 +31,12 @@ $date = strtotime($visit->date);
 <div class="container-lg" align="center">
 <div class="row row-space justify-content-center">
         <h1 class="font-weight-bold">
-            Modifica le informazioni riguradanti una visita.
+            Modifica le informazioni riguardanti la visita.
         </h1>
     </div>
     <form action="{{ URL::action('VisitController@update', $visit) }}" method="POST">
         <input type="hidden" name="_method" value="PATCH">
         {{ csrf_field() }}
-    <div class="row row-space justify-content-center">
-        <h5>
-            Comdddddddddddddddddd.
-        </h5>
-    </div>
-    
-    
-        
         
     <div class="row row-space justify-content-center border-form align-items-center">
 
@@ -98,7 +90,9 @@ $date = strtotime($visit->date);
             $cognome = $u->surname;
           }
           ?>
+          @if($p->id != $pa->id_doctor)
           <option value="{{ $p->id }}">{{ $cognome }} - {{ $nome }} - {{ $p->fiscal_code }}</option>
+          @endif
           @endforeach
         </select>
         </div>
