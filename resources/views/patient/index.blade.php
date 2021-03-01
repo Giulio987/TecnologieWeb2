@@ -1,9 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<?php
-$name = Auth::user()->name;
-?>
 
 <div class="row-space" style="margin-left:100px;float:left;">
 <a href="{{ URL::action('HomeController@index') }}">
@@ -68,25 +65,19 @@ $name = Auth::user()->name;
                     </thead>
                     <tbody id="myTable">
                     @foreach($patients as $p)  
-                <?php
-                    $id = $p->id_user;
-                    $user = DB::table('users')->where('id', $id)->select('name', 'surname', 'email')->get();
-                    foreach ($user as $info) {
-				        $nome = $info->name;
-                        $cognome = $info->surname;
-                        $email = $info->email;
-			        }  
+                    <?php
+                        $user = DB::table('users')->where('id', $p->id_user)->first(); 
                     ?> 
                             <tr class="font-weight-bold text-uppercase" style="color:#626262;">
                                 <td style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">{{ $p->fiscal_code }}</td>
-                                <td>{{ $nome}}</td>
-                                <td>{{ $cognome }}</td>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->surname }}</td>
                                 @if(!strcmp(Auth::user()->role, '1'))
-                                    <td><button type="button" class="btn btn-outline-primary" data-whatever1="{{ $p->fiscal_code }}" data-whatever2="{{ $nome }}" data-whatever3="{{ $cognome }}" data-whatever4="{{ $email }}" data-whatever5="{{ $p->dob }}" data-whatever6="{{ $p->gender }}" data-whatever7="{{ $p->phone_number }}" data-whatever8="{{ $p->street_address }}" data-whatever9="{{ $p->street_number }}" data-whatever10="{{ $p->city }}" data-whatever11="{{ $p->postal_code }}" data-toggle="modal" data-target="#exampleModal3">Visualizza descrizione</button></td>
+                                    <td><button type="button" class="btn btn-outline-primary" data-whatever1="{{ $p->fiscal_code }}" data-whatever2="{{ $user->name }}" data-whatever3="{{ $user->surname }}" data-whatever4="{{ $user->email }}" data-whatever5="{{ date('d/m/Y', strtotime($p->dob)) }}" data-whatever6="{{ $p->gender }}" data-whatever7="{{ $p->phone_number }}" data-whatever8="{{ $p->street_address }}" data-whatever9="{{ $p->street_number }}" data-whatever10="{{ $p->city }}" data-whatever11="{{ $p->postal_code }}" data-toggle="modal" data-target="#exampleModal3">Visualizza descrizione</button></td>
                                     <td><a href="{{ URL::action('PatientController@edit', $p) }}" class="btn btn-outline-secondary btn-sm">Modifica</a></td>
                                     <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;"><a id="confirmDelete" href="{{ URL::action('PatientController@destroy', $p) }}" class="btn btn-outline-danger btn-sm">Elimina</a></td>
                                 @elseif(!strcmp(Auth::user()->role, '2'))
-                                <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 0px 20px 20px 0px;"><button type="button" class="btn btn-outline-primary" data-whatever1="{{ $p->fiscal_code }}" data-whatever2="{{ $nome }}" data-whatever3="{{ $cognome }}" data-whatever4="{{ $email }}" data-whatever5="{{ $p->dob }}" data-whatever6="{{ $p->gender }}" data-whatever7="{{ $p->phone_number }}" data-whatever8="{{ $p->street_address }}" data-whatever9="{{ $p->street_number }}" data-whatever10="{{ $p->city }}" data-whatever11="{{ $p->postal_code }}" data-toggle="modal" data-target="#exampleModal3">Visualizza descrizione</button></td>
+                                <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 0px 20px 20px 0px;"><button type="button" class="btn btn-outline-primary" data-whatever1="{{ $p->fiscal_code }}" data-whatever2="{{ $user->name }}" data-whatever3="{{ $user->surname }}" data-whatever4="{{ $user->email }}" data-whatever5="{{ date('d/m/Y', strtotime($p->dob)) }}" data-whatever6="{{ $p->gender }}" data-whatever7="{{ $p->phone_number }}" data-whatever8="{{ $p->street_address }}" data-whatever9="{{ $p->street_number }}" data-whatever10="{{ $p->city }}" data-whatever11="{{ $p->postal_code }}" data-toggle="modal" data-target="#exampleModal3">Visualizza descrizione</button></td>
                                 @endif
                             </tr> 
                         @endforeach

@@ -30,12 +30,10 @@ class PatientController extends Controller
         else if ( Auth::user()->role == '2') {
             //fare in modo che i dottori vedano solo i pazienti corrispondenti
             $id = Auth::user()->id;
-            $info = DB::table('doctors')->where('id_user', $id)->select('id')->get();
-			foreach ($info as $doctor) {
-				$res = $doctor->id;
-			}
-            $patients = Patient::where('id_doctor', '=', $res)->get();
-            return view('patient.index', compact('patients'));
+            $name = Auth::user()->name;
+            $doctor = DB::table('doctors')->where('id_user', $id)->first();
+            $patients = Patient::where('id_doctor', $doctor->id)->get();
+            return view('patient.index', compact('name', 'patients'));
         }else{
             return redirect('/home');
         }
@@ -112,10 +110,8 @@ class PatientController extends Controller
 
     protected function validatorUpdate(array $data, Patient $patient)
     {
-        $info = DB::table('users')->where('id', $patient->id_user)->select('id')->get();
-        foreach ($info as $p) {
-            $res = $p->id;
-        }
+        $user = DB::table('users')->where('id', $patient->id_user)->first();
+
         return Validator::make($data, [
             'name' 		         => ['required', 'string'],
             'surname'            => ['required', 'string'],
@@ -128,7 +124,7 @@ class PatientController extends Controller
             'city'               => ['required', 'string'],
             'postal_code'        => ['required', 'numeric'],
             'id_doctor'          => ['required'],
-            'email'              => ['required', 'string', 'email', Rule::unique('users')->ignore($res),],
+            'email'              => ['required', 'string', 'email', Rule::unique('users')->ignore($user->id),],
         ], [
             'name.required'           => 'Inserimento obbligatorio',
             'name.string'             => 'Deve essere composta da caratteri',
@@ -179,6 +175,7 @@ class PatientController extends Controller
         ]);  
         //se è admin prende l'input dal form
         $res = $request->id_doctor;
+        //si recupera l'id nella tabella user dell'utente appena creato
         $id_user = $user->id;
         //se è dottore il paziente viene associato a se stesso
         if(Auth::user()->role == '2'){
@@ -235,7 +232,9 @@ class PatientController extends Controller
     public function edit(Patient $patient)
     {
         $doctors = Doctor::all();
-        return view('patient.edit', compact('patient', 'doctors'));
+        $hisDoctor = Doctor::where('id', $patient->id_doctor)->first();
+        $user = User::where('id', $patient->id_user)->first();
+        return view('patient.edit', compact('patient', 'doctors', 'hisDoctor', 'user'));
     }
 
     /**

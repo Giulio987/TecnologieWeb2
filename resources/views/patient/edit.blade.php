@@ -21,21 +21,12 @@
     <form action="{{ URL::action('PatientController@update', $patient) }}" method="POST">
         <input type="hidden" name="_method" value="PATCH">
         {{ csrf_field() }}
-        <?php
-            $id = $patient->id_user;
-            $user = DB::table('users')->where('id', $id)->select('name', 'surname', 'email')->get();
-            foreach ($user as $info) {
-                $nome = $info->name;
-                $cognome = $info->surname;
-                $email = $info->email;
-            }  
-        ?>  
         <div class="row row-space justify-content-center border-form">
 
 <div class="col-lg-4">
     <div class="row row-space justify-content-center">
             <div class="form-group label-space">
-            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $nome }}">
+            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user->name }}">
                 <small class="form-text text-muted">Modifica il nome</small>
                 @error('name')
                     <div class="alert alert-danger">{{ $message }}</div>
@@ -45,7 +36,7 @@
     <div class="row row-space justify-content-center">
 
             <div class="form-group label-space">
-            <input type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ $cognome }}">
+            <input type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ $user->surname }}">
           <small class="form-text text-muted">Modifica il cognome</small>
             @error('surname')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -137,7 +128,7 @@
     </div>
     <div class="row row-space justify-content-center">
                 <div class="form-group label-space">
-                <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email }}">
+                <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}">
             <small class="form-text text-muted">Modifica l'email</small>
             @error('email')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -149,27 +140,15 @@
         <div class="form-group label-space">
             <select id="selUser" name="id_doctor" for="id_doctor" class="@error('id_doctor') is-invalid @enderror selUser" style="width:100%">
                 <?php
-                    $doctor = DB::table('doctors')->where('id', $patient->id_doctor)->select('id_user')->get();
-                    foreach ($doctor as $info) {
-                        $id_user = $info->id_user;
-                    }
-                    $user = DB::table('users')->where('id', $id_user)->select('name', 'surname')->get();
-                    foreach ($user as $info) {
-                        $nome = $info->name;
-                        $cognome = $info->surname;
-                    }
+                    $user = DB::table('users')->where('id', $hisDoctor->id_user)->first();
                 ?>
-                <option value="{{$patient->id_doctor}}" selected="selected">{{ $nome }} - {{ $cognome }}</option>
+                <option value="{{$patient->id_doctor}}" selected="selected">{{ $user->name }} - {{ $user->surname }}</option>
                 @foreach($doctors as $d)
                 <?php
-                    $user = DB::table('users')->where('id', $d->id_user)->select('name', 'surname')->get();
-                    foreach ($user as $info) {
-                        $nome = $info->name;
-                        $cognome = $info->surname;
-                    }
+                    $user = DB::table('users')->where('id', $d->id_user)->first();
                 ?>
                 @if($d->id != $patient->id_doctor)
-                    <option value="{{$d->id}}">{{ $nome }} - {{ $cognome }}</option>
+                    <option value="{{$d->id}}">{{ $user->name }} - {{ $user->surname }}</option>
                 @endif
                 @endforeach
             </select>
