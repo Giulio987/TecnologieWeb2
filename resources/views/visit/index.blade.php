@@ -58,8 +58,7 @@
                                 style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 0px 0px 0px;">
                                 Ora</th>
                             <th scope="col"
-                            style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">
-                            Modifica</th>
+                            style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">Azioni</th>
                         </tr>
                     </thead>
 
@@ -74,9 +73,8 @@
                                     <td
                                         style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 0px 0px 0px;border-radius: 0px 0px 0px 0px;">
                                         {{ $v->time }}</td>
-                                    <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">
-                                        <a href="{{URL::action('VisitController@edit', $v)}}" class="btn btn-outline-secondary btn-sm">Modifica</a>
-                                    </td>
+
+                                    <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;"><a id="confirmDelete" href="{{ URL::action('VisitController@destroy', $v) }}" class="btn btn-outline-danger btn-sm">Elimina</a></td>
                                 </tr>
                             </tbody>
                         @endif

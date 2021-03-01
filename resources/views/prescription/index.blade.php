@@ -52,9 +52,9 @@
                                 <th scope="col-lg">Sesso</th>
                                 <th scope="col-lg">Stato</th>
                                 <th scope="col-lg">Tipo</th>
-                                <th scope="col-lg"
-                                    style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">
-                                    Descrizione</th>
+                                <th scope="col-lg">Descrizione</th>
+                                <th scope="col-lg" style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">Azioni</th>
+
                             </tr>
                         </thead>
                         <tbody id="myTable">
@@ -86,23 +86,25 @@
                                     <td>{{ $p->status }}</td>
                                     <td>{{ $p->type }}</td>
                                     @if ($p->status == 'convalidata')
-                                        <td
-                                            style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">
+                                        <td>
                                             <button type="button" class="btn btn-outline-primary" data-toggle="modal"
                                                 data-target="#exampleModal1" data-whatever1="{{ $p->description }}"
                                                 data-whatever2="{{ $p->status }}"
                                                 data-whatever3="{{ date('d/m/Y', strtotime($p->date)) }}">Visualizza
                                                 descrizione</button>
                                         </td>
+                                        <td  style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;"><a id="confirmDelete" href="{{ URL::action('PrescriptionController@destroy', $p) }}" class="btn btn-outline-danger btn-sm">Elimina</a></td>
+
                                     @else
-                                        <td
-                                            style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">
+                                        <td>
                                             <button type="button" class="btn btn-outline-primary" data-toggle="modal"
                                                 data-target="#exampleModal1" data-whatever1="{{ $p->description }}"
                                                 data-whatever2="{{ 'RFE non esistente' }}"
                                                 data-whatever3="{{ date('d/m/Y', strtotime($p->date)) }}">Visualizza
                                                 descrizione</button>
                                         </td>
+                                        <td  style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;"><a id="confirmDelete" href="{{ URL::action('PrescriptionController@destroy', $p) }}" class="btn btn-outline-danger btn-sm">Elimina</a></td>
+
                                     @endif
                                 </tr>
                             @endforeach
