@@ -50663,7 +50663,6 @@ $('#confirmDelete').click(function() {
 $('#confirmChange').click(function() {
 
     if (confirm("Vuoi davvero modificare?") == true) {
-        alert("Modifica avvenuta!");
         return true;
     } else {
         alert("Hai annullato");
