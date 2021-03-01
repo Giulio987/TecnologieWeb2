@@ -84,14 +84,10 @@ $date = strtotime($visit->date);
         <option value="{{$pa->id}}" selected="selected">{{ $user->surname }}, {{ $user->name }} - {{ $pa->fiscal_code }}</option>
           @foreach ($patient as $p)
           <?php
-          $user = DB::table('users')->where('id', $p->id_user)->select('name', 'surname')->get();
-          foreach ($user as $u) {
-            $nome = $u->name;
-            $cognome = $u->surname;
-          }
+          $user = DB::table('users')->where('id', $p->id_user)->first();
           ?>
           @if($p->id != $pa->id_doctor)
-          <option value="{{ $p->id }}">{{ $cognome }} - {{ $nome }} - {{ $p->fiscal_code }}</option>
+          <option value="{{ $p->id }}">{{ $user->surname }} - {{ $user->name }} - {{ $p->fiscal_code }}</option>
           @endif
           @endforeach
         </select>

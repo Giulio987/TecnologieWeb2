@@ -48,13 +48,10 @@ class VisitController extends Controller
      */
     public function create()
     {
-        if( Auth::user()->role == '1'){ // Admin
-            
-        }
-        else if( Auth::user()->role == '2'){ // Dottore
-            $doctor = Doctor::all();
-            $patient = Patient::all();
-            return view('visit.create', compact('patient', 'doctor'));
+        if( Auth::user()->role == '3'){ // Dottore
+            $name = Auth::user()->name;
+            $patient = Patient::where('id', Auth::user()->id)->first();
+            return view('visit.create', compact('name', 'patient'));
         } else {
             return view('visit.create');
         }

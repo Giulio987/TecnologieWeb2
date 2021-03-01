@@ -2,19 +2,9 @@
 
 @section('content')
 
-
-
-@if(!strcmp(Auth::user()->role, '1'))
-
-@endif
-
-@if(!strcmp(Auth::user()->role, '2'))
-
-@endif
 @if(!strcmp(Auth::user()->role, '3'))
 <?php
 
-$name = Auth::user()->name;
 $oraDisponibile = 0;
 
 date_default_timezone_set('Europe/Rome');
@@ -132,11 +122,11 @@ function giornoData($d, $m, $a)
                     <label class="btn btn-outline-primary col-md-2 quadrato mx-4 mb-2">
                         <input type="radio" name="date" id="Show5" value="{{ $date5 }}">
                         <h5 class="my-3">{{ $gContent5 }}</h5>
-                        <h3 class="font-weight-bold my-3">{{ $d }}</h3>
+                        <h3 class="font-weight-bold my-3">{{ $d5 }}</h3>
                     </label>
                     <?php
                     $datenow6 = date('Y/m/d');
-                    $CalculateDate = strtotime('+5 day', strtotime($datenow6));
+                    $CalculateDate6 = strtotime('+5 day', strtotime($datenow6));
                     $date6 = date('Y/m/d', $CalculateDate6);
                     $d6 = date('d', $CalculateDate6);
                     $m6 = date('m', $CalculateDate6);
@@ -146,7 +136,7 @@ function giornoData($d, $m, $a)
                 <label class="btn btn-outline-primary col-lg-2 quadrato mx-4 mb-2">
                     <input type="radio" name="date" id="Show6" value="{{ $date6 }}">
                     <h5 class="my-3">{{ $gContent6 }}</h5>
-                    <h3 class="font-weight-bold my-3">{{ $d }}</h3>
+                    <h3 class="font-weight-bold my-3">{{ $d6 }}</h3>
                 </label>
             </div>
         </div>
@@ -450,17 +440,9 @@ function giornoData($d, $m, $a)
                 <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
                 </svg>
         </button>
-<?php
-$id = Auth::user()->id;
-$info = DB::table('patients')->where('id_user', $id)->select('id_doctor', 'id')->get();
-foreach ($info as $patient) {
-    $res1 = $patient->id_doctor;
-    $res2 = $patient->id;
-}
 
-?>
-<input id="id_doctor" name="id_doctor" type="hidden" value="{{ $res1 }}">
-<input id="id_patient" name="id_patient" type="hidden" value="{{ $res2 }}">
+<input id="id_doctor" name="id_doctor" type="hidden" value="{{ $patient->id_doctor }}">
+<input id="id_patient" name="id_patient" type="hidden" value="{{ $patient->id }}">
 </form>
 
 </div>
