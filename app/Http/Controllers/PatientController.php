@@ -49,13 +49,13 @@ class PatientController extends Controller
     public function create()
     {
         if ( Auth::user()->role == '1') {
-            $patients = Patient::all();
-            return view('patient.create', compact('patients'));
+            $doctors = Doctor::all();
+            return view('patient.create', compact('doctors'));
         }elseif(Auth::user()->role == '2'){
             $id = Auth::user()->id;
             $doctor = DB::table('doctors')->where('id_user', $id)->select('id')->first();
-            $patients = Patient::where('id_doctor', '=', $doctor->id)->get();
-            return view('patient.create', compact('patients'));
+            $name = Auth::user()->name;
+            return view('patient.create', compact('doctor', 'name'));
         }
         else{
             return redirect('/home');
@@ -177,7 +177,7 @@ class PatientController extends Controller
             'password'      => Hash::make($request->password),
             'role'          => '3',
         ]);  
-        //se è admin va scritto espèlicitamente
+        //se è admin prende l'input dal form
         $res = $request->id_doctor;
         $id_user = $user->id;
         //se è dottore il paziente viene associato a se stesso

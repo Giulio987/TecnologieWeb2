@@ -3,9 +3,6 @@
 @section('content')
 
     @if (!strcmp(Auth::user()->role, '1') || !strcmp(Auth::user()->role, '2'))
-    <?php
-$name = Auth::user()->name;
-?>
 
 <div class="row-space" style="margin-left:100px;float:left;">
 <a href="{{ URL::action('HomeController@index') }}">
@@ -142,6 +139,25 @@ $name = Auth::user()->name;
                     @enderror
                 </div>
         </div>
+
+        @if(!strcmp(Auth::user()->role, '1'))
+        <div class="row row-space justify-content-center">
+                <div class="form-group label-space">
+                <select name="id_doctor" id="selUser">
+                        @foreach($doctors as $d)
+                        <?php
+                            $user = DB::table('users')->where('id', $d->id_user)->first();
+                        ?>
+                            <option value="{{$d->id}}">{{$user->surname}} {{$user->name}} - {{ $d->fiscal_code }}</option>
+                        @endforeach
+                    </select>
+                    @error('id_doctor')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+        </div>
+        @endif
+
         <div class="row row-space justify-content-center">
                 <div class="form-group label-space">
                     <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email" required>
