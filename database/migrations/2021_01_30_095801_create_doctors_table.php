@@ -19,13 +19,13 @@ class CreateDoctorsTable extends Migration
             $table->char('gender','1');
             $table->date('dob');
             $table->string('phone_number','15')->unique();
-            $table->bigInteger('id_building')->unsigned();
+            $table->bigInteger('id_building')->unsigned()->nullable();
             $table->bigInteger('id_user')->unsigned();
             
             $table->rememberToken();
             $table->timestamps();
 
-            $table->foreign('id_building')->references('id')->on('buildings')->onDelete('cascade');
+            $table->foreign('id_building')->references('id')->on('buildings')->onDelete('set null');;
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
         });
     }

@@ -146,9 +146,15 @@
         <div class="row row-space justify-content-center">    
             <p class="text-uppercase">{{ $doctor->phone_number }}</p>
         </div>
+        @if($building != NULL)
         <div class="row row-space justify-content-center"> 
             <p class="text-uppercase">{{ $building->street_address }}, {{ $building->street_number }} - {{ $building->city }} - {{ $building->postal_code }}</p>
         </div>
+        @else
+        <div class="row row-space justify-content-center"> 
+            <p class="text-uppercase">Non disponibile</p>
+        </div>
+        @endif
         <div class="row row-space justify-content-center">    
             <p class="text-uppercase">{{ $patients }}</p>
         </div>
@@ -261,9 +267,15 @@
         <div class="row row-space justify-content-center">    
             <p class="text-uppercase">{{ $userDoctor->name }} {{ $userDoctor->surname }}</p>
         </div>
+        @if($building != NULL)
         <div class="row row-space justify-content-center"> 
             <p class="text-uppercase">{{ $building->street_address }}, {{ $building->street_number }} - {{ $building->city }} - {{ $building->postal_code }}</p>
         </div>
+        @else
+        <div class="row row-space justify-content-center"> 
+            <p class="text-uppercase">Non disponibile</p>
+        </div>
+        @endif
         <div class="row row-space justify-content-center">    
             <p class="text-uppercase">{{ $doctor->phone_number }}</p>
         </div>
