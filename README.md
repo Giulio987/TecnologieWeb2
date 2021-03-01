@@ -1,9 +1,4 @@
 COSE DA FARE:
-- sistemare la visualizzazione delle tabelle in admin
-- foto
-- validator VERIFICARE POI AL'ULTIMO SE FUNZIONANO TUTTI
-- vedere se permettere il checked nei bottoni visit e in caso sistemare lo stato active
-- sistemare allineamento btn-orario
 - sistemare ordinamento date e ora in index visit paziente
 - controllare testo dentro modal(allineamento e titoli)
 - sistemare opacità background

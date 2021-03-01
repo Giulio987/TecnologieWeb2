@@ -50278,6 +50278,7 @@
 });
 
 // Funzione counter
+$('document').ready(function() {
     $('.count').each(function() {
         $(this).prop('Counter', 0).animate({
             Counter: $(this).text()
@@ -50289,32 +50290,40 @@
             }
         });
     });
+});
 
 // Filtro di ricerca Farmaco all'interno della tabella
+$('document').ready(function() {
     $("#searchFarmaco").on("click", function() {
         var value = $(this).val().toLowerCase();
         $("tbody tr").filter(function() {
             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
     });
+});
 
 // Filtro di ricerca Visita all'interno della tabella
+$('document').ready(function() {
     $("#searchVisita").on("click", function() {
         var value = $(this).val().toLowerCase();
         $("tbody tr").filter(function() {
             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
     });
+});
 
 // Filtro di ricerca Convalidare all'interno della tabella
+$('document').ready(function() {
     $("#searchConvalidare").on("click", function() {
         var value = $(this).val().toLowerCase();
         $("tbody tr").filter(function() {
             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
     });
+});
 
 // Modal1 
+$('document').ready(function() {
     $('#exampleModal1').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget)
         var description = button.data('whatever1')
@@ -50326,16 +50335,20 @@
         modal.find('.modal-title').text("Informazioni sulla ricetta: " + rfe + " con data: " + date)
 
     });
+});
 
 // Ricerca all'interno della tabella
+$('document').ready(function() {
     $("#myInput").on("keyup", function() {
         var value = $(this).val().toLowerCase();
         $("#myTable tr").filter(function() {
             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
     });
+});
 
 // Visualizzazione form Farmaco, select Paziente e bottone
+$('document').ready(function() {
     $("#ShowFarmaco").on("click", function() {
         $("#contentFarmaco").toggle("slow", function() {
             $("#contentBtn").show("slow", function() {
@@ -50349,8 +50362,10 @@
         document.getElementById('descriptionFarmaco').name = 'description';
         document.getElementById('descriptionVisita').name = '';
     });
+});
 
 // Visualizzazione form Visita, select Paziente e bottone 
+$('document').ready(function() {
     $("#ShowVisita").on("click", function() {
         $("#contentVisita").toggle("slow", function() {
             $("#contentBtn").show("slow", function() {
@@ -50364,13 +50379,20 @@
         document.getElementById('descriptionVisita').name = 'description';
         document.getElementById('descriptionFarmaco').name = '';
     });
-// Ricera all'interno di select
-    $("#selUser").select2();
+});
 
 // Ricera all'interno di select
+$('document').ready(function() {
+    $("#selUser").select2();
+});
+
+// Ricera all'interno di select
+$('document').ready(function() {
     $(".selUser").select2();
+});
 
 // Visualizzazione orari prima data
+$('document').ready(function() {
     $("#Show1").on("click", function() {
         $("#content1").show("slow", function() {
             $("#contentBtn").show("slow", function() {
@@ -50383,7 +50405,10 @@
         document.getElementById('content5').style.display = 'none';
         document.getElementById('content6').style.display = 'none';
     });
+});
+
 // Visualizzazione orari seconda data
+$('document').ready(function() {
     $("#Show2").on("click", function() {
         document.getElementById('content1').style.display = 'none';
         $("#content2").show("slow", function() {
@@ -50396,8 +50421,10 @@
         document.getElementById('content5').style.display = 'none';
         document.getElementById('content6').style.display = 'none';
     });
+});
 
 // Visualizzazione orari terza data
+$('document').ready(function() {
     $("#Show3").on("click", function() {
         document.getElementById('content1').style.display = 'none';
         document.getElementById('content2').style.display = 'none';
@@ -50410,8 +50437,10 @@
         document.getElementById('content5').style.display = 'none';
         document.getElementById('content6').style.display = 'none';
     });
+});
 
 // Visualizzazione orari quarta data
+$('document').ready(function() {
     $("#Show4").on("click", function() {
         document.getElementById('content1').style.display = 'none';
         document.getElementById('content2').style.display = 'none';
@@ -50424,8 +50453,10 @@
         document.getElementById('content5').style.display = 'none';
         document.getElementById('content6').style.display = 'none';
     });
+});
 
 // Visualizzazione orari quinta data
+$('document').ready(function() {
     $("#Show5").on("click", function() {
         document.getElementById('content1').style.display = 'none';
         document.getElementById('content2').style.display = 'none';
@@ -50438,8 +50469,10 @@
         });
         document.getElementById('content6').style.display = 'none';
     });
+});
 
 // Visualizzazione orari sesta data
+$('document').ready(function() {
     $("#Show6").on("click", function() {
         document.getElementById('content1').style.display = 'none';
         document.getElementById('content2').style.display = 'none';
@@ -50452,8 +50485,10 @@
             });
         });
     });
+});
 
 // Visualizzazioen visite Future
+$('document').ready(function() {
     $("#ShowFuture").on("click", function() {
         $("#contentPassate").hide("slow", function() {
             // Animation complete.
@@ -50462,7 +50497,10 @@
             // Animation complete.
         });
     });
+});
+
 // Visualizzazioen visite Passate
+$('document').ready(function() {
     $("#ShowPassate").on("click", function() {
         $("#contentFuture").hide("slow", function() {
             // Animation complete.
@@ -50471,6 +50509,8 @@
             // Animation complete.
         });
     });
+});
+
 
 // Visualizzazione content
 function Show() {
@@ -50506,6 +50546,7 @@ $("#search").on("keyup", function() {
 })();
 
 // Modal3
+$('document').ready(function() {
     $('#exampleModal3').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget)
         var recipientFiscalCode = button.data('whatever1')
@@ -50532,8 +50573,10 @@ $("#search").on("keyup", function() {
         modal.find('#PostalCode').text(recipientPostalCode)
         modal.find('#City').text(recipientCity)
     });
+});
 
 // Modal2
+$('document').ready(function() {
     $('#exampleModal2').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget)
         var recipientFiscalCode = button.data('whatever1')
@@ -50559,6 +50602,7 @@ $("#search").on("keyup", function() {
         modal.find('#PostalCode').text(recipientPostalCode)
         modal.find('#City').text(recipientCity)
     });
+});
 
 // MouseOver1
 function mouseOver1() {
@@ -50645,13 +50689,17 @@ function mouseOut6() {
 }
 
 // Visualizzazione prescrizioni da convalidare
+$('document').ready(function() {
     $("#convalidare").on("click", function() {
         $("#table").toggle("slow", function() {
             $("#tableConvalidare").toggle("slow", function() {});
         });
     });
+});
+
 // Alert conferma eliminazione
-    $('#confirmDelete').on("click",function() {
+$('document').ready(function() {
+    $('#confirmDelete').on("click", function() {
         if (confirm("Vuoi davvero eliminare?") == true) {
             alert("Eliminazione avvenuta!");
             return true;
@@ -50660,9 +50708,11 @@ function mouseOut6() {
             return false;
         }
     });
+});
 
 // Alert conferma modifica
-    $('#confirmChange').on("click",function() {
+$('document').ready(function() {
+    $('#confirmChange').on("click", function() {
         if (confirm("Vuoi davvero modificare?") == true) {
             return true;
         } else {
@@ -50670,3 +50720,4 @@ function mouseOut6() {
             return false;
         }
     });
+});
