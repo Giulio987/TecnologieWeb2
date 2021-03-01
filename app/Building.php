@@ -10,7 +10,8 @@ class Building extends Model
     
     public function doctors()
     {
-        //Buildings:Doctors => 1:N
+        // Buildings:Doctors => 1:N
+        // hasMany => N
         return $this->hasMany('App\Doctor', 'id_building');
     }
 }

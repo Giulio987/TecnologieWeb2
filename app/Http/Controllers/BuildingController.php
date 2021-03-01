@@ -76,17 +76,6 @@ class BuildingController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Building  $building
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Building $building)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Building  $building

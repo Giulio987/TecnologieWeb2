@@ -13,30 +13,35 @@ class Doctor extends Model
     public function building()
     {
         // Buildings:Doctors => 1:N
+        // belongsTo => 1
         return $this->belongsTo('App\Building', 'id_building');
     }  
 
     public function prescriptions()
     {
         // Doctors:Prescriptions => 1:N
+        // hasMany => N
         return $this->hasMany('App\Prescription', 'id_doctor'); 
     }
 
     public function visits()
     {
         // Doctors:Visits => 1:N
+        // hasMany => N
         return $this->hasMany('App\Visit', 'id_doctor'); 
     }
 
     public function patients()
     {
         // Doctors:Patients => 1:N
+        // hasMany => N
         return $this->hasMany('App\Patient', 'id_doctor');
     }
 
     public function user()
     {
         // Doctors:Users => 1:1
+        // belongsTo => 1
         return $this->belongsTo('App\User', 'id_user');
     }
 }

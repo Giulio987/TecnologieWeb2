@@ -155,17 +155,6 @@ class DoctorController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Doctor  $doctor
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Doctor $doctor)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Doctor  $doctor

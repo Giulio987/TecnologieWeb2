@@ -41,23 +41,22 @@ class User extends Authenticatable
     public function doctor()
     {
         // Doctors:Users => 1:1
+        // hasOne => 1 id_user Chiave Esterna in Doctor
         return $this->hasOne('App\Doctor', 'id_user');
     }
 
     public function patients()
     {
         // Patients:Users => 1:1
+        // hasOne => 1 id_user Chiave Esterna in Patient
         return $this->hasOne('App\Patient', 'id_user');
     }
     
     public function roles()
     {
         // Users:Roles => 1:N
+        // hasMany => N
         return $this->hasMany('App\Roles', 'id_roles');
     }
     
-    public function hasRole($role)
-    {
-        return User::where('role', $role)->get();
-    }
 }

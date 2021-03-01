@@ -13,12 +13,14 @@ class Visit extends Model
     public function doctor()
     {
         // Doctors:Visits => 1:N
+        // belongsTo => 1
         return $this->belongsTo('App\Doctor', 'id_doctor');
     }
 
     public function patient()
     {
         // Patients:Visits => 1:N
+        // belongsTo => 1
         return $this->belongsTo('App\Patient', 'id_patient');
     }
 }

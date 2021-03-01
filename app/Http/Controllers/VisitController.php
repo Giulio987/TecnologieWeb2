@@ -20,8 +20,7 @@ class VisitController extends Controller
     public function index()
     {
         if( Auth::user()->role == '1'){ // Admin
-			$visits = Visit::all();
-            $visits = $visits->sortBy('date');
+			$visits = Visit::all()->sortBy('date');// ordina dalla più vicina
             return view('visit.index', compact('visits'));
         }else if( Auth::user()->role == '2'){ // Dottore
             $id = Auth::user()->id;
@@ -29,7 +28,7 @@ class VisitController extends Controller
 			$doctor = DB::table('doctors')->where('id_user', $id)->first();
             $visits = Visit::where('id_doctor', $doctor->id)->get()->sortBy('date');
             return view('visit.index', compact('name', 'visits'));
-        } else {
+        } else { // Paziente
 			$id = Auth::user()->id;
             $name = Auth::user()->name;
 			$patient = DB::table('patients')->where('id_user', $id)->first();
@@ -45,23 +44,23 @@ class VisitController extends Controller
      */
     public function create()
     {
-        if( Auth::user()->role == '3'){ // paziente
+        if( Auth::user()->role == '3'){ // Paziente
             $name = Auth::user()->name;
             $id = Auth::user()->id;
             $patient = Patient::where('id_user', $id)->first();
             return view('visit.create', compact('name', 'patient'));
-        } else {
+        } else { // Non sei loggato come Paziente
             return redirect('/home');
         }
     }
 
-    protected function validator(array $data)
+    protected function validator(array $data) // validator Create
     {
         return Validator::make($data, [
-            'id_patient'     => ['required', 'integer'],
-            'id_doctor'      => ['required', 'integer'],
-            'date'           => ['required', 'date'],
-            'time'           => ['required'],
+            'id_patient'              => ['required', 'integer'],
+            'id_doctor'               => ['required', 'integer'],
+            'date'                    => ['required', 'date'],
+            'time'                    => ['required'],
         ], [
             'id_patient.required'     => 'Inserimento obbligatorio',
             'id_patient.integer'      => 'L\'id del paziente deve essere un intero',
@@ -85,52 +84,18 @@ class VisitController extends Controller
 
         $input = $request -> all();
 
-        $visit = Visit::create($input);
+        $visit = Visit::create($input); // Mass Assignment
 
         if($visit)
-        {
+        {                       // alert
            $request->session()->flash('success', 'Visita prenotata con successo!');
             
-        }else{
+        }else{                  // alert
             $request->session()->flash('error', 'Si è verificato un problema nel prescrivere la ricetta, riprova.');
         }
 
 
         return redirect('/visit');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Visit  $visit
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Visit $visit)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Visit  $visit
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Visit $visit)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Visit  $visit
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Visit $visit)
-    {
-        //
     }
 
     /**

@@ -23,11 +23,11 @@ class PatientController extends Controller
      */
     public function index()
     {
-        if ( Auth::user()->role == '1') {
+        if ( Auth::user()->role == '1') { // Admin
             $patients = Patient::all();
             return view('patient.index', compact('patients'));
         }
-        else if ( Auth::user()->role == '2') {
+        else if ( Auth::user()->role == '2') { // Dottore
             //fare in modo che i dottori vedano solo i pazienti corrispondenti
             $id = Auth::user()->id;
             $name = Auth::user()->name;
@@ -47,12 +47,12 @@ class PatientController extends Controller
     public function create()
     {
         if ( Auth::user()->role == '1') {
-            $doctors = Doctor::all();
+            $doctors = Doctor::all(); // prende i dottori per la select2
             return view('patient.create', compact('doctors'));
         }elseif(Auth::user()->role == '2'){
             $id = Auth::user()->id;
-            $doctor = DB::table('doctors')->where('id_user', $id)->select('id')->first();
             $name = Auth::user()->name;
+            $doctor = DB::table('doctors')->where('id_user', $id)->select('id')->first();
             return view('patient.create', compact('doctor', 'name'));
         }
         else{
@@ -109,13 +109,13 @@ class PatientController extends Controller
     }
 
     protected function validatorUpdate(array $data, Patient $patient)
-    {
+    {   //in user prende id del paziente avente id_user che serve in unique di email
         $user = DB::table('users')->where('id', $patient->id_user)->first();
 
         return Validator::make($data, [
             'name' 		         => ['required', 'string'],
             'surname'            => ['required', 'string'],
-            'dob'                => ['required', 'date'],
+            'dob'                => ['required', 'date'],  // regola
             'phone_number'       => ['required', 'numeric', Rule::unique('patients')->ignore($patient->id),],
             'gender'             => ['required', 'string'],
             'fiscal_code'        => ['required', 'string', Rule::unique('patients')->ignore($patient->id),],
@@ -173,12 +173,12 @@ class PatientController extends Controller
             'password'      => Hash::make($request->password),
             'role'          => '3',
         ]);  
-        //se è admin prende l'input dal form
+        // se è admin prende l'id dal form di inserimento
         $res = $request->id_doctor;
-        //si recupera l'id nella tabella user dell'utente appena creato
+        // si recupera l'id nella tabella user dell'utente appena creato
         $id_user = $user->id;
-        //se è dottore il paziente viene associato a se stesso
-        if(Auth::user()->role == '2'){
+        // invece se è dottore il paziente viene associato a se stesso
+        if(Auth::user()->role == '2'){//se è dottore prende il proprio id
             $id = Auth::user()->id;
             $info = DB::table('doctors')->where('id_user', $id)->select('id')->get();
             foreach ($info as $doctor) {
@@ -186,16 +186,16 @@ class PatientController extends Controller
             }
         }
         Patient::create([
-            'fiscal_code'   => $request->fiscal_code,
-            'gender'        => $request->gender,
-            'dob'           => $request->dob,
-            'phone_number'  => $request->phone_number,
+            'fiscal_code'    => $request->fiscal_code,
+            'gender'         => $request->gender,
+            'dob'            => $request->dob,
+            'phone_number'   => $request->phone_number,
             'street_address' => $request->street_address,
-            'street_number' => $request->street_number,
-            'city'          => $request->city,
-            'postal_code'   => $request->postal_code,
-            'id_doctor'     => $res,
-            'id_user'       => $id_user,
+            'street_number'  => $request->street_number,
+            'city'           => $request->city,
+            'postal_code'    => $request->postal_code,
+            'id_doctor'      => $res,
+            'id_user'        => $id_user,
         ]);
         
 
@@ -209,19 +209,9 @@ class PatientController extends Controller
             $request->session()->flash('error', 'Si è verificato un errore nella registrazione, riprova.');
         }
 
-        return redirect()->intended('/patient');
+        return redirect('/patient');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Patient  $patient
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Patient $patient)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -231,10 +221,14 @@ class PatientController extends Controller
      */
     public function edit(Patient $patient)
     {
-        $doctors = Doctor::all();
-        $hisDoctor = Doctor::where('id', $patient->id_doctor)->first();
-        $user = User::where('id', $patient->id_user)->first();
-        return view('patient.edit', compact('patient', 'doctors', 'hisDoctor', 'user'));
+        if ( Auth::user()->role == '1') {
+            $doctors = Doctor::all();
+            $hisDoctor = Doctor::where('id', $patient->id_doctor)->first();
+            $user = User::where('id', $patient->id_user)->first();
+            return view('patient.edit', compact('patient', 'doctors', 'hisDoctor', 'user'));
+        } else{
+            return redirect('/home');
+        }
     }
 
     /**
@@ -249,7 +243,7 @@ class PatientController extends Controller
         $this->validatorUpdate($request->all(), $patient)->validate();
 
         $input = $request->all();
-        $user = User::find($patient->id_user);
+        $user = User::find($patient->id_user); 
         $user->name = $input['name'];
         $user->surname = $input['surname'];
         $user->email = $input['email'];
@@ -266,7 +260,7 @@ class PatientController extends Controller
         $patient->phone_number = $input['phone_number'];
         $patient->save();
 
-        if($patient)
+        if($patient) // alert
         {
             $request->session()->flash('success', 'Paziente ' . $request->surname . ' ' . $request->name . ' modificato con successo!');
         }else{

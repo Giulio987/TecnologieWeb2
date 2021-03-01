@@ -22,47 +22,17 @@ Auth::routes();
 Route::get('home', 'HomeController@index')->middleware('role');
 Route::get('/personal-area', 'HomeController@indexPersonalArea')->middleware('role');
 //Doctor
-Route::resource('doctor', 'DoctorController')->except(['destroy'])->middleware('role');
+Route::resource('doctor', 'DoctorController')->except(['destroy', 'show'])->middleware('role');
 Route::get('/doctor/{doctor}/delete', 'DoctorController@destroy')->middleware('role');
 //Patient
-Route::resource('patient', 'PatientController')->except(['destroy'])->middleware('role');
+Route::resource('patient', 'PatientController')->except(['destroy', 'show'])->middleware('role');
 Route::get('/patient/{patient}/delete', 'PatientController@destroy')->middleware('role');
 //Prescription
-Route::resource('prescription', 'PrescriptionController')->middleware('role');
+Route::resource('prescription', 'PrescriptionController')->except(['destroy', 'show', 'edit'])->middleware('role');
 Route::get('/prescription-validate', 'PrescriptionController@indexValidate')->middleware('role');
 Route::get('/prescription/{prescription}/delete', 'PrescriptionController@destroy')->middleware('role');
 //Visit
-Route::resource('visit', 'VisitController')->except(['destroy'])->middleware('role');
+Route::resource('visit', 'VisitController')->except(['destroy', 'show', 'edit', 'update'])->middleware('role');
 Route::get('/visit/{visit}/delete', 'VisitController@destroy')->middleware('role');
 //Building
-Route::resource('building', 'BuildingController')->middleware('role');
-
-
-
-/*// Admin
-Route::group(['middleware' => ['role:1']], function () {
-    Route::resource('home', 'HomeController');
-    Route::resource('doctor', 'DoctorController');
-    Route::resource('patient', 'PatientController');
-    Route::resource('prescription', 'PrescriptionController');
-    Route::resource('visit', 'VisitController');
-});
-
-// Dottore
-Route::group(['middleware' => ['role:2']], function () {
-    Route::resource('home', 'HomeController');
-    Route::resource('doctor', 'DoctorController');
-    Route::resource('patient', 'PatientController');
-    Route::resource('prescription', 'PrescriptionController');
-    Route::resource('visit', 'VisitController');
-});
-
-// Paziente
-Route::group(['middleware' => ['role:3']], function () {
-    Route::resource('home', 'HomeController');
-    Route::resource('doctor', 'DoctorController');
-    Route::resource('patient', 'PatientController');
-    Route::resource('prescription', 'PrescriptionController');
-    Route::resource('visit', 'VisitController');
-});
-*/
+Route::resource('building', 'BuildingController')->except(['show'])->middleware('role');

@@ -29,7 +29,7 @@ class PrescriptionController extends Controller
 			$doctor = DB::table('doctors')->where('id_user', $id)->first();
             $prescriptions = Prescription::where('id_doctor', $doctor->id)->where('status', 'convalidata')->get()->sortByDesc('rfe');
             return view('prescription.index', compact('name', 'prescriptions'));
-        } else{
+        } else{ // Paziente
             //Pazienti che visualizzeranno solo le proprie ricette
 			$id = Auth::user()->id;
             $name = Auth::user()->name;
@@ -60,29 +60,28 @@ class PrescriptionController extends Controller
      */
     public function create()
     {  
-        if( Auth::user()->role == '1'){ // Admin
-            
-        }
-        else if( Auth::user()->role == '2'){ // Dottore
+        if( Auth::user()->role == '2'){ // Dottore
             $id = Auth::user()->id;
             $doctor = DB::table('doctors')->where('id_user', $id)->first();
             $patients = Patient::where('id_doctor', $doctor->id)->get();
             return view('prescription.create', compact('doctor', 'patients'));
-        } else {
+        } else if( Auth::user()->role == '3'){
             return view('prescription.create');
+        } else {
+            return redirect('/home');
         }
 
     }
 
-    protected function validator(array $data)
+    protected function validator(array $data) // validator create
     {
         return Validator::make($data, [
-            'id_patient'     => ['required', 'integer'],
-            'id_doctor'      => ['required', 'integer'],
-            'description'    => ['required'],
-            'status'         => ['required'],
-            'date'           => ['required', 'date'],
-            'type'           => ['required'],
+            'id_patient'              => ['required', 'integer'],
+            'id_doctor'               => ['required', 'integer'],
+            'description'             => ['required'],
+            'status'                  => ['required'],
+            'date'                    => ['required', 'date'],
+            'type'                    => ['required'],
         ], [
             'id_patient.required'     => 'Inserimento obbligatorio',
             'id_patient.integer'      => 'L\'id del paziente deve essere un intero',
@@ -122,7 +121,7 @@ class PrescriptionController extends Controller
             'type'           => $request->type,
         ]);
 
-        if($prescription)
+        if($prescription) // alert
         {
             if( Auth::user()->role == '2'){
                 $request->session()->flash('success', 'Ricetta prescritta con successo!');
@@ -134,28 +133,6 @@ class PrescriptionController extends Controller
         }
 
         return redirect()->intended('/prescription');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Prescription  $prescription
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Prescription $prescription)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Prescription  $prescription
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Prescription $prescription)
-    {
-        //
     }
 
     /**
