@@ -116,10 +116,7 @@ class VisitController extends Controller
      */
     public function edit(Visit $visit)
     {
-        $doctor = DB::table('doctors')->where('id', $visit->id_doctor)->first();
-        $user = DB::table('users')->where('id', $doctor->id_user)->first();
-        $patient = DB::table('patients')->where('id_doctor', $visit->id_doctor)->get();
-        return view('visit.edit', compact('user', 'patient', 'visit'));
+        //
     }
 
     /**
@@ -131,20 +128,7 @@ class VisitController extends Controller
      */
     public function update(Request $request, Visit $visit)
     {
-        $this->validator($request->all())->validate();
-
-        $input = $request->all();
-        $visit->update($input);
-
-        if($visit)
-        {
-           $request->session()->flash('success', 'Visita modificata con successo!');
-            
-        }else{
-            $request->session()->flash('error', 'Si è verificato un problema nel modificare la visita, riprova.');
-        }
-
-        return redirect('/visit');
+        //
     }
 
     /**
