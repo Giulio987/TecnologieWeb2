@@ -173,8 +173,9 @@ class DoctorController extends Controller
      */
     public function edit(Doctor $doctor)
     {
+        $user = User::where('id', $doctor->id_user)->select('name', 'surname', 'email')->first();
         $buildings = Building::all();
-        return view('doctor.edit', compact('doctor', 'buildings'));
+        return view('doctor.edit', compact('doctor', 'user', 'buildings'));
     }
 
     /**

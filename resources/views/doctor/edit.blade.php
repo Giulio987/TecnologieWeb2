@@ -14,7 +14,7 @@
 <div class="container-lg" align="center">
 <div class="row row-space justify-content-center">
     <h1 class="font-weight-bold">
-        Amministratore, modifica le informazioni riguradanti questo dottore.
+        Amministratore, modifica le informazioni riguardanti il dottore.
     </h1>
     </div>
     <form action="{{ URL::action('DoctorController@update', $doctor) }}" method="POST">
@@ -22,25 +22,16 @@
         {{ csrf_field() }}
     <div class="row row-space justify-content-center">
         <h5>
-            Basta modificare solo i campi interessati.
+            Modifica i campi interessati.
         </h5>
     </div>
-    
-        <?php
-            $id = $doctor->id_user;
-            $user = DB::table('users')->where('id', $id)->select('name', 'surname', 'email')->get();
-            foreach ($user as $info) {
-                $nome = $info->name;
-                $cognome = $info->surname;
-                $email = $info->email;
-            }  
-        ?>  
+
     <div class="row row-space justify-content-center border-form align-items-center">
 
     <div class="col-lg-5">
         <div class="row row-space justify-content-center">
         <div class="form-group">
-            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $nome }}">
+            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user->name }}">
             <small class="form-text text-muted">Modifica il nome del dottore</small>
             @error('name')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -50,7 +41,7 @@
 
         <div class="row row-space justify-content-center">
         <div class="form-group">
-          <input type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ $cognome }}">
+          <input type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ $user->surname }}">
           <small class="form-text text-muted">Modifica il cognome del dottore</small>
             @error('surname')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -103,16 +94,9 @@
         <div class="form-group label-space">
             <select id="selUser" name="id_building" for="id_building" class="@error('id_building') is-invalid @enderror selUser">
                 <?php
-                    $building = DB::table('buildings')->where('id', $doctor->id_building)->get();
-                    foreach ($building as $info) {
-                        $id = $info->id;
-                        $street_address = $info->street_address;
-                        $street_number = $info->street_number;
-                        $city = $info->city;
-                        $postal_code = $info->postal_code;
-                    }
+                    $building = DB::table('buildings')->where('id', $doctor->id_building)->first();
                 ?>
-                <option value="{{$doctor->id_building}}" selected="selected">{{ $id }} - {{ $street_address }}, {{ $street_number }} - {{ $city }}, {{ $postal_code }}</option>
+                <option value="{{$doctor->id_building}}" selected="selected">{{ $building->id }} - {{ $building->street_address }}, {{ $building->street_number }} - {{ $building->city }}, {{ $building->postal_code }}</option>
                 @foreach($buildings as $b)
                 @if($b->id != $doctor->id_building)
                     <option value="{{$b->id}}">{{$b->id}} - {{$b->street_address }} - {{$b->street_number}} - {{$b->postal_code}} - {{$b->city}}</option>

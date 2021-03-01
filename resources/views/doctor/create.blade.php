@@ -2,10 +2,6 @@
 
 @section('content')
 
-<?php
-$name = Auth::user()->name;
-?>
-
 <div class="row-space" style="margin-left:100px;float:left;">
 <a href="{{ URL::action('DoctorController@index') }}">
 <button style="background-color: #f8fafc;border-width: 0px;" href="">

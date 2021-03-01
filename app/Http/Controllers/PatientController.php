@@ -53,11 +53,8 @@ class PatientController extends Controller
             return view('patient.create', compact('patients'));
         }elseif(Auth::user()->role == '2'){
             $id = Auth::user()->id;
-            $info = DB::table('doctors')->where('id_user', $id)->select('id')->get();
-            foreach ($info as $doctor) {
-                $res = $doctor->id;
-            }
-            $patients = Patient::where('id_doctor', '=', $res)->get();
+            $doctor = DB::table('doctors')->where('id_user', $id)->select('id')->first();
+            $patients = Patient::where('id_doctor', '=', $doctor->id)->get();
             return view('patient.create', compact('patients'));
         }
         else{
