@@ -77,18 +77,19 @@ $date = strtotime($visit->date);
         </div>
         </div>
 
-</div>
-        <div class="col-lg-5">
-        <label>Dottore {{ $user->surname }} {{$user->name}}</label>
-        <input type="hidden" name="id_doctor" value="{{ $visit->id_doctor }}">
+        <div class="row row-space justify-content-center">
 
-        <div class="col-lg-6" id="contentUser">
+        <p align="center">Dottore della visita: {{ $user->surname }} {{$user->name}}</p>
+        <input type="hidden" name="id_doctor" value="{{ $visit->id_doctor }}">
+        </div>
+        <div class="row row-space justify-content-center">
+
         <select id="selUser" name="id_patient">
         <?php
             $pa = DB::table('patients')->where('id', $visit->id_patient)->first();
             $user = DB::table('users')->where('id', $pa->id_user)->select('name', 'surname')->first();
         ?>
-        <option value="{{$pa->id}}" selected="selected">{{ $pa->id }} - {{ $user->surname }}, {{ $user->name }} - {{ $pa->fiscal_code }}</option>
+        <option value="{{$pa->id}}" selected="selected">{{ $user->surname }}, {{ $user->name }} - {{ $pa->fiscal_code }}</option>
           @foreach ($patient as $p)
           <?php
           $user = DB::table('users')->where('id', $p->id_user)->select('name', 'surname')->get();
@@ -100,9 +101,9 @@ $date = strtotime($visit->date);
           <option value="{{ $p->id }}">{{ $cognome }} - {{ $nome }} - {{ $p->fiscal_code }}</option>
           @endforeach
         </select>
+        </div>
       </div>
 
-        </div>
         <div class="row justify-content-center">
 
         <button id="confirmChange" class="btn btn-outline-success col-lg-2 mt-4">Aggiorna<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-circle pl-2" viewBox="0 0 16 16">
