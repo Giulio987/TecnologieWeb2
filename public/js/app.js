@@ -50374,7 +50374,9 @@ $('document').ready(function() {
 $('document').ready(function() {
     $("#Show1").on("click", function() {
         $("#content1").show("slow", function() {
-            // Animation complete.
+            $("#contentBtn").show("slow", function() {
+                // Animation complete.
+            });
         });
         document.getElementById('content2').style.display = 'none';
         document.getElementById('content3').style.display = 'none';
@@ -50388,7 +50390,9 @@ $('document').ready(function() {
     $("#Show2").on("click", function() {
         document.getElementById('content1').style.display = 'none';
         $("#content2").show("slow", function() {
-            // Animation complete.
+            $("#contentBtn").show("slow", function() {
+                // Animation complete.
+            });
         });
         document.getElementById('content3').style.display = 'none';
         document.getElementById('content4').style.display = 'none';
@@ -50402,7 +50406,9 @@ $('document').ready(function() {
         document.getElementById('content1').style.display = 'none';
         document.getElementById('content2').style.display = 'none';
         $("#content3").show("slow", function() {
-            // Animation complete.
+            $("#contentBtn").show("slow", function() {
+                // Animation complete.
+            });
         });
         document.getElementById('content4').style.display = 'none';
         document.getElementById('content5').style.display = 'none';
@@ -50416,7 +50422,9 @@ $('document').ready(function() {
         document.getElementById('content2').style.display = 'none';
         document.getElementById('content3').style.display = 'none';
         $("#content4").show("slow", function() {
-            // Animation complete.
+            $("#contentBtn").show("slow", function() {
+                // Animation complete.
+            });
         });
         document.getElementById('content5').style.display = 'none';
         document.getElementById('content6').style.display = 'none';
@@ -50430,7 +50438,9 @@ $('document').ready(function() {
         document.getElementById('content3').style.display = 'none';
         document.getElementById('content4').style.display = 'none';
         $("#content5").show("slow", function() {
-            // Animation complete.
+            $("#contentBtn").show("slow", function() {
+                // Animation complete.
+            });
         });
         document.getElementById('content6').style.display = 'none';
     });
@@ -50444,7 +50454,9 @@ $('document').ready(function() {
         document.getElementById('content4').style.display = 'none';
         document.getElementById('content5').style.display = 'none';
         $("#content6").show("slow", function() {
-            // Animation complete.
+            $("#contentBtn").show("slow", function() {
+                // Animation complete.
+            });
         });
     });
 });

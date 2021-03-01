@@ -124,7 +124,7 @@ $name = Auth::user()->name;
     {{ csrf_field() }}
     <div class="row row-space justify-content-center">
       <h5>
-        Seleziona la tipologia della prescrizione e inserisci il farmaco o visita specialistica.<button type="submit" name="submit" class="btn btn-outline-success btn-prenota font-weight-bold col-lg-2">+</button>
+        Seleziona la tipologia della prescrizione e inserisci il farmaco o visita specialistica. 
       </h5>
     </div>
 
