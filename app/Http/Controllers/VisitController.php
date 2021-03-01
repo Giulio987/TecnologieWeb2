@@ -33,7 +33,7 @@ class VisitController extends Controller
 			$id = Auth::user()->id;
             $name = Auth::user()->name;
 			$patient = DB::table('patients')->where('id_user', $id)->first();
-            $visits = Visit::where('id_patient', $patient->id)->get()->sortBy('date');
+            $visits = Visit::where('id_patient', $patient->id)->get()->sortBy('date')->sortBy('time');
             return view('visit.index', compact('name', 'visits'));
         }
     }
