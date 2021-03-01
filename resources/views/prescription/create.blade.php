@@ -53,15 +53,11 @@ $name = Auth::user()->name;
     <div class="py-5 row row-space justify-content-center align-items-center">
       <div class="col-lg-6" style="display:none" id="contentUser">
         <select id="selUser" name="id_patient" style="width:70%"> 
-          @foreach ($patient as $p)
+          @foreach ($patients as $p)
           <?php
-          $user = DB::table('users')->where('id', $p->id_user)->select('name', 'surname')->get();
-          foreach ($user as $info) {
-            $nome = $info->name;
-            $cognome = $info->surname;
-          }
+          $user = DB::table('users')->where('id', $p->id_user)->first();
           ?>
-          <option value="{{ $p->id }}">{{ $cognome }} - {{ $nome }} - {{ $p->fiscal_code }}</option>
+          <option value="{{ $p->id }}">{{ $user->surname }} - {{ $user->name }} - {{ $p->fiscal_code }}</option>
           @endforeach
         </select>
       </div>
@@ -87,15 +83,8 @@ $name = Auth::user()->name;
             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
         </svg>
         </button>
-    <?php
-    $id = Auth::user()->id;
-    $info = DB::table('doctors')->where('id_user', $id)->select('id')->get();
-    foreach ($info as $doctor) {
-      $res = $doctor->id;
-    }
-    ?>
 
-    <input id="id_doctor" name="id_doctor" type="hidden" value="{{ $res }}">
+    <input id="id_doctor" name="id_doctor" type="hidden" value="{{ $doctor->id }}">
     <input id="status" name="status" type="hidden" value="convalidata">
     <input id="date" name="date" type="hidden" value="{{ date('Y-m-d') }}">
   </form>
@@ -178,15 +167,10 @@ $name = Auth::user()->name;
 
     <?php
     $id = Auth::user()->id;
-    $info = DB::table('patients')->where('id_user', $id)->select('id_doctor', 'id')->get();
-    foreach ($info as $patient) {
-      $res1 = $patient->id_doctor;
-      $res2 = $patient->id;
-    }
-
+    $patient = DB::table('patients')->where('id_user', $id)->first();
     ?>
-    <input id="id_doctor" name="id_doctor" type="hidden" value="{{ $res1 }}">
-    <input id="id_patient" name="id_patient" type="hidden" value="{{ $res2 }}">
+    <input id="id_doctor" name="id_doctor" type="hidden" value="{{ $patient->id_doctor }}">
+    <input id="id_patient" name="id_patient" type="hidden" value="{{ $patient->id }}">
     <input id="status" name="status" type="hidden" value="convalidare">
     <input id="date" name="date" type="hidden" value="{{ date('Y-m-d') }}">
   </form>

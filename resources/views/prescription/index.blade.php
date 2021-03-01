@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-    <?php $name = Auth::user()->name; ?>
     
     <!-- Se sono admin o dottori entrano qua -->
     @if (!strcmp(Auth::user()->role, '2') || !strcmp(Auth::user()->role, '1'))
@@ -63,15 +61,7 @@
                         <tbody id="myTable">
                             @foreach ($prescriptions as $p)
                                 <?php
-                                $id = $p->patient->id_user;
-                                $user = DB::table('users')
-                                ->where('id', $id)
-                                ->select('name', 'surname')
-                                ->get();
-                                foreach ($user as $info) {
-                                $nome = $info->name;
-                                $cognome = $info->surname;
-                                }
+                                $user = DB::table('users')->where('id', $p->patient->id_user)->first();
                                 ?>
                                 <tr class="font-weight-bold text-uppercase" style="color:#626262;">
                                     <td
@@ -83,8 +73,8 @@
                                         <td>Non esistente</td>
                                     @endif
                                     <td>{{ $p->patient->fiscal_code }}</td>
-                                    <td>{{ $nome }}</td>
-                                    <td>{{ $cognome }}</td>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->surname }}</td>
                                     <td>{{ $p->patient->gender }}</td>
                                     <td>{{ $p->status }}</td>
                                     <td>{{ $p->type }}</td>

@@ -25,21 +25,16 @@ class PrescriptionController extends Controller
         }else if( Auth::user()->role == '2'){ // Dottore
             //Dottori visualizzeranno solo le ricette dei propri pazienti
             $id = Auth::user()->id;
-			$info = DB::table('doctors')->where('id_user', $id)->select('id')->get();
-			foreach ($info as $doctor) {
-				$res = $doctor->id;
-			}
-            $prescriptions = Prescription::where('id_doctor', $res)->where('status', 'convalidata')->get();
+            $name = Auth::user()->name;
+			$doctor = DB::table('doctors')->where('id_user', $id)->first();
+            $prescriptions = Prescription::where('id_doctor', $doctor->id)->where('status', 'convalidata')->get();
             $prescriptions = $prescriptions->sortByDesc('rfe');
-            return view('prescription.index', compact('prescriptions'));
+            return view('prescription.index', compact('name', 'prescriptions'));
         } else{
             //Pazienti che visualizzeranno solo le proprie ricette
 			$id = Auth::user()->id;
-			$info = DB::table('patients')->where('id_user', $id)->select('id')->get();
-			foreach ($info as $patient) {
-				$res = $patient->id;
-			}
-            $prescriptions = Prescription::where('id_patient', $res)->get();
+			$patient = DB::table('patients')->where('id_user', $id)->first();
+            $prescriptions = Prescription::where('id_patient', $patient->id)->get();
             $prescriptions = $prescriptions->sortByDesc('rfe');
             return view('prescription.index', compact('prescriptions'));
         }
@@ -50,12 +45,12 @@ class PrescriptionController extends Controller
         if( Auth::user()->role == '2'){ // Dottore
             //Dottori visualizzeranno solo le ricette dei propri pazienti
             $id = Auth::user()->id;
-			$info = DB::table('doctors')->where('id_user', $id)->select('id')->get();
-			foreach ($info as $doctor) {
-				$res = $doctor->id;
-			}
-            $prescriptions = Prescription::where('id_doctor', $res)->where('status', 'convalidare')->get();
-            return view('prescription.index-validate', compact('prescriptions'));
+            $name = Auth::user()->name;
+			$doctor = DB::table('doctors')->where('id_user', $id)->first();
+            $prescriptions = Prescription::where('id_doctor', $doctor->id)->where('status', 'convalidare')->get();
+            return view('prescription.index-validate', compact('name', 'prescriptions'));
+        } else{
+            return redirect('/home');
         }
     }
 
@@ -71,12 +66,9 @@ class PrescriptionController extends Controller
         }
         else if( Auth::user()->role == '2'){ // Dottore
             $id = Auth::user()->id;
-            $info = DB::table('doctors')->where('id_user', $id)->select('id')->get();
-			foreach ($info as $doctor) {
-				$res = $doctor->id;
-			}
-            $patient = Patient::where('id_doctor', '=', $res)->get();
-            return view('prescription.create', compact('patient'));
+            $doctor = DB::table('doctors')->where('id_user', $id)->first();
+            $patients = Patient::where('id_doctor', $doctor->id)->get();
+            return view('prescription.create', compact('doctor', 'patients'));
         } else {
             return view('prescription.create');
         }

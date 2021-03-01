@@ -2,11 +2,7 @@
 
 @section('content')
 
-<?php
-    $name = Auth::user()->name;
-?>
-
-@if(!strcmp(Auth::user()->role, '2') || !strcmp(Auth::user()->role, '1'))
+@if(!strcmp(Auth::user()->role, '2'))
 <!-- container Dottore -->
 <div class="row-space" style="margin-left:100px;float:left;">
 <a href="{{ URL::action('HomeController@index') }}">
@@ -20,11 +16,7 @@
 <div class="container-lg" align="center">
     <div class="row row-space justify-content-center">
         <h1 class="font-weight-bold">
-            @if (!strcmp(Auth::user()->role, '1'))
-                Benvenuto Amministratore! visualizza le prescrizioni da convalidare.
-            @else
                 Ciao Dott. {{ $name }}, visualizza le prescrizioni da convalidare.
-            @endif
         </h1>
     </div>
     <div class="row row-space justify-content-center">
@@ -58,18 +50,16 @@
                 </thead>
                 <tbody id="myTable">
                     @foreach($prescriptions as $p)
-                    <?php $id = $p->patient->id_user;
-                    $user = DB::table('users')->where('id', $id)->select('name', 'surname')->get();
-                    foreach ($user as $info) {
-                        $nome = $info->name;
-                        $cognome = $info->surname;
-                    } ?>
+                    <?php
+                    $id = $p->patient->id_user;
+                    $user = DB::table('users')->where('id', $id)->first();
+                    ?>
                     <tr class="font-weight-bold text-uppercase" style="color:#626262;">
                         <td style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">{{ date('d/m/Y', strtotime($p->date)) }}</td>
                         <td>Non esistente</td>
                         <td>{{ $p->patient->fiscal_code }}</td>
-                        <td>{{ $nome }}</td>
-                        <td>{{ $cognome }}</td>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->surname }}</td>
                         <td>{{ $p->patient->gender }}</td>
                         <td >{{ $p->type }}</td>
                         <td><button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal1" data-whatever1="{{ $p->description }}" data-whatever2="{{ 'RFE non eistente' }}" data-whatever3="{{ date('d/m/Y', strtotime($p->date)) }}">Visualizza descrizione</button></td>
