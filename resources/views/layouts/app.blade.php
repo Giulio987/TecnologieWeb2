@@ -120,8 +120,8 @@
         <!-- Footer -->
         <footer class="py-4">
             <div class="me-md-auto text-center text-md-start row align-items-end">
-                <div class="container">
-                    <p class="m-0 text-center text-black">Copyright &copy; MyDoctor2021</p>
+                <div class="container" align="center">
+                    <p class="m-0 text-center text-black text-uppercase">Copyright &copy; MyDoctor2021</p>
                 </div>
             </div>
         </footer>
