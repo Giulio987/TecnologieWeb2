@@ -50338,7 +50338,9 @@ $("#myInput").on("keyup", function() {
 $('document').ready(function() {
     $("#ShowFarmaco").on("click", function() {
         $("#contentFarmaco").toggle("slow", function() {
-            // Animation complete.
+            $("#contentBtn").show("slow", function() {
+                // Animation complete.
+            });
         });
         $("#contentUser").show("slow", function() {
 
@@ -50353,7 +50355,9 @@ $('document').ready(function() {
 $('document').ready(function() {
     $("#ShowVisita").on("click", function() {
         $("#contentVisita").toggle("slow", function() {
-            // Animation complete.
+            $("#contentBtn").show("slow", function() {
+                // Animation complete.
+            });
         });
         $("#contentUser").show("slow", function() {
 
