@@ -21,18 +21,19 @@ class VisitController extends Controller
     {
         if( Auth::user()->role == '1'){ // Admin
 			$visits = Visit::all();
+            $visits = $visits->sortBy('date');
             return view('visit.index', compact('visits'));
         }else if( Auth::user()->role == '2'){ // Dottore
             $id = Auth::user()->id;
             $name = Auth::user()->name;
 			$doctor = DB::table('doctors')->where('id_user', $id)->first();
-            $visits = Visit::where('id_doctor', $doctor->id)->get();
+            $visits = Visit::where('id_doctor', $doctor->id)->get()->sortBy('date');
             return view('visit.index', compact('name', 'visits'));
         } else {
 			$id = Auth::user()->id;
             $name = Auth::user()->name;
 			$patient = DB::table('patients')->where('id_user', $id)->first();
-            $visits = Visit::where('id_patient', $patient->id)->orderByRaw('date - time DESC')->get();
+            $visits = Visit::where('id_patient', $patient->id)->get()->sortBy('date');
             return view('visit.index', compact('name', 'visits'));
         }
     }
@@ -44,12 +45,13 @@ class VisitController extends Controller
      */
     public function create()
     {
-        if( Auth::user()->role == '3'){ // Dottore
+        if( Auth::user()->role == '3'){ // paziente
             $name = Auth::user()->name;
-            $patient = Patient::where('id', Auth::user()->id)->first();
+            $id = Auth::user()->id;
+            $patient = Patient::where('id_user', $id)->first();
             return view('visit.create', compact('name', 'patient'));
         } else {
-            return view('visit.create');
+            return redirect('/home');
         }
     }
 
