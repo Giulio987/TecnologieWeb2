@@ -30,6 +30,7 @@ Route::get('/patient/{patient}/delete', 'PatientController@destroy')->middleware
 //Prescription
 Route::resource('prescription', 'PrescriptionController')->middleware('role');
 Route::get('/prescription-validate', 'PrescriptionController@indexValidate')->middleware('role');
+Route::get('/prescription/{prescription}/delete', 'PrescriptionController@destroy')->middleware('role');
 //Visit
 Route::resource('visit', 'VisitController')->except(['destroy'])->middleware('role');
 Route::get('/visit/{visit}/delete', 'VisitController@destroy')->middleware('role');

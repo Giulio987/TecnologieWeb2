@@ -207,6 +207,8 @@ class PrescriptionController extends Controller
      */
     public function destroy(Prescription $prescription)
     {
-        //
+        $prescription->delete();
+        
+        return redirect('/prescription');
     }
 }
