@@ -31,7 +31,7 @@ $date = strtotime($visit->date);
 <div class="container-lg" align="center">
 <div class="row row-space justify-content-center">
         <h1 class="font-weight-bold">
-            Modifica le Informazioni riguradanti una visita.
+            Modifica le informazioni riguradanti una visita.
         </h1>
     </div>
     <form action="{{ URL::action('VisitController@update', $visit) }}" method="POST">
@@ -79,25 +79,29 @@ $date = strtotime($visit->date);
 
 </div>
         <div class="col-lg-5">
-        <div class="row row-space justify-content-center">
-        <div class="form-group">
-            <input type="number" class="form-control @error('id_doctor') is-invalid @enderror" name="id_doctor" value="{{ $visit->id_doctor }}">
-            <small class="form-text text-muted">Modifica l'Id del dottore</small>
-            @error('id_doctor')
-                <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-        </div>
-        </div>
+        <label>Dottore {{ $user->surname }} {{$user->name}}</label>
+        <input type="hidden" name="id_doctor" value="{{ $visit->id_doctor }}">
 
-        <div class="row row-space justify-content-center">
-        <div class="form-group">
-            <input type="number" class="form-control @error('id_patient') is-invalid @enderror" name="id_patient" value="{{ $visit->id_patient }}">
-            <small class="form-text text-muted">Modifica l'Id del paziente</small>
-            @error('id_patient')
-                <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-        </div>
-        </div>
+        <div class="col-lg-6" id="contentUser">
+        <select id="selUser" name="id_patient">
+        <?php
+            $pa = DB::table('patients')->where('id', $visit->id_patient)->first();
+            $user = DB::table('users')->where('id', $pa->id_user)->select('name', 'surname')->first();
+        ?>
+        <option value="{{$pa->id}}" selected="selected">{{ $pa->id }} - {{ $user->surname }}, {{ $user->name }} - {{ $pa->fiscal_code }}</option>
+          @foreach ($patient as $p)
+          <?php
+          $user = DB::table('users')->where('id', $p->id_user)->select('name', 'surname')->get();
+          foreach ($user as $u) {
+            $nome = $u->name;
+            $cognome = $u->surname;
+          }
+          ?>
+          <option value="{{ $p->id }}">{{ $cognome }} - {{ $nome }} - {{ $p->fiscal_code }}</option>
+          @endforeach
+        </select>
+      </div>
+
         </div>
         <div class="row justify-content-center">
 

@@ -123,7 +123,10 @@ class VisitController extends Controller
      */
     public function edit(Visit $visit)
     {
-        return view('visit.edit', compact('visit'));
+        $doctor = DB::table('doctors')->where('id', $visit->id_doctor)->first();
+        $user = DB::table('users')->where('id', $doctor->id_user)->first();
+        $patient = DB::table('patients')->where('id_doctor', $visit->id_doctor)->get();
+        return view('visit.edit', compact('user', 'patient', 'visit'));
     }
 
     /**
