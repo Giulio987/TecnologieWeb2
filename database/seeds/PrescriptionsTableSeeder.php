@@ -14,7 +14,7 @@ class PrescriptionsTableSeeder extends Seeder
         DB::table('prescriptions')->insert([[
             'id_patient'    => '1',
             'rfe'           => '120000000000000',
-            'id_doctor'     => '4',
+            'id_doctor'     => '1',
             'description'   => 'oki',
             'status'        => 'convalidata',
             'type'          => 'farmaco',
@@ -24,7 +24,7 @@ class PrescriptionsTableSeeder extends Seeder
         ],[
             'id_patient'    => '1',
             'rfe'           => '120000000000001',
-            'id_doctor'     => '4',
+            'id_doctor'     => '1',
             'description'   => 'cardioaspirin',
             'status'        => 'convalidare',
             'type'          => 'farmaco',
@@ -34,7 +34,7 @@ class PrescriptionsTableSeeder extends Seeder
         ],[
             'id_patient'    => '1',
             'rfe'           => '120000000000002',
-            'id_doctor'     => '4',
+            'id_doctor'     => '1',
             'description'   => 'enterogermina',
             'status'        => 'convalidare',
             'type'          => 'farmaco',
@@ -44,7 +44,7 @@ class PrescriptionsTableSeeder extends Seeder
         ],[
             'id_patient'    => '1',
             'rfe'           => '120000000000003',
-            'id_doctor'     => '4',
+            'id_doctor'     => '1',
             'description'   => 'angiologica',
             'status'        => 'convalidare',
             'type'          => 'visita',
@@ -54,7 +54,7 @@ class PrescriptionsTableSeeder extends Seeder
         ],[
             'id_patient'    => '1',
             'rfe'           => '120000000000004',
-            'id_doctor'     => '4',
+            'id_doctor'     => '1',
             'description'   => 'cardiochirurgica',
             'status'        => 'convalidata',
             'type'          => 'visita',
@@ -64,7 +64,7 @@ class PrescriptionsTableSeeder extends Seeder
         ],[
             'id_patient'    => '1',
             'rfe'           => '120000000000005',
-            'id_doctor'     => '4',
+            'id_doctor'     => '1',
             'description'   => 'chirurgica oncologica',
             'status'        => 'invalidata',
             'type'          => 'visita',

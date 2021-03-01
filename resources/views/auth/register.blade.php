@@ -10,7 +10,11 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
-                        
+                        <div class="row justify-content-center border-form" style="color:#3490dc;text-align:center;">
+                        {{"Per continuare la registrazione è necessaria una quota iniziale di 99,99€."}}
+                        <br>
+                        {{"Paga una volta, usala per sempre!"}}
+                        </div>                        
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
 

@@ -27,16 +27,16 @@ class PrescriptionController extends Controller
             $id = Auth::user()->id;
             $name = Auth::user()->name;
 			$doctor = DB::table('doctors')->where('id_user', $id)->first();
-            $prescriptions = Prescription::where('id_doctor', $doctor->id)->where('status', 'convalidata')->get();
-            $prescriptions = $prescriptions->sortByDesc('rfe');
+            $prescriptions = Prescription::where('id_doctor', $doctor->id)->where('status', 'convalidata')->get()->sortByDesc('rfe');
             return view('prescription.index', compact('name', 'prescriptions'));
         } else{
             //Pazienti che visualizzeranno solo le proprie ricette
 			$id = Auth::user()->id;
+            $name = Auth::user()->name;
 			$patient = DB::table('patients')->where('id_user', $id)->first();
             $prescriptions = Prescription::where('id_patient', $patient->id)->get();
             $prescriptions = $prescriptions->sortByDesc('rfe');
-            return view('prescription.index', compact('prescriptions'));
+            return view('prescription.index', compact('name', 'prescriptions'));
         }
     }
 
