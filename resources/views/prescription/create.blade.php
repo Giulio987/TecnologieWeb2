@@ -146,19 +146,19 @@ $name = Auth::user()->name;
       <div id="contentFarmaco" style="display:none">
         <div>
           <label class="label-ricetta">
-            <input type="text" class="label-ricetta text-uppercase" placeholder="Inserisci farmaco" class="form-control @error('description') is-invalid @enderror" id="descriptionFarmaco">
+            <input type="text" class="label-ricetta text-uppercase ShowBtn" placeholder="Inserisci farmaco" class="form-control @error('description') is-invalid @enderror" id="descriptionFarmaco">
           </label>
         </div>
       </div>
       <div id="contentVisita" style="display:none">
         <div>
           <label class="label-ricetta">
-            <input type="text" class="label-ricetta text-uppercase" placeholder="Inserisci visita" class="form-control @error('description') is-invalid @enderror" id="descriptionVisita">
+            <input type="text" class="label-ricetta text-uppercase ShowBtn" placeholder="Inserisci visita" class="form-control @error('description') is-invalid @enderror" id="descriptionVisita">
           </label>
         </div>
       </div>
     </div>
-    <button id="contentBtn" type="submit" name="submit" class="btn btn-outline-success col-lg-2" style="display:none">Richiedi
+    <button type="submit" name="submit" class="btn btn-outline-success col-lg-2 BtnPrenota" style="display:none">Richiedi
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-circle pl-2" viewBox="0 0 16 16">
             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
