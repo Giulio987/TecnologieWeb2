@@ -85,7 +85,7 @@
                                                 data-whatever2="{{ $p->status }}"
                                                 data-whatever3="{{ date('d/m/Y', strtotime($p->date)) }}">Visualizza descrizione</button>
                                         </td>
-                                        <td  style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;"><a id="confirmDelete" href="{{ URL::action('PrescriptionController@destroy', $p) }}" class="btn btn-outline-danger btn-sm">Elimina</a></td>
+                                        <td  style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;"><a href="{{ URL::action('PrescriptionController@destroy', $p) }}" class="btn btn-outline-danger btn-sm confirmDelete">Elimina</a></td>
                                         @else
                                         <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">
                                             <button type="button" class="btn btn-outline-primary" data-toggle="modal"

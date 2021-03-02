@@ -50738,7 +50738,7 @@ $('document').ready(function() {
 
 // Alert conferma modifica
 $('document').ready(function() {
-    $('#confirmChange').on("click", function() {
+    $('.confirmChange').on("click", function() {
         if (confirm("Vuoi davvero modificare?") == true) {
             return true;
         } else {

@@ -70,7 +70,7 @@
                                         style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 0px 0px 0px;border-radius: 0px 0px 0px 0px;">
                                         {{ $v->time }}</td>
 
-                                    <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;"><a href="{{ URL::action('VisitController@destroy', $v) }}" class="btn btn-outline-danger btn-sm">Elimina</a></td>
+                                    <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;"><a href="{{ URL::action('VisitController@destroy', $v) }}" class="btn btn-outline-danger btn-sm confirmDelete">Elimina</a></td>
                                 </tr>
                             </tbody>
                         @endif
