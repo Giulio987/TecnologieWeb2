@@ -61,8 +61,11 @@
         <div class="row row-space justify-content-center">
 
                 <div class="form-group label-space">
-                    <input type="text" class="form-control @error('gender') is-invalid @enderror" placeholder="Sesso" name="gender" maxlength="1" required>
-                    @error('gender')
+                <select id="gender" class="form-control @error('gender') is-invalid @enderror" name="gender" required autocomplete="gender" maxlength="1" autofocus>
+                                <option value="" disabled selected>Seleziona la tua opzione...</option>
+                                <option value="m">M</option>
+                                <option value="f">F</option>
+                                </select>                    @error('gender')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
@@ -100,7 +103,7 @@
                 </div>
                 <div class="row row-space justify-content-center">
                 <div class="form-group label-space">
-                <select name="id_building" id="selUser">
+                <select name="id_building" id="selUser" style="width:100%">
                         @foreach($buildings as $b)
                             <option value="{{$b->id}}">{{$b->id}} - {{$b->street_address }} - {{$b->street_number}} - {{$b->postal_code}} - {{$b->city}}</option>
                         @endforeach

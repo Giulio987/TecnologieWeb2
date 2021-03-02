@@ -89,8 +89,11 @@
         </div>
         <div class="row row-space justify-content-center">
             <div class="form-group label-space">
-                <input type="text" class="form-control @error('gender') is-invalid @enderror" placeholder="Sesso" name="gender" maxlength="1" required>
-                @error('gender')
+            <select id="gender" class="form-control @error('gender') is-invalid @enderror" name="gender" required autocomplete="gender" maxlength="1" autofocus>
+                                <option value="" disabled selected>Seleziona la tua opzione...</option>
+                                <option value="m">M</option>
+                                <option value="f">F</option>
+                                </select>                @error('gender')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
