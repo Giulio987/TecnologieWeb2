@@ -49,7 +49,9 @@
                         <tr class="bg-info" style="color:#fff;text-align:center">
                             <th scope="col"
                                 style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">
-                                Data</th>
+                                CF Dottore</th>
+                            <th>CF Paziente</th>
+                            <th>Data</th>
                             <th scope="col"
                                 style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 0px 0px 0px;">
                                 Ora</th>
@@ -63,9 +65,9 @@
                             <!-- visite future -->
                             <tbody>
                                 <tr class="font-weight-bold text-uppercase" style="color:#626262;text-align:center;" >
-                                    <td
-                                        style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">
-                                        {{ date('d/m/Y', strtotime($v->date)) }}</td>
+                                    <td style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;"></td>
+                                    <td></td>
+                                    <td>{{ date('d/m/Y', strtotime($v->date)) }}</td>
                                     <td
                                         style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 0px 0px 0px;border-radius: 0px 0px 0px 0px;">
                                         {{ $v->time }}</td>
@@ -81,9 +83,11 @@
                 <table class="table table-borderless table-hover" style="margin:0px">
                     <thead>
                         <tr class="bg-info" style="color:#fff;text-align:center">
-                            <th scope="col"
+                        <th scope="col"
                                 style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">
-                                Data</th>
+                                CF Dottore</th>
+                            <th>CF Paziente</th>
+                            <th>Data</th>
                             <th scope="col"
                                 style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">
                                 Ora</th>
@@ -94,9 +98,9 @@
                             <!-- visite passate -->
                             <tbody>
                                 <tr class="font-weight-bold text-uppercase" style="color:#626262;text-align:center;">
-                                    <td
-                                        style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">
-                                        {{ date('d/m/Y', strtotime($v->date)) }}</td>
+                                    <td style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;"></td>
+                                    <td></td>
+                                    <td>{{ date('d/m/Y', strtotime($v->date)) }}</td>
                                     <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">
                                         {{ $v->time }}
                                     </td>
