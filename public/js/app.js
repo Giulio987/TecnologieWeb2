@@ -50699,7 +50699,7 @@ $('document').ready(function() {
 
 // Alert conferma eliminazione
 $('document').ready(function() {
-    $('#confirmDelete').on("click", function() {
+    $('.confirmDelete').on("click", function() {
         if (confirm("Vuoi davvero eliminare?") == true) {
             alert("Eliminazione avvenuta!");
             return true;

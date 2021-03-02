@@ -62,7 +62,7 @@
                         @if (strtotime($v->date . ' ' . $v->time) > strtotime(date('Y/m/d H:i')))
                             <!-- visite future -->
                             <tbody>
-                                <tr class="font-weight-bold text-uppercase" style="color:#626262;text-align:center;">
+                                <tr class="font-weight-bold text-uppercase" style="color:#626262;text-align:center;" >
                                     <td
                                         style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">
                                         {{ date('d/m/Y', strtotime($v->date)) }}</td>
@@ -70,7 +70,7 @@
                                         style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 0px 0px 0px;border-radius: 0px 0px 0px 0px;">
                                         {{ $v->time }}</td>
 
-                                    <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;"><a id="confirmDelete" href="{{ URL::action('VisitController@destroy', $v) }}" class="btn btn-outline-danger btn-sm">Elimina</a></td>
+                                    <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;"><a href="{{ URL::action('VisitController@destroy', $v) }}" class="btn btn-outline-danger btn-sm">Elimina</a></td>
                                 </tr>
                             </tbody>
                         @endif
@@ -606,8 +606,8 @@
                     @foreach ($visits as $v)
                         @if (strtotime($v->date . ' ' . $v->time) > strtotime(date('Y/m/d H:i')))
                             <!-- visite future -->
-                            <a id="confirmDelete" href="{{ URL::action('VisitController@destroy', $v->id) }}">
-                                <label class="btn label-visit btn-outline-primary font-weight-bold">
+                            <a href="{{ URL::action('VisitController@destroy', $v->id) }}">
+                                <label class="btn confirmDelete label-visit btn-outline-primary font-weight-bold">
                                     <p>{{ date('d/m/Y', strtotime($v->date)) }}</p>
                                     <p>{{ date('H:i', strtotime($v->time)) }}</p>
                                 </label>
