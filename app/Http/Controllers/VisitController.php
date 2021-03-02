@@ -21,7 +21,9 @@ class VisitController extends Controller
     {
         if( Auth::user()->role == '1'){ // Admin
 			$visits = Visit::all()->sortBy('date');// ordina dalla più vicina
-            return view('visit.index', compact('visits'));
+            $doctors = Doctor::where('id', $visit->id_doctor)->get();
+            $patients = Patient::where('id', $visit->id_patient)->get();
+            return view('visit.index', compact('visits', 'doctors', 'patients'));
         }else if( Auth::user()->role == '2'){ // Dottore
             $id = Auth::user()->id;
             $name = Auth::user()->name;

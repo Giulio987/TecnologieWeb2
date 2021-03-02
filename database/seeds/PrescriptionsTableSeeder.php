@@ -18,7 +18,7 @@ class PrescriptionsTableSeeder extends Seeder
             'description'   => 'oki',
             'status'        => 'convalidata',
             'type'          => 'farmaco',
-            'date'          => date('Y-m-d'),
+            'date'          => '2021/01/28',
             'updated_at'    => date('Y-m-d h:s:i'),
             'created_at'    => date('Y-m-d h:s:i')
         ],[
@@ -28,7 +28,7 @@ class PrescriptionsTableSeeder extends Seeder
             'description'   => 'cardioaspirin',
             'status'        => 'convalidare',
             'type'          => 'farmaco',
-            'date'          => date('Y-m-d'),
+            'date'          => '2021/02/28',
             'updated_at'    => date('Y-m-d h:s:i'),
             'created_at'    => date('Y-m-d h:s:i')
         ],[
@@ -38,7 +38,7 @@ class PrescriptionsTableSeeder extends Seeder
             'description'   => 'enterogermina',
             'status'        => 'convalidare',
             'type'          => 'farmaco',
-            'date'          => date('Y-m-d'),
+            'date'          => '2021/03/02',
             'updated_at'    => date('Y-m-d h:s:i'),
             'created_at'    => date('Y-m-d h:s:i')
         ],[
@@ -48,7 +48,7 @@ class PrescriptionsTableSeeder extends Seeder
             'description'   => 'angiologica',
             'status'        => 'convalidare',
             'type'          => 'visita',
-            'date'          => date('Y-m-d'),
+            'date'          => '2021/03/01',
             'updated_at'    => date('Y-m-d h:s:i'),
             'created_at'    => date('Y-m-d h:s:i')
         ],[
@@ -58,7 +58,7 @@ class PrescriptionsTableSeeder extends Seeder
             'description'   => 'cardiochirurgica',
             'status'        => 'convalidata',
             'type'          => 'visita',
-            'date'          => date('Y-m-d'),
+            'date'          => '2020/09/30',
             'updated_at'    => date('Y-m-d h:s:i'),
             'created_at'    => date('Y-m-d h:s:i')
         ],[
@@ -68,7 +68,7 @@ class PrescriptionsTableSeeder extends Seeder
             'description'   => 'chirurgica oncologica',
             'status'        => 'invalidata',
             'type'          => 'visita',
-            'date'          => date('Y-m-d'),
+            'date'          => '2021/01/14',
             'updated_at'    => date('Y-m-d h:s:i'),
             'created_at'    => date('Y-m-d h:s:i')
         ]]);
