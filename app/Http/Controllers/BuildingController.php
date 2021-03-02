@@ -71,9 +71,8 @@ class BuildingController extends Controller
      * @param  \App\Building  $building
      * @return \Illuminate\Http\Response
      */
-    public function edit(Building $buildingId)
+    public function edit(Building $building)
     {
-        $building = Profile::find($buildingId);
         return view('building.edit', compact('building'));
     }
 

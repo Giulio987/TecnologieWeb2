@@ -72,11 +72,15 @@
         <div class="col-lg-5">
         <div class="row row-space justify-content-center">
         <div class="form-group">
-        <select id="gender" class="form-control @error('gender') is-invalid @enderror" name="gender" required autocomplete="gender" maxlength="1" autofocus>
-                                <option value="" disabled selected>Seleziona la tua opzione...</option>
-                                <option value="m">M</option>
-                                <option value="f">F</option>
-                                </select>            <small class="form-text text-muted">Modifica il sesso del dottore</small>
+            <select id="gender" class="form-control @error('gender') is-invalid @enderror" name="gender" required autocomplete="gender" maxlength="1" autofocus>
+                <option value="{{ $doctor->gender }}" selected>{{ $doctor->gender }}</option>
+                    @if($doctor->gender == 'F')
+                        <option value="M">M</option>
+                    @else
+                        <option value="F">F</option>
+                    @endif
+            </select>
+            <small class="form-text text-muted">Modifica il sesso del dottore</small>
             @error('gender')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror

@@ -35,5 +35,6 @@ Route::get('/prescription/{prescription}/delete', 'PrescriptionController@destro
 Route::resource('visit', 'VisitController')->except(['destroy', 'show', 'edit', 'update'])->middleware('auth');
 Route::get('/visit/{visit}/delete', 'VisitController@destroy')->middleware('auth');
 //Building
-Route::resource('building', 'BuildingController')->except(['show', 'create', 'edit'])->middleware('auth');
-Route::put('/building/edit/{building}', 'BuildingController@edit')->middleware('auth');
+Route::resource('building', 'BuildingController')->except(['show', 'create'])->middleware('auth');
+
+                            
