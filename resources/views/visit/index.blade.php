@@ -65,8 +65,12 @@
                             <!-- visite future -->
                             <tbody>
                                 <tr class="font-weight-bold text-uppercase" style="color:#626262;text-align:center;" >
-                                    <td style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">{{ $doctors->fiscal_code }}</td>
-                                    <td>{{ $patients->fiscal_code }}</td>
+                                <?php
+                                    $doctor = DB::table('doctors')->where('id', $v->id_doctor)->first();
+                                    $patient = DB::table('patients')->where('id', $v->id_patient)->first();
+                                ?>
+                                    <td style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">{{ $doctor->fiscal_code }}</td>
+                                    <td>{{ $patient->fiscal_code }}</td>
                                     <td>{{ date('d/m/Y', strtotime($v->date)) }}</td>
                                     <td
                                         style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 0px 0px 0px;border-radius: 0px 0px 0px 0px;">
@@ -97,9 +101,13 @@
                         @if (strtotime($v->date . ' ' . $v->time) <= strtotime(date('Y/m/d H:i')))
                             <!-- visite passate -->
                             <tbody>
+                            <?php
+                                $doctor = DB::table('doctors')->where('id', $v->id_doctor)->first();
+                                $patient = DB::table('patients')->where('id', $v->id_patient)->first();
+                            ?>
                                 <tr class="font-weight-bold text-uppercase" style="color:#626262;text-align:center;">
-                                    <td style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">{{ $doctors->fiscal_code }}</td>
-                                    <td>{{ $patients->fiscal_code }}</td>
+                                    <td style="-moz-border-radius: 20px 0px 0px 20px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 20px 0px 0px 20px;">{{ $doctor->fiscal_code }}</td>
+                                    <td>{{ $patient->fiscal_code }}</td>
                                     <td>{{ date('d/m/Y', strtotime($v->date)) }}</td>
                                     <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 0px 20px 20px 0px;border-radius: 0px 20px 20px 0px;">
                                         {{ $v->time }}
