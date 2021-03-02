@@ -43,8 +43,7 @@ function giornoData($d, $m, $a)
         {{ csrf_field() }}
         <div class=" row row-space justify-content-center">
             <h5>
-                Seleziona data, ora e prenota la visita dal tuo medico di base.
-                
+                Seleziona la data e prenota l'orario per la visita dal tuo medico di base.   
             </h5>
         </div>
         <div class=" row row-space justify-content-center">
