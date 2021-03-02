@@ -185,7 +185,7 @@
     <div class="row row-space justify-content-center border-form align-items-center">
 
 
-    <div class="col-lg-4">
+    <div class="col-lg-6">
         <div class="row row-space justify-content-center">
                 <p class="text-uppercase font-weight-bold">Codice Fiscale</p>
         </div>
@@ -239,7 +239,7 @@
     </div>
 
             
-    <div class="col-lg-4">
+    <div class="col-lg-6">
         <div class="row row-space justify-content-center">
             <p class="text-uppercase">{{ $patient->fiscal_code }}</p>
         </div>
