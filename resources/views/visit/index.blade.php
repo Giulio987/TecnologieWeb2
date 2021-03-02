@@ -580,7 +580,7 @@
                     Seleziona e visualizza le tue visite passate o future con il tuo medico di base.
                 </h4>
             </div>
-            <div class=" row row-space justify-content-center">
+            <div class="row row-space justify-content-center">
                 <h5>
                     Tra le Visite Future puoi selezionare la visita ed eliminarla.
                 </h5>

@@ -50710,6 +50710,32 @@ $('document').ready(function() {
     });
 });
 
+// Alert conferma Invalidazione
+$('document').ready(function() {
+    $('.confirmInvalidate').on("click", function() {
+        if (confirm("Vuoi davvero invalidare la prescrizione?") == true) {
+            alert("Invalidazione avvenuta!");
+            return true;
+        } else {
+            alert("Hai annullato");
+            return false;
+        }
+    });
+});
+
+// Alert conferma Validazione
+$('document').ready(function() {
+    $('.confirmValidate').on("click", function() {
+        if (confirm("Vuoi davvero convalidare la prescrizione?") == true) {
+            alert("Convalidazione avvenuta!");
+            return true;
+        } else {
+            alert("Hai annullato");
+            return false;
+        }
+    });
+});
+
 // Alert conferma modifica
 $('document').ready(function() {
     $('#confirmChange').on("click", function() {

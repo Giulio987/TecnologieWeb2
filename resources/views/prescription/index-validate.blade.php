@@ -75,8 +75,8 @@
                             <input type="hidden" name="date" value="{{ $p->date }}">
                             <input type="hidden" name="type" value="{{ $p->type }}">
 
-                            <button id="confirmChange" class="btn btn-outline-success" type="submit" name="status" value="convalidata">Convalida</button>
-                            <button id="confirmChange" class="btn btn-outline-danger" type="submit" name="status" value="invalidata">Invalida</button>
+                            <button class="btn btn-outline-success confirmValidate" type="submit" name="status" value="convalidata">Convalida</button>
+                            <button class="btn btn-outline-danger confirmInvalidate" type="submit" name="status" value="invalidata">Invalida</button>
 
                         </form>
                         </td>
