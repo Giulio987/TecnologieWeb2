@@ -78,7 +78,6 @@
                                     <td>{{ $p->patient->gender }}</td>
                                     <td>{{ $p->status }}</td>
                                     <td>{{ $p->type }}</td>
-                                    @if ($p->status == 'convalidata')
                                     @if(!strcmp(Auth::user()->role, '1'))
                                         <td>
                                             <button type="button" class="btn btn-outline-primary" data-toggle="modal"
@@ -94,7 +93,6 @@
                                                 data-whatever2="{{ $p->status }}"
                                                 data-whatever3="{{ date('d/m/Y', strtotime($p->date)) }}">Visualizza descrizione</button>
                                         </td>
-                                        @endif
                                     @endif
                                 </tr>
                             @endforeach
