@@ -83,7 +83,7 @@ class RegisterController extends Controller
             'phone_number.numeric'    => 'Deve essere composto solo da numeri',
             'gender.required'         => 'Inserimento obbligatorio', // custom message
             'gender.string'           => 'Deve essere composto da caratteri',
-            'gender.max'              => 'Impossibile inserire più di un carattere', // custom message
+            'gender.max'              => 'Deve essere selezionata un\'opzione', // custom message
             'fiscal_code.required'    => 'Inserimento obbligatorio',
             'fiscal_code.min'         => 'Inserire minimo 16 caratteri',
             'fiscal_code.max'         => 'Impossibile inserire più di 16 caratteri',

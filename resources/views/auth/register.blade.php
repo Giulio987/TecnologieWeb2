@@ -85,7 +85,11 @@
                             <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Sesso') }}</label>
 
                             <div class="col-md-6">
-                                <input id="gender" type="text" class="form-control @error('gender') is-invalid @enderror" name="gender" value="{{ old('gender') }}" required autocomplete="gender" maxlength="1" autofocus>
+                                <select id="gender" class="form-control @error('gender') is-invalid @enderror" name="gender" required autocomplete="gender" maxlength="1" autofocus>
+                                <option value="" disabled selected>Seleziona la tua opzione...</option>
+                                <option value="m">M</option>
+                                <option value="f">F</option>
+                                </select>
 
                                 @error('gender')
                                 <span class="invalid-feedback" role="alert">

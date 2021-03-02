@@ -20,8 +20,8 @@ class CreateVisitsTable extends Migration
             $table->date('date');
             $table->timeTz('time');
             $table->timestamps();
-
             $table->unique(['date','time']);
+            
             $table->foreign('id_patient')->references('id')->on('patients')->onDelete('cascade');
             $table->foreign('id_doctor')->references('id')->on('doctors')->onDelete('cascade');
         });

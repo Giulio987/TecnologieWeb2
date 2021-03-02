@@ -23,7 +23,6 @@ class CreateBuildingsTable extends Migration
 
             $table->unique(['street_address','street_number','postal_code','city']);
 
-            
         });
     }
 
