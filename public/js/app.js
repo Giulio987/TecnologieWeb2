@@ -50394,11 +50394,7 @@ $('document').ready(function() {
 // Visualizzazione orari prima data
 $('document').ready(function() {
     $("#Show1").on("click", function() {
-        $("#content1").show("slow", function() {
-            $("#contentBtn").show("slow", function() {
-                // Animation complete.
-            });
-        });
+        $("#content1").show("slow", function() {});
         document.getElementById('content2').style.display = 'none';
         document.getElementById('content3').style.display = 'none';
         document.getElementById('content4').style.display = 'none';
@@ -50411,11 +50407,7 @@ $('document').ready(function() {
 $('document').ready(function() {
     $("#Show2").on("click", function() {
         document.getElementById('content1').style.display = 'none';
-        $("#content2").show("slow", function() {
-            $("#contentBtn").show("slow", function() {
-                // Animation complete.
-            });
-        });
+        $("#content2").show("slow", function() {});
         document.getElementById('content3').style.display = 'none';
         document.getElementById('content4').style.display = 'none';
         document.getElementById('content5').style.display = 'none';
@@ -50428,11 +50420,7 @@ $('document').ready(function() {
     $("#Show3").on("click", function() {
         document.getElementById('content1').style.display = 'none';
         document.getElementById('content2').style.display = 'none';
-        $("#content3").show("slow", function() {
-            $("#contentBtn").show("slow", function() {
-                // Animation complete.
-            });
-        });
+        $("#content3").show("slow", function() {});
         document.getElementById('content4').style.display = 'none';
         document.getElementById('content5').style.display = 'none';
         document.getElementById('content6').style.display = 'none';
@@ -50445,11 +50433,7 @@ $('document').ready(function() {
         document.getElementById('content1').style.display = 'none';
         document.getElementById('content2').style.display = 'none';
         document.getElementById('content3').style.display = 'none';
-        $("#content4").show("slow", function() {
-            $("#contentBtn").show("slow", function() {
-                // Animation complete.
-            });
-        });
+        $("#content4").show("slow", function() {});
         document.getElementById('content5').style.display = 'none';
         document.getElementById('content6').style.display = 'none';
     });
@@ -50462,11 +50446,7 @@ $('document').ready(function() {
         document.getElementById('content2').style.display = 'none';
         document.getElementById('content3').style.display = 'none';
         document.getElementById('content4').style.display = 'none';
-        $("#content5").show("slow", function() {
-            $("#contentBtn").show("slow", function() {
-                // Animation complete.
-            });
-        });
+        $("#content5").show("slow", function() {});
         document.getElementById('content6').style.display = 'none';
     });
 });
@@ -50479,11 +50459,7 @@ $('document').ready(function() {
         document.getElementById('content3').style.display = 'none';
         document.getElementById('content4').style.display = 'none';
         document.getElementById('content5').style.display = 'none';
-        $("#content6").show("slow", function() {
-            $("#contentBtn").show("slow", function() {
-                // Animation complete.
-            });
-        });
+        $("#content6").show("slow", function() {});
     });
 });
 
@@ -50740,6 +50716,25 @@ $('document').ready(function() {
 $('document').ready(function() {
     $('.confirmChange').on("click", function() {
         if (confirm("Vuoi davvero modificare?") == true) {
+            return true;
+        } else {
+            alert("Hai annullato");
+            return false;
+        }
+    });
+});
+
+$('document').ready(function() {
+    $('.ShowBtn').on("click", function() {
+        $(".BtnPrenota").show("slow", function() {
+            // Animation complete.
+        });
+    });
+});
+
+$('document').ready(function() {
+    $('.confirmPrenota').on("click", function() {
+        if (confirm("Vuoi davvero prenotare?") == true) {
             return true;
         } else {
             alert("Hai annullato");

@@ -47,6 +47,9 @@ function giornoData($d, $m, $a)
                 
             </h5>
         </div>
+        <div class=" row row-space justify-content-center">
+        
+        </div>
         @if ($errors->any())
         @foreach ($errors->all() as $error)
         <div class="row justify-content-center col-lg-4" style="margin:0.5em;">
@@ -147,9 +150,9 @@ function giornoData($d, $m, $a)
                     @for($i = 0; $i < count($time); $i++)
                         @if (DB::table('visits')->where('date', $date1)->where('time',$time[$i])->doesntExist() && strtotime($time[$i]) > strtotime(date('H:i')))
                             <?php $oraDisponibile++; ?>
-                                <label class="btn btn-orario btn-outline-primary font-weight-bold">{{ $time[$i] }}
+                                <button type="submit" class="confirmPrenota btn btn-orario btn-outline-primary font-weight-bold">{{ $time[$i] }}
                                     <input type="radio" name="time" id="{{ $time[$i] }}" value="{{ $time[$i] }}">
-                                </label>
+                                </button>
                         @endif
                     @endfor
                 </div> 
@@ -174,9 +177,9 @@ function giornoData($d, $m, $a)
                     @for($i = 0; $i < count($timeSabato); $i++) 
                         @if (DB::table('visits')->where('date', $date1)->where('time',$timeSabato[$i])->doesntExist() && strtotime($timeSabato[$i]) > strtotime(date('H:i')))
                             <?php $oraDisponibile++; ?>
-                                <label class="btn btn-orario btn-outline-primary font-weight-bold">{{ $timeSabato[$i] }}
+                                <button type="submit" class="confirmPrenota btn btn-orario btn-outline-primary font-weight-bold">{{ $timeSabato[$i] }}
                                     <input type="radio" name="time" id="{{ $timeSabato[$i] }}" value="{{ $timeSabato[$i] }}">
-                                </label>
+                                </button>
                         @endif
                     @endfor
                 </div>
@@ -210,9 +213,9 @@ function giornoData($d, $m, $a)
                 <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
                     @for($i = 0; $i < count($time); $i++)
                         @if (DB::table('visits')->where('date', $date2)->where('time',$time[$i])->doesntExist())
-                                <label class="btn btn-orario btn-outline-primary font-weight-bold">{{ $time[$i] }}
+                                <button type="submit" class="confirmPrenota btn btn-orario btn-outline-primary font-weight-bold">{{ $time[$i] }}
                                     <input type="radio" name="time" id="{{ $time[$i] }}" value="{{ $time[$i] }}">
-                                </label>
+                                </button>
                         @endif
                     @endfor
                 </div> 
@@ -228,9 +231,9 @@ function giornoData($d, $m, $a)
                 <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
                     @for($i = 0; $i < count($timeSabato); $i++) 
                         @if (DB::table('visits')->where('date', $date2)->where('time',$timeSabato[$i])->doesntExist())
-                                <label class="btn btn-orario btn-outline-primary font-weight-bold">{{ $timeSabato[$i] }}
+                                <button type="submit" class="confirmPrenota btn btn-orario btn-outline-primary font-weight-bold">{{ $timeSabato[$i] }}
                                     <input type="radio" name="time" id="{{ $timeSabato[$i] }}" value="{{ $timeSabato[$i] }}">
-                                </label>
+                                </button>
                         @endif
                     @endfor
                 </div>
@@ -256,9 +259,9 @@ function giornoData($d, $m, $a)
                 <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
                     @for($i = 0; $i < count($time); $i++)
                         @if (DB::table('visits')->where('date', $date3)->where('time',$time[$i])->doesntExist())
-                                <label class="btn btn-orario btn-outline-primary font-weight-bold">{{ $time[$i] }}
+                                <button type="submit" class="confirmPrenota btn btn-orario btn-outline-primary font-weight-bold">{{ $time[$i] }}
                                     <input type="radio" name="time" id="{{ $time[$i] }}" value="{{ $time[$i] }}">
-                                </label>
+                                </button>
                         @endif
                     @endfor
                 </div> 
@@ -274,9 +277,9 @@ function giornoData($d, $m, $a)
                 <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
                     @for($i = 0; $i < count($timeSabato); $i++) 
                         @if (DB::table('visits')->where('date', $date3)->where('time',$timeSabato[$i])->doesntExist())
-                                <label class="btn btn-orario btn-outline-primary font-weight-bold">{{ $timeSabato[$i] }}
+                                <button type="submit" class="confirmPrenota btn btn-orario btn-outline-primary font-weight-bold">{{ $timeSabato[$i] }}
                                     <input type="radio" name="time" id="{{ $timeSabato[$i] }}" value="{{ $timeSabato[$i] }}">
-                                </label>
+                                </button>
                         @endif
                     @endfor
                 </div>
@@ -302,9 +305,9 @@ function giornoData($d, $m, $a)
                 <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
                     @for($i = 0; $i < count($time); $i++)
                         @if (DB::table('visits')->where('date', $date4)->where('time',$time[$i])->doesntExist())
-                                <label class="btn btn-orario btn-outline-primary font-weight-bold">{{ $time[$i] }}
+                                <button type="submit" class="btn btn-orario btn-outline-primary font-weight-bold">{{ $time[$i] }}
                                     <input type="radio" name="time" id="{{ $time[$i] }}" value="{{ $time[$i] }}">
-                                </label>
+                                </button>
                         @endif
                     @endfor
                 </div> 
@@ -320,9 +323,9 @@ function giornoData($d, $m, $a)
                 <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
                     @for($i = 0; $i < count($timeSabato); $i++) 
                         @if (DB::table('visits')->where('date', $date4)->where('time',$timeSabato[$i])->doesntExist())
-                                <label class="btn btn-orario btn-outline-primary font-weight-bold">{{ $timeSabato[$i] }}
+                                <button type="submit" class="confirmPrenota btn btn-orario btn-outline-primary font-weight-bold">{{ $timeSabato[$i] }}
                                     <input type="radio" name="time" id="{{ $timeSabato[$i] }}" value="{{ $timeSabato[$i] }}">
-                                </label>
+                                </button>
                         @endif
                     @endfor
                 </div>
@@ -348,9 +351,9 @@ function giornoData($d, $m, $a)
                 <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
                     @for($i = 0; $i < count($time); $i++)
                         @if (DB::table('visits')->where('date', $date5)->where('time',$time[$i])->doesntExist())
-                                <label class="btn btn-orario btn-outline-primary font-weight-bold">{{ $time[$i] }}
+                                <button type="submit" class="confirmPrenota btn btn-orario btn-outline-primary font-weight-bold">{{ $time[$i] }}
                                     <input type="radio" name="time" id="{{ $time[$i] }}" value="{{ $time[$i] }}">
-                                </label>
+                                </button>
                         @endif
                     @endfor
                 </div> 
@@ -366,9 +369,9 @@ function giornoData($d, $m, $a)
                 <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
                     @for($i = 0; $i < count($timeSabato); $i++) 
                         @if (DB::table('visits')->where('date', $date5)->where('time',$timeSabato[$i])->doesntExist())
-                                <label class="btn btn-orario btn-outline-primary font-weight-bold">{{ $timeSabato[$i] }}
+                                <button type="submit" class="confirmPrenota btn btn-orario btn-outline-primary font-weight-bold">{{ $timeSabato[$i] }}
                                     <input type="radio" name="time" id="{{ $timeSabato[$i] }}" value="{{ $timeSabato[$i] }}">
-                                </label>
+                                </button>
                         @endif
                     @endfor
                 </div>
@@ -378,6 +381,9 @@ function giornoData($d, $m, $a)
                             <h5>Non ci sono orari disponibili per oggi.</h5>
                         </div>
                     </div>
+                @else
+                {{ count(DB::table('visits')->where('date', $date5)->get()) }}
+                {{ count($timeSabato) }}
                 @endif
             @endif
             @if ($gContent5 == 'Domenica')
@@ -394,9 +400,9 @@ function giornoData($d, $m, $a)
                 <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
                     @for($i = 0; $i < count($time); $i++)
                         @if (DB::table('visits')->where('date', $date6)->where('time',$time[$i])->doesntExist())
-                                <label class="btn btn-orario btn-outline-primary font-weight-bold">{{ $time[$i] }}
+                                <button type="submit" class="confirmPrenota btn btn-orario btn-outline-primary font-weight-bold">{{ $time[$i] }}
                                     <input type="radio" name="time" id="{{ $time[$i] }}" value="{{ $time[$i] }}">
-                                </label>
+                                </button>
                         @endif
                     @endfor
                 </div> 
@@ -412,9 +418,9 @@ function giornoData($d, $m, $a)
                 <div class="btn-group-toggle w-100 h-100" data-toggle="buttons">
                     @for($i = 0; $i < count($timeSabato); $i++) 
                         @if (DB::table('visits')->where('date', $date6)->where('time',$timeSabato[$i])->doesntExist())
-                                <label class="btn btn-orario btn-outline-primary font-weight-bold">{{ $timeSabato[$i] }}
+                                <button type="submit" class="confirmPrenota btn btn-orario btn-outline-primary font-weight-bold">{{ $timeSabato[$i] }}
                                     <input type="radio" name="time" id="{{ $timeSabato[$i] }}" value="{{ $timeSabato[$i] }}">
-                                </label>
+                                </button>
                         @endif
                     @endfor
                 </div>
@@ -434,12 +440,6 @@ function giornoData($d, $m, $a)
                 </div>            
             @endif
         </div>
-        <button id="contentBtn" type="submit" name="submit" class="btn btn-outline-success col-lg-2" style="display:none">Prenota
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-circle pl-2" viewBox="0 0 16 16">
-                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                </svg>
-        </button>
 
 <input id="id_doctor" name="id_doctor" type="hidden" value="{{ $patient->id_doctor }}">
 <input id="id_patient" name="id_patient" type="hidden" value="{{ $patient->id }}">
