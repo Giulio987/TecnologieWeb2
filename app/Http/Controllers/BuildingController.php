@@ -6,6 +6,7 @@ use App\Building;
 use Illuminate\Http\Request;
 use Auth;
 use Log;
+use DB;
 use Illuminate\Support\Facades\Validator;
 class BuildingController extends Controller
 {
@@ -22,17 +23,6 @@ class BuildingController extends Controller
         }else{
             return redirect('/home');
         }
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        $buildings = Building::all();
-        return view('building.create', compact('buildings'));
     }
 
     protected function validator(array $data)
@@ -63,7 +53,7 @@ class BuildingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request) // create ajax
     {
         $input = $request->all();
         $building = new Building();
@@ -81,8 +71,9 @@ class BuildingController extends Controller
      * @param  \App\Building  $building
      * @return \Illuminate\Http\Response
      */
-    public function edit(Building $building)
+    public function edit(Building $buildingId)
     {
+        $building = Profile::find($buildingId);
         return view('building.edit', compact('building'));
     }
 

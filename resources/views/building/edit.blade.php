@@ -14,69 +14,67 @@
 <div class="container-lg" align="center">
 <div class="row row-space justify-content-center">
         <h1 class="font-weight-bold">
-            MODIFICA LE INFORMAZIONI DELL'EDIFICIO
+            Modifica le informazioni dell'edificio
         </h1>
     </div>
 
+    
+    <div class="row row-space justify-content-center">
+        <h5>
+            Compila tutti i campi e aggiungi l'edificio.
+        </h5>
+    </div> 
     <form action="{{ URL::action('BuildingController@update', $building) }}" method="POST">
         <input type="hidden" name="_method" value="PATCH">
         {{ csrf_field() }}
-    <div class="row row-space justify-content-center">
-        <h5>
-            Compila tutti i campi e aggiungi l'edificio.<button id="confirmChange" type="submit" name="submit" class="btn btn-outline-success btn-prenota font-weight-bold col-lg-2">+</button>
-        </h5>
-    </div> 
-        <div class="row row-space justify-content-center border-form">
-
-<div class="col-lg-4">
-    <div class="row row-space justify-content-center">
-            <div class="form-group label-space">
+        <div class="row row-space justify-content-center align-items-center border-form py-5">
+        
+    <div class="col-lg-2">
             <input type="text" class="form-control @error('street_address') is-invalid @enderror" name="street_address" value="{{ $building->street_address }}">
                 <small class="form-text text-muted">Modifica il nome della via</small>
                 @error('street_address')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
-            </div>
     </div>
-    <div class="row row-space justify-content-center">
+    <div class="col-lg-2">
 
-            <div class="form-group label-space">
             <input type="text" class="form-control @error('street_number') is-invalid @enderror" name="street_number" value="{{ $building->street_number }}">
           <small class="form-text text-muted">Modifica il numero civico</small>
             @error('street_number')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
-            </div>
     </div>
-    <div class="row row-space justify-content-center">
+    <div class="col-lg-2">
 
-            <div class="form-group label-space">
             <input type="text" class="form-control @error('postal_code') is-invalid @enderror" name="postal_code" value="{{ $building->postal_code }}">
             <small class="form-text text-muted">Modifica il codice postale </small>
             @error('postal_code')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
-            </div>
     </div>
-    <div class="row row-space justify-content-center">
+    <div class="col-lg-2">
 
-            <div class="form-group label-space">
             <input type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ $building->city }}">
             <small class="form-text text-muted">Modifica la città</small>
             @error('city')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
-            </div>
     </div>
+
+        
+        <div class="col-lg-2">
+
+        <button type="submit" id="confirmChange" class="btn btn-outline-success" style="float:right">Aggiorna
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-circle pl-2" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+        </svg>
+        </button>
+        <small class="form-text text-muted" style="float:right">Clicca e modifica</small>
+
         </div>
-
-        
-        
-                </div>
-
-
-
-    </form>    
+        </div>
+    </form>   
 </div>
 
 @endsection

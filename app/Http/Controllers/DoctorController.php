@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
 use App\Doctor;
@@ -36,7 +37,7 @@ class DoctorController extends Controller
     public function create()
     {
         if ( Auth::user()->role == '1') {
-            $buildings = Building::all();
+            $buildings = Building::all();   // select2
             return view('doctor.create', compact('buildings'));
         }
         else{
@@ -88,7 +89,7 @@ class DoctorController extends Controller
         return Validator::make($data, [
             'name' 		         => ['required', 'string'],
             'surname'            => ['required', 'string'],
-            'dob'                => ['required', 'date'],
+            'dob'                => ['required', 'date'],   // regola per il discorso unique nel db
             'phone_number'       => ['required', 'numeric', Rule::unique('doctors')->ignore($doctor->id)],
             'gender'             => ['required', 'string'],
             'fiscal_code'        => ['required', Rule::unique('doctors')->ignore($doctor->id),],
@@ -130,7 +131,7 @@ class DoctorController extends Controller
             'password'      => Hash::make($request->password),
             'role'          => '2',
         ]);  
-        //recuperiamo l'id_user
+        //recuperiamo l'id_user dell'utente appena inserito
         $id_user = $user->id;
         Doctor::create([
             'fiscal_code'   => $request->fiscal_code,
@@ -162,7 +163,7 @@ class DoctorController extends Controller
      */
     public function edit(Doctor $doctor)
     {
-        $user = User::where('id', $doctor->id_user)->select('name', 'surname', 'email')->first();
+        $user = User::where('id', $doctor->id_user)->first();
         $buildings = Building::all();
         return view('doctor.edit', compact('doctor', 'user', 'buildings'));
     }

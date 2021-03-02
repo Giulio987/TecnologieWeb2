@@ -69,7 +69,7 @@
                             <th scope="col-lg">Numero Civico</th>
                             <th scope="col-lg">CAP</th>
                             <th scope="col-lg">Città</th>
-                            <th scope="col-lg" style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 0px 20px 20px 0px;">Elimina</th>
+                            <th scope="col-lg" colspan="2" style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 0px 20px 20px 0px;">Azioni</th>
                         </tr>
                     </thead>
                     <tbody id="myTable">
@@ -80,6 +80,7 @@
                                 <td>{{ $b->street_number }}</td>
                                 <td>{{ $b->postal_code }}</td>
                                 <td>{{ $b->city }}</td>
+                                <td><a data-href="{{ URL::action('BuildingController@edit', $b) }}" data-id="{{$b->id}}" class="btn btn-outline-secondary btn-sm cng-btn">Modifica</a></td>
                                 <td style="-moz-border-radius: 0px 20px 20px 0px;-webkit-border-radius: 20px 0px 0px 20px;border-radius: 0px 20px 20px 0px;"><a href="" class="btn btn-outline-danger btn-sm delete-btn" data-id="{{ $b->id }}">Elimina</a></td>
                             </tr> 
                         @endforeach
@@ -89,7 +90,7 @@
         </div>
     </div>
 
-<script type="text/javascript">
+<script type="text/javascript"> // inserimento ajax
     $('document').ready(function() {
         $('#add-building-btn').bind('click', function(e) {
             e.preventDefault();
@@ -137,10 +138,16 @@
                                 class: "btn btn-outline-danger btn-sm delete-btn",
                                 "id": data.building.id
                             });
-                            var newColAction = $('<td/>').append(delAction);
+                            var updateAction = $('<a/>', {
+                                href:  '#',
+                                text: 'Modifica',
+                                class: "btn btn-outline-secondary btn-sm cng-btn",
+                                "id": data.building.id
+                            });
+                            var newColAction = $('<td/>').append(updateAction).append(delAction);
                             var newRow = $('<tr/>').append(newColId).append(
                                 newColStreetName).append(newColStreetNum).append(
-                                newColCity).append(newColCap).append(newColAction).addClass("font-weight-bold text-uppercase");;
+                                newColCap).append(newColCity).append(newColAction).addClass("font-weight-bold text-uppercase");;
                             $('#buildings-table').append(newRow);
                         }
                     },
@@ -151,7 +158,24 @@
                 });
             }
         });
-        $('.delete-btn').bind('click', function(e) {
+        $('.cng-btn').bind('click', function(e) { // eliminazione ajax
+            e.preventDefault();
+            var buildingId = $(this).attr('data-id'); 
+            $.ajax({
+                type: "PUT",
+                url: "/building/edit/" + buildingId,
+                dataType: $('#').serialize(),
+                success: function (response) {
+                    console.log(response);
+                    alert("Data Updated");
+                    location.reload();
+                },
+                error:function(error){
+                    console.log(error);
+                }
+            });
+        });
+        $('.delete-btn').bind('click', function(e) { // eliminazione ajax
             e.preventDefault();
             if (confirm("Vuoi davvero eliminare?") == true) {
                 alert("Eliminazione avvenuta!");

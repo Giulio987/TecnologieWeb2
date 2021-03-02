@@ -19,20 +19,21 @@ Route::get('/', function () {
 Auth::routes();
 
 
-Route::get('home', 'HomeController@index')->middleware('role');
-Route::get('/personal-area', 'HomeController@indexPersonalArea')->middleware('role');
+Route::get('home', 'HomeController@index'); // middleware auth si trova nel costruttore
+Route::get('/personal-area', 'HomeController@indexPersonalArea'); // middleware auth si trova nel costruttore
 //Doctor
-Route::resource('doctor', 'DoctorController')->except(['destroy', 'show'])->middleware('role');
-Route::get('/doctor/{doctor}/delete', 'DoctorController@destroy')->middleware('role');
+Route::resource('doctor', 'DoctorController')->except(['destroy', 'show'])->middleware('auth');
+Route::get('/doctor/{doctor}/delete', 'DoctorController@destroy')->middleware('auth');
 //Patient
-Route::resource('patient', 'PatientController')->except(['destroy', 'show'])->middleware('role');
-Route::get('/patient/{patient}/delete', 'PatientController@destroy')->middleware('role');
+Route::resource('patient', 'PatientController')->except(['destroy', 'show'])->middleware('auth');
+Route::get('/patient/{patient}/delete', 'PatientController@destroy')->middleware('auth');
 //Prescription
-Route::resource('prescription', 'PrescriptionController')->except(['destroy', 'show', 'edit'])->middleware('role');
-Route::get('/prescription-validate', 'PrescriptionController@indexValidate')->middleware('role');
-Route::get('/prescription/{prescription}/delete', 'PrescriptionController@destroy')->middleware('role');
+Route::resource('prescription', 'PrescriptionController')->except(['destroy', 'show', 'edit'])->middleware('auth');
+Route::get('/prescription-validate', 'PrescriptionController@indexValidate')->middleware('auth');
+Route::get('/prescription/{prescription}/delete', 'PrescriptionController@destroy')->middleware('auth');
 //Visit
-Route::resource('visit', 'VisitController')->except(['destroy', 'show', 'edit', 'update'])->middleware('role');
-Route::get('/visit/{visit}/delete', 'VisitController@destroy')->middleware('role');
+Route::resource('visit', 'VisitController')->except(['destroy', 'show', 'edit', 'update'])->middleware('auth');
+Route::get('/visit/{visit}/delete', 'VisitController@destroy')->middleware('auth');
 //Building
-Route::resource('building', 'BuildingController')->except(['show'])->middleware('role');
+Route::resource('building', 'BuildingController')->except(['show', 'create', 'edit'])->middleware('auth');
+Route::put('/building/edit/{building}', 'BuildingController@edit')->middleware('auth');
