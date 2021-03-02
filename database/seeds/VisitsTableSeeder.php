@@ -48,14 +48,14 @@ class VisitsTableSeeder extends Seeder
             'created_at'  => date('Y-m-d h:s:i')
         ], [
             'date'             => '2021\03\06',
-            'time'             => '15:30',
+            'time'             => '10:30',
             'id_doctor'        => '1',
             'id_patient'       => '5',
             'updated_at'  => date('Y-m-d h:s:i'),
             'created_at'  => date('Y-m-d h:s:i')
         ], [
             'date'             => '2021\03\06',
-            'time'             => '17:30',
+            'time'             => '9:00',
             'id_doctor'        => '1',
             'id_patient'       => '4',
             'updated_at'  => date('Y-m-d h:s:i'),
