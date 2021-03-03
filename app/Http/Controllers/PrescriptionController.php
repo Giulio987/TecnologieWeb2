@@ -87,7 +87,7 @@ class PrescriptionController extends Controller
             'id_patient.integer'      => 'L\'id del paziente deve essere un intero',
             'id_doctor.required'      => 'Inserimento obbligatorio',
             'id_doctor.integer'       => 'L\'id del dottore deve essere un intero',
-            'description.required'    => 'Inserisci una descrizione',
+            'description.required'    => 'Inserisci il nome del farmaco o visita specialistica',
             'status.required'         => 'Inserimento obbligatorio',
             'date.required'           => 'Inserimento obbligatorio',
             'date.date'               => 'La data deve essere di tipo data',
