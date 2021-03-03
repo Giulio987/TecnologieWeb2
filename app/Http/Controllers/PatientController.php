@@ -222,10 +222,17 @@ class PatientController extends Controller
     public function edit(Patient $patient)
     {
         if ( Auth::user()->role == '1') {
+            //recuperiamo tutti i dottori
             $doctors = Doctor::all();
-            $hisDoctor = Doctor::where('id', $patient->id_doctor)->first();
+            
+            //recuperiamo informazioni paziente dalla tabella users
             $user = User::where('id', $patient->id_user)->first();
-            return view('patient.edit', compact('patient', 'doctors', 'hisDoctor', 'user'));
+
+            //recuperiamo dati dottore
+            $hisDoctor = Doctor::where('id', $patient->id_doctor)->first();
+            $userHisDoctor = DB::table('users')->where('id', $hisDoctor->id_user)->first();
+
+            return view('patient.edit', compact('patient', 'doctors', 'userHisDoctor', 'user'));
         } else{
             return redirect('/home');
         }

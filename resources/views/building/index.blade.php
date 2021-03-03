@@ -101,10 +101,6 @@ $('document').ready(function() {
         var postal_code = $('#postal_code').val();
         var city = $('#city').val();
         var _token = $('#_token').val();
-        console.log(street_address);
-        console.log(street_number);
-        console.log(postal_code);
-        console.log(city);
         if (street_address.length > 0 ) {
             $.ajax({
                 url: "/building",
@@ -165,8 +161,6 @@ $('document').ready(function() {
         e.preventDefault();
         if (confirm("Vuoi davvero eliminare?") == true) {
             alert("Eliminazione avvenuta!");
-        
-            // Nota, qui $(this) è l'elemento <a> ovvero il bottone.
             var row = $(this).parents('tr');            // Ottengo  la riga della tabella cercando fa i parents del bottone l'elemento <tr>
             var buildingId = $(this).attr('data-id');     // Ottengo l'id dell'edificio andando a prelevare il valore dell'attributo "id"
             var _token = $('#_token').val();            // Ottengo il token del form perchè mi serve anche per l'azione che sto per compiere 
@@ -177,7 +171,7 @@ $('document').ready(function() {
                     data: { 'building': buildingId, '_token': _token }, // Passo l'id della categria e il token 
                     success: function(data) {                        
                         if (data.status === 'ok') {
-                            $(row).remove();            // Qui ho usato un semplice remove() ma potrei usare un fadeOut() o altro 
+                            $(row).remove();            
                         }
                     }, 
                     error: function(response, stato) {

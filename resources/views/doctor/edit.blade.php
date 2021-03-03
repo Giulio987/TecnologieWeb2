@@ -108,9 +108,6 @@
         <div class="row row-space justify-content-center">
         <div class="form-group ">
             <select id="selUser" name="id_building" for="id_building" class="@error('id_building') is-invalid @enderror selUser" style="width:100%">
-                <?php
-                    $building = DB::table('buildings')->where('id', $doctor->id_building)->first();
-                ?>
                 <option value="{{$doctor->id_building}}" selected="selected">{{ $building->id }} - {{ $building->street_address }}, {{ $building->street_number }} - {{ $building->city }}, {{ $building->postal_code }}</option>
                 @foreach($buildings as $b)
                 @if($b->id != $doctor->id_building)

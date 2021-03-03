@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Auth;
 use App\Building;
+use DB;
 use Illuminate\Validation\Rule;
 
 class DoctorController extends Controller
@@ -164,8 +165,11 @@ class DoctorController extends Controller
     public function edit(Doctor $doctor)
     {
         $user = User::where('id', $doctor->id_user)->first();
+        //tutti gli edifici
         $buildings = Building::all();
-        return view('doctor.edit', compact('doctor', 'user', 'buildings'));
+        //l'edificio del dottore
+        $building = DB::table('buildings')->where('id', $doctor->id_building)->first();
+        return view('doctor.edit', compact('doctor', 'user', 'buildings', 'building'));
     }
 
     /**

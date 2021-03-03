@@ -146,10 +146,7 @@
 
         <div class="form-group label-space">
             <select id="selUser" name="id_doctor" for="id_doctor" class="@error('id_doctor') is-invalid @enderror selUser" style="width:100%">
-                <?php
-                    $user = DB::table('users')->where('id', $hisDoctor->id_user)->first();
-                ?>
-                <option value="{{$patient->id_doctor}}" selected="selected">{{ $user->name }} - {{ $user->surname }}</option>
+                <option value="{{$patient->id_doctor}}" selected="selected">{{ $userHisDoctor->name }} - {{ $userHisDoctor->surname }}</option>
                 @foreach($doctors as $d)
                 <?php
                     $user = DB::table('users')->where('id', $d->id_user)->first();

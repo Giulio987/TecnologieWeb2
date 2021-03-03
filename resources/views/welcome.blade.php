@@ -73,7 +73,7 @@
 
                         <div class="icon-box">
                             <div class="icon"><i class="bx bx-fingerprint"></i></div>
-                            <h4 class="title"><a href="{{ route('register') }}">REGISTRAZIONE ESCLUSIVA PER DOTTORI</a></h4>
+                            <h4 class="title"><a href="{{ route('register') }}">REGISTRAZIONE</a></h4>
                             <p class="description">Registrati a MyDoctor per inziare subito a usufruire delle sue funzionalità. Se sei un paziente richiedi le tue credenziali al tuo medico curante.</p>
                         </div>
 
@@ -183,8 +183,8 @@
                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
                         <div class="icon-box">
                             <div class="icon"><i class="icofont-heartbeat"></i></div>
-                            <h4><a href="">Mai stato così semplice</a></h4>
-                            <p>Interfaccia intuitiva e veloce per tutte le esigenze.</p>
+                            <h4><a href="">Mai stato così semplice ed economico</a></h4>
+                            <p>Interfaccia intuitiva e veloce per tutte le esigenze. Paga una sola volta, usalo per sempre.</p>
                         </div>
                     </div>
 
