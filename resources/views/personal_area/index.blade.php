@@ -178,7 +178,7 @@
 <div class="container-lg" align="center">
     <div class="row row-space justify-content-center">
         <h1 class="font-weight-bold">
-            Ciao Dott. {{ $user->name }}, ti presento la tua area personale.
+            Ciao {{ $user->name }}, ti presento la tua area personale.
         </h1>
     </div>
     
