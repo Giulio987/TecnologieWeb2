@@ -15,6 +15,26 @@ class PrescriptionsTableSeeder extends Seeder
             'id_patient'    => '1',
             'rfe'           => '120000000000000',
             'id_doctor'     => '1',
+            'description'   => 'cardiochirurgica',
+            'status'        => 'convalidata',
+            'type'          => 'visita',
+            'date'          => '2020/09/30',
+            'updated_at'    => date('Y-m-d h:s:i'),
+            'created_at'    => date('Y-m-d h:s:i')
+        ],[
+            'id_patient'    => '1',
+            'rfe'           => '0',
+            'id_doctor'     => '1',
+            'description'   => 'chirurgica oncologica',
+            'status'        => 'invalidata',
+            'type'          => 'visita',
+            'date'          => '2021/01/14',
+            'updated_at'    => date('Y-m-d h:s:i'),
+            'created_at'    => date('Y-m-d h:s:i')
+        ],[
+            'id_patient'    => '1',
+            'rfe'           => '120000000000001',
+            'id_doctor'     => '1',
             'description'   => 'oki',
             'status'        => 'convalidata',
             'type'          => 'farmaco',
@@ -49,26 +69,6 @@ class PrescriptionsTableSeeder extends Seeder
             'status'        => 'convalidare',
             'type'          => 'visita',
             'date'          => '2021/03/01',
-            'updated_at'    => date('Y-m-d h:s:i'),
-            'created_at'    => date('Y-m-d h:s:i')
-        ],[
-            'id_patient'    => '1',
-            'rfe'           => '120000000000004',
-            'id_doctor'     => '1',
-            'description'   => 'cardiochirurgica',
-            'status'        => 'convalidata',
-            'type'          => 'visita',
-            'date'          => '2020/09/30',
-            'updated_at'    => date('Y-m-d h:s:i'),
-            'created_at'    => date('Y-m-d h:s:i')
-        ],[
-            'id_patient'    => '1',
-            'rfe'           => '0',
-            'id_doctor'     => '1',
-            'description'   => 'chirurgica oncologica',
-            'status'        => 'invalidata',
-            'type'          => 'visita',
-            'date'          => '2021/01/14',
             'updated_at'    => date('Y-m-d h:s:i'),
             'created_at'    => date('Y-m-d h:s:i')
         ]]);
