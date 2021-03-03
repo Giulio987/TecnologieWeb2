@@ -34,7 +34,7 @@ class PrescriptionController extends Controller
 			$id = Auth::user()->id;
             $name = Auth::user()->name;
 			$patient = DB::table('patients')->where('id_user', $id)->first();
-            $prescriptions = Prescription::where('id_patient', $patient->id)->get()->sortByDesc('date');
+            $prescriptions = Prescription::where('id_patient', $patient->id)->get()->sortByDesc('rfe')->sortByDesc('date');
             return view('prescription.index', compact('name', 'prescriptions'));
         }
     }
