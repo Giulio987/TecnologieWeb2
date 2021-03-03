@@ -106,10 +106,8 @@ class PrescriptionController extends Controller
         $this->validator($request->all())->validate();
         $rfe = 0;
         if(Auth::user()->role == '2'){
-            $rfedata = DB::table('prescriptions')->where('rfe','!=',0)->select('rfe')->get();
-            foreach ($rfedata as $prescription) {
-				$rfe = ($prescription->rfe + 1);
-			}
+            $rfe = DB::table('prescriptions')->max('rfe');
+            $rfe = $rfe + 1;
         }
         $prescription = Prescription::create([
             'rfe'            => $rfe,
@@ -147,20 +145,18 @@ class PrescriptionController extends Controller
         $this->validator($request->all())->validate();
         $input = $request->all();
         //recupara l'ultimo rfe inserito e lo incrementa di uno
-        $rfedata = DB::table('prescriptions')->where('rfe','!=',0)->select('rfe')->get();
-            foreach ($rfedata as $prescription) {
-				$rfe = ($prescription->rfe + 1);
-			}
+        $rfe = DB::table('prescriptions')->max('rfe');
+		$rfe = $rfe + 1;
 
         //recuperiamo l'id della ricetta
         $id = $input['id'];
         //se lo stato è convalidata allora assegna rfe, altrimenti cambia solo lo stato in negata
         if($input['status'] == 'convalidata')
         {
-            DB::table('prescriptions')->where('id', $id)->update(['rfe' => $prescription->rfe = $rfe, 'status' => $prescription->rfe = $input['status']]);
+            DB::table('prescriptions')->where('id', $id)->update(['rfe' => $rfe, 'status' => $input['status']]);
             $request->session()->flash('success', 'Ricetta convalidata con successo!');
         }else{
-            DB::table('prescriptions')->where('id', $id)->update(['status' => $prescription->rfe = $input['status']]);
+            DB::table('prescriptions')->where('id', $id)->update(['status' => $input['status']]);
             $request->session()->flash('success', 'Ricetta invalidata.');
         }
 
