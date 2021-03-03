@@ -137,6 +137,15 @@
         <div class="container-lg mt-5" align="center">
             <div class="row card-check my-3">
 
+            <div class="col-lg-6 my-3">
+                    <a href="{{ URL::action('VisitController@create') }}" onmouseover="mouseOver2()" onmouseout="mouseOut2()">
+                        <div class="card h-100 border-card">
+                            <img src="images/richiedi-visita.jpg" class="card-img-top dim-img-card img-fluid" alt="...">
+                                <p id="card2" class="card-text font-weight-bold text-uppercase border-button py-4 btn-outline-primary">prenota una visita dal tuo medico</p>
+                        </div>
+                    </a>
+                </div>
+
                 <div class="col-lg-6 my-3">
                     <a href="{{ URL::action('VisitController@index') }}" onmouseover="mouseOver1()" onmouseout="mouseOut1()">
                         <div class="card h-100 border-card">
@@ -146,32 +155,23 @@
                     </a>
                 </div>
 
-                <div class="col-lg-6 my-3">
-                    <a href="{{ URL::action('VisitController@create') }}" onmouseover="mouseOver2()" onmouseout="mouseOut2()">
+            </div>
+            <div class="row card-check my-3">
+
+            <div class="col-lg-6 my-3">
+                    <a href="{{ URL::action('PrescriptionController@create') }}" onmouseover="mouseOver4()" onmouseout="mouseOut4()">
                         <div class="card h-100 border-card">
-                            <img src="images/richiedi-visita.jpg" class="card-img-top dim-img-card img-fluid" alt="...">
-                                <p id="card2" class="card-text font-weight-bold text-uppercase border-button py-4 btn-outline-primary">prenota una visita dal tuo medico</p>
+                            <img src="images/create-prescription.jpg" class="card-img-top dim-img-card img-fluid" alt="...">
+                            <p id="card4" class="card-text font-weight-bold text-uppercase border-button py-4 btn-outline-primary">richiedi una prescrizione dal tuo medico</p>
                         </div>
                     </a>
                 </div>
-
-            </div>
-            <div class="row card-check my-3">
 
                 <div class="col-lg-6 my-3">
                     <a href="{{ URL::action('PrescriptionController@index') }}" onmouseover="mouseOver3()" onmouseout="mouseOut3()">
                         <div class="card h-100 border-card">
                             <img src="images/prescriptions.jpg" class="card-img-top dim-img-card img-fluid" alt="...">
                                 <p id="card3" class="card-text font-weight-bold text-uppercase border-button py-4 btn-outline-primary">visualizza prescrizioni</p>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-6 my-3">
-                    <a href="{{ URL::action('PrescriptionController@create') }}" onmouseover="mouseOver4()" onmouseout="mouseOut4()">
-                        <div class="card h-100 border-card">
-                            <img src="images/create-prescription.jpg" class="card-img-top dim-img-card img-fluid" alt="...">
-                            <p id="card4" class="card-text font-weight-bold text-uppercase border-button py-4 btn-outline-primary">richiedi una prescrizione dal tuo medico</p>
                         </div>
                     </a>
                 </div>
