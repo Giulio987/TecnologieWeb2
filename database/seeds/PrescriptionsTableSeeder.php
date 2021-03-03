@@ -23,7 +23,7 @@ class PrescriptionsTableSeeder extends Seeder
             'created_at'    => date('Y-m-d h:s:i')
         ],[
             'id_patient'    => '1',
-            'rfe'           => '120000000000001',
+            'rfe'           => '0',
             'id_doctor'     => '1',
             'description'   => 'cardioaspirin',
             'status'        => 'convalidare',
@@ -33,7 +33,7 @@ class PrescriptionsTableSeeder extends Seeder
             'created_at'    => date('Y-m-d h:s:i')
         ],[
             'id_patient'    => '1',
-            'rfe'           => '120000000000002',
+            'rfe'           => '0',
             'id_doctor'     => '1',
             'description'   => 'enterogermina',
             'status'        => 'convalidare',
@@ -43,7 +43,7 @@ class PrescriptionsTableSeeder extends Seeder
             'created_at'    => date('Y-m-d h:s:i')
         ],[
             'id_patient'    => '1',
-            'rfe'           => '120000000000003',
+            'rfe'           => '0',
             'id_doctor'     => '1',
             'description'   => 'angiologica',
             'status'        => 'convalidare',
@@ -63,7 +63,7 @@ class PrescriptionsTableSeeder extends Seeder
             'created_at'    => date('Y-m-d h:s:i')
         ],[
             'id_patient'    => '1',
-            'rfe'           => '120000000000005',
+            'rfe'           => '0',
             'id_doctor'     => '1',
             'description'   => 'chirurgica oncologica',
             'status'        => 'invalidata',
