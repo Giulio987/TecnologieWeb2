@@ -48,7 +48,7 @@
                     <a href="{{ URL::action('BuildingController@index') }}" onmouseover="mouseOver5()" onmouseout="mouseOut5()">
                         <div class="card h-100 border-card">
                             <img src="images/ambulatorio.jpg" class="card-img-top dim-img-card img-fluid" alt="...">
-                            <p id="card5" class="card-text font-weight-bold text-uppercase border-button py-4 btn-outline-primary">edifici</p>
+                            <p id="card5" class="card-text font-weight-bold text-uppercase border-button py-4 btn-outline-primary">ambulatori</p>
                         </div>
                     </a>
                 </div>

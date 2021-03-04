@@ -15,14 +15,14 @@
 <!--Row space mette spazio sopra e sotto -->
 <div class="row row-space justify-content-center">
         <h1 class="font-weight-bold">
-            Modifica le informazioni dell'edificio
+            Modifica le informazioni dell'ambulatorio
         </h1>
     </div>
 
     
     <div class="row row-space justify-content-center">
         <h5>
-            Compila tutti i campi e aggiungi l'edificio.
+            Compila tutti i campi e aggiungi l'ambulatorio.
         </h5>
     </div> 
     <form action="{{ URL::action('BuildingController@update', $building) }}" method="POST">

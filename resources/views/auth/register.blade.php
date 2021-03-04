@@ -117,8 +117,14 @@
                             <label for="id_building" class="col-md-4 col-form-label text-md-right">{{ __('Codice Ambulatorio') }}</label>
 
                             <div class="col-md-6">
-                                <input id="id_building" type="text" class="form-control @error('id_building') is-invalid @enderror" name="id_building" value="{{ old('id_building') }}" required autocomplete="id_building" autofocus>
-
+                            <?php
+                                $buildings = DB::table('buildings')->get();
+                            ?>
+                                <select name="id_building" id="selUser" style="width:100%">
+                                    @foreach($buildings as $b)
+                                        <option value="{{$b->id}}">{{$b->id}} - {{$b->street_address }} - {{$b->street_number}} - {{$b->postal_code}} - {{$b->city}}</option>
+                                    @endforeach
+                                </select>
                                 @error('id_building')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

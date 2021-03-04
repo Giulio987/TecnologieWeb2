@@ -1,4 +1,3 @@
-<!-- Serve solo per far vedere all'amministratore tutte gli edifici -->
 @extends('layouts.app')
 
 @section('content')
@@ -18,12 +17,12 @@
     <div class="container-lg" align="center">
         <div class="row row-space justify-content-center">
             <h1 class="font-weight-bold">
-                Amministratore, visualizza gli edifici dei dottori.
+                Amministratore, visualizza gli ambulatori dei dottori.
             </h1>
         </div>
         <div class="row row-space justify-content-center">
             <h4>
-                Visualizza tutti gli edifici e modifica le informazioni a tuo piacere
+                Visualizza tutti gli ambulatori e modifica le informazioni a tuo piacere
             </h4>
         </div>
 
@@ -161,14 +160,14 @@ $('document').ready(function() {
         e.preventDefault();
         if (confirm("Vuoi davvero eliminare?") == true) {
             alert("Eliminazione avvenuta!");
-            var row = $(this).parents('tr');            // Ottengo  la riga della tabella cercando fa i parents del bottone l'elemento <tr>
-            var buildingId = $(this).attr('data-id');     // Ottengo l'id dell'edificio andando a prelevare il valore dell'attributo "id"
-            var _token = $('#_token').val();            // Ottengo il token del form perchè mi serve anche per l'azione che sto per compiere 
+            var row = $(this).parents('tr');            
+            var buildingId = $(this).attr('data-id');     
+            var _token = $('#_token').val();            
             $.ajax({
-                    url: "/building/" + buildingId,     // Visto che posso configurarla usa l'azione di default per la Destroy 
-                    type: "DELETE",                     // Uso appunto il metodo DELETE
+                    url: "/building/" + buildingId,     
+                    type: "DELETE",
                     dataType: "json",  
-                    data: { 'building': buildingId, '_token': _token }, // Passo l'id della categria e il token 
+                    data: { 'building': buildingId, '_token': _token }, 
                     success: function(data) {                        
                         if (data.status === 'ok') {
                             $(row).remove();            
