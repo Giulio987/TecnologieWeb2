@@ -50478,7 +50478,7 @@ $('document').ready(function() {
 // Visualizzazioen visite Passate
 $('document').ready(function() {
     $("#ShowPassate").on("click", function() {
-        $("#contentFuture").hide("slow", function() {
+        $("#contentFuture").hide("slow", function() { //hide->nascondi
             // Animation complete.
         });
         $("#contentPassate").show("slow", function() {
@@ -50503,6 +50503,7 @@ $("#search").on("keyup", function() {
     });
 });
 
+// validator grafica
 (function() {
     'use strict';
     window.addEventListener('load', function() {
