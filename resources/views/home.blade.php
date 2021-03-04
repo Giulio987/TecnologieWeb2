@@ -62,19 +62,20 @@
             <div class="row card-check my-3">
 
                 <div class="col-lg-4 my-3">
-                    <a href="{{ URL::action('PatientController@index') }}" onmouseover="mouseOver1()" onmouseout="mouseOut1()">
-                        <div class="card h-100 border-card">
-                            <img src="images/patient.jpg" class="card-img-top dim-img-card img-fluid" alt="...">
-                                <p id="card1" class="card-text font-weight-bold text-uppercase border-button py-4 btn-outline-primary">i tuoi pazienti</p>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-4 my-3">
                     <a href="{{ URL::action('PatientController@create') }}" onmouseover="mouseOver2()" onmouseout="mouseOut2()">
                         <div class="card h-100 border-card">
                             <img src="images/registrazionepaziente.jpg" class="card-img-top dim-img-card img-fluid" alt="...">
                                 <p id="card2" class="card-text font-weight-bold text-uppercase border-button py-4 btn-outline-primary">registra un paziente</p>
+                        </div>
+                    </a>
+                </div>
+
+
+                <div class="col-lg-4 my-3">
+                    <a href="{{ URL::action('PatientController@index') }}" onmouseover="mouseOver1()" onmouseout="mouseOut1()">
+                        <div class="card h-100 border-card">
+                            <img src="images/patient.jpg" class="card-img-top dim-img-card img-fluid" alt="...">
+                                <p id="card1" class="card-text font-weight-bold text-uppercase border-button py-4 btn-outline-primary">i tuoi pazienti</p>
                         </div>
                     </a>
                 </div>
@@ -90,7 +91,18 @@
                 </div>
 
             </div>
+            
             <div class="row card-check my-3">
+
+                <div class="col-lg-4 my-3">
+                    <a href="{{ URL::action('PrescriptionController@create') }}" onmouseover="mouseOver5()" onmouseout="mouseOut5()">
+                        <div class="card h-100 border-card">
+                            <img src="images/create-prescription.jpg" class="card-img-top dim-img-card img-fluid" alt="...">
+                            <p id="card5" class="card-text font-weight-bold text-uppercase border-button py-4 btn-outline-primary">crea prescrizione</p>
+                        </div>
+                    </a>
+                </div>
+
 
                 <div class="col-lg-4 my-3">
                     <a href="{{ URL::action('PrescriptionController@index') }}" onmouseover="mouseOver4()" onmouseout="mouseOut4()">
@@ -101,14 +113,6 @@
                     </a>
                 </div>
 
-                <div class="col-lg-4 my-3">
-                    <a href="{{ URL::action('PrescriptionController@create') }}" onmouseover="mouseOver5()" onmouseout="mouseOut5()">
-                        <div class="card h-100 border-card">
-                            <img src="images/create-prescription.jpg" class="card-img-top dim-img-card img-fluid" alt="...">
-                            <p id="card5" class="card-text font-weight-bold text-uppercase border-button py-4 btn-outline-primary">crea prescrizione</p>
-                        </div>
-                    </a>
-                </div>
 
                 <?php $notification = count(DB::table('prescriptions')->where('status', 'convalidare')->get()); ?>
 

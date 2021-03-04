@@ -113,7 +113,7 @@
                         <div class="count-box">
                             <i class="icofont-patient-bed"></i>
                             <span class="count">{{ $buildings }}</span>
-                            <p>Edifici</p>
+                            <p>Ambulatori</p>
                         </div>
                     </div>
 
